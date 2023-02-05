@@ -38,7 +38,7 @@ public class BlockSpawnerScript : MonoBehaviour
 
         blocks = new GameObject[10];    //10 blocks in a row
         float width = 1;
-        float offset = 0.2f;
+        float offset = 0.1f;
         string word = words[UnityEngine.Random.Range(0, 10)];
         int numOfRandomLetters = 10 - word.Length;
         string randomLetters = generateRandomLetters(numOfRandomLetters);
@@ -48,7 +48,7 @@ public class BlockSpawnerScript : MonoBehaviour
         for (int j = 0; j < 5; j++)
         {
             var shuffledString = shuffleAllLetters(shuffleLetters);
-            float posy = transform.position.y + -1 * 0.9f * j;
+            float posy = transform.position.y + 1.1f * j;
             for (int i = 0; i < 10; i++)
             {
                 GameObject block = Instantiate(blockPrefab, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
