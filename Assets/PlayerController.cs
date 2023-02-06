@@ -2,28 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
+    // Start is called before the first frame update
     // Line OF Renderer
     public LineRenderer LineOfSight;
 
     public int reflections;
     public float MaxRayDistance;
     public LayerMask LayerDetection;
-    public float rotationSpeed;
-
-    private void Start()
+    public float moveSpeed;
+    private Rigidbody2D rb;
+    void Start()
     {
         Physics2D.queriesStartInColliders = false;
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        transform.Rotate(rotationSpeed * Vector3.forward * Time.deltaTime);
+        Vector2 mousePosition = Input.mousePosition; 
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector2 direction = new Vector2(
+            mousePosition.x - transform.position.x,
+            mousePosition.y - transform.position.y);
+        transform.up = direction;
+        float move = Input.GetAxis("Horizontal");
 
+        rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+        
         LineOfSight.positionCount = 1;
         LineOfSight.SetPosition(0, transform.position);
 
+        Debug.Log(transform.position);
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, MaxRayDistance, LayerDetection);
         // Ray
         Ray2D ray = new Ray2D(transform.position, transform.right);
@@ -32,9 +47,12 @@ public class Laser : MonoBehaviour
         Vector2 mirrorHitPoint = Vector2.zero;
         Vector2 mirrorHitNormal = Vector2.zero;
 
+        // float move = Input.GetAxis("Horizontal");
 
+        // rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
+        
         for (int i = 0; i < reflections; i++)
-        {
+        { 
             LineOfSight.positionCount += 1;
 
             if (hitInfo.collider != null)
@@ -44,7 +62,11 @@ public class Laser : MonoBehaviour
                 isMirror = false;
                 if (hitInfo.collider.CompareTag("Mirror"))
                 {
-                    mirrorHitPoint = (Vector2)hitInfo.point;
+                    // mirrorHitPoint = (Vector2)hitInfo.point;
+                    // mirrorHitNormal = (Vector2)hitInfo.normal;
+                    // hitInfo = Physics2D.Raycast((Vector2)hitInfo.point - ray.direction * -0.1f, Vector2.Reflect(hitInfo.point - ray.direction * -0.1f, hitInfo.normal), MaxRayDistance, LayerDetection);
+                    // isMirror = true;
+                     mirrorHitPoint = (Vector2)hitInfo.point;
                     mirrorHitNormal = (Vector2)hitInfo.normal;
                     hitInfo = Physics2D.Raycast((Vector2)hitInfo.point - ray.direction * -0.1f, Vector2.Reflect(hitInfo.point - ray.direction * -0.1f, hitInfo.normal), MaxRayDistance, LayerDetection);
                     isMirror = true;
@@ -54,6 +76,7 @@ public class Laser : MonoBehaviour
             }
             else
             {
+                
                 if (isMirror)
                 {
                     LineOfSight.SetPosition(LineOfSight.positionCount - 1, mirrorHitPoint + Vector2.Reflect(mirrorHitPoint, mirrorHitNormal) * MaxRayDistance);
@@ -66,6 +89,6 @@ public class Laser : MonoBehaviour
                 }
             }
         }
-
+        }
     }
 }
