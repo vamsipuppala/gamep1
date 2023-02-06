@@ -13,9 +13,10 @@ public class PlayerController : MonoBehaviour
     public int reflections;
     public float MaxRayDistance;
     public LayerMask LayerDetection;
-    public float moveSpeed;
-    private Rigidbody2D rb;
+    public float moveSpeed = 16f;
+    [SerializeField] private Rigidbody2D rb;
     public string wordCreated;
+    public float move;
     void Start()
     {
         Physics2D.queriesStartInColliders = false;
@@ -32,10 +33,7 @@ public class PlayerController : MonoBehaviour
             mousePosition.x - transform.position.x,
             mousePosition.y - transform.position.y);
         transform.up = direction;
-        float move = Input.GetAxis("Horizontal");
-
-        rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
-
+       
         if (Input.GetButtonDown("Fire1"))
         {
 
@@ -51,7 +49,8 @@ public class PlayerController : MonoBehaviour
             Vector2 mirrorHitPoint = Vector2.zero;
             Vector2 mirrorHitNormal = Vector2.zero;
 
-            // float move = Input.GetAxis("Horizontal");
+            move = Input.GetAxisRaw("Horizontal");
+            String givenWord = bs.wordss[j];
 
             // rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
 
@@ -63,13 +62,24 @@ public class PlayerController : MonoBehaviour
                 {
                     if (hitInfo.collider.name.Contains("LetterSquare"))
                     {
+                      
+                        Debug.Log("GIVEN WORD: " + givenWord);
                         GameObject gameObject = hitInfo.collider.gameObject;
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
-                        gameObject.GetComponent<SpriteRenderer>().color = Color.green;
-                        Debug.Log("%%%%%%%%%%%%%%" + text.text);
-                        wordCreated += text.text;
+                        if(!givenWord.Contains(text.text.ToString()))
+                            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                        else if (givenWord.Contains(text.text.ToString()))
+                        {
+                            gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                            givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
+                            wordCreated += text.text;
+                            Debug.Log("GIVEN WORD: " + givenWord);
+                        }
+
+                        bool isMatch = findMatch(wordCreated, bs.wordss[j]);
+                        
                         Debug.Log("the word is       " + wordCreated);
-                        if (string.Equals(wordCreated, bs.wordss[j], StringComparison.OrdinalIgnoreCase))
+                        if (findMatch(wordCreated, bs.wordss[j]))
                         {
                             Debug.Log(bs);
                             GameObject[] gs = bs.nestedList[j];
@@ -118,5 +128,30 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void FixedUpdate()
+    {      
+        rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
+        Debug.Log("VELOCITYY: " + rb.velocity);
+
+    }
+
+
+
+    private bool findMatch(string createdWord, string givenWord)
+    {
+        if (createdWord.Length != givenWord.Length)
+            return false;
+        var s1Array = createdWord.ToLower().ToCharArray();
+        var s2Array = givenWord.ToLower().ToCharArray();
+
+        Array.Sort(s1Array);
+        Array.Sort(s2Array);
+
+        createdWord = new string(s1Array);
+        givenWord = new string(s2Array);
+
+        return string.Equals(createdWord, givenWord, StringComparison.OrdinalIgnoreCase);
     }
 }
