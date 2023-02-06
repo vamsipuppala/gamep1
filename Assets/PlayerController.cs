@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,33 +14,36 @@ public class PlayerController : MonoBehaviour
     public int reflections;
     public float MaxRayDistance;
     public LayerMask LayerDetection;
-    private float moveSpeed = 3f;
+    public float moveSpeed = 16f;
     [SerializeField] private Rigidbody2D rb;
     public string wordCreated;
-    private float move;
-
-    public LogicManagerScript logic;
-
+    public float move;
+     [SerializeField] private TextMeshProUGUI  goodword;
+     int ind=0;
     void Start()
     {
+        int ind=0;
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
-        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        goodword.text = "Aim: "+bs.wordss[ind];
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector2 direction = new Vector2(
             mousePosition.x - transform.position.x,
             mousePosition.y - transform.position.y);
         transform.up = direction;
+        // move = Input.GetAxisRaw("Horizontal");
+        // rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
+        float move = Input.GetAxis("Horizontal");
 
-        move = Input.GetAxisRaw("Horizontal");
-
+        rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
+       
         if (Input.GetButtonDown("Fire1"))
         {
 
@@ -55,10 +59,10 @@ public class PlayerController : MonoBehaviour
             Vector2 mirrorHitPoint = Vector2.zero;
             Vector2 mirrorHitNormal = Vector2.zero;
 
-            
+            move = Input.GetAxisRaw("Horizontal");
             String givenWord = bs.wordss[j];
 
-             rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
+            // rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
 
             for (int i = 0; i < reflections; i++)
             {
@@ -72,9 +76,9 @@ public class PlayerController : MonoBehaviour
                         Debug.Log("GIVEN WORD: " + givenWord);
                         GameObject gameObject = hitInfo.collider.gameObject;
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
-                        if(!givenWord.Contains(text.text.ToString().ToLower()))
+                        if(!givenWord.Contains(text.text.ToString()))
                             gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-                        else if (givenWord.Contains(text.text.ToString().ToLower()))
+                        else if (givenWord.Contains(text.text.ToString()))
                         {
                             gameObject.GetComponent<SpriteRenderer>().color = Color.green;
                             givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
@@ -95,6 +99,8 @@ public class PlayerController : MonoBehaviour
                             }
                             wordCreated = "";
                             j++;
+                            ind++;
+
                         }
 
                         // change this if we need to restart the laser beam
@@ -160,11 +166,4 @@ public class PlayerController : MonoBehaviour
 
         return string.Equals(createdWord, givenWord, StringComparison.OrdinalIgnoreCase);
     }
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        logic.gameOver();
-    }
-
 }
