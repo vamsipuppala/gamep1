@@ -13,10 +13,10 @@ public class PlayerController : MonoBehaviour
     public int reflections;
     public float MaxRayDistance;
     public LayerMask LayerDetection;
-    public float moveSpeed = 16f;
+    private float moveSpeed = 3f;
     [SerializeField] private Rigidbody2D rb;
     public string wordCreated;
-    public float move;
+    private float move;
 
     public LogicManagerScript logic;
 
@@ -37,7 +37,9 @@ public class PlayerController : MonoBehaviour
             mousePosition.x - transform.position.x,
             mousePosition.y - transform.position.y);
         transform.up = direction;
-       
+
+        move = Input.GetAxisRaw("Horizontal");
+
         if (Input.GetButtonDown("Fire1"))
         {
 
@@ -53,10 +55,10 @@ public class PlayerController : MonoBehaviour
             Vector2 mirrorHitPoint = Vector2.zero;
             Vector2 mirrorHitNormal = Vector2.zero;
 
-            move = Input.GetAxisRaw("Horizontal");
+            
             String givenWord = bs.wordss[j];
 
-            // rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
+             rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
 
             for (int i = 0; i < reflections; i++)
             {
