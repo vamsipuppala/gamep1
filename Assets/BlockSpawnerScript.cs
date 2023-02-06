@@ -22,11 +22,11 @@ public class BlockSpawnerScript : MonoBehaviour
    
     public float speed = 1.0f;
 
-    private GameObject[] blocks;
-    List<GameObject[]> nestedList = new List<GameObject[]>();
+    public GameObject[] blocks;
+    public List<GameObject[]> nestedList = new List<GameObject[]>();
     public string[] letters = { "A", "Q", "F", "E", "C", "V", "P", "I", "H", "L" };
     string allChars = "ABCDEFGHIJKLMNOPQRSTUVWYZ";
-    public string[] words = { "bin", "hello", "great", "find", "unity", "hub", "text", "doll", "photo", "lamp" };
+    public string[] wordss = { "bin", "bro", "great", "find", "unity", "text", "doll", "photo", "lamp" };
 
     // Start is called before the first frame update
     private void Awake()
@@ -35,25 +35,27 @@ public class BlockSpawnerScript : MonoBehaviour
     }
     void Start()
     {
-
-        blocks = new GameObject[10];    //10 blocks in a row
+           //10 blocks in a row
         float width = 1;
         float offset = 0.1f;
-        string word = words[UnityEngine.Random.Range(0, 10)];
-        int numOfRandomLetters = 10 - word.Length;
-        string randomLetters = generateRandomLetters(numOfRandomLetters);
-        string shuffleLetters = "";
-        shuffleLetters += word + randomLetters;
-
+        
         for (int j = 0; j < 5; j++)
         {
+            blocks = new GameObject[10];
+            string word = wordss[j];
+            Debug.Log("WORD: " + word);
+            int numOfRandomLetters = 10 - word.Length;
+            string randomLetters = generateRandomLetters(numOfRandomLetters);
+            string shuffleLetters = "";
+            shuffleLetters += word + randomLetters;
+
             var shuffledString = shuffleAllLetters(shuffleLetters);
             float posy = transform.position.y + 1.1f * j;
             for (int i = 0; i < 10; i++)
             {
                 GameObject block = Instantiate(blockPrefab, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
                 block.transform.position = new Vector3(transform.position.x + (i * width) + (i * offset), posy, 0);
-                block.GetComponentInChildren<TextMesh>().text = Char.ToString(shuffledString[i]);
+                block.GetComponentInChildren<TextMesh>().text = Char.ToString(shuffledString[i]);               
                 blocks[i] = block;
 
             }
@@ -101,6 +103,11 @@ public class BlockSpawnerScript : MonoBehaviour
         //return randomLetters;
         Debug.Log("randomletter str: " + randomChar);
         return randomChar;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("*****");
     }
 
 }
