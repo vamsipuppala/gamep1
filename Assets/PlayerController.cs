@@ -17,11 +17,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     public string wordCreated;
     public float move;
+
+    public LogicManagerScript logic;
+
     void Start()
     {
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
+        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
     }
 
     // Update is called once per frame
@@ -66,9 +70,9 @@ public class PlayerController : MonoBehaviour
                         Debug.Log("GIVEN WORD: " + givenWord);
                         GameObject gameObject = hitInfo.collider.gameObject;
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
-                        if(!givenWord.Contains(text.text.ToString()))
+                        if(!givenWord.Contains(text.text.ToString().ToLower()))
                             gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-                        else if (givenWord.Contains(text.text.ToString()))
+                        else if (givenWord.Contains(text.text.ToString().ToLower()))
                         {
                             gameObject.GetComponent<SpriteRenderer>().color = Color.green;
                             givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
@@ -154,4 +158,11 @@ public class PlayerController : MonoBehaviour
 
         return string.Equals(createdWord, givenWord, StringComparison.OrdinalIgnoreCase);
     }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        logic.gameOver();
+    }
+
 }
