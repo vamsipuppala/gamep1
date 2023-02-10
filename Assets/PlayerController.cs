@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public string wordCreated;
     public float move;
      [SerializeField] private TextMeshProUGUI  goodword;
+
+    LogicManagerScript logic;
      int ind=0;
     void Start()
     {
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
+        logic = GameObject.FindGameObjectWithTag("LogicManagerScript").GetComponent<LogicManagerScript>();
     }
 
     // Update is called once per frame
@@ -165,5 +168,11 @@ public class PlayerController : MonoBehaviour
         givenWord = new string(s2Array);
 
         return string.Equals(createdWord, givenWord, StringComparison.OrdinalIgnoreCase);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("oncollision - ");
+        logic.gameOver();
     }
 }
