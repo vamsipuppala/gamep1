@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 using TMPro;
 using System.Linq;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,14 +25,12 @@ public class PlayerController : MonoBehaviour
     int localHits = 1;
      [SerializeField] private TextMeshProUGUI  goodword;
     List<GameObject[]> nestedList;
-
-    /*
-    public ScoreScript score;
-    public TimerScript timer; 
-    */
-
     public LogicManagerScript logic;
-     int ind=0;
+    public NextLevelScript nextLevel;
+
+    public GameObject NextLevelScreen;
+
+    int ind=0;
     void Start()
     {
         int ind=0;
@@ -38,8 +38,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("LogicManagerScript").GetComponent<LogicManagerScript>();
-    //    score = GameObject.FindGameObjectWithTag("ScoreScript").GetComponent<ScoreScript>();
-    //  timer = GameObject.FindGameObjectWithTag("TimerScript").GetComponent<TimerScript>();
+        nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
+        //nextLevel = FindInActiveObjectByTag("NextLevel");
         nestedList = bs.nestedList;
     }
 
@@ -143,8 +143,8 @@ public class PlayerController : MonoBehaviour
                                             Debug.Log(bs);
                                             GameObject[] gs = bs.nestedList[j];
                                             ScoreScript.PlayerScore += 1;
-                                    
-                                            checkThreshold(); 
+                                            //checkThreshold();
+                                            
                                             for (int k = 0; k < gs.Length; k++)
                                             {
                                                 Destroy(gs[k]);
@@ -242,14 +242,23 @@ public class PlayerController : MonoBehaviour
         logic.gameOver();
     }
 
-    public void checkThreshold() {
+    /*
+    private void checkThreshold() {
 
         if (ScoreScript.PlayerScore >= 1 & TimerScript.TimeValue > 0)
         {
             Debug.Log("NEXT LEVEL");
-            logic.NextLevel();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //NextLevelScreen.SetActive(true);
+            
+            if (!nextLevel) {
+                Debug.Log("Next level is NULL!");
+                //NextLevelScreen.SetActive(true);
+            }
+            //nextLevel.goToNextLevel();
         }
 
     }
-
+    */
+       
 }

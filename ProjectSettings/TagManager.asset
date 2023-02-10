@@ -8,6 +8,7 @@ TagManager:
   - Mirror
   - BlockSpawnerScript
   - Logic
+  - NextLevel
   layers:
   - Default
   - TransparentFX

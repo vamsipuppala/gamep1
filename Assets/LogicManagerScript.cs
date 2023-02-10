@@ -8,12 +8,12 @@ public class LogicManagerScript : MonoBehaviour
 {
 
     public GameObject gameOverScreen;
-    public GameObject nextLevel;
+    //public GameObject NextLevelScreen;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //goToNextLevel(gameObject);
     }
 
     // Update is called once per frame
@@ -36,10 +36,6 @@ public class LogicManagerScript : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void NextLevel() {
-        Debug.Log("NEXT LEVEL REACHED!!!!");
-        nextLevel.SetActive(true);
-        Time.timeScale = 0;
-    }
+
 
 }
