@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,7 +19,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     public string wordCreated;
     public float move;
+    int numberOfHits;
+    int localHits = 1;
      [SerializeField] private TextMeshProUGUI  goodword;
+    List<GameObject[]> nestedList;
 
     LogicManagerScript logic;
      int ind=0;
@@ -29,12 +33,13 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("LogicManagerScript").GetComponent<LogicManagerScript>();
+        nestedList = bs.nestedList;
     }
 
     // Update is called once per frame
     void Update()
     {
-        goodword.text = "Aim: "+bs.wordss[ind];
+        goodword.text = "Aim: "+bs.wordsss[ind];
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector2 direction = new Vector2(
@@ -63,7 +68,8 @@ public class PlayerController : MonoBehaviour
             Vector2 mirrorHitNormal = Vector2.zero;
 
             move = Input.GetAxisRaw("Horizontal");
-            String givenWord = bs.wordss[j];
+            String givenWord = bs.wordsss[j];
+            
 
             // rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
 
@@ -75,39 +81,77 @@ public class PlayerController : MonoBehaviour
                 {
                     if (hitInfo.collider.name.Contains("LetterSquare"))
                     {
-                      
-                        Debug.Log("GIVEN WORD: " + givenWord);
+                        //Debug.Log("GIVEN WORD: " + givenWord);
+                        nestedList = bs.nestedList;
                         GameObject gameObject = hitInfo.collider.gameObject;
-                        TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
-                        if(!givenWord.Contains(text.text.ToString()))
-                            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-                        else if (givenWord.Contains(text.text.ToString()))
-                        {
-                            gameObject.GetComponent<SpriteRenderer>().color = Color.green;
-                            givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
-                            wordCreated += text.text;
-                            Debug.Log("GIVEN WORD: " + givenWord);
-                        }
-
-                        bool isMatch = findMatch(wordCreated, bs.wordss[j]);
                         
-                        Debug.Log("the word is       " + wordCreated);
-                        if (findMatch(wordCreated, bs.wordss[j]))
+                        Debug.Log("indexxxxxxxxxxxxx   " + GetIndexOfGameObject(gameObject, nestedList));
+                        numberOfHits = givenWord.Length;
+                        Debug.Log("now the numberOfHits is " + numberOfHits);
+                        TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
+                        if(j==GetIndexOfGameObject(gameObject, nestedList))
                         {
-                            Debug.Log(bs);
-                            GameObject[] gs = bs.nestedList[j];
-                            for (int k = 0; k < gs.Length; k++)
+                            if (gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                             {
-                                Destroy(gs[k]);
+                                localHits--;
+                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.green)
+                                {
+                                    wordCreated = wordCreated.Replace(text.text.ToString(), "");
+                                }
+                                gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                                if (localHits < 0)
+                                {
+                                    localHits = 1;
+                                }
+                                Debug.Log("hurrrrrayyyyy" + localHits);
                             }
-                            wordCreated = "";
-                            j++;
-                            ind++;
+                            else
+                            {
 
+                                if (localHits > numberOfHits)
+                                {
+                                    Debug.Log("no shooting");
+                                }
+                                else
+                                {
+                                    localHits++;
+
+                                    if (!givenWord.Contains(text.text.ToString()))
+                                        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                                    else if (givenWord.Contains(text.text.ToString()))
+                                    {
+                                        gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                                        //givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
+                                        wordCreated += text.text;
+                                        //Debug.Log("GIVEN WORD: " + givenWord);
+                                    }
+
+
+                                    if (wordCreated.Length == bs.wordsss[j].Length)
+                                    {
+
+                                        Debug.Log("the word is       " + wordCreated);
+                                        if (findMatch(wordCreated, bs.wordsss[j]))
+                                        {
+                                            Debug.Log(bs);
+                                            GameObject[] gs = bs.nestedList[j];
+                                            for (int k = 0; k < gs.Length; k++)
+                                            {
+                                                Destroy(gs[k]);
+                                            }
+                                            wordCreated = "";
+                                            j++;
+                                            ind++;
+                                            localHits = 1;
+                                        }
+                                    }
+                                }
+
+                            }
                         }
+                       
 
-                        // change this if we need to restart the laser beam
-
+                       
 
                     }
                     LineOfSight.SetPosition(LineOfSight.positionCount - 1, hitInfo.point - ray.direction * -0.1f);
@@ -148,18 +192,29 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {      
         rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
-        Debug.Log("VELOCITYY: " + rb.velocity);
+        
 
+    }
+
+    private int GetIndexOfGameObject(GameObject target, List<GameObject[]> list)
+    {
+        for (int i = 0; i < list.Capacity; i++)
+        {
+            if (list[i].Contains(target))
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
 
 
     private bool findMatch(string createdWord, string givenWord)
     {
-        if (createdWord.Length != givenWord.Length)
-            return false;
-        var s1Array = createdWord.ToLower().ToCharArray();
-        var s2Array = givenWord.ToLower().ToCharArray();
+       
+        var s1Array = createdWord.ToCharArray();
+        var s2Array = givenWord.ToCharArray();
 
         Array.Sort(s1Array);
         Array.Sort(s2Array);

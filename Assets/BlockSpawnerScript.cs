@@ -26,7 +26,7 @@ public class BlockSpawnerScript : MonoBehaviour
     public List<GameObject[]> nestedList = new List<GameObject[]>();
     public string[] letters = { "A", "Q", "F", "E", "C", "V", "P", "I", "H", "L" };
     string allChars = "ABCDEFGHIJKLMNOPQRSTUVWYZ";
-    public string[] wordss = { "bin", "bro", "great", "find", "unity", "text", "doll", "photo", "lamp" };
+    public string[] wordsss = { "BIN", "BRO", "GREAT", "FIND", "UNITY", "TEXT", "DOLL", "PHOTO", "LAMP" };
 
     // Start is called before the first frame update
     private void Awake()
@@ -42,7 +42,7 @@ public class BlockSpawnerScript : MonoBehaviour
         for (int j = 0; j < 5; j++)
         {
             blocks = new GameObject[10];
-            string word = wordss[j];
+            string word = wordsss[j];
             Debug.Log("WORD: " + word);
             int numOfRandomLetters = 10 - word.Length;
             string randomLetters = generateRandomLetters(numOfRandomLetters);
