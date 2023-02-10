@@ -24,7 +24,12 @@ public class PlayerController : MonoBehaviour
      [SerializeField] private TextMeshProUGUI  goodword;
     List<GameObject[]> nestedList;
 
-    LogicManagerScript logic;
+    /*
+    public ScoreScript score;
+    public TimerScript timer; 
+    */
+
+    public LogicManagerScript logic;
      int ind=0;
     void Start()
     {
@@ -33,6 +38,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("LogicManagerScript").GetComponent<LogicManagerScript>();
+    //    score = GameObject.FindGameObjectWithTag("ScoreScript").GetComponent<ScoreScript>();
+    //  timer = GameObject.FindGameObjectWithTag("TimerScript").GetComponent<TimerScript>();
         nestedList = bs.nestedList;
     }
 
@@ -135,6 +142,9 @@ public class PlayerController : MonoBehaviour
                                         {
                                             Debug.Log(bs);
                                             GameObject[] gs = bs.nestedList[j];
+                                            ScoreScript.PlayerScore += 1;
+                                    
+                                            checkThreshold(); 
                                             for (int k = 0; k < gs.Length; k++)
                                             {
                                                 Destroy(gs[k]);
@@ -143,6 +153,7 @@ public class PlayerController : MonoBehaviour
                                             j++;
                                             ind++;
                                             localHits = 1;
+                                            
                                         }
                                     }
                                 }
@@ -230,4 +241,15 @@ public class PlayerController : MonoBehaviour
         Debug.Log("oncollision - ");
         logic.gameOver();
     }
+
+    public void checkThreshold() {
+
+        if (ScoreScript.PlayerScore >= 1 & TimerScript.TimeValue > 0)
+        {
+            Debug.Log("NEXT LEVEL");
+            logic.NextLevel();
+        }
+
+    }
+
 }
