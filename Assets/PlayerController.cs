@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 using TMPro;
 using System.Linq;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,50 +17,86 @@ public class PlayerController : MonoBehaviour
     public int reflections;
     public float MaxRayDistance;
     public LayerMask LayerDetection;
-    public float moveSpeed = 16f;
+    //public float moveSpeed = 16f;
     [SerializeField] private Rigidbody2D rb;
+    public LogicManagerScript logic;
+    public NextLevelScript nextLevel;
+    public GameObject NextLevelScreen;
     public string wordCreated;
-    public float move;
+    public string lol1;
+    public string dangerWordCreated;
+    //public float move;
     int numberOfHits;
     int localHits = 1;
-     [SerializeField] private TextMeshProUGUI  goodword;
+    [SerializeField]  private TextMeshProUGUI  goodword;
+    [SerializeField]  public TextMeshProUGUI dangerWord;
+    public string dummy;
+    public Text text1 ;
+    public Text text2;
     List<GameObject[]> nestedList;
+    public string final;
+    public float moveSpeed;
+    public float st, ct;
+    public GameObject c;
+    //[SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
 
-    LogicManagerScript logic;
-     int ind=0;
+
+    int ind=0;
     void Start()
     {
         int ind=0;
+        st = Time.time;
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("LogicManagerScript").GetComponent<LogicManagerScript>();
+        nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
+        //final = "Aim: " + bs.words[ind];
     }
 
     // Update is called once per frame
     void Update()
     {
-        goodword.text = "Aim: "+bs.wordsss[ind];
+        //Debug.Log("finalllllllllllllll" + final);
+        //goodword.text = final;
+        if (Input.GetButtonDown("Jump") && IsGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 8f);
+        }
+        goodword.text = "Aim:" + bs.words[ind];
+         dangerWord.text = "Danger:" + bs.dangerWordss[ind];
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        Vector2 direction = new Vector2(
-            mousePosition.x - transform.position.x,
-            mousePosition.y - transform.position.y);
-        transform.up = direction;
+        //Vector2 direction = new Vector2(
+            //mousePosition.x - transform.position.x,
+          //  mousePosition.y - transform.position.y);
+        //transform.up = direction;
         // move = Input.GetAxisRaw("Horizontal");
         // rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         float move = Input.GetAxis("Horizontal");
 
-        rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
-       
+        //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
+        rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
+        float move2 = Input.GetAxis("Vertical");
+        if (move2 < 0 && !(transform.localEulerAngles.z > 300))
+        {
+            //  Debug.Log("inside move2"+transform.localEulerAngles+ transform.localRotation.eulerAngles.y);
+            transform.Rotate(0, 0, move2 * (5f));
+        }
+        else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
+        {
+            //    Debug.Log("inside move1"+transform.position.x+ transform.position.y );
+            transform.Rotate(0, 0, move2 * (5f));
+        }
         if (Input.GetButtonDown("Fire1"))
         {
-
+            st = Time.time;
             LineOfSight.positionCount = 1;
             LineOfSight.SetPosition(0, transform.position);
 
-            Debug.Log(transform.position);
+            //Debug.Log(transform.position);
             RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, MaxRayDistance, LayerDetection);
             // Ray
             Ray2D ray = new Ray2D(transform.position, transform.right);
@@ -68,7 +106,8 @@ public class PlayerController : MonoBehaviour
             Vector2 mirrorHitNormal = Vector2.zero;
 
             move = Input.GetAxisRaw("Horizontal");
-            String givenWord = bs.wordsss[j];
+            String givenWord = bs.words[j];
+            string givenDangerWord = bs.dangerWordss[j];
             
 
             // rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
@@ -91,18 +130,24 @@ public class PlayerController : MonoBehaviour
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
                         if(j==GetIndexOfGameObject(gameObject, nestedList))
                         {
-                            if (gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
+
+                            if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                             {
                                 localHits--;
                                 if (gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                                 {
+                                                                     
                                     wordCreated = wordCreated.Replace(text.text.ToString(), "");
+                                                          
+
                                 }
-                                gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-                                if (localHits < 0)
+                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.red)
                                 {
-                                    localHits = 1;
+                                    dangerWordCreated = dangerWordCreated.Replace(text.text.ToString(), "");
                                 }
+
+                                gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                                
                                 Debug.Log("hurrrrrayyyyy" + localHits);
                             }
                             else
@@ -115,31 +160,61 @@ public class PlayerController : MonoBehaviour
                                 else
                                 {
                                     localHits++;
-
-                                    if (!givenWord.Contains(text.text.ToString()))
-                                        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-                                    else if (givenWord.Contains(text.text.ToString()))
+                                    if (givenDangerWord.Contains(text.text.ToString()))
                                     {
-                                        gameObject.GetComponent<SpriteRenderer>().color = Color.green;
-                                        //givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
+                                        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                                        dangerWordCreated += text.text;
+                                        Debug.Log("the danger word created till now is" + dangerWordCreated);
+                                    }
+                                    
+                                        if (!givenWord.Contains(text.text.ToString()) && !givenDangerWord.Contains(text.text.ToString()))
+                                            gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+                                        else if (givenWord.Contains(text.text.ToString()))
+                                        {
+                                            gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                                            //givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
                                         wordCreated += text.text;
+                                       /* if (wordCreated.Length != bs.words[j].Length && goodword.text.IndexOf(wordCreated)!=-1)
+                                        {
+                                            Debug.Log("word createeeeeeddddddd" + wordCreated);
+                                            string s = goodword.text.Substring(goodword.text.IndexOf(wordCreated), wordCreated.Length + 1);
+                                            dummy = goodword.text;
+                                            string s1 = dummy.Replace(s, "");
+                                            final = s1 + "<u>" + s + "</u>";
+                                            goodword.text = final;
+                                        }*/
+                                            
+                                      
                                         //Debug.Log("GIVEN WORD: " + givenWord);
                                     }
+                                   
+                                   
+                                    if(dangerWordCreated.Length == bs.dangerWordss[j].Length)
+                                    {
+                                        
+                                        if(findMatch(dangerWordCreated, bs.dangerWordss[j]))
+                                        {
+                                            Debug.Log("dangerrrrrr");
+                                            ScoreScript.PlayerScore -= 1;
 
+                                        }
+                                    }
 
-                                    if (wordCreated.Length == bs.wordsss[j].Length)
+                                    if (wordCreated.Length == bs.words[j].Length)
                                     {
 
                                         Debug.Log("the word is       " + wordCreated);
-                                        if (findMatch(wordCreated, bs.wordsss[j]))
+                                        if (findMatch(wordCreated, bs.words[j]))
                                         {
                                             Debug.Log(bs);
                                             GameObject[] gs = bs.nestedList[j];
+                                            ScoreScript.PlayerScore += 1;
                                             for (int k = 0; k < gs.Length; k++)
                                             {
                                                 Destroy(gs[k]);
                                             }
                                             wordCreated = "";
+                                            dangerWordCreated = "";
                                             j++;
                                             ind++;
                                             localHits = 1;
@@ -187,11 +262,18 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            if (Time.time - st > (float)0.5)
+            {//Debug.Log("************");
+                LineOfSight.SetVertexCount(0);
+            }
+        }
     }
 
     private void FixedUpdate()
     {      
-        rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
+        //rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
         
 
     }
@@ -225,9 +307,15 @@ public class PlayerController : MonoBehaviour
         return string.Equals(createdWord, givenWord, StringComparison.OrdinalIgnoreCase);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private bool IsGrounded()
     {
-        Debug.Log("oncollision - ");
-        logic.gameOver();
+        return Physics2D.OverlapCircle(transform.position, 1f, groundLayer);
+
     }
+
+    // private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //  Debug.Log("oncollision - ");
+    // logic.gameOver();
+    //}
 }
