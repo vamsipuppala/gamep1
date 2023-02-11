@@ -7,12 +7,36 @@ using UnityEngine.UI;
 public class NextLevelScript : MonoBehaviour
 {
     public GameObject NextLevel;
+    public string levelName;
+    private int nextSceneToLoad;
+    private bool loadScene = false;
+
+    private void Start()
+    {
+        nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
+    }
 
     public void Update()
     {
-        if (ScoreScript.PlayerScore >= 1 & TimerScript.TimeValue > 0)
+        if (!loadScene)
         {
-            NextLevel.SetActive(true);
+            changeScene();
         }
+    }
+
+    private void changeScene()
+    {
+
+        if (ScoreScript.PlayerScore >= 2 & TimerScript.TimeValue > 0)
+        {
+            loadScene = true;
+            resetValues();
+            SceneManager.LoadScene(nextSceneToLoad);
+        }
+    }
+
+    private void resetValues() {
+        ScoreScript.PlayerScore = 0;
+        TimerScript.TimeValue = 60;
     }
 }
