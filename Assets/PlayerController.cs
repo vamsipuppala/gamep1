@@ -65,8 +65,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 8f);
         }
-        dummy = goodword.text;
-        dangerWord.text = "Danger:" + bs.dangerWordss[ind];
+        goodword.text = "Aim:" + bs.words[ind];
+         dangerWord.text = "Danger:" + bs.dangerWordss[ind];
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         //Vector2 direction = new Vector2(
@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
                                             gameObject.GetComponent<SpriteRenderer>().color = Color.green;
                                             //givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
                                         wordCreated += text.text;
-                                        if (wordCreated.Length != bs.words[j].Length && goodword.text.IndexOf(wordCreated)!=-1)
+                                       /* if (wordCreated.Length != bs.words[j].Length && goodword.text.IndexOf(wordCreated)!=-1)
                                         {
                                             Debug.Log("word createeeeeeddddddd" + wordCreated);
                                             string s = goodword.text.Substring(goodword.text.IndexOf(wordCreated), wordCreated.Length + 1);
@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
                                             string s1 = dummy.Replace(s, "");
                                             final = s1 + "<u>" + s + "</u>";
                                             goodword.text = final;
-                                        }
+                                        }*/
                                             
                                       
                                         //Debug.Log("GIVEN WORD: " + givenWord);
@@ -309,7 +309,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(transform.position, 1f, LayerDetection);
+        return Physics2D.OverlapCircle(transform.position, 1f, groundLayer);
 
     }
 

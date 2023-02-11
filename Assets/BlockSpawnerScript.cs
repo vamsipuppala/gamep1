@@ -22,8 +22,8 @@ public class BlockSpawnerScript : MonoBehaviour
    
     public float speed = 1.0f;
 
-    public GameObject[] blocks;
-    public List<GameObject[]> nestedList = new List<GameObject[]>();
+    public GameObject[] blocks; // this is one row of blocks 
+    public List<GameObject[]> nestedList = new List<GameObject[]>(); // this is the entire set of rows 
     public string[] letters = { "A", "Q", "F", "E", "C", "V", "P", "I", "H", "L", "Z", "X", "S", "K" , "J", "N", "M", "T"};
     string allChars = "ABCDEFGHIJKLMNOPQRSTUVWYZ";
     public string[] words = { "BIN", "BRO", "MAT", "FIND", "MAD", "TEXT", "DOLL", "DAZE", "MAP", "TENT" , "BLUE" , "PINK", "RED" ,"FIX" , "BALL" };
@@ -40,7 +40,7 @@ public class BlockSpawnerScript : MonoBehaviour
         float width = 1;
         float offset = 0.1f;
         
-        for (int j = 0; j < 15; j++)
+        for (int j = 0; j < 15; j++) // this is for the total number of rows
         {
             HashSet<char> hs = new HashSet<char>();
             
@@ -63,8 +63,8 @@ public class BlockSpawnerScript : MonoBehaviour
             shuffleLetters += randomLetters + finalWord;
 
             var shuffledString = shuffleAllLetters(shuffleLetters);
-            float posy = transform.position.y + 1.1f * j;
-            for (int i = 0; i < 10; i++)
+            float posy = transform.position.y + 1.1f * j; // this is for making the rows come one below the other
+            for (int i = 0; i < 10; i++) // this is for the 10 blocks in a single row 
             {
                 GameObject block = Instantiate(blockPrefab, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
                 block.transform.position = new Vector3(transform.position.x + (i * width) + (i * offset), posy, 0);

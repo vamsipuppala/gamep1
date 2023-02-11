@@ -10,7 +10,7 @@ public class NextLevelScript : MonoBehaviour
     public string levelName;
     private int nextSceneToLoad;
     private bool loadScene = false;
-    public int thresholdScore = 5;
+    public int thresholdScore = 3;
 
     private void Start()
     {
