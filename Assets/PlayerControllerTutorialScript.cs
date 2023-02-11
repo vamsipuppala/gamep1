@@ -5,13 +5,13 @@ using System;
 using TMPro;
 using System.Linq;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerTutorialScript : MonoBehaviour
 {
     // Start is called before the first frame update
     // Line OF Renderer
     public LineRenderer LineOfSight;
     int j = 0;
-    public BlockSpawnerScript bs;
+    public BlockSpawnerTutorialScript bs;
     public int reflections;
     public float MaxRayDistance;
     public LayerMask LayerDetection;
@@ -25,13 +25,17 @@ public class PlayerController : MonoBehaviour
     List<GameObject[]> nestedList;
 
     LogicManagerScript logic;
-     int ind=0;
+
+    public GameObject[] popUps;
+    int ind=0;
+
+    int popUpIndex = 0;
     void Start()
     {
         int ind=0;
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();
-        bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
+        bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerTutorialScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
         nestedList = bs.nestedList;
     }
@@ -39,6 +43,152 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //HINT 0 - Shoot blocks of letters  to form target word. Press enter to Begin
+        if (popUpIndex == 0)
+        {
+            popUps[0].SetActive(true);
+            Debug.Log("HELLOOOOO");
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                Debug.Log("Inside hint0 if");
+                popUps[0].SetActive(false);
+                //Time.timeScale = 1;
+                popUpIndex++;
+            }
+        }
+        //HINT 1 - Press LEFT & RIGHT Arrow Key to Move
+        else if (popUpIndex == 1)
+        {
+            popUps[1].SetActive(true);
+            Time.timeScale = 0;
+            if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                popUps[1].SetActive(false);
+                popUpIndex++;
+            }
+            
+        }
+        //HINT 2 - Use UP & DOWN Arrow Key to change direction of laser beam
+        else if (popUpIndex == 2)
+        {
+            popUps[2].SetActive(true);
+            Time.timeScale = 0;
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                popUps[2].SetActive(false);
+                popUpIndex++;
+            }
+            Time.timeScale = 1;
+        }
+        //HINT 3 - Press LEFT CTRL to shoot & select the letter
+        else if (popUpIndex == 3)
+        {
+            popUps[3].SetActive(true);
+            popUps[11].SetActive(true);
+            Time.timeScale = 0;
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                popUps[3].SetActive(false);
+                popUps[11].SetActive(false);
+                popUpIndex++;
+            }
+            Time.timeScale = 1;
+        }
+
+        /*
+        else if(popUpIndex == 4)
+        {
+            //ASK USER TO SHOOT B
+            //hint10 - elements 11
+            popUps[11].SetActive(true);
+            Time.timeScale = 0;
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                popUps[11].SetActive(false);
+                popUpIndex++;
+            }
+            Time.timeScale = 1;
+        }*/
+       
+        else if (Input.GetKeyDown(KeyCode.Return) && popUpIndex == 4)
+        {
+            Debug.Log("Inside IFFFF green----");
+            popUps[4].SetActive(false);
+            popUpIndex++;
+            Time.timeScale = 1;
+        }
+
+        else if (popUpIndex == 5)
+        {
+            //ASK USER TO SHOOT X
+            //hint11 - elements 12
+            popUps[12].SetActive(true);
+            Time.timeScale = 0;
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                popUps[12].SetActive(false);
+                popUpIndex++;
+            }
+            Time.timeScale = 1;
+        }
+
+        
+       else if (Input.GetKeyDown(KeyCode.Return) && popUpIndex == 6)
+       {
+            //incorrect letter highlighted in red 
+           Debug.Log("Inside IFFFF red----");
+           popUps[5].SetActive(false);
+           popUpIndex++;
+           Time.timeScale = 1;
+       }
+
+        else if (popUpIndex == 7)
+        {
+            //ASK USER TO SHOOT X TO DESELECT
+            popUps[6].SetActive(true);
+            Time.timeScale = 0;
+            
+        }
+
+        else if(Input.GetKeyDown(KeyCode.LeftControl) && popUpIndex == 8)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                popUps[6].SetActive(false);
+                popUpIndex++;
+            }
+            Time.timeScale = 1;
+        }
+
+        /*
+      else if (Input.GetKeyDown(KeyCode.Return) && popUpIndex == 6)
+      {
+          Debug.Log("Inside IFFFF deselect");
+          popUps[6].SetActive(false);
+          popUpIndex++;
+          Time.timeScale = 1;
+      }
+      */
+
+        //HINT 3.2 - SHOOT AT LETTER P -- DANGER LETTER (RED)
+
+        //TO DO - add shoot at letter this n all prompts        
+
+        //HINT 5 - MAX NUMBER OF SELECTION
+
+        //HINT 6 - REACH THRESHOLD SCORE
+
+
+
+        //HINT 8 - SCORE WILL INCREASE
+
+        //HINT 9 - TIMER
+
+
+        //ADD GREAT GOING WHEN USER HITS CORRECT LETTER, OOPS WHEN USER HITS INCORRECT LETTER
+
+
+
         goodword.text = "Aim: "+bs.wordsss[ind];
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -99,6 +249,14 @@ public class PlayerController : MonoBehaviour
                                     wordCreated = wordCreated.Replace(text.text.ToString(), "");
                                 }
                                 gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                                //HINT 4 - DESELECT LETTER
+                                if (popUpIndex == 7 && "X".Equals(text.text.ToString()))
+                                {
+                                    popUps[6].SetActive(false);
+                                    popUpIndex++;
+                                    Time.timeScale = 1;
+                                }
+
                                 if (localHits < 0)
                                 {
                                     localHits = 1;
@@ -117,10 +275,47 @@ public class PlayerController : MonoBehaviour
                                     localHits++;
 
                                     if (!givenWord.Contains(text.text.ToString()))
+                                    {
+                                        //HINT 3.3 - SHOOT AT LETTER X -- INCORRECT LETTER (GRAY)
                                         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                                        
+                                        if (popUpIndex == 6 && "X".Equals(text.text.ToString()))
+                                        {
+                                            popUps[5].SetActive(true);
+                                            Time.timeScale = 0;
+                                            Debug.Log("TIme scale 0");
+                                            if (Input.GetKeyDown(KeyCode.Return))
+                                            {
+                                                Debug.Log("Inside IFFFF red");
+                                                popUps[5].SetActive(false);
+                                                popUpIndex++;
+                                                Time.timeScale = 1;
+                                            }
+
+                                        }
+                                        
+                                    }
                                     else if (givenWord.Contains(text.text.ToString()))
                                     {
+                                        //HINT 3.1 - SHOOT CORRECT LETTER - GREEN
+                                        
                                         gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+
+                                        if (popUpIndex == 4 && "B".Equals(text.text.ToString()))
+                                        {
+                                            popUps[4].SetActive(true);
+                                            Time.timeScale = 0;
+                                            Debug.Log("TIme scale 0");
+                                            if (Input.GetKeyDown(KeyCode.Return))
+                                            {
+                                                Debug.Log("Inside IFFFF");
+                                                popUps[4].SetActive(false);
+                                                popUpIndex++;
+                                                Time.timeScale = 1;
+                                            }
+                                           
+                                        }
+
                                         //givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
                                         wordCreated += text.text;
                                         //Debug.Log("GIVEN WORD: " + givenWord);
@@ -138,6 +333,8 @@ public class PlayerController : MonoBehaviour
                                             for (int k = 0; k < gs.Length; k++)
                                             {
                                                 Destroy(gs[k]);
+                                                //HINT 7 - DESTROY ROW
+
                                             }
                                             wordCreated = "";
                                             j++;
@@ -148,11 +345,7 @@ public class PlayerController : MonoBehaviour
                                 }
 
                             }
-                        }
-                       
-
-                       
-
+                        }         
                     }
                     LineOfSight.SetPosition(LineOfSight.positionCount - 1, hitInfo.point - ray.direction * -0.1f);
 
