@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - LetterText
+  - Mirror
+  - BlockSpawnerScript
+  - Logic
+  - NextLevel
   layers:
   - Default
   - TransparentFX
