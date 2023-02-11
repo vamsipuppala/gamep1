@@ -24,9 +24,10 @@ public class BlockSpawnerScript : MonoBehaviour
 
     public GameObject[] blocks;
     public List<GameObject[]> nestedList = new List<GameObject[]>();
-    public string[] letters = { "A", "Q", "F", "E", "C", "V", "P", "I", "H", "L" };
+    public string[] letters = { "A", "Q", "F", "E", "C", "V", "P", "I", "H", "L", "Z", "X", "S", "K" , "J", "N", "M", "T"};
     string allChars = "ABCDEFGHIJKLMNOPQRSTUVWYZ";
-    public string[] wordsss = { "BIN", "BRO", "GREAT", "FIND", "UNITY", "TEXT", "DOLL", "PHOTO", "LAMP" };
+    public string[] words = { "BIN", "BRO", "MAT", "FIND", "MAD", "TEXT", "DOLL", "DAZE", "MAP", "TENT" , "BLUE" , "PINK", "RED" ,"FIX" , "BALL" };
+    public string[] dangerWordss = {"SIN", "FRO" ,"RAT", "MIND", "DAD", "NEXT", "TOLL" , "MAZE" , "PAP" ,"RENT", "GLUE" ,"SINK" , "BED", "SIX", "MALL"};
 
     // Start is called before the first frame update
     private void Awake()
@@ -39,15 +40,27 @@ public class BlockSpawnerScript : MonoBehaviour
         float width = 1;
         float offset = 0.1f;
         
-        for (int j = 0; j < 5; j++)
+        for (int j = 0; j < 15; j++)
         {
+            HashSet<char> hs = new HashSet<char>();
+            
             blocks = new GameObject[10];
-            string word = wordsss[j];
+            string word = words[j];
+            string dangerword = dangerWordss[j];
+            foreach (char c in word)
+            {
+                hs.Add(c);
+            }
+            foreach(char c in dangerword)
+            {
+                hs.Add(c);
+            }
             Debug.Log("WORD: " + word);
-            int numOfRandomLetters = 10 - word.Length;
+            int numOfRandomLetters = 10 - hs.Count;
             string randomLetters = generateRandomLetters(numOfRandomLetters);
             string shuffleLetters = "";
-            shuffleLetters += word + randomLetters;
+            string finalWord = string.Join("", hs.ToArray());
+            shuffleLetters += randomLetters + finalWord;
 
             var shuffledString = shuffleAllLetters(shuffleLetters);
             float posy = transform.position.y + 1.1f * j;

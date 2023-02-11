@@ -570,16 +570,38 @@ MonoBehaviour:
   - I
   - H
   - L
-  wordss:
-  - bin
-  - bro
-  - great
-  - find
-  - unity
-  - text
-  - doll
-  - photo
-  - lamp
+  words:
+  - BIN
+  - BRO
+  - MAT
+  - FIND
+  - MAD
+  - TEXT
+  - DOLL
+  - DAZE
+  - MAP
+  - TENT
+  - BLUE
+  - PINK
+  - RED
+  - FIX
+  - BALL
+  dangerWordss:
+  - SIN
+  - FRO
+  - RAT
+  - MIND
+  - DAD
+  - NEXT
+  - TOLL
+  - MAZE
+  - PAP
+  - RENT
+  - GLUE
+  - SINK
+  - BED
+  - SIX
+  - MALL
 --- !u!4 &584138346
 Transform:
   m_ObjectHideFlags: 0
@@ -1172,6 +1194,7 @@ MonoBehaviour:
   moveSpeed: 16
   rb: {fileID: 0}
   wordCreated: 
+  dangerWordCreated: 
   move: 0
   goodword: {fileID: 958399787}
 --- !u!4 &1689211023 stripped
@@ -1670,6 +1693,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6497469062637428997, guid: 1e53072465bf19a4889c22e3e7e0a848, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497469062637428997, guid: 1e53072465bf19a4889c22e3e7e0a848, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497469062637428997, guid: 1e53072465bf19a4889c22e3e7e0a848, type: 3}
+      propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6497469062637428997, guid: 1e53072465bf19a4889c22e3e7e0a848, type: 3}

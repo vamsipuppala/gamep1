@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 16f;
     [SerializeField] private Rigidbody2D rb;
     public string wordCreated;
+    public string dangerWordCreated;
     public float move;
     int numberOfHits;
     int localHits = 1;
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        goodword.text = "Aim: "+bs.wordsss[ind];
+        goodword.text = "Aim: "+bs.words[ind];
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector2 direction = new Vector2(
@@ -68,7 +69,8 @@ public class PlayerController : MonoBehaviour
             Vector2 mirrorHitNormal = Vector2.zero;
 
             move = Input.GetAxisRaw("Horizontal");
-            String givenWord = bs.wordsss[j];
+            String givenWord = bs.words[j];
+            string givenDangerWord = bs.dangerWordss[j];
             
 
             // rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
@@ -91,7 +93,7 @@ public class PlayerController : MonoBehaviour
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
                         if(j==GetIndexOfGameObject(gameObject, nestedList))
                         {
-                            if (gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
+                            if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                             {
                                 localHits--;
                                 if (gameObject.GetComponent<SpriteRenderer>().color == Color.green)
@@ -115,23 +117,40 @@ public class PlayerController : MonoBehaviour
                                 else
                                 {
                                     localHits++;
-
-                                    if (!givenWord.Contains(text.text.ToString()))
-                                        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-                                    else if (givenWord.Contains(text.text.ToString()))
+                                    if (givenDangerWord.Contains(text.text.ToString()))
                                     {
-                                        gameObject.GetComponent<SpriteRenderer>().color = Color.green;
-                                        //givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
-                                        wordCreated += text.text;
-                                        //Debug.Log("GIVEN WORD: " + givenWord);
+                                        gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+                                        dangerWordCreated += text.text;
+                                    }
+                                    //else
+                                   // {
+                                        if (!givenWord.Contains(text.text.ToString()) && !givenDangerWord.Contains(text.text.ToString()))
+                                            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                                        else if (givenWord.Contains(text.text.ToString()))
+                                        {
+                                            gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                                            //givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
+                                            wordCreated += text.text;
+                                            //Debug.Log("GIVEN WORD: " + givenWord);
+                                        }
+                                   // }
+                                   
+                                    if(dangerWordCreated.Length == bs.dangerWordss[j].Length)
+                                    {
+                                        Debug.Log(dangerWordCreated);
+                                        Debug.Log("%%%%");
+                                        if(findMatch(dangerWordCreated, bs.dangerWordss[j]))
+                                        {
+
+                                            Debug.Log("Penalty score");
+                                                                                    }
                                     }
 
-
-                                    if (wordCreated.Length == bs.wordsss[j].Length)
+                                    if (wordCreated.Length == bs.words[j].Length)
                                     {
 
                                         Debug.Log("the word is       " + wordCreated);
-                                        if (findMatch(wordCreated, bs.wordsss[j]))
+                                        if (findMatch(wordCreated, bs.words[j]))
                                         {
                                             Debug.Log(bs);
                                             GameObject[] gs = bs.nestedList[j];
