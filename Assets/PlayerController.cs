@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
-        logic = GameObject.FindGameObjectWithTag("LogicManagerScript").GetComponent<LogicManagerScript>();
+        // logic = GameObject.FindGameObjectWithTag("LogicManagerScript").GetComponent<LogicManagerScript>();
+        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
         nestedList = bs.nestedList;
     }
 

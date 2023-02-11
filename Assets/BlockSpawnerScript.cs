@@ -35,29 +35,28 @@ public class BlockSpawnerScript : MonoBehaviour
     }
     void Start()
     {
-           //10 blocks in a row
         float width = 1;
         float offset = 0.1f;
-        
+        float blockScale = 2f;
+        int numOfBlocks = 7;
         for (int j = 0; j < 5; j++)
         {
-            blocks = new GameObject[10];
+            blocks = new GameObject[numOfBlocks];
             string word = wordsss[j];
             Debug.Log("WORD: " + word);
-            int numOfRandomLetters = 10 - word.Length;
+            int numOfRandomLetters = numOfBlocks - word.Length;
             string randomLetters = generateRandomLetters(numOfRandomLetters);
             string shuffleLetters = "";
             shuffleLetters += word + randomLetters;
 
             var shuffledString = shuffleAllLetters(shuffleLetters);
-            float posy = transform.position.y + 1.1f * j;
-            for (int i = 0; i < 10; i++)
+            float posy = transform.position.y + 1.1f * j*blockScale;
+            for (int i = 0; i < numOfBlocks; i++)
             {
                 GameObject block = Instantiate(blockPrefab, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
-                block.transform.position = new Vector3(transform.position.x + (i * width) + (i * offset), posy, 0);
+                block.transform.position = new Vector3(transform.position.x + (i * width*blockScale) + (i * offset*blockScale), posy, 0);
                 block.GetComponentInChildren<TextMesh>().text = Char.ToString(shuffledString[i]);               
                 blocks[i] = block;
-
             }
             nestedList.Add(blocks);
         }
