@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public int reflections;
     public float MaxRayDistance;
     public LayerMask LayerDetection;
-    public float moveSpeed = 16f;
+    //public float moveSpeed = 16f;
     [SerializeField] private Rigidbody2D rb;
     public LogicManagerScript logic;
     public NextLevelScript nextLevel;
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public string wordCreated;
     public string lol1;
     public string dangerWordCreated;
-    public float move;
+    //public float move;
     int numberOfHits;
     int localHits = 1;
     [SerializeField]  private TextMeshProUGUI  goodword;
@@ -35,12 +35,18 @@ public class PlayerController : MonoBehaviour
     public Text text2;
     List<GameObject[]> nestedList;
     public string final;
-    
-    
-     int ind=0;
+    public float moveSpeed;
+    public float st, ct;
+    public GameObject c;
+    //[SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+
+
+    int ind=0;
     void Start()
     {
         int ind=0;
+        st = Time.time;
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
@@ -55,27 +61,42 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log("finalllllllllllllll" + final);
         //goodword.text = final;
+        if (Input.GetButtonDown("Jump") && IsGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 8f);
+        }
         dummy = goodword.text;
         dangerWord.text = "Danger:" + bs.dangerWordss[ind];
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        Vector2 direction = new Vector2(
-            mousePosition.x - transform.position.x,
-            mousePosition.y - transform.position.y);
-        transform.up = direction;
+        //Vector2 direction = new Vector2(
+            //mousePosition.x - transform.position.x,
+          //  mousePosition.y - transform.position.y);
+        //transform.up = direction;
         // move = Input.GetAxisRaw("Horizontal");
         // rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         float move = Input.GetAxis("Horizontal");
 
-        rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
-       
+        //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
+        rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
+        float move2 = Input.GetAxis("Vertical");
+        if (move2 < 0 && !(transform.localEulerAngles.z > 300))
+        {
+            //  Debug.Log("inside move2"+transform.localEulerAngles+ transform.localRotation.eulerAngles.y);
+            transform.Rotate(0, 0, move2 * (5f));
+        }
+        else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
+        {
+            //    Debug.Log("inside move1"+transform.position.x+ transform.position.y );
+            transform.Rotate(0, 0, move2 * (5f));
+        }
         if (Input.GetButtonDown("Fire1"))
         {
-
+            st = Time.time;
             LineOfSight.positionCount = 1;
             LineOfSight.SetPosition(0, transform.position);
 
-            Debug.Log(transform.position);
+            //Debug.Log(transform.position);
             RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, MaxRayDistance, LayerDetection);
             // Ray
             Ray2D ray = new Ray2D(transform.position, transform.right);
@@ -241,11 +262,18 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            if (Time.time - st > (float)0.5)
+            {//Debug.Log("************");
+                LineOfSight.SetVertexCount(0);
+            }
+        }
     }
 
     private void FixedUpdate()
     {      
-        rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
+        //rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
         
 
     }
@@ -279,9 +307,15 @@ public class PlayerController : MonoBehaviour
         return string.Equals(createdWord, givenWord, StringComparison.OrdinalIgnoreCase);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private bool IsGrounded()
     {
-        Debug.Log("oncollision - ");
-        logic.gameOver();
+        return Physics2D.OverlapCircle(transform.position, 1f, LayerDetection);
+
     }
+
+    // private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //  Debug.Log("oncollision - ");
+    // logic.gameOver();
+    //}
 }
