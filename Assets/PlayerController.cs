@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using TMPro;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask LayerDetection;
     public float moveSpeed = 16f;
     [SerializeField] private Rigidbody2D rb;
+    public LogicManagerScript logic;
+    public NextLevelScript nextLevel;
+    public GameObject NextLevelScreen;
     public string wordCreated;
     public string dangerWordCreated;
     public float move;
@@ -24,8 +28,7 @@ public class PlayerController : MonoBehaviour
     int localHits = 1;
      [SerializeField] private TextMeshProUGUI  goodword;
     List<GameObject[]> nestedList;
-
-    LogicManagerScript logic;
+    
      int ind=0;
     void Start()
     {
@@ -34,6 +37,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("LogicManagerScript").GetComponent<LogicManagerScript>();
+        nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
     }
 
@@ -154,6 +158,7 @@ public class PlayerController : MonoBehaviour
                                         {
                                             Debug.Log(bs);
                                             GameObject[] gs = bs.nestedList[j];
+                                            ScoreScript.PlayerScore += 1;
                                             for (int k = 0; k < gs.Length; k++)
                                             {
                                                 Destroy(gs[k]);
