@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     int numberOfHits;
     int localHits = 1;
      [SerializeField] private TextMeshProUGUI  goodword;
+    [SerializeField]  public TextMeshProUGUI dangerWord;
     List<GameObject[]> nestedList;
     
      int ind=0;
@@ -45,6 +46,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         goodword.text = "Aim: "+bs.words[ind];
+        goodword.text = "Aim: "+bs.words[ind];
+        dangerWord.text = "Danger:" + bs.dangerWordss[ind];
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector2 direction = new Vector2(
@@ -97,6 +100,7 @@ public class PlayerController : MonoBehaviour
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
                         if(j==GetIndexOfGameObject(gameObject, nestedList))
                         {
+
                             if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                             {
                                 localHits--;
@@ -104,11 +108,13 @@ public class PlayerController : MonoBehaviour
                                 {
                                     wordCreated = wordCreated.Replace(text.text.ToString(), "");
                                 }
-                                gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-                                if (localHits < 0)
+                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.red)
                                 {
-                                    localHits = 1;
+                                    dangerWordCreated = dangerWordCreated.Replace(text.text.ToString(), "");
                                 }
+
+                                gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                                
                                 Debug.Log("hurrrrrayyyyy" + localHits);
                             }
                             else
@@ -123,13 +129,13 @@ public class PlayerController : MonoBehaviour
                                     localHits++;
                                     if (givenDangerWord.Contains(text.text.ToString()))
                                     {
-                                        gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+                                        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                                         dangerWordCreated += text.text;
+                                        Debug.Log("the danger word created till now is" + dangerWordCreated);
                                     }
-                                    //else
-                                   // {
+                                    
                                         if (!givenWord.Contains(text.text.ToString()) && !givenDangerWord.Contains(text.text.ToString()))
-                                            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                                            gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
                                         else if (givenWord.Contains(text.text.ToString()))
                                         {
                                             gameObject.GetComponent<SpriteRenderer>().color = Color.green;
@@ -137,17 +143,17 @@ public class PlayerController : MonoBehaviour
                                             wordCreated += text.text;
                                             //Debug.Log("GIVEN WORD: " + givenWord);
                                         }
-                                   // }
+                                   
                                    
                                     if(dangerWordCreated.Length == bs.dangerWordss[j].Length)
                                     {
-                                        Debug.Log(dangerWordCreated);
-                                        Debug.Log("%%%%");
+                                        
                                         if(findMatch(dangerWordCreated, bs.dangerWordss[j]))
                                         {
+                                            Debug.Log("dangerrrrrr");
+                                            ScoreScript.PlayerScore -= 1;
 
-                                            Debug.Log("Penalty score");
-                                                                                    }
+                                        }
                                     }
 
                                     if (wordCreated.Length == bs.words[j].Length)
@@ -164,6 +170,7 @@ public class PlayerController : MonoBehaviour
                                                 Destroy(gs[k]);
                                             }
                                             wordCreated = "";
+                                            dangerWordCreated = "";
                                             j++;
                                             ind++;
                                             localHits = 1;

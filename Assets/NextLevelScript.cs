@@ -10,6 +10,7 @@ public class NextLevelScript : MonoBehaviour
     public string levelName;
     private int nextSceneToLoad;
     private bool loadScene = false;
+    public int thresholdScore = 5;
 
     private void Start()
     {
@@ -27,7 +28,7 @@ public class NextLevelScript : MonoBehaviour
     private void changeScene()
     {
 
-        if (ScoreScript.PlayerScore >= 2 & TimerScript.TimeValue > 0)
+        if (ScoreScript.PlayerScore >= thresholdScore & TimerScript.TimeValue > 0)
         {
             loadScene = true;
             resetValues();
