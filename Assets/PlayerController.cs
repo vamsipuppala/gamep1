@@ -5,6 +5,7 @@ using System;
 using TMPro;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,13 +23,19 @@ public class PlayerController : MonoBehaviour
     public NextLevelScript nextLevel;
     public GameObject NextLevelScreen;
     public string wordCreated;
+    public string lol1;
     public string dangerWordCreated;
     public float move;
     int numberOfHits;
     int localHits = 1;
-     [SerializeField] private TextMeshProUGUI  goodword;
+    [SerializeField]  private TextMeshProUGUI  goodword;
     [SerializeField]  public TextMeshProUGUI dangerWord;
+    public string dummy;
+    public Text text1 ;
+    public Text text2;
     List<GameObject[]> nestedList;
+    public string final;
+    
     
      int ind=0;
     void Start()
@@ -40,13 +47,15 @@ public class PlayerController : MonoBehaviour
         logic = GameObject.FindGameObjectWithTag("LogicManagerScript").GetComponent<LogicManagerScript>();
         nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
+        //final = "Aim: " + bs.words[ind];
     }
 
     // Update is called once per frame
     void Update()
     {
-        goodword.text = "Aim: "+bs.words[ind];
-        goodword.text = "Aim: "+bs.words[ind];
+        //Debug.Log("finalllllllllllllll" + final);
+        //goodword.text = final;
+        dummy = goodword.text;
         dangerWord.text = "Danger:" + bs.dangerWordss[ind];
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -106,7 +115,10 @@ public class PlayerController : MonoBehaviour
                                 localHits--;
                                 if (gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                                 {
+                                                                     
                                     wordCreated = wordCreated.Replace(text.text.ToString(), "");
+                                                          
+
                                 }
                                 if (gameObject.GetComponent<SpriteRenderer>().color == Color.red)
                                 {
@@ -140,9 +152,20 @@ public class PlayerController : MonoBehaviour
                                         {
                                             gameObject.GetComponent<SpriteRenderer>().color = Color.green;
                                             //givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
-                                            wordCreated += text.text;
-                                            //Debug.Log("GIVEN WORD: " + givenWord);
+                                        wordCreated += text.text;
+                                        if (wordCreated.Length != bs.words[j].Length && goodword.text.IndexOf(wordCreated)!=-1)
+                                        {
+                                            Debug.Log("word createeeeeeddddddd" + wordCreated);
+                                            string s = goodword.text.Substring(goodword.text.IndexOf(wordCreated), wordCreated.Length + 1);
+                                            dummy = goodword.text;
+                                            string s1 = dummy.Replace(s, "");
+                                            final = s1 + "<u>" + s + "</u>";
+                                            goodword.text = final;
                                         }
+                                            
+                                      
+                                        //Debug.Log("GIVEN WORD: " + givenWord);
+                                    }
                                    
                                    
                                     if(dangerWordCreated.Length == bs.dangerWordss[j].Length)

@@ -317,11 +317,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.06
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1699,10 +1699,15 @@ MonoBehaviour:
   nextLevel: {fileID: 0}
   NextLevelScreen: {fileID: 0}
   wordCreated: 
+  lol1: 
   dangerWordCreated: 
   move: 0
   goodword: {fileID: 958399787}
   dangerWord: {fileID: 606473888}
+  dummy: 
+  text1: {fileID: 0}
+  text2: {fileID: 0}
+  final: 
 --- !u!4 &1689211023 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
