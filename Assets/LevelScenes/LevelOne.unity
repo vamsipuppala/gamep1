@@ -1236,7 +1236,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextLevel: {fileID: 0}
   levelName: 
-  thresholdScore: 5
+  thresholdScoree: 2
+  sc: {fileID: 0}
 --- !u!4 &1146889161
 Transform:
   m_ObjectHideFlags: 0
@@ -1593,7 +1594,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextLevel: {fileID: 0}
   levelName: 
-  thresholdScore: 5
+  thresholdScoree: 2
+  sc: {fileID: 0}
 --- !u!4 &1543968508
 Transform:
   m_ObjectHideFlags: 0
@@ -1747,6 +1749,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1689211028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689211015}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178283c8203cbe142a07f039e0da1307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  URL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdyYdSvN-HeRb5ttFGYgcLfLDRVM8z6Cj6LPCo2-GFbwSpN_w/formResponse
 --- !u!1 &1702891007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1757,6 +1772,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1702891009}
   - component: {fileID: 1702891008}
+  - component: {fileID: 1702891010}
   m_Layer: 0
   m_Name: LogicManager
   m_TagString: Logic
@@ -1771,7 +1787,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1702891007}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee3167ec01b3dab4c959b3f8883e0a42, type: 3}
   m_Name: 
@@ -1792,6 +1808,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1702891010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702891007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178283c8203cbe142a07f039e0da1307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  URL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdyYdSvN-HeRb5ttFGYgcLfLDRVM8z6Cj6LPCo2-GFbwSpN_w/formResponse
 --- !u!1 &1773210153
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,3 +2489,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b291afb35be7e4c96c76e21b213a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6497469061103453343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6497469061103453332}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178283c8203cbe142a07f039e0da1307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  URL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdyYdSvN-HeRb5ttFGYgcLfLDRVM8z6Cj6LPCo2-GFbwSpN_w/formResponse

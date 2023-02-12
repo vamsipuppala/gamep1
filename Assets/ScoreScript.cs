@@ -21,6 +21,11 @@ public class ScoreScript : MonoBehaviour
 
     }
 
+    public int getScore()
+    {
+        return PlayerScore;
+    }
+
     /*
     [ContextMenu("Increase Score")]
     public void addScore()
