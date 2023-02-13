@@ -27,8 +27,8 @@ public class BlockSpawnerScript : MonoBehaviour
     public List<GameObject[]> nestedList = new List<GameObject[]>(); // this is the entire set of rows 
     public string[] letters = { "A", "Q", "F", "E", "C", "V", "P", "I", "H", "L", "Z", "X", "S", "K" , "J", "N", "M", "T"};
     string allChars = "ABCDEFGHIJKLMNOPQRSTUVWYZ";
-    public string[] words = { "BIN", "BRO", "MAT", "FIND", "MAD", "TEXT", "DOLL", "DAZE", "MAP", "TENT" , "BLUE" , "PINK", "RED" ,"FIX" , "BALL" };
-    public string[] dangerWordss = {"SIN", "FRO" ,"RAT", "MIND", "DAD", "NEXT", "TOLL" , "MAZE" , "PAP" ,"RENT", "GLUE" ,"SINK" , "BED", "SIX", "MALL"};
+    public string[] words = { "BIN", "BRO", "MAT", "FIND", "MAD", "HIP", "DOLI", "DAZE", "MAP", "DENT" , "BLUE" , "PINK", "RED" ,"FIX" , "BALD" };
+    public string[] dangerWordss = {"SIN", "FRO" ,"RAT", "MIND", "PAD", "LIP", "DOL" , "MAZE" , "AP" ,"RENT", "GLUE" ,"INK" , "BED", "SIX", "AL"};
 
     // Start is called before the first frame update
     private void Awake()
