@@ -9,7 +9,7 @@ public class NextLevelScript : MonoBehaviour
 {
     public GameObject NextLevel;
     public string levelName;
-    private int nextSceneToLoad;
+    //private int nextSceneToLoad;
     private bool loadScene = false;
     [SerializeField] private TextMeshProUGUI targetScore;
     public int thresholdScoree = 2;
@@ -22,7 +22,7 @@ public class NextLevelScript : MonoBehaviour
         targetScore.text = "Target Score:  " + thresholdScoree;
         sc = GameObject.FindGameObjectWithTag("Logic").GetComponent<SendToGoogle>();
         pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
+        //nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
     public void Update()
@@ -45,7 +45,7 @@ public class NextLevelScript : MonoBehaviour
            sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerController.timesDangerWordWasHit.ToString());
             loadScene = true;
             resetValues();
-            SceneManager.LoadScene(nextSceneToLoad);
+            SceneManager.LoadScene("CompleteLevelOne");
         }
 
         if (TimerScript.TimeValue <= 0)
