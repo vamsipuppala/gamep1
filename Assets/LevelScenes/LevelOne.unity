@@ -359,6 +359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 852752353263809535, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 852752353690173475, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_IsActive
       value: 1

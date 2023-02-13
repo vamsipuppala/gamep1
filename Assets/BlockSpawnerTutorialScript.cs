@@ -41,7 +41,8 @@ public class BlockSpawnerTutorialScript : MonoBehaviour
         Time.timeScale = 0;
         float width = 1;
         float offset = 0.1f;
-        
+        float blockScale = 1.5f;
+
         for (int j = 0; j < 1; j++) // this is for the total number of rows
         {
             HashSet<char> hs = new HashSet<char>();
@@ -66,12 +67,13 @@ public class BlockSpawnerTutorialScript : MonoBehaviour
 
             //var shuffledString = shuffleAllLetters(shuffleLetters);
             var shuffledString = "JTMBPIXNLS";
-            float posy = transform.position.y + 1.1f * j; // this is for making the rows come one below the other
+            float posy = transform.position.y + 1.1f * j * blockScale; // this is for making the rows come one below the other
             for (int i = 0; i < 10; i++) // this is for the 10 blocks in a single row 
             {
                 GameObject block = Instantiate(blockPrefab, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
-                block.transform.position = new Vector3(transform.position.x + (i * width) + (i * offset), posy, 0);
-                block.GetComponentInChildren<TextMesh>().text = Char.ToString(shuffledString[i]);               
+                // block.transform.position = new Vector3(transform.position.x + (i * width) + (i * offset), posy, 0);
+                block.transform.position = new Vector3(transform.position.x + (i * width * blockScale) + (i * offset * blockScale), posy, 0);
+                block.GetComponentInChildren<TextMesh>().text = Char.ToString(shuffledString[i]);
                 blocks[i] = block;
 
             }

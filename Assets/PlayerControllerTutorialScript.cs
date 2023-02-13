@@ -229,14 +229,14 @@ public class PlayerControllerTutorialScript : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 8f);
         }
-        goodword.text = "Aim:" + bs.words[ind];
+        goodword.text = "Target:" + bs.words[ind];
          dangerWord.text = "Danger:" + bs.dangerWordss[ind];
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
       
         float move = Input.GetAxis("Horizontal");
 
-        rb.velocity = new Vector2((moveSpeed) * move * Time.deltaTime, rb.velocity.y);
+        rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
         float move2 = Input.GetAxis("Vertical");
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
