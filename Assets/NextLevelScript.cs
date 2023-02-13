@@ -55,9 +55,9 @@ public class NextLevelScript : MonoBehaviour
         }
     }
 
-    private void resetValues()
+    public void resetValues()
     {
         ScoreScript.PlayerScore = 0;
-        TimerScript.TimeValue = 60;
+        TimerScript.TimeValue = 90;
     }
 }

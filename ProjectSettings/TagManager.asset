@@ -8,6 +8,8 @@ TagManager:
   - Mirror
   - BlockSpawnerScript
   - Logic
+  - ScoreText
+  - NextLevelManager
   layers:
   - Default
   - TransparentFX
