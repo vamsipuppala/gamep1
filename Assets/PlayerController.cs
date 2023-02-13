@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    public NextLevelScript nextLevelScript;
 
 
     int ind=0;
@@ -52,10 +53,12 @@ public class PlayerController : MonoBehaviour
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
-        logic = GameObject.FindGameObjectWithTag("LogicManagerScript").GetComponent<LogicManagerScript>();
-        nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
+        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
+        //nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
         //final = "Aim: " + bs.words[ind];
+        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<NextLevelScript>();
+        nextLevelScript.resetValues();
     }
 
     // Update is called once per frame

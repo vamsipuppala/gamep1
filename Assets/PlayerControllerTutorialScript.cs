@@ -41,6 +41,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
 
     public GameObject[] popUps;
 
+    //public NextLevelScript nextLevelScript;
 
     int ind=0;
 
@@ -57,6 +58,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
         nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
+       // nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<NextLevelScript>();
     }
 
     // Update is called once per frame
@@ -217,6 +219,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
         else if(popUps[16].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
         {
             //switch to level 1
+           // nextLevelScript.resetValues();
             SceneManager.LoadScene("LevelOne");
         }
 
