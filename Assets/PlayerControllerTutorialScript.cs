@@ -20,8 +20,8 @@ public class PlayerControllerTutorialScript : MonoBehaviour
     public LayerMask LayerDetection;
     [SerializeField] private Rigidbody2D rb;
     public LogicManagerScript logic;
-    public NextLevelScript nextLevel;
-    public GameObject NextLevelScreen;
+    //public NextLevelScript nextLevel;
+   // public GameObject NextLevelScreen;
     public string wordCreated;
     public string lol1;
     public string dangerWordCreated;
@@ -56,7 +56,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerTutorialScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
-        nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
+        //nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
        // nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<NextLevelScript>();
     }
