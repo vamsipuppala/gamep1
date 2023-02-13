@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ public class NextLevelScript : MonoBehaviour
     public string levelName;
     private int nextSceneToLoad;
     private bool loadScene = false;
+    [SerializeField] private TextMeshProUGUI targetScore;
     public int thresholdScoree = 2;
     public SendToGoogle sc;
     public PlayerController pc;
@@ -17,6 +19,7 @@ public class NextLevelScript : MonoBehaviour
 
     private void Start()
     {
+        targetScore.text = "Target Score:  " + thresholdScoree;
         sc = GameObject.FindGameObjectWithTag("Logic").GetComponent<SendToGoogle>();
         pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
