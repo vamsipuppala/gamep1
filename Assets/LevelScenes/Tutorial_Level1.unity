@@ -2380,7 +2380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextLevel: {fileID: 0}
   levelName: 
-  targetScore: {fileID: 0}
+  targetScore: {fileID: 1323723339}
   thresholdScoree: 2
   sc: {fileID: 0}
   pc: {fileID: 0}
@@ -3545,7 +3545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextLevel: {fileID: 0}
   levelName: 
-  targetScore: {fileID: 0}
+  targetScore: {fileID: 1323723339}
   thresholdScoree: 2
   sc: {fileID: 0}
   pc: {fileID: 0}
@@ -3821,8 +3821,6 @@ MonoBehaviour:
     m_Bits: 2147483647
   rb: {fileID: 0}
   logic: {fileID: 0}
-  nextLevel: {fileID: 0}
-  NextLevelScreen: {fileID: 0}
   wordCreated: 
   lol1: 
   dangerWordCreated: 
