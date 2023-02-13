@@ -72,7 +72,7 @@ public class MoveBlocks : MonoBehaviour
             Vector3 endPosition = startPosition - Vector3.up * moveSpeed * Time.deltaTime;
             
             float t = 0.0f;
-            if(Time.time-t1>0.6f){
+            if(Time.time-t1>0.75f){
            
                 t += Time.deltaTime;
                 transform.position = Vector3.Lerp(startPosition, endPosition, t);

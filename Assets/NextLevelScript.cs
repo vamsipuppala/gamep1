@@ -35,13 +35,13 @@ public class NextLevelScript : MonoBehaviour
 
     private void changeScene()
     {
-        Debug.Log("hurrrrrrrrayyyyyyyyy"+ ScoreScript.PlayerScore);
-        Debug.Log("the danger word score is " + PlayerController.timesDangerWordWasHit);
+        //Debug.Log("hurrrrrrrrayyyyyyyyy"+ ScoreScript.PlayerScore);
+        //Debug.Log("the danger word score is " + PlayerController.timesDangerWordWasHit);
        // SendToGoogle sc = new SendToGoogle();
-        Debug.Log("threshold score is " + thresholdScoree);
+        //Debug.Log("threshold score is " + thresholdScoree);
         if (ScoreScript.PlayerScore == thresholdScoree && TimerScript.TimeValue > 0)
         {
-          Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
+          //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
            sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerController.timesDangerWordWasHit.ToString());
             loadScene = true;
             resetValues();

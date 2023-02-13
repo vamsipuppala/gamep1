@@ -56,8 +56,8 @@ public class BlockSpawnerScript : MonoBehaviour
             {
                 hs.Add(c);
             }
-            Debug.Log("WORD: " + word);
-            int numOfRandomLetters = 8 - hs.Count;
+            // Debug.Log("WORD: " + word);
+            int numOfRandomLetters = 10 - hs.Count;
             string randomLetters = generateRandomLetters(numOfRandomLetters);
             string shuffleLetters = "";
             string finalWord = string.Join("", hs.ToArray());
@@ -65,7 +65,7 @@ public class BlockSpawnerScript : MonoBehaviour
 
             var shuffledString = shuffleAllLetters(shuffleLetters);
              float posy = transform.position.y + 1.1f * j*blockScale; // this is for making the rows come one below the other
-            for (int i = 0; i < 8; i++) // this is for the 8 blocks in a single row 
+            for (int i = 0; i < 10; i++) // this is for the 8 blocks in a single row 
             {
                 GameObject block = Instantiate(blockPrefab, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
                 // block.transform.position = new Vector3(transform.position.x + (i * width) + (i * offset), posy, 0);
@@ -95,7 +95,7 @@ public class BlockSpawnerScript : MonoBehaviour
 
         // Convert the shuffled array of characters back to a string
         string shuffledString = new string(charArray);
-        Debug.Log("Shuffled String: " + shuffledString);
+        // Debug.Log("Shuffled String: " + shuffledString);
 
         return shuffledString;
     }
@@ -110,19 +110,19 @@ public class BlockSpawnerScript : MonoBehaviour
         {
             int index = UnityEngine.Random.Range(0, allCharsTemp.Length);
             char chr = allCharsTemp[index];
-            Debug.Log("Random letter: " + chr);
+            // Debug.Log("Random letter: " + chr);
             randomChar += Char.ToString(chr);
             allCharsTemp.Remove(index);
         }
 
         //return randomLetters;
-        Debug.Log("randomletter str: " + randomChar);
+        // Debug.Log("randomletter str: " + randomChar);
         return randomChar;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("*****");
+        // Debug.Log("*****");
     }
 
 }

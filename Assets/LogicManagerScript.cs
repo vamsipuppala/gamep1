@@ -30,7 +30,7 @@ public class LogicManagerScript : MonoBehaviour
 
     public void gameOver()
     {
-        Debug.Log("");
+        // Debug.Log("");
         gameOverScreen.SetActive(true);
         Time.timeScale = 0;
     }

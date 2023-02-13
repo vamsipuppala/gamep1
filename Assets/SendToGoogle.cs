@@ -74,7 +74,7 @@ public class SendToGoogle : MonoBehaviour
     void Update()
     {
         //ScoreScript sc = myObject.GetComponent<ScoreScript>();
-        Debug.Log("**********************************" + sc.getScore());
+      //  Debug.Log("**********************************" + sc.getScore());
         //_testScore = sc.getScore();
     } 
 
