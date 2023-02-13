@@ -17,7 +17,7 @@ public class BlockCollision : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("*****");
+        //Debug.Log("*****");
     }
    
 }

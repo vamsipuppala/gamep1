@@ -6,6 +6,7 @@ public class MoveBlocks : MonoBehaviour
 {
     public float moveSpeed = 1f;
     public float t = 0;
+    public float t1=0;
     Vector3 startPosition;
     public float pauseDuration = 1f;
     public bool first = false;
@@ -31,6 +32,13 @@ public class MoveBlocks : MonoBehaviour
         //Debug.Log("pipe deleted");
         // Destroy(gameObject);
         //}
+        
+        // StartCoroutine(MoveDown());
+        // Debug.Log(Time.time);
+        // if(Time.time-t>0.4f)
+        // {
+
+        // }
     }
 
     private void FixedUpdate()
@@ -42,19 +50,38 @@ public class MoveBlocks : MonoBehaviour
     IEnumerator MoveDown()
     {
         
+        // while (true)
+        // {
+            
+        //     Vector3 endPosition = startPosition - Vector3.up * moveSpeed * Time.deltaTime;
+            
+        //     float t = 0.0f;
+        //     while (t < 1.0f)
+        //     {
+        //         t += Time.deltaTime;
+        //         transform.position = Vector3.Lerp(startPosition, endPosition, t);
+        //        yield return null;
+        //     }
+        //     startPosition = endPosition + Vector3.down * 0.1f;
+
+        //     yield return new WaitForSeconds(pauseDuration);
+        // }
         while (true)
         {
             
             Vector3 endPosition = startPosition - Vector3.up * moveSpeed * Time.deltaTime;
             
             float t = 0.0f;
-            while (t < 1.0f)
-            {
+            if(Time.time-t1>0.75f){
+           
                 t += Time.deltaTime;
                 transform.position = Vector3.Lerp(startPosition, endPosition, t);
-               yield return null;
-            }
+              
+            
             startPosition = endPosition + Vector3.down * 0.1f;
+            t1=Time.time;
+            }
+             yield return null;
 
             yield return new WaitForSeconds(pauseDuration);
         }

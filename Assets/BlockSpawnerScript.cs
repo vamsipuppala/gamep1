@@ -21,6 +21,7 @@ public class BlockSpawnerScript : MonoBehaviour
     public float fallSpeed = 1.0f;
    
     public float speed = 1.0f;
+     
 
     public GameObject[] blocks; // this is one row of blocks 
     public List<GameObject[]> nestedList = new List<GameObject[]>(); // this is the entire set of rows 
@@ -39,8 +40,8 @@ public class BlockSpawnerScript : MonoBehaviour
            //10 blocks in a row
         float width = 1;
         float offset = 0.1f;
-        
-        for (int j = 0; j < 15; j++) // this is for the total number of rows
+        float blockScale = 1.5f;
+        for (int j = 0; j < 10; j++) // this is for the total number of rows
         {
             HashSet<char> hs = new HashSet<char>();
             
@@ -55,7 +56,7 @@ public class BlockSpawnerScript : MonoBehaviour
             {
                 hs.Add(c);
             }
-            Debug.Log("WORD: " + word);
+            // Debug.Log("WORD: " + word);
             int numOfRandomLetters = 10 - hs.Count;
             string randomLetters = generateRandomLetters(numOfRandomLetters);
             string shuffleLetters = "";
@@ -63,11 +64,12 @@ public class BlockSpawnerScript : MonoBehaviour
             shuffleLetters += randomLetters + finalWord;
 
             var shuffledString = shuffleAllLetters(shuffleLetters);
-            float posy = transform.position.y + 1.1f * j; // this is for making the rows come one below the other
-            for (int i = 0; i < 10; i++) // this is for the 10 blocks in a single row 
+             float posy = transform.position.y + 1.1f * j*blockScale; // this is for making the rows come one below the other
+            for (int i = 0; i < 10; i++) // this is for the 8 blocks in a single row 
             {
                 GameObject block = Instantiate(blockPrefab, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
-                block.transform.position = new Vector3(transform.position.x + (i * width) + (i * offset), posy, 0);
+                // block.transform.position = new Vector3(transform.position.x + (i * width) + (i * offset), posy, 0);
+                 block.transform.position = new Vector3(transform.position.x + (i * width*blockScale) + (i * offset*blockScale), posy, 0);
                 block.GetComponentInChildren<TextMesh>().text = Char.ToString(shuffledString[i]);               
                 blocks[i] = block;
 
@@ -93,7 +95,7 @@ public class BlockSpawnerScript : MonoBehaviour
 
         // Convert the shuffled array of characters back to a string
         string shuffledString = new string(charArray);
-        Debug.Log("Shuffled String: " + shuffledString);
+        // Debug.Log("Shuffled String: " + shuffledString);
 
         return shuffledString;
     }
@@ -108,19 +110,19 @@ public class BlockSpawnerScript : MonoBehaviour
         {
             int index = UnityEngine.Random.Range(0, allCharsTemp.Length);
             char chr = allCharsTemp[index];
-            Debug.Log("Random letter: " + chr);
+            // Debug.Log("Random letter: " + chr);
             randomChar += Char.ToString(chr);
             allCharsTemp.Remove(index);
         }
 
         //return randomLetters;
-        Debug.Log("randomletter str: " + randomChar);
+        // Debug.Log("randomletter str: " + randomChar);
         return randomChar;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("*****");
+        // Debug.Log("*****");
     }
 
 }
