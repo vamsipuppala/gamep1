@@ -177,7 +177,8 @@ public class PlayerControllerTutorialScript : MonoBehaviour
         {
             //incorrect letter highlighted in gray
             Debug.Log("Inside IFFFF red----");
-            popUps[10].SetActive(false);    
+            popUps[10].SetActive(false);
+            popUps[18].SetActive(true);
             popUpIndex++;   //popUpIndex=11
             Time.timeScale = 1;
         }
@@ -198,6 +199,12 @@ public class PlayerControllerTutorialScript : MonoBehaviour
         else if (popUps[11].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
         {
             popUps[11].SetActive(false);
+            popUps[17].SetActive(true);
+        }
+
+        else if (popUps[17].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
+        {
+            popUps[17].SetActive(false);
             popUps[12].SetActive(true);
         }
 
@@ -348,6 +355,10 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                                             popUps[4].SetActive(true);
                                             Time.timeScale = 0;
                                             Debug.Log("TIme scale 0 popupindex 4");
+                                        }
+                                        else if (popUps[18].activeSelf == true)
+                                        {
+                                            popUps[18].SetActive(false);
                                         }
 
                                         //givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
