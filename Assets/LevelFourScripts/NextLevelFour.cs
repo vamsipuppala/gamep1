@@ -48,10 +48,11 @@ public class NextLevelFour : MonoBehaviour
             SceneManager.LoadScene("LevelScenes/CompleteLevelFour");
         }
 
-        if (TimerFour.TimeValue <= 0)
+        if (ScoreScript.PlayerScore < thresholdScoree && TimerFour.TimeValue <= 0)
         {
-            sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerControllerFour.timesDangerWordWasHit.ToString());
+            //sc.EndOfGame(ScoreScript.PlayerScore.ToString(), "0");
             //game over screen
+            GameOver();
         }
     }
 
@@ -59,5 +60,11 @@ public class NextLevelFour : MonoBehaviour
     {
         ScoreScript.PlayerScore = 0;
         TimerFour.TimeValue = 180;
+    }
+
+    public void GameOver()
+    {
+        sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerControllerFour.timesDangerWordWasHit.ToString());
+        SceneManager.LoadScene("GameOver");
     }
 }

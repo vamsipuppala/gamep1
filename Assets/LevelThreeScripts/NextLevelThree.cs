@@ -48,10 +48,11 @@ public class NextLevelThree : MonoBehaviour
             SceneManager.LoadScene("LevelScenes/CompleteLevelThree");
         }
 
-        if (TimerThree.TimeValue <= 0)
+        if (ScoreScript.PlayerScore < thresholdScoree && TimerThree.TimeValue <= 0)
         {
-            sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerControllerThree.timesDangerWordWasHit.ToString());
+            //sc.EndOfGame(ScoreScript.PlayerScore.ToString(), "0");
             //game over screen
+            GameOver();
         }
     }
 
@@ -59,5 +60,11 @@ public class NextLevelThree : MonoBehaviour
     {
         ScoreScript.PlayerScore = 0;
         TimerThree.TimeValue = 180;
+    }
+
+    public void GameOver()
+    {
+        sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerControllerThree.timesDangerWordWasHit.ToString());
+        SceneManager.LoadScene("GameOver");
     }
 }

@@ -64,6 +64,13 @@ public class PlayerControllerTwo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //j is the index of the last row of blocks
+        if (nestedList[j][0].transform.position.y < 3)
+        {
+            nextLevelScript.GameOver();
+        }
+
         //Debug.Log("finalllllllllllllll" + final);
         //goodword.text = final;
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -272,8 +279,8 @@ public class PlayerControllerTwo : MonoBehaviour
         {
             if (Time.time - st > (float)0.5)
             {//Debug.Log("************");
-                //Debug.Log("SET VERTEXT COUNT - OBSOLETE");
-                LineOfSight.SetVertexCount(0);
+                //LineOfSight.SetVertexCount(0);
+                LineOfSight.positionCount = 0;
             }
         }
     }

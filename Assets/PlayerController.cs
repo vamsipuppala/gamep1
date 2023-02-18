@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     int ind=0;
     void Start()
     {
-        int ind=0;
+        ind=0;
         st = Time.time;
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();
@@ -272,7 +272,8 @@ public class PlayerController : MonoBehaviour
         {
             if (Time.time - st > (float)0.5)
             {//Debug.Log("************");
-                LineOfSight.SetVertexCount(0);
+                //LineOfSight.SetVertexCount(0);
+                LineOfSight.positionCount = 0;
             }
         }
     }
