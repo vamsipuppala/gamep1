@@ -21,7 +21,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"/Users/ana/Unity_Projects/Test/gamep1/BlockBurster;D:/test-build;D:/Build-gmaep1;F:/projects/usc/Games/prototypes/vamsi/integrated/gamep1/WebGL Builds/prototype1;;;;;;\"}"
+                "value": "{\"m_Value\":\"/Users/ana/Unity_Projects/Test/gamep1/BlockBursterII;/Users/ana/Unity_Projects/Test/gamep1/BlockBurster;D:/test-build;D:/Build-gmaep1;F:/projects/usc/Games/prototypes/vamsi/integrated/gamep1/WebGL Builds/prototype1;;;;;\"}"
             }
         ]
     }
