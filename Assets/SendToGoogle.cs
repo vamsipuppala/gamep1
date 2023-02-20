@@ -57,6 +57,9 @@ public class SendToGoogle : MonoBehaviour
             {
                 Debug.Log("Form upload complete!");
             }
+            www.disposeUploadHandlerOnDispose = true;
+            www.disposeDownloadHandlerOnDispose = true;
+            www.Dispose();
         }
     }
 

@@ -472,7 +472,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 209887629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 034ded8cfd434734287a46fd2278afda, type: 3}
+  m_Script: {fileID: 11500000, guid: 94465472093d742bea1e72a856d1dce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TimerText: {fileID: 209887631}
@@ -954,7 +954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &606473887
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1354,7 +1354,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1146889161}
-  - component: {fileID: 1146889160}
+  - component: {fileID: 1146889162}
   m_Layer: 0
   m_Name: AnotherNext
   m_TagString: Untagged
@@ -1362,24 +1362,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1146889160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1146889159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1d5a0daeecaf1547b2ad1cdf8c6998d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NextLevel: {fileID: 0}
-  levelName: 
-  targetScore: {fileID: 1738910180}
-  thresholdScoree: 2
-  sc: {fileID: 0}
-  pc: {fileID: 0}
 --- !u!4 &1146889161
 Transform:
   m_ObjectHideFlags: 0
@@ -1395,6 +1377,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1146889162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146889159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a25bc1838a5d4f609268b3d4ef3ea3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextLevelObject: {fileID: 0}
+  levelName: 
+  targetScore: {fileID: 1738910180}
+  thresholdScoree: 4
+  sc: {fileID: 0}
+  pc: {fileID: 0}
 --- !u!1 &1218569873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,7 +1658,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1543968508}
-  - component: {fileID: 1543968507}
+  - component: {fileID: 1543968509}
   m_Layer: 0
   m_Name: NextLevelManager
   m_TagString: NextLevelManager
@@ -1666,24 +1666,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1543968507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1543968506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1d5a0daeecaf1547b2ad1cdf8c6998d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NextLevel: {fileID: 0}
-  levelName: 
-  targetScore: {fileID: 1738910180}
-  thresholdScoree: 2
-  sc: {fileID: 0}
-  pc: {fileID: 0}
 --- !u!4 &1543968508
 Transform:
   m_ObjectHideFlags: 0
@@ -1699,6 +1681,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1543968509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543968506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a25bc1838a5d4f609268b3d4ef3ea3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextLevelObject: {fileID: 0}
+  levelName: 
+  targetScore: {fileID: 1738910180}
+  thresholdScoree: 4
+  sc: {fileID: 0}
+  pc: {fileID: 0}
 --- !u!1 &1580552824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1772,45 +1772,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 852752353263809535, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
   m_PrefabInstance: {fileID: 169814370}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1689211020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689211015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ea33e2e4288c44892b4cc154f5ed6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LineOfSight: {fileID: 1951854325}
-  bs: {fileID: 0}
-  reflections: 5
-  MaxRayDistance: 100
-  LayerDetection:
-    serializedVersion: 2
-    m_Bits: 2147483647
-  rb: {fileID: 0}
-  logic: {fileID: 0}
-  nextLevel: {fileID: 0}
-  NextLevelScreen: {fileID: 0}
-  wordCreated: 
-  lol1: 
-  dangerWordCreated: 
-  goodword: {fileID: 958399787}
-  dangerWord: {fileID: 606473888}
-  dummy: 
-  text1: {fileID: 0}
-  text2: {fileID: 0}
-  final: 
-  moveSpeed: 16
-  st: 0
-  ct: 0
-  c: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!4 &1689211023 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
@@ -1850,6 +1811,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   URL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdyYdSvN-HeRb5ttFGYgcLfLDRVM8z6Cj6LPCo2-GFbwSpN_w/formResponse
+--- !u!114 &1689211029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689211015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6768483a5fa814d0c94d5136f5b142cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LineOfSight: {fileID: 1951854325}
+  bs: {fileID: 0}
+  reflections: 5
+  MaxRayDistance: 100
+  LayerDetection:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  rb: {fileID: 0}
+  logic: {fileID: 0}
+  nextLevel: {fileID: 0}
+  NextLevelScreen: {fileID: 0}
+  wordCreated: 
+  lol1: 
+  goodword: {fileID: 958399787}
+  dummy: 
+  text1: {fileID: 0}
+  text2: {fileID: 0}
+  final: 
+  moveSpeed: 16
+  st: 0
+  ct: 0
+  c: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  nextLevelScript: {fileID: 0}
 --- !u!1 &1702891007
 GameObject:
   m_ObjectHideFlags: 0
