@@ -1,5 +1,8 @@
 # BlockBurster
 
+CSCI-526: Advanced Mobile Devices & Game Consoles
+
+Overview -
 This is a Word Puzzle Game where the player has to form the word given on the screen by shooting the blocks with letters using a laser beam with reflection.
 
 Details - 
@@ -13,3 +16,11 @@ Details -
 * If the blocks of letters touch the user, game is over
 * If the bottommost layer is quite close to the player, player can jump & hit the letter
 * When a laser beam hits the target block, it is selected. If the laser beam hits the target block again, it gets deselected.
+
+
+Tech Stack - 
+
+* Unity Game Engine
+* C#
+
+
