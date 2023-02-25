@@ -42,7 +42,7 @@ public class NextLevelFour : MonoBehaviour
         if (ScoreScript.PlayerScore == thresholdScoree && TimerFour.TimeValue > 0)
         {
             //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
-            sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerControllerFour.timesDangerWordWasHit.ToString());
+            sc.EndOfGame(PlayerControllerFour.timeTargetWordWasHit.ToString(), "4");
             loadScene = true;
             resetValues();
             SceneManager.LoadScene("LevelScenes/CompleteLevelFour");
@@ -64,7 +64,7 @@ public class NextLevelFour : MonoBehaviour
 
     public void GameOver()
     {
-        sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerControllerFour.timesDangerWordWasHit.ToString());
+        sc.EndOfGame(PlayerControllerFour.timeTargetWordWasHit.ToString(), "4");
         SceneManager.LoadScene("GameOver");
     }
 }

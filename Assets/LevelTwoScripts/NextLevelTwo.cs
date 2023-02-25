@@ -42,7 +42,7 @@ public class NextLevelTwo : MonoBehaviour
         if (ScoreScript.PlayerScore == thresholdScoree && TimerTwo.TimeValue > 0)
         {
           //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
-           sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerControllerTwo.timesDangerWordWasHit.ToString());
+           sc.EndOfGame(PlayerControllerTwo.timeTargetWordWasHit.ToString(), "2");
             loadScene = true;
             resetValues();
             SceneManager.LoadScene("LevelScenes/CompleteLevelTwo");
@@ -50,7 +50,7 @@ public class NextLevelTwo : MonoBehaviour
 
         if (ScoreScript.PlayerScore < thresholdScoree && TimerTwo.TimeValue <= 0)
         {
-            //sc.EndOfGame(ScoreScript.PlayerScore.ToString(), "0");
+            sc.EndOfGame(PlayerControllerTwo.timeTargetWordWasHit.ToString(), "2");
             //game over screen
             GameOver();
         }
@@ -64,7 +64,7 @@ public class NextLevelTwo : MonoBehaviour
 
     public void GameOver()
     {
-        sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerControllerTwo.timesDangerWordWasHit.ToString());
+        //sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerControllerTwo.timesDangerWordWasHit.ToString());
         SceneManager.LoadScene("GameOver");
     }
 }

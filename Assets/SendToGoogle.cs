@@ -12,8 +12,9 @@ public class SendToGoogle : MonoBehaviour
     
 
     private long _sessionID;
-    private string _testScore;
-    private string _DangerWordsHit;
+    //private string _testScore;
+    private string _levelName;
+    private string _targetWordsHit;
     GameObject myObject;
     ScoreScript sc;
      
@@ -32,19 +33,40 @@ public class SendToGoogle : MonoBehaviour
     {
         // Assign variables
         // _testInt = 0; // yeh yahaan initialize hoga         
-        Debug.Log("_________________" + _testScore);
+        //Debug.Log("_________________" + _testScore);
         //ScoreScript sc = myObject.GetComponent<ScoreScript>();
         Debug.Log("+++++++++++" + _sessionID);
-        StartCoroutine(Post(_sessionID.ToString(),_testScore, _DangerWordsHit));
+        StartCoroutine(Post(_sessionID.ToString(), _targetWordsHit, _levelName));
     }
 
-    private IEnumerator Post( string _sessionID,string testInt, string dangerWords)
+    private IEnumerator Post( string _sessionID,string targetWordsHit, string levelName)
     {
-        Debug.Log("////////////////////////" + testInt);
+        //Debug.Log("////////////////////////" + testInt);
         WWWForm form = new WWWForm();
         form.AddField("entry.199825233", _sessionID);
-        form.AddField("entry.1486365924", testInt);
-        form.AddField("entry.83745425", dangerWords);
+        form.AddField("entry.83745425", levelName);
+        if (levelName.Equals("1"))
+        {
+            form.AddField("entry.1486365924", targetWordsHit);
+            
+        }
+        else if (levelName.Equals("2"))
+        {
+            form.AddField("entry.1019126803", targetWordsHit);
+            
+
+        }
+        else if (levelName.Equals("3"))
+        {
+            form.AddField("entry.917581380", targetWordsHit);
+            
+        }
+        else
+        {
+            form.AddField("entry.961968652", targetWordsHit);
+            
+        }
+       
 
         using (UnityWebRequest www = UnityWebRequest.Post(URL, form))
         {
@@ -81,11 +103,12 @@ public class SendToGoogle : MonoBehaviour
         //_testScore = sc.getScore();
     } 
 
-    public void EndOfGame(string score, string dangerWordsHit) // this has to be called when the game ends .... to send the data ... for example I will be sending the data of how many times the space bar is clicked 
+    public void EndOfGame(string targetWordsHit, string level) // this has to be called when the game ends .... to send the data ... for example I will be sending the data of how many times the space bar is clicked 
     {        
-        Debug.Log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + score);
-        _testScore = score;
-        _DangerWordsHit = dangerWordsHit;
+        //Debug.Log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + score);
+        // _testScore = score;
+        _levelName = level;
+        _targetWordsHit = targetWordsHit;
         _sessionID = DateTime.Now.Ticks;
         Send();
     }

@@ -38,8 +38,8 @@ public class PlayerControllerThree : MonoBehaviour
     public float moveSpeed;
     public float st, ct;
     public GameObject c;
-    public static int timesDangerWordWasHit = 0;
-    
+    public static int timeTargetWordWasHit = 0;
+
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     public NextLevelThree nextLevelScript;
@@ -206,8 +206,6 @@ public class PlayerControllerThree : MonoBehaviour
                                         
                                         if(findMatch(dangerWordCreated, bs.dangerWordss[j]))
                                         {
-                                            //Debug.Log("dangerrrrrr");
-                                            timesDangerWordWasHit += 1;
                                             ScoreScript.PlayerScore -= 1;
 
                                         }
@@ -226,6 +224,7 @@ public class PlayerControllerThree : MonoBehaviour
                                             {
                                                 Destroy(gs[k]);
                                             }
+                                            timeTargetWordWasHit += 1;
                                             wordCreated = "";
                                             dangerWordCreated = "";                                            
                                             j++;
