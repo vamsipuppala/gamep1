@@ -50,7 +50,7 @@ public class NextLevelFour : MonoBehaviour
 
         if (ScoreScript.PlayerScore < thresholdScoree && TimerFour.TimeValue <= 0)
         {
-            //sc.EndOfGame(ScoreScript.PlayerScore.ToString(), "0");
+            sc.EndOfGame(PlayerControllerFour.timeTargetWordWasHit.ToString(), "4", PlayerControllerFour.numberOfDeselections.ToString());
             //game over screen
             GameOver("noTimeLeft");
         }

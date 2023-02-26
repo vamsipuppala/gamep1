@@ -50,7 +50,7 @@ public class NextLevelThree : MonoBehaviour
 
         if (ScoreScript.PlayerScore < thresholdScoree && TimerThree.TimeValue <= 0)
         {
-            //sc.EndOfGame(PlayerControllerThree.timeTargetWordWasHit.ToString(), "3", PlayerControllerThree.numberOfDeselections.ToString());
+            sc.EndOfGame(PlayerControllerThree.timeTargetWordWasHit.ToString(), "3", PlayerControllerThree.numberOfDeselections.ToString());
             //game over screen
             GameOver("noTimeLeft");
         }
@@ -59,7 +59,7 @@ public class NextLevelThree : MonoBehaviour
     public void resetValues()
     {
         ScoreScript.PlayerScore = 0;
-        TimerThree.TimeValue = 180;
+        TimerThree.TimeValue = 10;
     }
 
     public void GameOver(string gameOverReason)

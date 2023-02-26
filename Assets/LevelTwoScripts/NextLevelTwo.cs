@@ -51,7 +51,7 @@ public class NextLevelTwo : MonoBehaviour
 
         if (ScoreScript.PlayerScore < thresholdScoree && TimerTwo.TimeValue <= 0)
         {
-            //sc.EndOfGame(PlayerControllerTwo.timeTargetWordWasHit.ToString(), "2", PlayerControllerTwo.numberOfTimeDeselectionsOccurred.toString());
+            sc.EndOfGame(PlayerControllerTwo.timeTargetWordWasHit.ToString(), "2", PlayerControllerTwo.numberOfTimeDeselectionsOccurred.toString());
             //game over screen
             GameOver("noTimeLeft");
         }
