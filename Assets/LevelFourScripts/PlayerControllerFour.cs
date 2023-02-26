@@ -45,6 +45,10 @@ public class PlayerControllerFour : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     public NextLevelFour nextLevelScript;
 
+    public GameObject[] platformGameObj;
+    public MovementMirrorLevel4 mvmtScript;
+    public MovementMirrorLevel4 mvmtScript1;
+
 
     int ind=0;
     void Start()
@@ -55,6 +59,11 @@ public class PlayerControllerFour : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
+
+        platformGameObj = GameObject.FindGameObjectsWithTag("Mirror");
+        mvmtScript = platformGameObj[0].GetComponent<MovementMirrorLevel4>();
+        mvmtScript1 = platformGameObj[1].GetComponent<MovementMirrorLevel4>();
+
         //nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
         //final = "Aim: " + bs.words[ind];
@@ -216,8 +225,32 @@ public class PlayerControllerFour : MonoBehaviour
                                     if (wordCreated.Length == bs.words[j].Length)
                                     {
 
-                                       // Debug.Log("the word is       " + wordCreated);
-                                        if (findMatch(wordCreated, bs.words[j]))
+                                        //IF WORD IS SPELLED IN ORDER - REWARD THE PLAYER
+                                        if (bs.words[j].Equals(wordCreated))
+                                        {
+                                            Debug.Log("HELLO JI LEVEL 4 - pausing moving walls at original pos for few seconds");
+
+                                            GameObject[] gs = bs.nestedList[j];
+                                            ScoreScript.PlayerScore += 2;
+                                            for (int k = 0; k < gs.Length; k++)
+                                            {
+                                                Destroy(gs[k]);
+                                            }
+                                            wordCreated = "";
+                                            dangerWordCreated = "";
+                                            j++;
+                                            ind++;
+                                            localHits = 1;
+                                            mvmtScript.move = false;
+                                            mvmtScript1.move = false;
+                                            Debug.Log("mirror length: " + GameObject.FindGameObjectsWithTag("Mirror").Length);
+                                            platformGameObj[0].transform.position = mvmtScript.originalPos;
+                                            platformGameObj[1].transform.position = mvmtScript1.originalPos;
+                                            StartCoroutine(EnablePlatformMvmt(10.0F));
+                                        }
+
+                                        // Debug.Log("the word is       " + wordCreated);
+                                        else if (findMatch(wordCreated, bs.words[j]))
                                         {
                                             //Debug.Log(bs);
                                             GameObject[] gs = bs.nestedList[j];
@@ -333,4 +366,12 @@ public class PlayerControllerFour : MonoBehaviour
     //  Debug.Log("oncollision - ");
     // logic.gameOver();
     //}
+
+    IEnumerator EnablePlatformMvmt(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        mvmtScript.move = true;
+        mvmtScript1.move = true;
+
+    }
 }
