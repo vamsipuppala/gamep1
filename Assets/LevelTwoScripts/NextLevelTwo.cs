@@ -12,7 +12,7 @@ public class NextLevelTwo : MonoBehaviour
     //private int nextSceneToLoad;
     private bool loadScene = false;
     [SerializeField] private TextMeshProUGUI targetScore;
-    public int thresholdScoree = 3;
+    public int thresholdScoree = 6;
     public SendToGoogle sc;
     public PlayerControllerTwo pc;
 

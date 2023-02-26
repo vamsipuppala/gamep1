@@ -10,6 +10,9 @@ TagManager:
   - Logic
   - ScoreText
   - NextLevelManager
+  - obstacle1
+  - obstacle2
+  - HoveringPlatform
   layers:
   - Default
   - TransparentFX

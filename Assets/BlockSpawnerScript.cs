@@ -41,7 +41,7 @@ public class BlockSpawnerScript : MonoBehaviour
         float blockScale = 1.5f;
         for (int j = 0; j < 10; j++) // this is for the total number of rows
         {
-            HashSet<char> hs = new HashSet<char>();
+            ArrayList hs = new ArrayList();
             
             blocks = new GameObject[10];
             string word = words[j];

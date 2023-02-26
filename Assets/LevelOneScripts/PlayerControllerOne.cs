@@ -143,6 +143,7 @@ public class PlayerControllerOne : MonoBehaviour
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
                         if(j==GetIndexOfGameObject(gameObject, nestedList))
                         {
+                            Debug.Log("INSIDE IF GetIndexOfGameObject");
 
                             if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                             {
@@ -169,7 +170,7 @@ public class PlayerControllerOne : MonoBehaviour
 
                                 if (localHits > numberOfHits)
                                 {
-                                   // Debug.Log("no shooting");
+                                    Debug.Log("no shooting");
                                 }
                                 else
                                 {
@@ -204,7 +205,7 @@ public class PlayerControllerOne : MonoBehaviour
                                       
                                         //Debug.Log("GIVEN WORD: " + givenWord);
                                     }
-                                   
+
                                     /*
                                     if(dangerWordCreated.Length == bs.dangerWordss[j].Length)
                                     {
@@ -218,11 +219,35 @@ public class PlayerControllerOne : MonoBehaviour
                                         }
                                     }*/
 
+                                    Debug.Log("bs.words[j]: "+ bs.words[j]);
+
                                     if (wordCreated.Length == bs.words[j].Length)
                                     {
+                                        //IF WORD IS SPELLED IN ORDER - REWARD THE PLAYER
+                                        if (bs.words[j].Equals(wordCreated))
+                                        {
+                                            Debug.Log("HELLO JI LEVEL 1- destroying 2 rows, score+2");
+                                            ScoreScript.PlayerScore += 2;
+                                            for (int d=0; d<2; d++)
+                                            {
+                                                if (d < nestedList.Count)
+                                                {
+                                                    GameObject[] gs = bs.nestedList[j];
+                                                    for (int k = 0; k < gs.Length; k++)
+                                                    {
+                                                        Destroy(gs[k]);
+                                                    }
+                                                    wordCreated = "";
+                                                    j++;
+                                                    ind++;
+                                                    localHits = 1;
+                                                }
+                                            }
 
-                                       // Debug.Log("the word is       " + wordCreated);
-                                        if (findMatch(wordCreated, bs.words[j]))
+                                        }
+
+                                        // Debug.Log("the word is       " + wordCreated);
+                                        else if (findMatch(wordCreated, bs.words[j]))
                                         {
                                             //Debug.Log(bs);
                                             GameObject[] gs = bs.nestedList[j];

@@ -13,7 +13,16 @@ public class MovementMirrorLevel4 : MonoBehaviour
     //Moving speed
     [SerializeField] private float speed = 2f;
 
+    public Vector2 originalPos;
+
     // Start is called before the first frame update
+    public bool move = true;
+
+    private void Start()
+    {
+        originalPos = transform.position;
+        Debug.Log("Original Pos: " + originalPos);
+    }
 
 
     // Update is called once per frame
@@ -30,7 +39,8 @@ public class MovementMirrorLevel4 : MonoBehaviour
             }
 
         }
-        transform.position = Vector2.MoveTowards(transform.position, MirrorEdge[currentIndex].transform.position, Time.deltaTime * speed);
+        if(move)
+            transform.position = Vector2.MoveTowards(transform.position, MirrorEdge[currentIndex].transform.position, Time.deltaTime * speed);
     }
 
 }

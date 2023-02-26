@@ -216,8 +216,31 @@ public class PlayerControllerTwo : MonoBehaviour
                                     if (wordCreated.Length == bs.words[j].Length)
                                     {
 
-                                       // Debug.Log("the word is       " + wordCreated);
-                                        if (findMatch(wordCreated, bs.words[j]))
+                                        //IF WORD IS SPELLED IN ORDER - REWARD THE PLAYER
+                                        if (bs.words[j].Equals(wordCreated))
+                                        {
+                                            Debug.Log("HELLO JI LEVEL 2 - destroying 2 rows");
+                                            ScoreScript.PlayerScore += 2;
+                                            for (int d = 0; d < 2; d++)
+                                            {
+                                                if (d < nestedList.Count)
+                                                {
+                                                    GameObject[] gs = bs.nestedList[j];
+                                                    for (int k = 0; k < gs.Length; k++)
+                                                    {
+                                                        Destroy(gs[k]);
+                                                    }
+                                                    wordCreated = "";
+                                                    j++;
+                                                    ind++;
+                                                    localHits = 1;
+                                                }
+                                            }
+
+                                        }
+
+                                        // Debug.Log("the word is       " + wordCreated);
+                                        else if (findMatch(wordCreated, bs.words[j]))
                                         {
                                             //Debug.Log(bs);
                                             GameObject[] gs = bs.nestedList[j];
