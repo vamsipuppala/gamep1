@@ -209,7 +209,7 @@ public class PlayerControllerTwo : MonoBehaviour
                                         
                                         if(findMatch(dangerWordCreated, bs.dangerWordss[j]))
                                         {
-                                            //Debug.Log("dangerrrrrr");
+                                            
                                             ScoreScript.PlayerScore -= 1;
 
                                         }
