@@ -25,8 +25,8 @@ public class BlockSpawnerScript : MonoBehaviour
     public List<GameObject[]> nestedList = new List<GameObject[]>(); // this is the entire set of rows 
     public string[] letters = { "A", "Q", "F", "E", "C", "V", "P", "I", "H", "L", "Z", "X", "S", "K" , "J", "N", "M", "T"};
     string allChars = "ABCDEFGHIJKLMNOPQRSTUVWYZ";
-    public string[] words = { "BIN", "BRO", "MAT", "FIND", "MAD", "HIP", "DOLI", "DAZE", "MAP", "DENT" , "BLUE" , "PINK", "RED" ,"FIX" , "BALD" };
-    public string[] dangerWordss = {"SIN", "FRO" ,"RAT", "MIND", "PAD", "LIP", "DOL" , "MAZE" , "AP" ,"RENT", "GLUE" ,"INK" , "BED", "SIX", "AL"};
+    public string[] words = { "BIN", "BRO", "MAT", "FIND", "MAD", "HIP", "BOLD", "DAZE", "MAP", "DENT" , "BLUE" , "PINK", "RED" ,"FIX" , "BALD" };
+    public string[] dangerWordss = {"SIN", "FRO" ,"RAT", "MIND", "PAD", "LIP", "FOLD" , "MAZE" , "AP" ,"RENT", "GLUE" ,"INK" , "BED", "SIX", "AL"};
 
     // Start is called before the first frame update
     private void Awake()
@@ -41,7 +41,7 @@ public class BlockSpawnerScript : MonoBehaviour
         float blockScale = 1.5f;
         for (int j = 0; j < 10; j++) // this is for the total number of rows
         {
-            ArrayList hs = new ArrayList();
+            HashSet<Char> hs = new HashSet<Char>();
             
             blocks = new GameObject[10];
             string word = words[j];
