@@ -39,6 +39,7 @@ public class PlayerControllerFour : MonoBehaviour
     public float st, ct;
     public GameObject c;
     public static int timeTargetWordWasHit = 0;
+    public static int numberOfDeselections = 0;
 
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -145,6 +146,7 @@ public class PlayerControllerFour : MonoBehaviour
                             if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                             {
                                 localHits--;
+                                numberOfDeselections++;
                                 if (gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                                 {
                                                                      

@@ -42,7 +42,7 @@ public class NextLevelScript : MonoBehaviour
         if (ScoreScript.PlayerScore == thresholdScoree && TimerScript.TimeValue > 0)
         {
           //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
-           sc.EndOfGame(PlayerController.timeTargetWordWasHit.ToString(), "1");
+           //sc.EndOfGame(PlayerController.timeTargetWordWasHit.ToString(), "1");
             loadScene = true;
             resetValues();
             SceneManager.LoadScene("CompleteLevelOne");

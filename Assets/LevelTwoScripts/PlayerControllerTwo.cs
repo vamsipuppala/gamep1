@@ -39,10 +39,12 @@ public class PlayerControllerTwo : MonoBehaviour
     public float st, ct;
     public GameObject c;
     public static int timeTargetWordWasHit = 0;
-
+    public static int numberOfTimeDeselectionsOccurred = 0;
+    //public static int numberOfDeselections = 0;
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     public NextLevelTwo nextLevelScript;
+
 
 
     int ind=0;
@@ -58,7 +60,7 @@ public class PlayerControllerTwo : MonoBehaviour
         nestedList = bs.nestedList;
         //final = "Aim: " + bs.words[ind];
         nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<NextLevelTwo>();
-        nextLevelScript.resetValues();
+        //nextLevelScript.resetValues();
     }
 
     // Update is called once per frame
@@ -146,6 +148,7 @@ public class PlayerControllerTwo : MonoBehaviour
                             if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                             {
                                 localHits--;
+                                numberOfTimeDeselectionsOccurred++;
                                 if (gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                                 {
                                                                      

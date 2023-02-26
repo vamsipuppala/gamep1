@@ -18,6 +18,7 @@ public class SendToGoogle : MonoBehaviour
     GameObject myObject;
     ScoreScript sc;
     private string _gameOverReason;
+    private string _numberOfDeselections;
      
     // Start is called before the first frame update
 
@@ -48,10 +49,10 @@ public class SendToGoogle : MonoBehaviour
         //Debug.Log("_________________" + _testScore);
         //ScoreScript sc = myObject.GetComponent<ScoreScript>();
         Debug.Log("+++++++++++" + _sessionID);
-        StartCoroutine(Post(_sessionID.ToString(), _targetWordsHit, _levelName));
+        StartCoroutine(Post(_sessionID.ToString(), _targetWordsHit, _levelName, _numberOfDeselections));
     }
 
-    private IEnumerator Post( string _sessionID,string targetWordsHit, string levelName)
+    private IEnumerator Post( string _sessionID,string targetWordsHit, string levelName, string numberOfDeselections)
     {
         //Debug.Log("////////////////////////" + testInt);
         WWWForm form = new WWWForm();
@@ -61,23 +62,27 @@ public class SendToGoogle : MonoBehaviour
         if (levelName.Equals("1"))
         {
             form.AddField("entry.1486365924", targetWordsHit);
-            
+            form.AddField("entry.218752474", numberOfDeselections);
+
         }
         else if (levelName.Equals("2"))
         {
             form.AddField("entry.1019126803", targetWordsHit);
-            
+            form.AddField("entry.1404675045", numberOfDeselections);
+
 
         }
         else if (levelName.Equals("3"))
         {
             form.AddField("entry.917581380", targetWordsHit);
-            
+            form.AddField("entry.856136874", numberOfDeselections);
+
         }
         else
         {
             form.AddField("entry.961968652", targetWordsHit);
-            
+            form.AddField("entry.409243370", numberOfDeselections);
+
         }
        
 
@@ -164,13 +169,14 @@ public class SendToGoogle : MonoBehaviour
         //_testScore = sc.getScore();
     } 
 
-    public void EndOfGame(string targetWordsHit, string level) // this has to be called when the game ends .... to send the data ... for example I will be sending the data of how many times the space bar is clicked 
+    public void EndOfGame(string targetWordsHit, string level, string numberOfDeselections) // this has to be called when the game ends .... to send the data ... for example I will be sending the data of how many times the space bar is clicked 
     {        
         //Debug.Log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + score);
         // _testScore = score;
         _levelName = level;
         _targetWordsHit = targetWordsHit;
         _sessionID = DateTime.Now.Ticks;
+        _numberOfDeselections = numberOfDeselections;
         Send();
     }
 

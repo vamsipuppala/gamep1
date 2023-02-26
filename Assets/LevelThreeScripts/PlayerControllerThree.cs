@@ -38,6 +38,7 @@ public class PlayerControllerThree : MonoBehaviour
     public float moveSpeed;
     public float st, ct;
     public GameObject c;
+    public static int numberOfDeselections = 0;
     public static int timeTargetWordWasHit = 0;
 
     //[SerializeField] private Transform groundCheck;
@@ -145,6 +146,7 @@ public class PlayerControllerThree : MonoBehaviour
 
                             if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                             {
+                                numberOfDeselections++;
                                 localHits--;
                                 if (gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                                 {
