@@ -52,7 +52,7 @@ public class NextLevelTwo : MonoBehaviour
         {
             sc.EndOfGame(PlayerControllerTwo.timeTargetWordWasHit.ToString(), "2");
             //game over screen
-            GameOver();
+            GameOver("noTimeLeft");
         }
     }
 
@@ -62,9 +62,9 @@ public class NextLevelTwo : MonoBehaviour
         TimerTwo.TimeValue = 150;
     }
 
-    public void GameOver()
+    public void GameOver(string gameOverReason)
     {
-        //sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerControllerTwo.timesDangerWordWasHit.ToString());
+        sc.EndOfGameDueToGameOver("2", gameOverReason);
         SceneManager.LoadScene("GameOver");
     }
 }

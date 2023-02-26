@@ -52,7 +52,7 @@ public class NextLevelThree : MonoBehaviour
         {
             sc.EndOfGame(PlayerControllerThree.timeTargetWordWasHit.ToString(), "3");
             //game over screen
-            GameOver();
+            GameOver("noTimeLeft");
         }
     }
 
@@ -62,9 +62,9 @@ public class NextLevelThree : MonoBehaviour
         TimerThree.TimeValue = 180;
     }
 
-    public void GameOver()
+    public void GameOver(string gameOverReason)
     {
-        //sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerControllerThree.timesDangerWordWasHit.ToString());
+        sc.EndOfGameDueToGameOver("2", gameOverReason);
         SceneManager.LoadScene("GameOver");
     }
 }

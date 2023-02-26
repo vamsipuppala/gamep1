@@ -50,7 +50,7 @@ public class NextLevelScript : MonoBehaviour
 
         if (TimerScript.TimeValue <= 0)
         {
-            sc.EndOfGame(PlayerController.timeTargetWordWasHit.ToString(), "1");
+            //sc.EndOfGame(PlayerController.timeTargetWordWasHit.ToString(), "1" ,"noTimeLeft");
             //game over screen
         }
     }

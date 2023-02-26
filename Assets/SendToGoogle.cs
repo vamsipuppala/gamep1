@@ -17,6 +17,7 @@ public class SendToGoogle : MonoBehaviour
     private string _targetWordsHit;
     GameObject myObject;
     ScoreScript sc;
+    private string _gameOverReason;
      
     // Start is called before the first frame update
 
@@ -28,6 +29,17 @@ public class SendToGoogle : MonoBehaviour
         // Assign sessionID to identify playtests
 
     }
+    public void SendForGameOver()
+    {
+        // Assign variables
+        // _testInt = 0; // yeh yahaan initialize hoga         
+        //Debug.Log("_________________" + _testScore);
+        //ScoreScript sc = myObject.GetComponent<ScoreScript>();
+        Debug.Log("+++++++++++" + _sessionID);
+        StartCoroutine(PostForGameOver(_sessionID.ToString(), _levelName, _gameOverReason));
+    }
+
+
 
     public void Send()
     {
@@ -43,6 +55,7 @@ public class SendToGoogle : MonoBehaviour
     {
         //Debug.Log("////////////////////////" + testInt);
         WWWForm form = new WWWForm();
+       
         form.AddField("entry.199825233", _sessionID);
         form.AddField("entry.83745425", levelName);
         if (levelName.Equals("1"))
@@ -67,6 +80,54 @@ public class SendToGoogle : MonoBehaviour
             
         }
        
+
+        using (UnityWebRequest www = UnityWebRequest.Post(URL, form))
+        {
+            yield return www.SendWebRequest();
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log("Form upload complete!");
+            }
+            www.disposeUploadHandlerOnDispose = true;
+            www.disposeDownloadHandlerOnDispose = true;
+            www.Dispose();
+        }
+    }
+
+
+    private IEnumerator PostForGameOver(string _sessionID,string levelName, string gameOverReason)
+    {
+        //Debug.Log("////////////////////////" + testInt);
+        WWWForm form = new WWWForm();
+
+        form.AddField("entry.199825233", _sessionID);
+        form.AddField("entry.83745425", levelName);
+        if (levelName.Equals("1"))
+        {
+            form.AddField("entry.76112985", gameOverReason);
+
+        }
+        else if (levelName.Equals("2"))
+        {
+            form.AddField("entry.854602805", gameOverReason);
+
+
+        }
+        else if (levelName.Equals("3"))
+        {
+            form.AddField("entry.1975042108", gameOverReason);
+
+        }
+        else
+        {
+            form.AddField("entry.94478399", gameOverReason);
+
+        }
+
 
         using (UnityWebRequest www = UnityWebRequest.Post(URL, form))
         {
@@ -112,6 +173,20 @@ public class SendToGoogle : MonoBehaviour
         _sessionID = DateTime.Now.Ticks;
         Send();
     }
+
+    public void EndOfGameDueToGameOver(string level, string gameOverReason) // this has to be called when the game ends .... to send the data ... for example I will be sending the data of how many times the space bar is clicked 
+    {
+        //Debug.Log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + score);
+        // _testScore = score;
+        _levelName = level;
+        _gameOverReason = gameOverReason;
+        _sessionID = DateTime.Now.Ticks;
+        SendForGameOver();
+    }
+
+
+
+
 }
 
 

@@ -52,7 +52,7 @@ public class NextLevelFour : MonoBehaviour
         {
             //sc.EndOfGame(ScoreScript.PlayerScore.ToString(), "0");
             //game over screen
-            GameOver();
+            GameOver("noTimeLeft");
         }
     }
 
@@ -62,9 +62,9 @@ public class NextLevelFour : MonoBehaviour
         TimerFour.TimeValue = 180;
     }
 
-    public void GameOver()
+    public void GameOver(string gameOverReason)
     {
-        sc.EndOfGame(PlayerControllerFour.timeTargetWordWasHit.ToString(), "4");
+        sc.EndOfGameDueToGameOver("2", gameOverReason);
         SceneManager.LoadScene("GameOver");
     }
 }

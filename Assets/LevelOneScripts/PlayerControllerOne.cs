@@ -68,7 +68,7 @@ public class PlayerControllerOne : MonoBehaviour
         //j is the index of the last row of blocks
         if (nestedList[j][0].transform.position.y < 3)
         {
-            nextLevelScript.GameOver();
+            nextLevelScript.GameOver("blocksTouchedPlayer");
         }
 
 
