@@ -12,7 +12,7 @@ public class NextLevelFour : MonoBehaviour
     //private int nextSceneToLoad;
     private bool loadScene = false;
     [SerializeField] private TextMeshProUGUI targetScore;
-    public int thresholdScoree = 2;
+    public int thresholdScoree = 8;
     public SendToGoogle sc;
     public PlayerControllerFour pc;
 
@@ -39,7 +39,7 @@ public class NextLevelFour : MonoBehaviour
         //Debug.Log("the danger word score is " + PlayerController.timesDangerWordWasHit);
         // SendToGoogle sc = new SendToGoogle();
         //Debug.Log("threshold score is " + thresholdScoree);
-        if (ScoreScript.PlayerScore == thresholdScoree && TimerFour.TimeValue > 0)
+        if (ScoreScript.PlayerScore >= thresholdScoree && TimerFour.TimeValue > 0)
         {
             //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
             sc.EndOfGame(PlayerControllerFour.timeTargetWordWasHit.ToString(), "4", PlayerControllerFour.numberOfDeselections.ToString());
@@ -64,7 +64,7 @@ public class NextLevelFour : MonoBehaviour
 
     public void GameOver(string gameOverReason)
     {
-        sc.EndOfGameDueToGameOver("2", gameOverReason);
+        sc.EndOfGameDueToGameOver("4", gameOverReason);
         SceneManager.LoadScene("GameOver");
     }
 }

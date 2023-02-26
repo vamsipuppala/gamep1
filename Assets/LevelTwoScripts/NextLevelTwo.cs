@@ -40,7 +40,7 @@ public class NextLevelTwo : MonoBehaviour
         //Debug.Log("the danger word score is " + PlayerController.timesDangerWordWasHit);
        // SendToGoogle sc = new SendToGoogle();
         //Debug.Log("threshold score is " + thresholdScoree);
-        if (ScoreScript.PlayerScore == thresholdScoree && TimerTwo.TimeValue > 0)
+        if (ScoreScript.PlayerScore >= thresholdScoree && TimerTwo.TimeValue > 0)
         {
             //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
             sc.EndOfGame(PlayerControllerTwo.timeTargetWordWasHit.ToString(), "2", PlayerControllerTwo.numberOfTimeDeselectionsOccurred.ToString());
