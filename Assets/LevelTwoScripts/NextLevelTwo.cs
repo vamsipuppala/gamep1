@@ -12,9 +12,10 @@ public class NextLevelTwo : MonoBehaviour
     //private int nextSceneToLoad;
     private bool loadScene = false;
     [SerializeField] private TextMeshProUGUI targetScore;
-    public int thresholdScoree = 3;
+    public int thresholdScoree = 6;
     public SendToGoogle sc;
     public PlayerControllerTwo pc;
+   
 
 
     private void Start()
@@ -41,8 +42,8 @@ public class NextLevelTwo : MonoBehaviour
         //Debug.Log("threshold score is " + thresholdScoree);
         if (ScoreScript.PlayerScore == thresholdScoree && TimerTwo.TimeValue > 0)
         {
-          //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
-           sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerControllerTwo.timesDangerWordWasHit.ToString());
+            //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
+            sc.EndOfGame(PlayerControllerTwo.timeTargetWordWasHit.ToString(), "2", PlayerControllerTwo.numberOfTimeDeselectionsOccurred.ToString());
             loadScene = true;
             resetValues();
             SceneManager.LoadScene("LevelScenes/CompleteLevelTwo");
@@ -50,9 +51,9 @@ public class NextLevelTwo : MonoBehaviour
 
         if (ScoreScript.PlayerScore < thresholdScoree && TimerTwo.TimeValue <= 0)
         {
-            //sc.EndOfGame(ScoreScript.PlayerScore.ToString(), "0");
+            //sc.EndOfGame(PlayerControllerTwo.timeTargetWordWasHit.ToString(), "2", PlayerControllerTwo.numberOfTimeDeselectionsOccurred.toString());
             //game over screen
-            GameOver();
+            GameOver("noTimeLeft");
         }
     }
 
@@ -62,9 +63,9 @@ public class NextLevelTwo : MonoBehaviour
         TimerTwo.TimeValue = 150;
     }
 
-    public void GameOver()
+    public void GameOver(string gameOverReason)
     {
-        sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerControllerTwo.timesDangerWordWasHit.ToString());
+        sc.EndOfGameDueToGameOver("2", gameOverReason);
         SceneManager.LoadScene("GameOver");
     }
 }

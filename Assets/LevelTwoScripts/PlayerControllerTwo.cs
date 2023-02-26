@@ -38,11 +38,13 @@ public class PlayerControllerTwo : MonoBehaviour
     public float moveSpeed;
     public float st, ct;
     public GameObject c;
-    public static int timesDangerWordWasHit = 0;
-    
+    public static int timeTargetWordWasHit = 0;
+    public static int numberOfTimeDeselectionsOccurred = 0;
+    //public static int numberOfDeselections = 0;
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     public NextLevelTwo nextLevelScript;
+
 
 
     int ind=0;
@@ -58,7 +60,7 @@ public class PlayerControllerTwo : MonoBehaviour
         nestedList = bs.nestedList;
         //final = "Aim: " + bs.words[ind];
         nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<NextLevelTwo>();
-        nextLevelScript.resetValues();
+        //nextLevelScript.resetValues();
     }
 
     // Update is called once per frame
@@ -68,7 +70,7 @@ public class PlayerControllerTwo : MonoBehaviour
         //j is the index of the last row of blocks
         if (nestedList[j][0].transform.position.y < 3)
         {
-            nextLevelScript.GameOver();
+            nextLevelScript.GameOver("blocksTouchedPlayer");
         }
 
         //Debug.Log("finalllllllllllllll" + final);
@@ -146,6 +148,7 @@ public class PlayerControllerTwo : MonoBehaviour
                             if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                             {
                                 localHits--;
+                                numberOfTimeDeselectionsOccurred++;
                                 if (gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                                 {
                                                                      
@@ -206,8 +209,7 @@ public class PlayerControllerTwo : MonoBehaviour
                                         
                                         if(findMatch(dangerWordCreated, bs.dangerWordss[j]))
                                         {
-                                            //Debug.Log("dangerrrrrr");
-                                            timesDangerWordWasHit += 1;
+                                            
                                             ScoreScript.PlayerScore -= 1;
 
                                         }
@@ -216,8 +218,31 @@ public class PlayerControllerTwo : MonoBehaviour
                                     if (wordCreated.Length == bs.words[j].Length)
                                     {
 
-                                       // Debug.Log("the word is       " + wordCreated);
-                                        if (findMatch(wordCreated, bs.words[j]))
+                                        //IF WORD IS SPELLED IN ORDER - REWARD THE PLAYER
+                                        if (bs.words[j].Equals(wordCreated))
+                                        {
+                                            Debug.Log("HELLO JI LEVEL 2 - destroying 2 rows");
+                                            ScoreScript.PlayerScore += 2;
+                                            for (int d = 0; d < 2; d++)
+                                            {
+                                                if (d < nestedList.Count)
+                                                {
+                                                    GameObject[] gs = bs.nestedList[j];
+                                                    for (int k = 0; k < gs.Length; k++)
+                                                    {
+                                                        Destroy(gs[k]);
+                                                    }
+                                                    wordCreated = "";
+                                                    j++;
+                                                    ind++;
+                                                    localHits = 1;
+                                                }
+                                            }
+
+                                        }
+
+                                        // Debug.Log("the word is       " + wordCreated);
+                                        else if (findMatch(wordCreated, bs.words[j]))
                                         {
                                             //Debug.Log(bs);
                                             GameObject[] gs = bs.nestedList[j];
@@ -227,6 +252,7 @@ public class PlayerControllerTwo : MonoBehaviour
                                                 Destroy(gs[k]);
                                             }
                                             wordCreated = "";
+                                            timeTargetWordWasHit += 1;
                                             dangerWordCreated = "";                                            
                                             j++;
                                             ind++;

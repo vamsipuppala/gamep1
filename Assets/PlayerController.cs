@@ -38,7 +38,8 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float st, ct;
     public GameObject c;
-    public static int timesDangerWordWasHit = 0;
+    public static int timeTargetWordWasHit = 0;
+    public static int numberOfTimeDeselectionsOccurred= 0;
     
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -138,6 +139,7 @@ public class PlayerController : MonoBehaviour
 
                             if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                             {
+                                numberOfTimeDeselectionsOccurred++;
                                 localHits--;
                                 if (gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                                 {
@@ -199,8 +201,7 @@ public class PlayerController : MonoBehaviour
                                         
                                         if(findMatch(dangerWordCreated, bs.dangerWordss[j]))
                                         {
-                                            //Debug.Log("dangerrrrrr");
-                                            timesDangerWordWasHit += 1;
+                                            //Debug.Log("dangerrrrrr");                                            
                                             ScoreScript.PlayerScore -= 1;
 
                                         }
@@ -219,6 +220,7 @@ public class PlayerController : MonoBehaviour
                                             {
                                                 Destroy(gs[k]);
                                             }
+                                            timeTargetWordWasHit += 1;
                                             wordCreated = "";
                                             dangerWordCreated = "";                                            
                                             j++;

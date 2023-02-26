@@ -38,12 +38,20 @@ public class PlayerControllerThree : MonoBehaviour
     public float moveSpeed;
     public float st, ct;
     public GameObject c;
-    public static int timesDangerWordWasHit = 0;
-    
+    public static int numberOfDeselections = 0;
+    public static int timeTargetWordWasHit = 0;
+
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     public NextLevelThree nextLevelScript;
 
+    public BoxCollider2D boxCollider1;
+    public BoxCollider2D boxCollider2;
+
+    public GameObject obstacle1;
+    public GameObject obstacle2;
+
+    public GameObject hoveringPlatform;
 
     int ind=0;
     void Start()
@@ -59,6 +67,16 @@ public class PlayerControllerThree : MonoBehaviour
         //final = "Aim: " + bs.words[ind];
         nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<NextLevelThree>();
         nextLevelScript.resetValues();
+
+        hoveringPlatform = GameObject.FindGameObjectWithTag("HoveringPlatform");
+        Debug.Log("child: "+hoveringPlatform.transform.childCount);
+
+        obstacle1 = hoveringPlatform.transform.GetChild(0).gameObject;
+        Debug.Log("OBSTACLE 1: "+obstacle1.name);
+        obstacle2 = hoveringPlatform.transform.GetChild(1).gameObject;
+
+        boxCollider1 = obstacle1.GetComponent<BoxCollider2D>();
+        boxCollider2 = obstacle2.GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -68,7 +86,7 @@ public class PlayerControllerThree : MonoBehaviour
         //j is the index of the last row of blocks
         if (nestedList[j][0].transform.position.y < 3)
         {
-            nextLevelScript.GameOver();
+            nextLevelScript.GameOver("blocksTouchedPlayer");
         }
 
         //Debug.Log("finalllllllllllllll" + final);
@@ -145,6 +163,7 @@ public class PlayerControllerThree : MonoBehaviour
 
                             if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                             {
+                                numberOfDeselections++;
                                 localHits--;
                                 if (gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                                 {
@@ -206,8 +225,6 @@ public class PlayerControllerThree : MonoBehaviour
                                         
                                         if(findMatch(dangerWordCreated, bs.dangerWordss[j]))
                                         {
-                                            //Debug.Log("dangerrrrrr");
-                                            timesDangerWordWasHit += 1;
                                             ScoreScript.PlayerScore -= 1;
 
                                         }
@@ -216,8 +233,32 @@ public class PlayerControllerThree : MonoBehaviour
                                     if (wordCreated.Length == bs.words[j].Length)
                                     {
 
-                                       // Debug.Log("the word is       " + wordCreated);
-                                        if (findMatch(wordCreated, bs.words[j]))
+                                        //IF WORD IS SPELLED IN ORDER - REWARD THE PLAYER
+                                        if (bs.words[j].Equals(wordCreated))
+                                        {
+                                            Debug.Log("HELLO JI LEVEL 3 - pausing obstacle mvmt for few seconds");
+                                             
+                                            GameObject[] gs = bs.nestedList[j];
+                                            ScoreScript.PlayerScore += 2;
+                                            for (int k = 0; k < gs.Length; k++)
+                                            {
+                                                Destroy(gs[k]);
+                                            }
+                                            wordCreated = "";
+                                            dangerWordCreated = "";
+                                            j++;
+                                            ind++;
+                                            localHits = 1;
+
+                                            obstacle1.GetComponent<SpriteRenderer>().color = Color.red;
+                                            obstacle2.GetComponent<SpriteRenderer>().color = Color.red;
+                                            boxCollider1.enabled = false;
+                                            boxCollider2.enabled = false;
+                                            StartCoroutine(EnableBox(10.0F));
+                                        }
+
+                                        // Debug.Log("the word is       " + wordCreated);
+                                        else if (findMatch(wordCreated, bs.words[j]))
                                         {
                                             //Debug.Log(bs);
                                             GameObject[] gs = bs.nestedList[j];
@@ -226,6 +267,7 @@ public class PlayerControllerThree : MonoBehaviour
                                             {
                                                 Destroy(gs[k]);
                                             }
+                                            timeTargetWordWasHit += 1;
                                             wordCreated = "";
                                             dangerWordCreated = "";                                            
                                             j++;
@@ -288,10 +330,19 @@ public class PlayerControllerThree : MonoBehaviour
 
     //private void FixedUpdate()
     //{      
-        //rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
-        
+    //rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
+
 
     //}
+
+    IEnumerator EnableBox(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        obstacle1.GetComponent<SpriteRenderer>().color = Color.white;
+        obstacle2.GetComponent<SpriteRenderer>().color = Color.white;
+        boxCollider1.enabled = true;
+        boxCollider2.enabled = true;
+    }
 
     private int GetIndexOfGameObject(GameObject target, List<GameObject[]> list)
     {

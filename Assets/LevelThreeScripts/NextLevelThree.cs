@@ -12,7 +12,7 @@ public class NextLevelThree : MonoBehaviour
     //private int nextSceneToLoad;
     private bool loadScene = false;
     [SerializeField] private TextMeshProUGUI targetScore;
-    public int thresholdScoree = 2;
+    public int thresholdScoree = 7;
     public SendToGoogle sc;
     public PlayerControllerThree pc;
 
@@ -42,7 +42,7 @@ public class NextLevelThree : MonoBehaviour
         if (ScoreScript.PlayerScore == thresholdScoree && TimerThree.TimeValue > 0)
         {
             //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
-            sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerControllerThree.timesDangerWordWasHit.ToString());
+            sc.EndOfGame(PlayerControllerThree.timeTargetWordWasHit.ToString(), "3", PlayerControllerThree.numberOfDeselections.ToString());
             loadScene = true;
             resetValues();
             SceneManager.LoadScene("LevelScenes/CompleteLevelThree");
@@ -50,9 +50,9 @@ public class NextLevelThree : MonoBehaviour
 
         if (ScoreScript.PlayerScore < thresholdScoree && TimerThree.TimeValue <= 0)
         {
-            //sc.EndOfGame(ScoreScript.PlayerScore.ToString(), "0");
+            //sc.EndOfGame(PlayerControllerThree.timeTargetWordWasHit.ToString(), "3", PlayerControllerThree.numberOfDeselections.ToString());
             //game over screen
-            GameOver();
+            GameOver("noTimeLeft");
         }
     }
 
@@ -62,9 +62,9 @@ public class NextLevelThree : MonoBehaviour
         TimerThree.TimeValue = 180;
     }
 
-    public void GameOver()
+    public void GameOver(string gameOverReason)
     {
-        sc.EndOfGame(ScoreScript.PlayerScore.ToString(), PlayerControllerThree.timesDangerWordWasHit.ToString());
+        sc.EndOfGameDueToGameOver("2", gameOverReason);
         SceneManager.LoadScene("GameOver");
     }
 }
