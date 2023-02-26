@@ -64,7 +64,7 @@ public class NextLevelThree : MonoBehaviour
 
     public void GameOver(string gameOverReason)
     {
-        sc.EndOfGameDueToGameOver("2", gameOverReason);
+        sc.EndOfGameDueToGameOver("3", gameOverReason);
         SceneManager.LoadScene("GameOver");
     }
 }
