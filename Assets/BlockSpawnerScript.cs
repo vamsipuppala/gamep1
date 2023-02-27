@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 using System;
+using UnityEngine.SceneManagement;
 
 public class BlockSpawnerScript : MonoBehaviour
 {
@@ -25,8 +26,24 @@ public class BlockSpawnerScript : MonoBehaviour
     public List<GameObject[]> nestedList = new List<GameObject[]>(); // this is the entire set of rows 
     public string[] letters = { "A", "Q", "F", "E", "C", "V", "P", "I", "H", "L", "Z", "X", "S", "K" , "J", "N", "M", "T"};
     string allChars = "ABCDEFGHIJKLMNOPQRSTUVWYZ";
-    public string[] words = { "BIN", "BRO", "MAT", "FIND", "MAD", "HIP", "BOLD", "DAZE", "MAP", "DENT" , "BLUE" , "PINK", "RED" ,"FIX" , "BALD" };
-    public string[] dangerWordss = {"SIN", "FRO" ,"RAT", "MIND", "PAD", "LIP", "FOLD" , "MAZE" , "AP" ,"RENT", "GLUE" ,"INK" , "BED", "SIX", "AL"};
+
+    public string[] words = { };
+    public string[] dangerWordss = { };
+
+
+
+    public string[] wordsL2 = {"FEST", "COPE", "DARE", "CAT", "ICE", "ABLE", "HEAT", "LAMP", "BEAR", "SILK" };
+    public string[] dangerWordsL2 = {"BEST", "CORE", "CARE", "COT","IRE", "ACHE", "HEAD", "LIMP", "DEAR", "SILT" };
+
+    public string[] wordsL3 = { "JAM", "SOAP", "HAY", "SHOW", "NEW", "FIN", "GOLF", "BELT", "DIET", "KIT" };
+    public string[] dangerWordsL3 = { "JIG", "SOAR", "HEY", "SLOW", "NOW", "FUN", "GULF", "BENT", "DUET", "LIT" };
+
+    public string[] wordsL4 = { "BEST", "CORE", "CARE", "COT", "IRE", "ACHE", "HEAD", "LIMP", "DEAR", "SILT" };
+    public string[] dangerWordsL4 = { "FEST", "COPE", "DARE", "CAT", "ICE", "ABLE", "HEAT", "LAMP", "BEAR", "SILK" };
+
+
+    public string[] wordsL1 = {"BOLD", "DAZE", "MAP", "DENT" , "BLUE", "BIN", "BRO", "MAT", "FIND", "MAD", "HIP", "PINK", "RED" ,"FIX" , "BALD" };
+    public string[] dangerWordsL1 = {"FOLD" , "MAZE" , "CAP" ,"RENT", "GLUE", "SIN", "FRO", "RAT", "MIND", "PAD", "LIP",  "INK" , "BED", "SIX", "AL"};
 
     // Start is called before the first frame update
     private void Awake()
@@ -39,6 +56,31 @@ public class BlockSpawnerScript : MonoBehaviour
         float width = 1;
         float offset = 0.1f;
         float blockScale = 1.5f;
+
+        Scene scene = SceneManager.GetActiveScene();
+
+        if(scene.name == "LevelOne")
+        {
+            words = wordsL1;
+            dangerWordss = dangerWordsL1;
+        }
+        else if (scene.name == "LevelTwo")
+        {
+            words = wordsL2;
+            dangerWordss = dangerWordsL2;
+        }
+        else if (scene.name == "LevelThree")
+        {
+            words = wordsL3;
+            dangerWordss = dangerWordsL3;
+        }
+        else if (scene.name == "LevelFour")
+        {
+            words = wordsL4;
+            dangerWordss = dangerWordsL4;
+        }
+
+
         for (int j = 0; j < 10; j++) // this is for the total number of rows
         {
             HashSet<Char> hs = new HashSet<Char>();
