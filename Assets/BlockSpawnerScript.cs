@@ -27,24 +27,125 @@ public class BlockSpawnerScript : MonoBehaviour
     public string[] letters = { "A", "Q", "F", "E", "C", "V", "P", "I", "H", "L", "Z", "X", "S", "K" , "J", "N", "M", "T"};
     string allChars = "ABCDEFGHIJKLMNOPQRSTUVWYZ";
 
-    public string[] words = { };
-    public string[] dangerWordss = { };
+    // public string[,] words = { {}};
+    // public string[,] dangerWordss = { {}};
+
+string[][] jaggedStrings =  {
+new string[] {"x","y","z"},
+new string[] {"x","y"},
+new string[] {"x"}
+};
+
+    public string[][] wordsL2 ={new string[] {"FEST"}, 
+                                new string[] {"COPE"}, 
+                                new string[] {"DARE"}, 
+                                new string[] {"CAT"}, 
+                                new string[] {"ICE"}, 
+                                new string[] {"ABLE"}, 
+                                new string[] {"HEAT"}, 
+                                new string[] {"LAMP"}, 
+                                new string[] {"BEAR"}, 
+                                new string[] {"SILK"} };
+    public string[][] dangerWordsL2 = {
+                                        new string[] {"FS", "FT", "ET"}, 
+                                        new string[] {"CO","CE", "PE"}, 
+                                        new string[] {"BA", "DE", "ER"}, 
+                                        new string[] {"T", "AC", "TC"},
+                                        new string[] {"I", "CE", "IC"}, 
+                                        new string[] {"AB", "E", "EL"}, 
+                                        new string[] {"H", "EA", "TA"}, 
+                                        new string[] {"A", "AL","MP"}, 
+                                        new string[] {"BE", "BA", "AR"}, 
+                                        new string[] {"S", "IL","SI"} };
+    public string[][] block_of_wordsL2 =  {
+                                            new string[] {"TUFFSSETTT"}, 
+                                            new string[] {"CPPECOPPEE"}, 
+                                            new string[] {"DBARDERRRR"}, 
+                                            new string[] {"TTTTTACACT"}, 
+                                            new string[] {"ICEIIIEICE"}, 
+                                            new string[] {"ABABLLLLLE"}, 
+                                            new string[] {"HEAHHHHHTA"}, 
+                                            new string[] {"AAALMPMPAM"}, 
+                                            new string[] {"BEBEBAARAR"}, 
+                                            new string[] {"SSSSSILKIL"} };
+    public string[][] wordsL3 = {new string[] {"JAM"}, 
+                                 new string[] {"SOAP"}, 
+                                 new string[] {"HAY"}, 
+                                 new string[] {"SHOW"}, 
+                                 new string[] {"NEW"}, 
+                                 new string[] {"FIN"}, 
+                                 new string[] {"GOLF"}, 
+                                 new string[] {"BELT"}, 
+                                 new string[] {"DIET"}, 
+                                 new string[] {"KIT"} };
+    public string[][] dangerWordsL3 = { 
+                                       new string[]  {"JIG"}, 
+                                       new string[] {"SOAR"}, 
+                                       new string[] {"HEY"}, 
+                                       new string[] {"SLOW"}, 
+                                       new string[] {"NOW"}, 
+                                       new string[] {"FUN"}, 
+                                       new string[] {"GULF"}, 
+                                       new string[] {"BENT"}, 
+                                       new string[] {"DUET"}, 
+                                       new string[] {"LIT"} };
+
+    public string[][] wordsL4 = { 
+                                    new string[] {"BEST"}, 
+                                    new string[] {"CORE"}, 
+                                    new string[] {"CARE"}, 
+                                    new string[] {"COT"}, 
+                                    new string[] {"IRE"}, 
+                                    new string[] {"ACHE"}, 
+                                    new string[] {"HEAD"}, 
+                                    new string[] {"LIMP"}, 
+                                    new string[] {"DEAR"}, 
+                                    new string[] {"SILT"} };
+    public string[][] dangerWordsL4 = {
+                                        new string[] {"FEST"},
+                                        new string[] {"COPE"}, 
+                                        new string[] {"DARE"}, 
+                                        new string[] {"CAT"},
+                                        new string[]  {"ICE"}, 
+                                        new string[] {"ABLE"}, 
+                                        new string[] {"HEAT"}, 
+                                        new string[] {"LAMP"}, 
+                                        new string[] {"BEAR"}, 
+                                        new string[] {"SILK"} };
 
 
-
-    public string[] wordsL2 = {"FEST", "COPE", "DARE", "CAT", "ICE", "ABLE", "HEAT", "LAMP", "BEAR", "SILK" };
-    public string[] dangerWordsL2 = {"BEST", "CORE", "CARE", "COT","IRE", "ACHE", "HEAD", "LIMP", "DEAR", "SILT" };
-
-    public string[] wordsL3 = { "JAM", "SOAP", "HAY", "SHOW", "NEW", "FIN", "GOLF", "BELT", "DIET", "KIT" };
-    public string[] dangerWordsL3 = { "JIG", "SOAR", "HEY", "SLOW", "NOW", "FUN", "GULF", "BENT", "DUET", "LIT" };
-
-    public string[] wordsL4 = { "BEST", "CORE", "CARE", "COT", "IRE", "ACHE", "HEAD", "LIMP", "DEAR", "SILT" };
-    public string[] dangerWordsL4 = { "FEST", "COPE", "DARE", "CAT", "ICE", "ABLE", "HEAT", "LAMP", "BEAR", "SILK" };
-
-
-    public string[] wordsL1 = {"BOLD", "DAZE", "MAP", "DENT" , "BLUE", "BIN", "BRO", "MAT", "FIND", "MAD", "HIP", "PINK", "RED" ,"FIX" , "BALD" };
-    public string[] dangerWordsL1 = {"FOLD" , "MAZE" , "CAP" ,"RENT", "GLUE", "SIN", "FRO", "RAT", "MIND", "PAD", "LIP",  "INK" , "BED", "SIX", "AL"};
-
+    public static string[][] wordsL1 = {new string[] {"BOLD"},
+                                        new string[] {"DAZE"}, 
+                                        new string[] {"MAP"}, 
+                                        new string[] {"DENT"} , 
+                                        new string[] {"BLUE"}, 
+                                        new string[]  {"BIN"}, 
+                                        new string[]  {"BRO"}, 
+                                        new string[]  {"MAT"}, 
+                                        new string[]  {"FIND"}, 
+                                        new string[]  {"MAD"}, 
+                                        new string[]  {"HIP"}, 
+                                        new string[]  {"PINK"}, 
+                                        new string[]  {"RED"},
+                                        new string[]  {"FIX"} , 
+                                        new string[]  {"BALD"} };
+    public static string[][] dangerWordsL1 = {new string[] {"FOLD"},
+                                             new string[]  {"MAZE"}, 
+                                             new string[]  {"CAP"},
+                                             new string[] {"RENT"}, 
+                                             new string[] {"GLUE"},
+                                             new string[]  {"SIN"}, 
+                                             new string[] {"FRO"}, 
+                                             new string[] {"RAT"}, 
+                                             new string[] {"MIND"}, 
+                                             new string[] {"PAD"}, 
+                                             new string[] {"LIP"},  
+                                             new string[] {"INK"},
+                                             new string[]  {"BED"}, 
+                                             new string[] {"SIX"}, 
+                                             new string[] {"AL"}};
+    public string[][] words = wordsL1;
+    public string[][] dangerWordss = dangerWordsL1;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -60,7 +161,7 @@ public class BlockSpawnerScript : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
 
         if(scene.name == "LevelOne")
-        {
+        {  Debug.Log("here");
             words = wordsL1;
             dangerWordss = dangerWordsL1;
         }
@@ -83,11 +184,19 @@ public class BlockSpawnerScript : MonoBehaviour
 
         for (int j = 0; j < 10; j++) // this is for the total number of rows
         {
-            HashSet<Char> hs = new HashSet<Char>();
+            
             
             blocks = new GameObject[10];
-            string word = words[j];
-            string dangerword = dangerWordss[j];
+            
+            string word = words[j][0];
+            var shuffledString="AAAAAAAAAA";
+            string dangerword = dangerWordss[j][0];
+            if (scene.name == "LevelTwo")
+            {   
+                shuffledString = block_of_wordsL2[j][0];
+            }
+            else{
+                HashSet<Char> hs = new HashSet<Char>();
             foreach (char c in word)
             {
                 hs.Add(c);
@@ -103,9 +212,11 @@ public class BlockSpawnerScript : MonoBehaviour
             string finalWord = string.Join("", hs.ToArray());
             shuffleLetters += randomLetters + finalWord;
 
-            var shuffledString = shuffleAllLetters(shuffleLetters);
-             float posy = transform.position.y + 1.1f * j*blockScale; // this is for making the rows come one below the other
-            for (int i = 0; i < 10; i++) // this is for the 8 blocks in a single row 
+            shuffledString = shuffleAllLetters(shuffleLetters);}
+            
+            // char[] shuffledString1 = block_of_words[j].ToCharArray();
+            float posy = transform.position.y + 1.1f * j*blockScale; // this is for making the rows come one below the other
+            for (int i = 0; i < 10; i++) // this is for the 10 blocks in a single row 
             {
                 GameObject block = Instantiate(blockPrefab, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
                 // block.transform.position = new Vector3(transform.position.x + (i * width) + (i * offset), posy, 0);
