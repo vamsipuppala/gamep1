@@ -58,16 +58,16 @@ new string[] {"x"}
                                         new string[] {"BE", "BA", "AR"}, 
                                         new string[] {"S", "IL","SI"} };
     public string[][] block_of_wordsL2 =  {
-                                            new string[] {"TUFFSSETTT"}, 
-                                            new string[] {"CPPECOPPEE"}, 
-                                            new string[] {"DBARDERRRR"}, 
-                                            new string[] {"TTTTTACACT"}, 
-                                            new string[] {"ICEIIIEICE"}, 
-                                            new string[] {"ABABLLLLLE"}, 
-                                            new string[] {"HEAHHHHHTA"}, 
-                                            new string[] {"AAALMPMPAM"}, 
-                                            new string[] {"BEBEBAARAR"}, 
-                                            new string[] {"SSSSSILKIL"} };
+                                            new string[] {"TUFFSSETZT"}, 
+                                            new string[] {"ZPPECOPPEE"}, 
+                                            new string[] {"DBARDERRRZ"}, 
+                                            new string[] {"TTZTTACACT"}, 
+                                            new string[] {"ICEIIIEIZE"}, 
+                                            new string[] {"ABABLLZLLE"}, 
+                                            new string[] {"HEAHHHZHTA"}, 
+                                            new string[] {"AZALMPMPAM"}, 
+                                            new string[] {"BEBEBAARAZ"}, 
+                                            new string[] {"ZSSSSILKIL"} };
     public string[][] wordsL3 = {new string[] {"JAM"}, 
                                  new string[] {"SOAP"}, 
                                  new string[] {"HAY"}, 
