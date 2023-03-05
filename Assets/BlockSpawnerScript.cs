@@ -79,16 +79,27 @@ new string[] {"x"}
                                  new string[] {"DIET"}, 
                                  new string[] {"KIT"} };
     public string[][] dangerWordsL3 = { 
-                                       new string[]  {"JIG"}, 
-                                       new string[] {"SOAR"}, 
-                                       new string[] {"HEY"}, 
-                                       new string[] {"SLOW"}, 
-                                       new string[] {"NOW"}, 
-                                       new string[] {"FUN"}, 
-                                       new string[] {"GULF"}, 
-                                       new string[] {"BENT"}, 
-                                       new string[] {"DUET"}, 
-                                       new string[] {"LIT"} };
+                                       new string[]  {"AM", "JM", "M"}, 
+                                       new string[] {"SOA", "OS", "A"}, 
+                                       new string[] {"HA", "YA", "A"}, 
+                                       new string[] {"S", "HOW", "OW"}, 
+                                       new string[] {"NO", "E", "W"}, 
+                                       new string[] {"F","FI", "FF"}, 
+                                       new string[] {"GOL", "LF", "OL"}, 
+                                       new string[] {"T", "BE", "LT"}, 
+                                       new string[] {"DE","E","P"}, 
+                                       new string[] {"K","I","T"} };
+    public string[][] block_of_wordsL3 =  {
+                                            new string[] {"MZMMJMAJJA"}, 
+                                            new string[] {"SZAAOSOAAP"}, 
+                                            new string[] {"HAYAHAYAZA"}, 
+                                            new string[] {"SZSHOWHOWO"}, 
+                                            new string[] {"NNWWEEWEZN"}, 
+                                            new string[] {"FINFINZFIN"}, 
+                                            new string[] {"GOYLFLFFLZ"}, 
+                                            new string[] {"BELBELBTZT"}, 
+                                            new string[] {"DEBIEEEZPT"}, 
+                                            new string[] {"KALLILZLLT"} };
 
     public string[][] wordsL4 = { 
                                     new string[] {"BEST"}, 
@@ -194,6 +205,10 @@ new string[] {"x"}
             if (scene.name == "LevelTwo")
             {   
                 shuffledString = block_of_wordsL2[j][0];
+            }
+            else if(scene.name == "LevelThree")
+            {
+                shuffledString = block_of_wordsL3[j][0];
             }
             else{
                 HashSet<Char> hs = new HashSet<Char>();

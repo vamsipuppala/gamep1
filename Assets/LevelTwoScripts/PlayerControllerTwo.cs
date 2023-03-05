@@ -82,7 +82,7 @@ public class PlayerControllerTwo : MonoBehaviour
         goodword.text = "Target:  \n" + bs.words[ind][0];
         dangerWord.text = "Danger:  \n";
         
-        for(int i=0;i<bs.dangerWordss[i].Length;i++)
+        for(int i=0;i<bs.dangerWordss[ind].Length;i++)
         {
            dangerWord.text += bs.dangerWordss[ind][i]+"\n";
         }
