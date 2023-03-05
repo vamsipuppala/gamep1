@@ -43,6 +43,10 @@ public class PlayerControllerOne : MonoBehaviour
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     public NextLevel nextLevelScript;
+    public static int timeTargetWordWasHit = 0;
+    public static int numberOfTimeDeselectionsOccurred = 0;
+    public static int numberOfTimesWordHitInOrder = 0;
+    public static int numberOfTimesWordHitInReverse = 0;
 
 
     int ind=0;
@@ -148,6 +152,7 @@ public class PlayerControllerOne : MonoBehaviour
                             if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                             {
                                 localHits--;
+                                numberOfTimeDeselectionsOccurred++;
                                 if (gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                                 {
                                                                      
@@ -221,10 +226,18 @@ public class PlayerControllerOne : MonoBehaviour
 
                                     Debug.Log("bs.words[j]: "+ bs.words[j][0]);
 
-                                    if (wordCreated.Length == bs.words[j][0].Length)
+                                    if (wordCreated.Length == bs.words[j][0].Length && findMatch(wordCreated, bs.words[j][0]))
                                     {
-                                        //IF WORD IS SPELLED IN ORDER - REWARD THE PLAYER
                                         if (bs.words[j][0].Equals(wordCreated))
+                                        {
+                                            numberOfTimesWordHitInOrder++;
+                                        }
+                                        if (Reverse(bs.words[j][0]).Equals(wordCreated))
+                                        {
+                                            numberOfTimesWordHitInReverse++;
+                                        }
+                                        //IF WORD IS SPELLED IN ORDER - REWARD THE PLAYER
+                                        if (bs.words[j][0].Equals(wordCreated) || Reverse(bs.words[j][0]).Equals(wordCreated))
                                         {
                                             Debug.Log("HELLO JI LEVEL 1- destroying 2 rows, score+2");
                                             ScoreScript.PlayerScore += 2;
@@ -237,6 +250,7 @@ public class PlayerControllerOne : MonoBehaviour
                                                     {
                                                         Destroy(gs[k]);
                                                     }
+                                                    timeTargetWordWasHit += 1;
                                                     wordCreated = "";
                                                     j++;
                                                     ind++;
@@ -318,11 +332,16 @@ public class PlayerControllerOne : MonoBehaviour
 
     //private void FixedUpdate()
     //{      
-        //rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
-        
+    //rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
+
 
     //}
-
+    public static string Reverse(string s)
+    {
+        char[] charArray = s.ToCharArray();
+        Array.Reverse(charArray);
+        return new string(charArray);
+    }
     private int GetIndexOfGameObject(GameObject target, List<GameObject[]> list)
     {
         for (int i = 0; i < list.Capacity; i++)
