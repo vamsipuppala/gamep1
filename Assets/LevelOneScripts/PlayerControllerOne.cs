@@ -12,6 +12,7 @@ public class PlayerControllerOne : MonoBehaviour
     // Start is called before the first frame update
     // Line OF Renderer
     public LineRenderer LineOfSight;
+    public LineRenderer LineOfSight2;
     int j = 0;
     public BlockSpawnerScript bs;
     public int reflections;
@@ -65,6 +66,57 @@ public class PlayerControllerOne : MonoBehaviour
    
     void Update()
     {
+
+        //transform.Rotate(rotationSpeed * Vector3.forward * Time.deltaTime);
+
+        LineOfSight2.positionCount = 1;
+        LineOfSight2.SetPosition(0, transform.position);
+
+        RaycastHit2D hitInfo2 = Physics2D.Raycast(transform.position, transform.right, MaxRayDistance, LayerDetection);
+        // Ray
+        Ray2D ray2 = new Ray2D(transform.position, transform.right);
+
+        bool isMirror2 = false;
+        Vector2 mirrorHitPoint2 = Vector2.zero;
+        Vector2 mirrorHitNormal2 = Vector2.zero;
+
+
+        for (int i = 0; i < reflections; i++)
+        {
+            LineOfSight2.positionCount += 1;
+
+            if (hitInfo2.collider != null)
+            {
+                LineOfSight2.SetPosition(LineOfSight2.positionCount - 1, hitInfo2.point - ray2.direction * -0.1f);
+
+                isMirror2 = false;
+                if (hitInfo2.collider.CompareTag("Mirror"))
+                {
+                    mirrorHitPoint2 = (Vector2)hitInfo2.point;
+                    mirrorHitNormal2 = (Vector2)hitInfo2.normal;
+                    hitInfo2 = Physics2D.Raycast((Vector2)hitInfo2.point - ray2.direction * -0.1f, Vector2.Reflect(hitInfo2.point - ray2.direction * -0.1f, hitInfo2.normal), MaxRayDistance, LayerDetection);
+                    isMirror2 = true;
+                }
+                else
+                    break;
+            }
+            else
+            {
+                if (isMirror2)
+                {
+                    LineOfSight2.SetPosition(LineOfSight2.positionCount - 1, mirrorHitPoint2 + Vector2.Reflect(mirrorHitPoint2, mirrorHitNormal2) * MaxRayDistance);
+                    break;
+                }
+                else
+                {
+                    LineOfSight2.SetPosition(LineOfSight2.positionCount - 1, transform.position + transform.right * MaxRayDistance);
+                    break;
+                }
+            }
+        }
+
+
+
         //j is the index of the last row of blocks
         if (nestedList[j][0].transform.position.y < 3)
         {
@@ -78,7 +130,7 @@ public class PlayerControllerOne : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 8f);
         }
-        goodword.text = "Target:  " + bs.words[ind];
+        goodword.text = "Target:  " + bs.words[ind][0];
         //dangerWord.text = "Danger:  " + bs.dangerWordss[ind];
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -119,7 +171,7 @@ public class PlayerControllerOne : MonoBehaviour
             Vector2 mirrorHitNormal = Vector2.zero;
 
             move = Input.GetAxisRaw("Horizontal");
-            String givenWord = bs.words[j];
+            String givenWord = bs.words[j][0];
             //string givenDangerWord = bs.dangerWordss[j];
             
 
@@ -219,12 +271,12 @@ public class PlayerControllerOne : MonoBehaviour
                                         }
                                     }*/
 
-                                    Debug.Log("bs.words[j]: "+ bs.words[j]);
+                                    Debug.Log("bs.words[j]: "+ bs.words[j][0]);
 
-                                    if (wordCreated.Length == bs.words[j].Length)
+                                    if (wordCreated.Length == bs.words[j][0].Length)
                                     {
                                         //IF WORD IS SPELLED IN ORDER - REWARD THE PLAYER
-                                        if (bs.words[j].Equals(wordCreated))
+                                        if (bs.words[j][0].Equals(wordCreated))
                                         {
                                             Debug.Log("HELLO JI LEVEL 1- destroying 2 rows, score+2");
                                             ScoreScript.PlayerScore += 2;
@@ -247,7 +299,7 @@ public class PlayerControllerOne : MonoBehaviour
                                         }
 
                                         // Debug.Log("the word is       " + wordCreated);
-                                        else if (findMatch(wordCreated, bs.words[j]))
+                                        else if (findMatch(wordCreated, bs.words[j][0]))
                                         {
                                             //Debug.Log(bs);
                                             GameObject[] gs = bs.nestedList[j];
