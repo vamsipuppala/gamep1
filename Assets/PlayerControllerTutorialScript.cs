@@ -195,26 +195,28 @@ public class PlayerControllerTutorialScript : MonoBehaviour
         else if(popUps[9].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
         {
             popUps[9].SetActive(false);
-            popUps[11].SetActive(true);
+            popUps[17].SetActive(true);
+            //  popUps[11].SetActive(true);
         }
 
-        else if (popUps[11].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
+        /*else if (popUps[11].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
         {
             popUps[11].SetActive(false);
             popUps[17].SetActive(true);
-        }
+        }*/
 
         else if (popUps[17].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
         {
             popUps[17].SetActive(false);
-            popUps[12].SetActive(true);
+            popUps[16].SetActive(true);
+            //popUps[12].SetActive(true);
         }
 
-        else if (popUps[12].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
+        /*else if (popUps[12].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
         {
             popUps[12].SetActive(false);
             popUps[16].SetActive(true);
-        }
+        }*/
 
         else if(popUps[16].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
         {
@@ -222,6 +224,18 @@ public class PlayerControllerTutorialScript : MonoBehaviour
            // nextLevelScript.resetValues();
             SceneManager.LoadScene("LevelOne");
         }
+        else if (popUps[18].activeSelf == true && Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            popUps[18].SetActive(false);
+            Time.timeScale = 1;
+        }
+        else if (popUps[20].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
+        {
+            popUps[20].SetActive(false);
+            Time.timeScale = 1;
+        }
+
+
 
 
         /*
@@ -283,20 +297,20 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                         numberOfHits = givenWord.Length;
                         Debug.Log("now the numberOfHits is " + numberOfHits);
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
-                        if(j==GetIndexOfGameObject(gameObject, nestedList))
+                        if (j == GetIndexOfGameObject(gameObject, nestedList))
                         {
 
-                            if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
+                            if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                             {
                                 localHits--;
-                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.green)
+                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.green || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
                                 {
                                                                      
                                     wordCreated = wordCreated.Replace(text.text.ToString(), "");
                                                           
 
                                 }
-                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.red)
+                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
                                 {
                                     dangerWordCreated = dangerWordCreated.Replace(text.text.ToString(), "");
                                 }
@@ -325,7 +339,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                                 else
                                 {
                                     localHits++;
-                                    if (givenDangerWord.Contains(text.text.ToString()))
+                                    if (givenDangerWord.Contains(text.text.ToString()) && !givenWord.Contains(text.text.ToString()))
                                     {
                                         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                                         if (popUpIndex == 9 && "S".Equals(text.text.ToString()))
@@ -349,7 +363,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                                             Debug.Log("TIme scale 0 popupindex 6");
                                         }
                                     }
-                                    else if (givenWord.Contains(text.text.ToString()))
+                                    else if (givenWord.Contains(text.text.ToString()) && !givenDangerWord.Contains(text.text.ToString()))
                                     {
                                         gameObject.GetComponent<SpriteRenderer>().color = Color.green;
 
@@ -368,6 +382,25 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                                         wordCreated += text.text;
 
                                     }
+                                    else if(givenWord.Contains(text.text.ToString()) && givenDangerWord.Contains(text.text.ToString()))
+                                    {
+                                        gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+                                        if ("I".Equals(text.text.ToString()))
+                                        {
+                                            popUps[20].SetActive(true);
+                                            popUpIndex++;
+                                            Time.timeScale = 0;
+                                            Debug.Log("Time scale 0 popupindex 9");
+                                        }
+                                        else if (popUps[18].activeSelf == true)
+                                        {
+                                            popUps[18].SetActive(false);
+                                        }
+                                        wordCreated += text.text;
+                                        //show popup - if letter common to both target & danger word - highlight in yellow text
+                                    }
+
+                                    Debug.Log("GIVEN WORD: "+ wordCreated);
                                    
                                    
                                     if(dangerWordCreated.Length == bs.dangerWordss[j].Length)
