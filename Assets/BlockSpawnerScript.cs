@@ -102,27 +102,39 @@ new string[] {"x"}
                                             new string[] {"KALLILZLLT"} };
 
     public string[][] wordsL4 = { 
-                                    new string[] {"BEST"}, 
-                                    new string[] {"CORE"}, 
-                                    new string[] {"CARE"}, 
-                                    new string[] {"COT"}, 
-                                    new string[] {"IRE"}, 
-                                    new string[] {"ACHE"}, 
-                                    new string[] {"HEAD"}, 
-                                    new string[] {"LIMP"}, 
-                                    new string[] {"DEAR"}, 
-                                    new string[] {"SILT"} };
+                                    new string[] {"VAMSI"}, 
+                                    new string[] {"AMOGHA"}, 
+                                    new string[] {"GURPREET"}, 
+                                    new string[] {"ANSHU"}, 
+                                    new string[] {"CHAND"}, 
+                                    new string[] {"HENG"}, 
+                                    new string[] {"CHENG"}, 
+                                    new string[] {"NAATU"}, 
+                                    new string[] {"LOVE"}, 
+                                    new string[] {"PYAAAAR"} };
     public string[][] dangerWordsL4 = {
-                                        new string[] {"FEST"},
-                                        new string[] {"COPE"}, 
-                                        new string[] {"DARE"}, 
-                                        new string[] {"CAT"},
-                                        new string[]  {"ICE"}, 
-                                        new string[] {"ABLE"}, 
-                                        new string[] {"HEAT"}, 
-                                        new string[] {"LAMP"}, 
-                                        new string[] {"BEAR"}, 
-                                        new string[] {"SILK"} };
+                                        new string[] {"I", "VA", "ME"},
+                                        new string[] {"G", "AMO", "HA"}, 
+                                        new string[] {"E", "T", "PRE"}, 
+                                        new string[] {"U", "AN", "SHU"},
+                                        new string[] {"I", "CH", "AND"}, 
+                                        new string[] {"H", "HE", "BEN"}, 
+                                        new string[] {"G", "CH", "HENG"}, 
+                                        new string[] {"NA", "TU", "U"}, 
+                                        new string[] {"L", "VE", "HATE"}, 
+                                        new string[] {"P", "YAAR", "RA"} };
+    public string[][] block_of_wordsL4 =  {
+                                            new string[] {"VAMSIIIEZM"}, 
+                                            new string[] {"AMOAHGZIAO"}, 
+                                            new string[] {"GPRETRUEZE"}, 
+                                            new string[] {"UZUANPQSHU"}, 
+                                            new string[] {"CHANIZIDII"}, 
+                                            new string[] {"HENGHENGZH"}, 
+                                            new string[] {"CENGHENGZH"},
+                                            new string[] {"NUUUZUUATA"}, 
+                                            new string[] {"LSHATELOVZ"},                  
+                                            new string[] {"PYAAAARAZP"} };
+
 
 
     public static string[][] wordsL1 = {new string[] {"BOLD"},
@@ -209,6 +221,11 @@ new string[] {"x"}
             else if(scene.name == "LevelThree")
             {
                 shuffledString = block_of_wordsL3[j][0];
+            }
+            
+            else if(scene.name == "LevelFour")
+            {
+                shuffledString = block_of_wordsL4[j][0];
             }
             else{
                 HashSet<Char> hs = new HashSet<Char>();
