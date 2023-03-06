@@ -21,7 +21,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"F:/projects/usc/Games/prototypes/vamsi/25feb/gamep1/WebGL Builds/resolution5mar5;F:/projects/usc/Games/prototypes/vamsi/25feb/gamep1/WebGL Builds/resolution5mar4;F:/projects/usc/Games/prototypes/vamsi/25feb/gamep1/WebGL Builds/resolution5mar3;F:/projects/usc/Games/prototypes/vamsi/25feb/gamep1/WebGL Builds/resolution5mar2;F:/projects/usc/Games/prototypes/vamsi/25feb/gamep1/WebGL Builds/resolution5mar1;F:/projects/usc/Games/prototypes/vamsi/25feb/gamep1/WebGL Builds/resolution5mar;/Users/ana/Unity_Projects/Test/gamep1/BlockBursterII;/Users/ana/Unity_Projects/Test/gamep1/BlockBurster;D:/test-build;D:/Build-gmaep1\"}"
+                "value": "{\"m_Value\":\"F:/projects/usc/Games/prototypes/vamsi/25feb/gamep1/WebGL Builds/resolution5mar6;F:/projects/usc/Games/prototypes/vamsi/25feb/gamep1/WebGL Builds/resolution5mar5;F:/projects/usc/Games/prototypes/vamsi/25feb/gamep1/WebGL Builds/resolution5mar4;F:/projects/usc/Games/prototypes/vamsi/25feb/gamep1/WebGL Builds/resolution5mar3;F:/projects/usc/Games/prototypes/vamsi/25feb/gamep1/WebGL Builds/resolution5mar2;F:/projects/usc/Games/prototypes/vamsi/25feb/gamep1/WebGL Builds/resolution5mar1;F:/projects/usc/Games/prototypes/vamsi/25feb/gamep1/WebGL Builds/resolution5mar;/Users/ana/Unity_Projects/Test/gamep1/BlockBursterII;/Users/ana/Unity_Projects/Test/gamep1/BlockBurster;D:/test-build\"}"
             }
         ]
     }
