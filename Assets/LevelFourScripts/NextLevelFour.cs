@@ -12,7 +12,7 @@ public class NextLevelFour : MonoBehaviour
     //private int nextSceneToLoad;
     private bool loadScene = false;
     [SerializeField] private TextMeshProUGUI targetScore;
-    public int thresholdScoree = 8;
+    public int thresholdScoree = 5;
     public SendToGoogle sc;
     public PlayerControllerFour pc;
 
@@ -63,7 +63,7 @@ public class NextLevelFour : MonoBehaviour
     public void resetValues()
     {
         ScoreScript.PlayerScore = 0;
-        TimerFour.TimeValue = 90;
+        TimerFour.TimeValue = 330;
     }
 
     public void GameOver(string gameOverReason)

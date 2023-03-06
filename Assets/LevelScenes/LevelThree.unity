@@ -2036,7 +2036,7 @@ MonoBehaviour:
   NextLevelObject: {fileID: 0}
   levelName: 
   targetScore: {fileID: 1738910180}
-  thresholdScoree: 7
+  thresholdScoree: 5
   sc: {fileID: 0}
   pc: {fileID: 0}
 --- !u!1 &1580552824
@@ -2151,6 +2151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   URL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdyYdSvN-HeRb5ttFGYgcLfLDRVM8z6Cj6LPCo2-GFbwSpN_w/formResponse
+  _zHitCount: 
 --- !u!114 &1689211029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2256,6 +2257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   URL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdyYdSvN-HeRb5ttFGYgcLfLDRVM8z6Cj6LPCo2-GFbwSpN_w/formResponse
+  _zHitCount: 
 --- !u!114 &1702891011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3165,3 +3167,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   URL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdyYdSvN-HeRb5ttFGYgcLfLDRVM8z6Cj6LPCo2-GFbwSpN_w/formResponse
+  _zHitCount: 
