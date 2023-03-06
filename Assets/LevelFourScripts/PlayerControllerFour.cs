@@ -23,6 +23,7 @@ public class PlayerControllerFour : MonoBehaviour
     public NextLevelScript nextLevel;
     public GameObject NextLevelScreen;
     public string wordCreated;
+     bool z_is = false;
     public string lol1;
     public string dangerWordCreated;
     //public float move;
@@ -291,7 +292,11 @@ public class PlayerControllerFour : MonoBehaviour
                         numberOfHits = givenWord.Length;
                        // Debug.Log("now the numberOfHits is " + numberOfHits);
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
-                        if(j==GetIndexOfGameObject(gameObject, nestedList))
+                        if(text.text[0]=='Z' && i==0)
+                        {
+                            
+                        }
+                        else if(j==GetIndexOfGameObject(gameObject, nestedList))
                         {
 
                             if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green
@@ -337,7 +342,7 @@ public class PlayerControllerFour : MonoBehaviour
                             else
                             {
 
-                                if (localHits > numberOfHits)
+                                if (localHits > numberOfHits && !(z_is==true && localHits-1<=numberOfHits))
                                 {
                                    // Debug.Log("no shooting");
                                 }
@@ -384,6 +389,18 @@ public class PlayerControllerFour : MonoBehaviour
                                     wordCreated += text.text;
                                    
                                 }
+                                
+                                bool dest = false;
+                                if(wordCreated.Contains('Z'))
+                                {
+                                    z_is = true;
+
+                                    wordCreated = wordCreated.Replace("Z","");
+                                    Debug.Log("Z deleted"+wordCreated);
+                                }
+                                else{
+                                    z_is=false;
+                                }
                                     if (wordCreated.Length == bs.words[j][0].Length && findMatch(wordCreated, bs.words[j][0]))
                                     {
 
@@ -413,6 +430,7 @@ public class PlayerControllerFour : MonoBehaviour
                                             StartCoroutine(EnablePlatformMvmt(10.0F));
                                                 }
                                             }
+                                            dest=true;
 
                                         }
 
@@ -426,6 +444,7 @@ public class PlayerControllerFour : MonoBehaviour
                                             {
                                                 Destroy(gs[k]);
                                             }
+                                            dest=true;
                                             wordCreated = "";
                                             timeTargetWordWasHit += 1;
                                             dangerWordCreated = "";                                            
@@ -433,6 +452,10 @@ public class PlayerControllerFour : MonoBehaviour
                                             ind++;
                                             localHits = 1;
                                         }
+                                          if(z_is == true)
+                                            {
+                                                ScoreScript.PlayerScore += 1;
+                                            }
                                     }
                                     else{
                                             for (int z1=0; z1< bs.dangerWordss[j].Length; z1++)
@@ -451,6 +474,8 @@ public class PlayerControllerFour : MonoBehaviour
                                                 }
                                             }
                                     }
+                                    if(!dest && z_is)
+                                    wordCreated += "Z";
                                 
 
                             }

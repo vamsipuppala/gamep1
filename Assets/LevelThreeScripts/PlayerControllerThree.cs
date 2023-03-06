@@ -24,6 +24,7 @@ public class PlayerControllerThree : MonoBehaviour
     public GameObject NextLevelScreen;
     public string wordCreated;
     public string lol1;
+    bool z_is = false;
     public string dangerWordCreated;
     //public float move;
     int numberOfHits;
@@ -299,7 +300,11 @@ public class PlayerControllerThree : MonoBehaviour
                         numberOfHits = givenWord.Length;
                        // Debug.Log("now the numberOfHits is " + numberOfHits);
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
-                        if(j==GetIndexOfGameObject(gameObject, nestedList))
+                        if(text.text[0]=='Z' && i==0)
+                        {
+                            
+                        }
+                        else if(j==GetIndexOfGameObject(gameObject, nestedList))
                         {
 
                             if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green
@@ -345,7 +350,7 @@ public class PlayerControllerThree : MonoBehaviour
                             else
                             {
 
-                                if (localHits > numberOfHits)
+                                if (localHits > numberOfHits && !(z_is==true && localHits-1<=numberOfHits))
                                 {
                                    // Debug.Log("no shooting");
                                 }
@@ -392,6 +397,17 @@ public class PlayerControllerThree : MonoBehaviour
                                     wordCreated += text.text;
                                    
                                 }
+                                 bool dest = false;
+                                if(wordCreated.Contains('Z'))
+                                {
+                                    z_is = true;
+
+                                    wordCreated = wordCreated.Replace("Z","");
+                                    Debug.Log("Z deleted"+wordCreated);
+                                }
+                                else{
+                                    z_is=false;
+                                }
                                     if (wordCreated.Length == bs.words[j][0].Length && findMatch(wordCreated, bs.words[j][0]))
                                     {
 
@@ -415,6 +431,7 @@ public class PlayerControllerThree : MonoBehaviour
                                                     localHits = 1;
                                                 }
                                             }
+                                            dest=true;
                                                 obstacle1.GetComponent<SpriteRenderer>().color = Color.red;
                                             obstacle2.GetComponent<SpriteRenderer>().color = Color.red;
                                             boxCollider1.enabled = false;
@@ -433,6 +450,7 @@ public class PlayerControllerThree : MonoBehaviour
                                             {
                                                 Destroy(gs[k]);
                                             }
+                                            dest=true;
                                             wordCreated = "";
                                             timeTargetWordWasHit += 1;
                                             dangerWordCreated = "";                                            
@@ -440,6 +458,10 @@ public class PlayerControllerThree : MonoBehaviour
                                             ind++;
                                             localHits = 1;
                                         }
+                                        if(z_is == true)
+                                            {
+                                                ScoreScript.PlayerScore += 1;
+                                            }
                                     }
                                     else{
                                             for (int z1=0; z1< bs.dangerWordss[j].Length; z1++)
@@ -458,6 +480,8 @@ public class PlayerControllerThree : MonoBehaviour
                                                 }
                                             }
                                     }
+                                    if(!dest && z_is)
+                                    wordCreated += "Z";
                                 
 
                             }
