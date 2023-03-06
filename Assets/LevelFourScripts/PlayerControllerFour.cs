@@ -438,7 +438,7 @@ public class PlayerControllerFour : MonoBehaviour
                                             Debug.Log("mirror length: " + GameObject.FindGameObjectsWithTag("Mirror").Length);
                                             platformGameObj[0].transform.position = mvmtScript.originalPos;
                                             platformGameObj[1].transform.position = mvmtScript1.originalPos;
-                                            StartCoroutine(EnablePlatformMvmt(10.0F));
+                                            StartCoroutine(EnablePlatformMvmt(15.0F));
                                                 }
                                             }
                                             dest=true;

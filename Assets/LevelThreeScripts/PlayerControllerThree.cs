@@ -448,7 +448,7 @@ public class PlayerControllerThree : MonoBehaviour
                                             obstacle2.GetComponent<SpriteRenderer>().color = Color.red;
                                             boxCollider1.enabled = false;
                                             boxCollider2.enabled = false;
-                                            StartCoroutine(EnableBox(10.0F));
+                                            StartCoroutine(EnableBox(15.0F));
 
                                         }
 

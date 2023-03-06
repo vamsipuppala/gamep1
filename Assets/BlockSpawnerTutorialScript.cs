@@ -64,7 +64,7 @@ public class BlockSpawnerTutorialScript : MonoBehaviour
             shuffleLetters += randomLetters + finalWord;
 
             //var shuffledString = shuffleAllLetters(shuffleLetters);
-            var shuffledString = "JTMBPIXNLS";
+            var shuffledString = "ZTMBPIXNLS";
             float posy = transform.position.y + 1.1f * j * blockScale; // this is for making the rows come one below the other
             for (int i = 0; i < 10; i++) // this is for the 10 blocks in a single row 
             {

@@ -47,6 +47,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
 
     int popUpIndex = 0;
     private bool isMatch = true;
+    private bool z_is = false;
     //, isLetterX = false, isLetterB = false, isLetterS = false;
     void Start()
     {
@@ -297,7 +298,11 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                         numberOfHits = givenWord.Length;
                         Debug.Log("now the numberOfHits is " + numberOfHits);
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
-                        if (j == GetIndexOfGameObject(gameObject, nestedList))
+                        if (text.text[0] == 'Z' && i == 0)
+                        {
+                            Debug.Log("Z without reflection");
+                        }
+                        else if (j == GetIndexOfGameObject(gameObject, nestedList))
                         {
 
                             if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
@@ -329,7 +334,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                             else
                             {
 
-                                if (localHits > numberOfHits)
+                                if (localHits > numberOfHits && !(z_is == true && localHits - 1 <= numberOfHits) && text.text[0] != 'Z')
                                 {
                                     Debug.Log("no shooting");
                                     //Time.timeScale = 0;
@@ -339,6 +344,11 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                                 else
                                 {
                                     localHits++;
+                                    if(text.text[0] == 'Z')
+                                    {
+                                        //Z is hit thru reflection
+                                        Debug.Log("Z is hit thru reflection");
+                                    }
                                     if (givenDangerWord.Contains(text.text.ToString()) && !givenWord.Contains(text.text.ToString()))
                                     {
                                         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
@@ -347,7 +357,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                                             popUps[10].SetActive(true);
                                             popUpIndex++;
                                             Time.timeScale = 0;
-                                            Debug.Log("TIme scale 0 popupindex 9");
+                                            Debug.Log("Time scale 0 popupindex 9");
                                          }
                                         dangerWordCreated += text.text;
                                         Debug.Log("the danger word created till now is" + dangerWordCreated);
