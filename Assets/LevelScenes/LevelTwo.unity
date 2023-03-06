@@ -1915,7 +1915,7 @@ MonoBehaviour:
   NextLevel: {fileID: 0}
   levelName: 
   targetScore: {fileID: 1738910180}
-  thresholdScoree: 6
+  thresholdScoree: 5
   sc: {fileID: 0}
   pc: {fileID: 0}
 --- !u!1 &1549444998

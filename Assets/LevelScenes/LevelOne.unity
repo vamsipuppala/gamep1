@@ -1614,7 +1614,7 @@ MonoBehaviour:
   NextLevelObject: {fileID: 0}
   levelName: 
   targetScore: {fileID: 1738910180}
-  thresholdScoree: 3
+  thresholdScoree: 2
   sc: {fileID: 0}
   pc: {fileID: 0}
 --- !u!1 &1580552824
