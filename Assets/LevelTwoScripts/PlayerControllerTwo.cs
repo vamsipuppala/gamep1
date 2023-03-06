@@ -47,6 +47,7 @@ public class PlayerControllerTwo : MonoBehaviour
     public NextLevelTwo nextLevelScript;
     public static int numberOfTimesWordHitInOrder = 0;
     public static int numberOfTimesWordHitInReverse=0;
+    public static int zHit = 0;
 
 
 
@@ -257,7 +258,7 @@ public class PlayerControllerTwo : MonoBehaviour
                                 if(wordCreated.Contains('Z'))
                                 {
                                     z_is = true;
-
+                                   
                                     wordCreated = wordCreated.Replace("Z","");
                                     Debug.Log("Z deleted"+wordCreated);
                                 }
@@ -321,6 +322,7 @@ public class PlayerControllerTwo : MonoBehaviour
                                         }
                                         if(z_is == true)
                                             {
+                                        zHit++;
                                                 ScoreScript.PlayerScore += 1;
                                             }
                                     }

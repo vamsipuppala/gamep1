@@ -45,6 +45,7 @@ public class NextLevelTwo : MonoBehaviour
             //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
             sc.EndOfGame(PlayerControllerTwo.timeTargetWordWasHit.ToString(), "2", PlayerControllerTwo.numberOfTimeDeselectionsOccurred.ToString(), "1",
                 PlayerControllerTwo.numberOfTimesWordHitInOrder.ToString(), PlayerControllerTwo.numberOfTimesWordHitInReverse.ToString());
+            sc.endGameWithZHitCount("2", PlayerControllerTwo.zHit.ToString());
             loadScene = true;
             resetValues();
             SceneManager.LoadScene("LevelScenes/CompleteLevelTwo");
@@ -55,6 +56,7 @@ public class NextLevelTwo : MonoBehaviour
             sc.EndOfGame(PlayerControllerTwo.timeTargetWordWasHit.ToString(), "2", PlayerControllerTwo.numberOfTimeDeselectionsOccurred.ToString(), "0",
                 PlayerControllerTwo.numberOfTimesWordHitInOrder.ToString(), PlayerControllerTwo.numberOfTimesWordHitInReverse.ToString());
             //game over screen
+            sc.endGameWithZHitCount("2", PlayerControllerTwo.zHit.ToString());
             GameOver("noTimeLeft");
         }
     }
@@ -62,7 +64,7 @@ public class NextLevelTwo : MonoBehaviour
     public void resetValues()
     {
         ScoreScript.PlayerScore = 0;
-        TimerTwo.TimeValue = 100;
+        TimerTwo.TimeValue = 300;
     }
 
     public void GameOver(string gameOverReason)

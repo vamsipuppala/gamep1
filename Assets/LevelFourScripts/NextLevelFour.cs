@@ -44,6 +44,7 @@ public class NextLevelFour : MonoBehaviour
             //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
             sc.EndOfGame(PlayerControllerFour.timeTargetWordWasHit.ToString(), "4", PlayerControllerFour.numberOfDeselections.ToString(), "1",
                 PlayerControllerFour.numberOfTimesWordHitInOrder.ToString(), PlayerControllerFour.numberOfTimesWordHitInReverse.ToString());
+            sc.endGameWithZHitCount("4", PlayerControllerFour.zHit.ToString());
             loadScene = true;
             resetValues();
             SceneManager.LoadScene("LevelScenes/CompleteLevelFour");
@@ -54,6 +55,7 @@ public class NextLevelFour : MonoBehaviour
             sc.EndOfGame(PlayerControllerFour.timeTargetWordWasHit.ToString(), "4", PlayerControllerFour.numberOfDeselections.ToString(), "0",
                 PlayerControllerFour.numberOfTimesWordHitInOrder.ToString(), PlayerControllerFour.numberOfTimesWordHitInReverse.ToString());
             //game over screen
+            sc.endGameWithZHitCount("4", PlayerControllerFour.zHit.ToString());
             GameOver("noTimeLeft");
         }
     }

@@ -22,7 +22,8 @@ public class SendToGoogle : MonoBehaviour
     private string _numberofPlayersCompletedLevel;
     private string _wordsHitInOrder;
     private string _wordsHitInReverse;
-     
+    public string _zHitCount;
+
     // Start is called before the first frame update
 
     private void Awake()
@@ -41,6 +42,11 @@ public class SendToGoogle : MonoBehaviour
         //ScoreScript sc = myObject.GetComponent<ScoreScript>();
         Debug.Log("+++++++++++" + _sessionID);
         StartCoroutine(PostForGameOver(_sessionID.ToString(), _levelName, _gameOverReason));
+    }
+
+    public void SendForZHitCount()
+    {
+        StartCoroutine(PostForZHitCount(_sessionID.ToString(), _levelName, _zHitCount));
     }
 
 
@@ -119,6 +125,7 @@ public class SendToGoogle : MonoBehaviour
         }
     }
 
+    
 
     private IEnumerator PostForGameOver(string _sessionID,string levelName, string gameOverReason)
     {
@@ -168,6 +175,53 @@ public class SendToGoogle : MonoBehaviour
     }
 
 
+    private IEnumerator PostForZHitCount(string _sessionID, string levelName, string zhitcount)
+    {
+        //Debug.Log("////////////////////////" + testInt);
+        WWWForm form = new WWWForm();
+
+        form.AddField("entry.199825233", _sessionID);
+        form.AddField("entry.83745425", levelName);
+        if (levelName.Equals("1"))
+        {
+            form.AddField("", zhitcount);
+
+        }
+        else if (levelName.Equals("2"))
+        {
+            form.AddField("entry.2130600367", zhitcount);
+
+
+        }
+        else if (levelName.Equals("3"))
+        {
+            form.AddField("entry.1439728940", zhitcount);
+
+        }
+        else
+        {
+            form.AddField("entry.1553024059", zhitcount);
+
+        }
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post(URL, form))
+        {
+            yield return www.SendWebRequest();
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log("Form upload complete!");
+            }
+            www.disposeUploadHandlerOnDispose = true;
+            www.disposeDownloadHandlerOnDispose = true;
+            www.Dispose();
+        }
+    }
+
 
     void Start()
     {
@@ -197,6 +251,14 @@ public class SendToGoogle : MonoBehaviour
         _wordsHitInOrder = wordsHitInOrder;
         _wordsHitInReverse = wordsHitInReverse;
         Send();
+    }
+
+    public void endGameWithZHitCount(string level, string zHitCount)
+    {
+        _levelName = level;
+        _zHitCount = zHitCount;
+        _sessionID = DateTime.Now.Ticks;
+        SendForZHitCount();
     }
 
     public void EndOfGameDueToGameOver(string level, string gameOverReason) // this has to be called when the game ends .... to send the data ... for example I will be sending the data of how many times the space bar is clicked 

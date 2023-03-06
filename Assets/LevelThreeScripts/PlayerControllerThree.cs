@@ -43,6 +43,7 @@ public class PlayerControllerThree : MonoBehaviour
     public static int timeTargetWordWasHit = 0;
     public static int numberOfTimesWordHitInOrder = 0;
     public static int numberOfTimesWordHitInReverse = 0;
+    public static int zHit = 0;
 
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -403,6 +404,7 @@ public class PlayerControllerThree : MonoBehaviour
                                 if(wordCreated.Contains('Z'))
                                 {
                                     z_is = true;
+                                    
 
                                     wordCreated = wordCreated.Replace("Z","");
                                     Debug.Log("Z deleted"+wordCreated);
@@ -470,7 +472,8 @@ public class PlayerControllerThree : MonoBehaviour
                                         }
                                         if(z_is == true)
                                             {
-                                                ScoreScript.PlayerScore += 1;
+                                        zHit++;
+                                        ScoreScript.PlayerScore += 1;
                                             }
                                     }
                                     else{
