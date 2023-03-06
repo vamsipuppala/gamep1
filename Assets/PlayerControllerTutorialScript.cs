@@ -181,9 +181,16 @@ public class PlayerControllerTutorialScript : MonoBehaviour
             //incorrect letter highlighted in gray
             Debug.Log("Inside IFFFF red----");
             popUps[10].SetActive(false);
-            popUps[18].SetActive(true);
+            popUps[19].SetActive(true);
+            //popUps[18].SetActive(true);
             popUpIndex++;   //popUpIndex=11
             Time.timeScale = 1;
+        }
+
+        else if(popUps[19].activeSelf == true && Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            popUps[19].SetActive(false);
+            popUps[18].SetActive(true);
         }
 
         else if(!isMatch && popUps[7].activeSelf == true && Input.GetKeyDown(KeyCode.LeftControl))
@@ -295,7 +302,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                         GameObject gameObject = hitInfo.collider.gameObject;
                         
                         Debug.Log("indexxxxxxxxxxxxx   " + GetIndexOfGameObject(gameObject, nestedList));
-                        numberOfHits = givenWord.Length;
+                        numberOfHits = givenWord.Length+1;
                         Debug.Log("now the numberOfHits is " + numberOfHits);
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
                         if (text.text[0] == 'Z' && i == 0)
