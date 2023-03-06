@@ -12,7 +12,7 @@ public class NextLevelFour : MonoBehaviour
     //private int nextSceneToLoad;
     private bool loadScene = false;
     [SerializeField] private TextMeshProUGUI targetScore;
-    public int thresholdScoree = 8;
+    public int thresholdScoree = 5;
     public SendToGoogle sc;
     public PlayerControllerFour pc;
 
@@ -42,7 +42,9 @@ public class NextLevelFour : MonoBehaviour
         if (ScoreScript.PlayerScore >= thresholdScoree && TimerFour.TimeValue > 0)
         {
             //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
-            sc.EndOfGame(PlayerControllerFour.timeTargetWordWasHit.ToString(), "4", PlayerControllerFour.numberOfDeselections.ToString(), "1");
+            sc.EndOfGame(PlayerControllerFour.timeTargetWordWasHit.ToString(), "4", PlayerControllerFour.numberOfDeselections.ToString(), "1",
+                PlayerControllerFour.numberOfTimesWordHitInOrder.ToString(), PlayerControllerFour.numberOfTimesWordHitInReverse.ToString());
+            sc.endGameWithZHitCount("4", PlayerControllerFour.zHit.ToString());
             loadScene = true;
             resetValues();
             SceneManager.LoadScene("LevelScenes/CompleteLevelFour");
@@ -50,8 +52,10 @@ public class NextLevelFour : MonoBehaviour
 
         if (ScoreScript.PlayerScore < thresholdScoree && TimerFour.TimeValue <= 0)
         {
-            sc.EndOfGame(PlayerControllerFour.timeTargetWordWasHit.ToString(), "4", PlayerControllerFour.numberOfDeselections.ToString(), "0");
+            sc.EndOfGame(PlayerControllerFour.timeTargetWordWasHit.ToString(), "4", PlayerControllerFour.numberOfDeselections.ToString(), "0",
+                PlayerControllerFour.numberOfTimesWordHitInOrder.ToString(), PlayerControllerFour.numberOfTimesWordHitInReverse.ToString());
             //game over screen
+            sc.endGameWithZHitCount("4", PlayerControllerFour.zHit.ToString());
             GameOver("noTimeLeft");
         }
     }
@@ -59,7 +63,7 @@ public class NextLevelFour : MonoBehaviour
     public void resetValues()
     {
         ScoreScript.PlayerScore = 0;
-        TimerFour.TimeValue = 90;
+        TimerFour.TimeValue = 330;
     }
 
     public void GameOver(string gameOverReason)
