@@ -532,8 +532,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Congratulations!\nYou have completed Level 3. \n\nThe next level will
-    include moving side beams. "
+  m_Text: "Congratulations! You have completed Level 3. \n\nKeep moving forward even
+    though the walls keep moving. Look out for moving side beams! "
 --- !u!222 &1660686031
 CanvasRenderer:
   m_ObjectHideFlags: 0

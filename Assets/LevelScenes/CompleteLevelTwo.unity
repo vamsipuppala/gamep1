@@ -532,8 +532,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Congratulations!\nYou have completed Level 2. \n\nThe next level will
-    include obstacles. "
+  m_Text: "Congratulations! You have completed Level 2. \n\nObstacles should not
+    stop you from reaching your goal. \nWatch out for hovering platforms!"
 --- !u!222 &1660686031
 CanvasRenderer:
   m_ObjectHideFlags: 0

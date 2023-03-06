@@ -532,8 +532,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Congratulations!\nYou have completed Level 1. \n\nThe next level will
-    include danger words. "
+  m_Text: "Congratulations! You have completed Level 1. \n\nIts a dangerous business.
+    Beware of dangerous words ahead."
 --- !u!222 &1660686031
 CanvasRenderer:
   m_ObjectHideFlags: 0
