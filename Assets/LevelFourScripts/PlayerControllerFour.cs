@@ -41,6 +41,8 @@ public class PlayerControllerFour : MonoBehaviour
     public GameObject c;
     public static int timeTargetWordWasHit = 0;
     public static int numberOfDeselections = 0;
+    public static int numberOfTimesWordHitInOrder = 0;
+    public static int numberOfTimesWordHitInReverse = 0;
 
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -407,8 +409,16 @@ public class PlayerControllerFour : MonoBehaviour
                                         //IF WORD IS SPELLED IN ORDER - REWARD THE PLAYER
                                         if (bs.words[j][0].Equals(wordCreated) || Reverse(bs.words[j][0]).Equals(wordCreated))
                                         {
-                                            //Debug.Log("HELLO JI LEVEL 2 - destroying 2 rows");
-                                            ScoreScript.PlayerScore += 2;
+                                        if (bs.words[j][0].Equals(wordCreated))
+                                        {
+                                            numberOfTimesWordHitInOrder++;
+                                        }
+                                        if (Reverse(bs.words[j][0]).Equals(wordCreated))
+                                        {
+                                            numberOfTimesWordHitInReverse++;
+                                        }
+                                        //Debug.Log("HELLO JI LEVEL 2 - destroying 2 rows");
+                                        ScoreScript.PlayerScore += 2;
                                             for (int d = 0; d < 2; d++)
                                             {
                                                 if (d < nestedList.Count)

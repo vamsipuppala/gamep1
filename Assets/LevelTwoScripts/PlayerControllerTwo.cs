@@ -45,6 +45,8 @@ public class PlayerControllerTwo : MonoBehaviour
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     public NextLevelTwo nextLevelScript;
+    public static int numberOfTimesWordHitInOrder = 0;
+    public static int numberOfTimesWordHitInReverse=0;
 
 
 
@@ -260,14 +262,26 @@ public class PlayerControllerTwo : MonoBehaviour
                                 }
                                     if ((wordCreated.Length == bs.words[j][0].Length) && findMatch(wordCreated, bs.words[j][0]))
                                     {
+                                    if (bs.words[j][0].Equals(wordCreated))
+                                    {
+                                        numberOfTimesWordHitInOrder++;
+                                    }
+                                    if (Reverse(bs.words[j][0]).Equals(wordCreated))
+                                    {
+                                        numberOfTimesWordHitInReverse++;
+                                    }
 
                                         //IF WORD IS SPELLED IN ORDER - REWARD THE PLAYER
                                         
                                         if (bs.words[j][0].Equals(wordCreated) || Reverse(bs.words[j][0]).Equals(wordCreated))
                                         {
                                             //Debug.Log("HELLO JI LEVEL 2 - destroying 2 rows");
+<<<<<<< HEAD
                                             ScoreScript.PlayerScore += 2;
                                             
+=======
+                                            ScoreScript.PlayerScore += 2;                                            
+>>>>>>> dbdd6f51e60392edcf3429f21b6cfb14a69d80b9
                                             for (int d = 0; d < 2; d++)
                                             {
                                                 if (d < nestedList.Count)
