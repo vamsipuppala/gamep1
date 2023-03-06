@@ -2883,7 +2883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.98, y: -3.81}
+  m_AnchoredPosition: {x: 13.46, y: -7.52}
   m_SizeDelta: {x: 22.1678, y: 12.8031}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!102 &1261188312
@@ -2894,7 +2894,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261188310}
-  m_Text: Shoot letter block I.
+  m_Text: "Hit letter Z with \nreflection to get REWARD"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -3851,7 +3851,9 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608233396}
-  m_Text: "Shoot Letters in sequence, reverse \nor any order to form target word."
+  m_Text: 'Shoot Letters in sequence or
+
+    reverse order to get REWARD.'
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
