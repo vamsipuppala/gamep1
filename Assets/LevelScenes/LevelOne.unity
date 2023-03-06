@@ -890,38 +890,6 @@ MonoBehaviour:
   - I
   - H
   - L
-  words:
-  - BIN
-  - BRO
-  - MAT
-  - FIND
-  - MAD
-  - TEXT
-  - DOLL
-  - DAZE
-  - MAP
-  - TENT
-  - BLUE
-  - PINK
-  - RED
-  - FIX
-  - BALL
-  dangerWordss:
-  - SIN
-  - FRO
-  - RAT
-  - MIND
-  - DAD
-  - NEXT
-  - TOLL
-  - MAZE
-  - PAP
-  - RENT
-  - GLUE
-  - SINK
-  - BED
-  - SIX
-  - MALL
 --- !u!4 &584138346
 Transform:
   m_ObjectHideFlags: 0
@@ -1121,12 +1089,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1761,6 +1729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   URL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdyYdSvN-HeRb5ttFGYgcLfLDRVM8z6Cj6LPCo2-GFbwSpN_w/formResponse
+  _zHitCount: 
 --- !u!114 &1689211029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1859,6 +1828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   URL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdyYdSvN-HeRb5ttFGYgcLfLDRVM8z6Cj6LPCo2-GFbwSpN_w/formResponse
+  _zHitCount: 
 --- !u!114 &1702891011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2768,3 +2738,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   URL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdyYdSvN-HeRb5ttFGYgcLfLDRVM8z6Cj6LPCo2-GFbwSpN_w/formResponse
+  _zHitCount: 
