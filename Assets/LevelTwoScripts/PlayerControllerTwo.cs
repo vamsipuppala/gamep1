@@ -186,6 +186,10 @@ public class PlayerControllerTwo : MonoBehaviour
                                     }
                                   
                                     wordCreated =  Reverse(reverse);
+                                    if(text.text[0]=='Z')
+                                    {
+                                        z_is=false;
+                                    }
                                                                                                       
 
                                 
@@ -201,7 +205,7 @@ public class PlayerControllerTwo : MonoBehaviour
                             else
                             {
 
-                                if (localHits > numberOfHits && !(z_is==true && localHits-1<=numberOfHits))
+                                if (localHits > numberOfHits && !(z_is==true && localHits-1<=numberOfHits) && text.text[0]!='Z') 
                                 {
                                    // Debug.Log("no shooting");
                                 }
@@ -276,12 +280,8 @@ public class PlayerControllerTwo : MonoBehaviour
                                         if (bs.words[j][0].Equals(wordCreated) || Reverse(bs.words[j][0]).Equals(wordCreated))
                                         {
                                             //Debug.Log("HELLO JI LEVEL 2 - destroying 2 rows");
-<<<<<<< HEAD
                                             ScoreScript.PlayerScore += 2;
                                             
-=======
-                                            ScoreScript.PlayerScore += 2;                                            
->>>>>>> dbdd6f51e60392edcf3429f21b6cfb14a69d80b9
                                             for (int d = 0; d < 2; d++)
                                             {
                                                 if (d < nestedList.Count)

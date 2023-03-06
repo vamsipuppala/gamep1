@@ -344,7 +344,7 @@ public class PlayerControllerFour : MonoBehaviour
                             else
                             {
 
-                                if (localHits > numberOfHits && !(z_is==true && localHits-1<=numberOfHits))
+                                if (localHits > numberOfHits && !(z_is==true && localHits-1<=numberOfHits)&& text.text[0]!='Z')
                                 {
                                    // Debug.Log("no shooting");
                                 }
