@@ -13,21 +13,22 @@ public class LoadingBarThree : MonoBehaviour
     void Start()
     {
         animateBar();
-        StartCoroutine(ChangeAfter5SecondsCoroutine());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        //StartCoroutine(ChangeAfter5SecondsCoroutine());
+        Invoke(nameof(startNextLevel), 10);
     }
 
     public void animateBar()
     {
-
-        LeanTween.scaleX(bar, 1, time);
+        LeanTween.scaleX(bar, 1, time * 2);
     }
 
+    public void startNextLevel()
+    {
+        SceneManager.LoadScene("LevelScenes/LevelFour");
+    }
+
+    
+    /*
     IEnumerator ChangeAfter5SecondsCoroutine()
     {
         //Print the time of when the function is first called.
@@ -43,4 +44,5 @@ public class LoadingBarThree : MonoBehaviour
         Debug.Log("ENTERING LEVEL 4");
         SceneManager.LoadScene("LevelScenes/LevelFour");
     }
+    */
 }
