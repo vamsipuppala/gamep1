@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bar: {fileID: 592548207}
-  time: 5
+  time: 2
 --- !u!1 &1046250117
 GameObject:
   m_ObjectHideFlags: 0

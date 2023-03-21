@@ -14,7 +14,7 @@ public class LoadingBarThree : MonoBehaviour
     {
         animateBar();
         //StartCoroutine(ChangeAfter5SecondsCoroutine());
-        Invoke(nameof(startNextLevel), 10);
+        Invoke(nameof(startNextLevel), 5);
     }
 
     public void animateBar()

@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bar: {fileID: 592548207}
-  time: 5
+  time: 2
 --- !u!114 &592548210
 MonoBehaviour:
   m_ObjectHideFlags: 0
