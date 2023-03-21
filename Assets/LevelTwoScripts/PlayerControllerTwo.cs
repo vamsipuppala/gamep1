@@ -28,6 +28,7 @@ public class PlayerControllerTwo : MonoBehaviour
     //public float move;
     int numberOfHits;
     int localHits = 1;
+    bool z_is = false;
     [SerializeField]  private TextMeshProUGUI  goodword;
     [SerializeField]  public TextMeshProUGUI dangerWord;
     public string dummy;
@@ -44,6 +45,9 @@ public class PlayerControllerTwo : MonoBehaviour
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     public NextLevelTwo nextLevelScript;
+    public static int numberOfTimesWordHitInOrder = 0;
+    public static int numberOfTimesWordHitInReverse=0;
+    public static int zHit = 0;
 
 
 
@@ -79,8 +83,13 @@ public class PlayerControllerTwo : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 8f);
         }
-        goodword.text = "Target:  " + bs.words[ind];
-        dangerWord.text = "Danger:  " + bs.dangerWordss[ind];
+        goodword.text = "Target:  \n" + bs.words[ind][0];
+        dangerWord.text = "Danger:  \n";
+        
+        for(int i=0;i<bs.dangerWordss[ind].Length;i++)
+        {
+           dangerWord.text += bs.dangerWordss[ind][i]+"\n";
+        }
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         //Vector2 direction = new Vector2(
@@ -120,8 +129,8 @@ public class PlayerControllerTwo : MonoBehaviour
             Vector2 mirrorHitNormal = Vector2.zero;
 
             move = Input.GetAxisRaw("Horizontal");
-            String givenWord = bs.words[j];
-            string givenDangerWord = bs.dangerWordss[j];
+            String givenWord = bs.words[j][0];
+            string[] givenDangerWord = bs.dangerWordss[j];
             
 
             // rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
@@ -132,6 +141,7 @@ public class PlayerControllerTwo : MonoBehaviour
 
                 if (hitInfo.collider != null)
                 {
+                    
                     if (hitInfo.collider.name.Contains("LetterSquare"))
                     {
                         //Debug.Log("GIVEN WORD: " + givenWord);
@@ -142,24 +152,52 @@ public class PlayerControllerTwo : MonoBehaviour
                         numberOfHits = givenWord.Length;
                        // Debug.Log("now the numberOfHits is " + numberOfHits);
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
-                        if(j==GetIndexOfGameObject(gameObject, nestedList))
+                        if(text.text[0]=='Z' && i==0)
+                        {
+                            
+                        }
+                        else if(j==GetIndexOfGameObject(gameObject, nestedList))
                         {
 
-                            if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
+                            if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green
+                                || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
                             {
                                 localHits--;
                                 numberOfTimeDeselectionsOccurred++;
-                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.green)
-                                {
-                                                                     
-                                    wordCreated = wordCreated.Replace(text.text.ToString(), "");
-                                                          
+                                int n = wordCreated.Length;
+                                    string reverse = "";
+                                    int k1=0;
+                                    for( k1=n-1;k1>=0;k1--)
+                                    {
+                                        if(wordCreated[k1]!=text.text[0])
+                                        {
+                                            reverse += wordCreated[k1];
+                                        }
+                                        else{
+                                            k1--;
+                                            break;
+                                        }
+                                    }
+                                    for(int k2=k1;k2>=0;k2--)
+                                    {
+                                        
+                                            reverse += wordCreated[k2];
+                                    
+                                       
+                                    }
+                                  
+                                    wordCreated =  Reverse(reverse);
+                                    if(text.text[0]=='Z')
+                                    {
+                                        z_is=false;
+                                    }
+                                                                                                      
 
-                                }
-                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.red)
-                                {
-                                    dangerWordCreated = dangerWordCreated.Replace(text.text.ToString(), "");
-                                }
+                                
+                                // if (gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
+                                // {
+                                //     dangerWordCreated = dangerWordCreated.Replace(text.text.ToString(), "");
+                                // }
 
                                 gameObject.GetComponent<SpriteRenderer>().color = Color.white;
                                 
@@ -168,27 +206,37 @@ public class PlayerControllerTwo : MonoBehaviour
                             else
                             {
 
-                                if (localHits > numberOfHits)
+                                if (localHits > numberOfHits && !(z_is==true && localHits-1<=numberOfHits) && text.text[0]!='Z') 
                                 {
                                    // Debug.Log("no shooting");
                                 }
                                 else
                                 {
                                     localHits++;
-                                    if (givenDangerWord.Contains(text.text.ToString()))
+                                    int fla =0;
+                                    for( int z1=0 ; z1<givenDangerWord.Length;z1++){
+                                    
+                                    if (givenDangerWord[z1].Contains(text.text.ToString()))
                                     {
                                         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-                                        dangerWordCreated += text.text;
+                                        // dangerWordCreated += text.text;
+                                        fla++;
+                                        break;
                                         //Debug.Log("the danger word created till now is" + dangerWordCreated);
                                     }
+                                    }
                                     
-                                        if (!givenWord.Contains(text.text.ToString()) && !givenDangerWord.Contains(text.text.ToString()))
+                                        if (!givenWord.Contains(text.text.ToString()) && fla==0)
                                             gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+                                        
                                         else if (givenWord.Contains(text.text.ToString()))
                                         {
+                                            if(fla>0)
+                                            gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+                                            else
                                             gameObject.GetComponent<SpriteRenderer>().color = Color.green;
                                             //givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
-                                        wordCreated += text.text;
+                                        
                                        /* if (wordCreated.Length != bs.words[j].Length && goodword.text.IndexOf(wordCreated)!=-1)
                                         {
                                             Debug.Log("word createeeeeeddddddd" + wordCreated);
@@ -202,27 +250,39 @@ public class PlayerControllerTwo : MonoBehaviour
                                       
                                         //Debug.Log("GIVEN WORD: " + givenWord);
                                     }
+                                    wordCreated += text.text;
                                    
+                                }
+                                
+                                bool dest = false;
+                                if(wordCreated.Contains('Z'))
+                                {
+                                    z_is = true;
                                    
-                                    if(dangerWordCreated.Length == bs.dangerWordss[j].Length)
+                                    wordCreated = wordCreated.Replace("Z","");
+                                    Debug.Log("Z deleted"+wordCreated);
+                                }
+                                else{
+                                    z_is=false;
+                                }
+                                    if ((wordCreated.Length == bs.words[j][0].Length) && findMatch(wordCreated, bs.words[j][0]))
                                     {
-                                        
-                                        if(findMatch(dangerWordCreated, bs.dangerWordss[j]))
-                                        {
-                                            
-                                            ScoreScript.PlayerScore -= 1;
-
-                                        }
+                                    if (bs.words[j][0].Equals(wordCreated))
+                                    {
+                                        numberOfTimesWordHitInOrder++;
+                                    }
+                                    if (Reverse(bs.words[j][0]).Equals(wordCreated))
+                                    {
+                                        numberOfTimesWordHitInReverse++;
                                     }
 
-                                    if (wordCreated.Length == bs.words[j].Length)
-                                    {
-
                                         //IF WORD IS SPELLED IN ORDER - REWARD THE PLAYER
-                                        if (bs.words[j].Equals(wordCreated))
+                                        
+                                        if (bs.words[j][0].Equals(wordCreated) || Reverse(bs.words[j][0]).Equals(wordCreated))
                                         {
-                                            Debug.Log("HELLO JI LEVEL 2 - destroying 2 rows");
+                                            //Debug.Log("HELLO JI LEVEL 2 - destroying 2 rows");
                                             ScoreScript.PlayerScore += 2;
+                                            
                                             for (int d = 0; d < 2; d++)
                                             {
                                                 if (d < nestedList.Count)
@@ -238,11 +298,12 @@ public class PlayerControllerTwo : MonoBehaviour
                                                     localHits = 1;
                                                 }
                                             }
+                                            dest=true;
 
                                         }
 
                                         // Debug.Log("the word is       " + wordCreated);
-                                        else if (findMatch(wordCreated, bs.words[j]))
+                                        else 
                                         {
                                             //Debug.Log(bs);
                                             GameObject[] gs = bs.nestedList[j];
@@ -251,6 +312,7 @@ public class PlayerControllerTwo : MonoBehaviour
                                             {
                                                 Destroy(gs[k]);
                                             }
+                                            dest=true;
                                             wordCreated = "";
                                             timeTargetWordWasHit += 1;
                                             dangerWordCreated = "";                                            
@@ -258,10 +320,35 @@ public class PlayerControllerTwo : MonoBehaviour
                                             ind++;
                                             localHits = 1;
                                         }
+                                        if(z_is == true)
+                                            {
+                                        zHit++;
+                                                ScoreScript.PlayerScore += 1;
+                                            }
                                     }
-                                }
+                                    else{
+                                            for (int z1=0; z1< bs.dangerWordss[j].Length; z1++)
+                                            {
+                                                
+                                                if(wordCreated.Length == bs.dangerWordss[j][z1].Length)
+                                                {
+                                                    
+                                                    if(findMatch(wordCreated, bs.dangerWordss[j][z1]))
+                                                    {
+                                                        
+                                                        ScoreScript.PlayerScore -= 1;
+                                                        Debug.Log(ScoreScript.PlayerScore);
+
+                                                    }
+                                                }
+                                            }
+                                    }
+                                    if(!dest && z_is)
+                                    wordCreated += "Z";
+                                
 
                             }
+                            Debug.Log(wordCreated);
                         }
                        
 
@@ -351,6 +438,12 @@ public class PlayerControllerTwo : MonoBehaviour
     {
         return Physics2D.OverlapCircle(transform.position, 1f, groundLayer);
 
+    }
+    public static string Reverse( string s )
+    {
+        char[] charArray = s.ToCharArray();
+        Array.Reverse(charArray);
+        return new string(charArray);
     }
 
     // private void OnCollisionEnter2D(Collision2D collision)

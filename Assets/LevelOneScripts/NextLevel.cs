@@ -12,7 +12,7 @@ public class NextLevel : MonoBehaviour
     //private int nextSceneToLoad;
     private bool loadScene = false;
     [SerializeField] private TextMeshProUGUI targetScore;
-    public int thresholdScoree = 5;
+    public int thresholdScoree = 2;
     public SendToGoogle sc;
     public PlayerControllerOne pc;
 
@@ -42,7 +42,8 @@ public class NextLevel : MonoBehaviour
         if (ScoreScript.PlayerScore >= thresholdScoree && TimerOne.TimeValue > 0)
         {
             //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
-            sc.EndOfGame(PlayerController.timeTargetWordWasHit.ToString(), "1", PlayerController.numberOfTimeDeselectionsOccurred.ToString() , "1");
+            sc.EndOfGame(PlayerControllerOne.timeTargetWordWasHit.ToString(), "1", PlayerControllerOne.numberOfTimeDeselectionsOccurred.ToString() , "1",
+                 PlayerControllerOne.numberOfTimesWordHitInOrder.ToString(), PlayerControllerOne.numberOfTimesWordHitInReverse.ToString());
             loadScene = true;
             resetValues();
             SceneManager.LoadScene("LevelScenes/CompleteLevelOne");
@@ -50,7 +51,8 @@ public class NextLevel : MonoBehaviour
 
         if (ScoreScript.PlayerScore < thresholdScoree && TimerOne.TimeValue <= 0)
         {
-            sc.EndOfGame(PlayerController.timeTargetWordWasHit.ToString(), "1", PlayerController.numberOfTimeDeselectionsOccurred.ToString(), "0");
+            sc.EndOfGame(PlayerControllerOne.timeTargetWordWasHit.ToString(), "1", PlayerControllerOne.numberOfTimeDeselectionsOccurred.ToString(), "1",
+                PlayerControllerOne.numberOfTimesWordHitInOrder.ToString(), PlayerControllerOne.numberOfTimesWordHitInReverse.ToString());
             //game over screen
             GameOver("noTime");
         }
@@ -59,7 +61,7 @@ public class NextLevel : MonoBehaviour
     public void resetValues()
     {
         ScoreScript.PlayerScore = 0;
-        TimerOne.TimeValue = 120;
+        TimerOne.TimeValue = 150;
     }
 
     public void GameOver(string gameOverReason)

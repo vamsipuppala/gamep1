@@ -12,7 +12,7 @@ public class NextLevelThree : MonoBehaviour
     //private int nextSceneToLoad;
     private bool loadScene = false;
     [SerializeField] private TextMeshProUGUI targetScore;
-    public int thresholdScoree = 7;
+    public int thresholdScoree = 4;
     public SendToGoogle sc;
     public PlayerControllerThree pc;
 
@@ -42,7 +42,9 @@ public class NextLevelThree : MonoBehaviour
         if (ScoreScript.PlayerScore >= thresholdScoree && TimerThree.TimeValue > 0)
         {
             //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
-            sc.EndOfGame(PlayerControllerThree.timeTargetWordWasHit.ToString(), "3", PlayerControllerThree.numberOfDeselections.ToString(), "1");
+            sc.EndOfGame(PlayerControllerThree.timeTargetWordWasHit.ToString(), "3", PlayerControllerThree.numberOfDeselections.ToString(), "1", PlayerControllerThree.numberOfTimesWordHitInOrder.ToString(),
+                PlayerControllerThree.numberOfTimesWordHitInReverse.ToString());
+            sc.endGameWithZHitCount("3", PlayerControllerThree.zHit.ToString());
             loadScene = true;
             resetValues();
             SceneManager.LoadScene("LevelScenes/CompleteLevelThree");
@@ -50,8 +52,10 @@ public class NextLevelThree : MonoBehaviour
 
         if (ScoreScript.PlayerScore < thresholdScoree && TimerThree.TimeValue <= 0)
         {
-            sc.EndOfGame(PlayerControllerThree.timeTargetWordWasHit.ToString(), "3", PlayerControllerThree.numberOfDeselections.ToString(), "0");
+            sc.EndOfGame(PlayerControllerThree.timeTargetWordWasHit.ToString(), "3", PlayerControllerThree.numberOfDeselections.ToString(), "0",
+                PlayerControllerThree.numberOfTimesWordHitInOrder.ToString(),PlayerControllerThree.numberOfTimesWordHitInReverse.ToString());
             //game over screen
+            sc.endGameWithZHitCount("3", PlayerControllerThree.zHit.ToString());
             GameOver("noTimeLeft");
         }
     }
@@ -59,7 +63,7 @@ public class NextLevelThree : MonoBehaviour
     public void resetValues()
     {
         ScoreScript.PlayerScore = 0;
-        TimerThree.TimeValue = 90;
+        TimerThree.TimeValue = 330;
     }
 
     public void GameOver(string gameOverReason)

@@ -71,8 +71,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 8f);
         }
-        goodword.text = "Target:  " + bs.words[ind];
-        dangerWord.text = "Danger:  " + bs.dangerWordss[ind];
+        goodword.text = "Target:  " + bs.words[ind][0];
+        dangerWord.text = "Danger:  " + bs.dangerWordss[ind][0];
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         //Vector2 direction = new Vector2(
@@ -112,8 +112,8 @@ public class PlayerController : MonoBehaviour
             Vector2 mirrorHitNormal = Vector2.zero;
 
             move = Input.GetAxisRaw("Horizontal");
-            String givenWord = bs.words[j];
-            string givenDangerWord = bs.dangerWordss[j];
+            String givenWord = bs.words[j][0];
+            string givenDangerWord = bs.dangerWordss[j][0];
             
 
             // rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
@@ -196,10 +196,10 @@ public class PlayerController : MonoBehaviour
                                     }
                                    
                                    
-                                    if(dangerWordCreated.Length == bs.dangerWordss[j].Length)
+                                    if(dangerWordCreated.Length == bs.dangerWordss[j][0].Length)
                                     {
                                         
-                                        if(findMatch(dangerWordCreated, bs.dangerWordss[j]))
+                                        if(findMatch(dangerWordCreated, bs.dangerWordss[j][0]))
                                         {
                                             //Debug.Log("dangerrrrrr");                                            
                                             ScoreScript.PlayerScore -= 1;
@@ -207,11 +207,11 @@ public class PlayerController : MonoBehaviour
                                         }
                                     }
 
-                                    if (wordCreated.Length == bs.words[j].Length)
+                                    if (wordCreated.Length == bs.words[j][0].Length)
                                     {
 
                                        // Debug.Log("the word is       " + wordCreated);
-                                        if (findMatch(wordCreated, bs.words[j]))
+                                        if (findMatch(wordCreated, bs.words[j][0]))
                                         {
                                             //Debug.Log(bs);
                                             GameObject[] gs = bs.nestedList[j];

@@ -47,6 +47,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
 
     int popUpIndex = 0;
     private bool isMatch = true;
+    private bool z_is = false;
     //, isLetterX = false, isLetterB = false, isLetterS = false;
     void Start()
     {
@@ -180,9 +181,16 @@ public class PlayerControllerTutorialScript : MonoBehaviour
             //incorrect letter highlighted in gray
             Debug.Log("Inside IFFFF red----");
             popUps[10].SetActive(false);
-            popUps[18].SetActive(true);
+            popUps[19].SetActive(true);
+            //popUps[18].SetActive(true);
             popUpIndex++;   //popUpIndex=11
             Time.timeScale = 1;
+        }
+
+        else if(popUps[19].activeSelf == true && Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            popUps[19].SetActive(false);
+            popUps[18].SetActive(true);
         }
 
         else if(!isMatch && popUps[7].activeSelf == true && Input.GetKeyDown(KeyCode.LeftControl))
@@ -195,26 +203,28 @@ public class PlayerControllerTutorialScript : MonoBehaviour
         else if(popUps[9].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
         {
             popUps[9].SetActive(false);
-            popUps[11].SetActive(true);
+            popUps[17].SetActive(true);
+            //  popUps[11].SetActive(true);
         }
 
-        else if (popUps[11].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
+        /*else if (popUps[11].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
         {
             popUps[11].SetActive(false);
             popUps[17].SetActive(true);
-        }
+        }*/
 
         else if (popUps[17].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
         {
             popUps[17].SetActive(false);
-            popUps[12].SetActive(true);
+            popUps[16].SetActive(true);
+            //popUps[12].SetActive(true);
         }
 
-        else if (popUps[12].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
+        /*else if (popUps[12].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
         {
             popUps[12].SetActive(false);
             popUps[16].SetActive(true);
-        }
+        }*/
 
         else if(popUps[16].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
         {
@@ -222,6 +232,18 @@ public class PlayerControllerTutorialScript : MonoBehaviour
            // nextLevelScript.resetValues();
             SceneManager.LoadScene("LevelOne");
         }
+        else if (popUps[18].activeSelf == true && Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            popUps[18].SetActive(false);
+            Time.timeScale = 1;
+        }
+        else if (popUps[20].activeSelf == true && Input.GetKeyDown(KeyCode.Return))
+        {
+            popUps[20].SetActive(false);
+            Time.timeScale = 1;
+        }
+
+
 
 
         /*
@@ -280,23 +302,27 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                         GameObject gameObject = hitInfo.collider.gameObject;
                         
                         Debug.Log("indexxxxxxxxxxxxx   " + GetIndexOfGameObject(gameObject, nestedList));
-                        numberOfHits = givenWord.Length;
+                        numberOfHits = givenWord.Length+1;
                         Debug.Log("now the numberOfHits is " + numberOfHits);
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
-                        if(j==GetIndexOfGameObject(gameObject, nestedList))
+                        if (text.text[0] == 'Z' && i == 0)
+                        {
+                            Debug.Log("Z without reflection");
+                        }
+                        else if (j == GetIndexOfGameObject(gameObject, nestedList))
                         {
 
-                            if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
+                            if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                             {
                                 localHits--;
-                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.green)
+                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.green || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
                                 {
                                                                      
                                     wordCreated = wordCreated.Replace(text.text.ToString(), "");
                                                           
 
                                 }
-                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.red)
+                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
                                 {
                                     dangerWordCreated = dangerWordCreated.Replace(text.text.ToString(), "");
                                 }
@@ -315,7 +341,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                             else
                             {
 
-                                if (localHits > numberOfHits)
+                                if (localHits > numberOfHits && !(z_is == true && localHits - 1 <= numberOfHits) && text.text[0] != 'Z')
                                 {
                                     Debug.Log("no shooting");
                                     //Time.timeScale = 0;
@@ -325,7 +351,12 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                                 else
                                 {
                                     localHits++;
-                                    if (givenDangerWord.Contains(text.text.ToString()))
+                                    if(text.text[0] == 'Z')
+                                    {
+                                        //Z is hit thru reflection
+                                        Debug.Log("Z is hit thru reflection");
+                                    }
+                                    if (givenDangerWord.Contains(text.text.ToString()) && !givenWord.Contains(text.text.ToString()))
                                     {
                                         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                                         if (popUpIndex == 9 && "S".Equals(text.text.ToString()))
@@ -333,7 +364,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                                             popUps[10].SetActive(true);
                                             popUpIndex++;
                                             Time.timeScale = 0;
-                                            Debug.Log("TIme scale 0 popupindex 9");
+                                            Debug.Log("Time scale 0 popupindex 9");
                                          }
                                         dangerWordCreated += text.text;
                                         Debug.Log("the danger word created till now is" + dangerWordCreated);
@@ -349,7 +380,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                                             Debug.Log("TIme scale 0 popupindex 6");
                                         }
                                     }
-                                    else if (givenWord.Contains(text.text.ToString()))
+                                    else if (givenWord.Contains(text.text.ToString()) && !givenDangerWord.Contains(text.text.ToString()))
                                     {
                                         gameObject.GetComponent<SpriteRenderer>().color = Color.green;
 
@@ -368,6 +399,25 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                                         wordCreated += text.text;
 
                                     }
+                                    else if(givenWord.Contains(text.text.ToString()) && givenDangerWord.Contains(text.text.ToString()))
+                                    {
+                                        gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+                                        if ("I".Equals(text.text.ToString()))
+                                        {
+                                            popUps[20].SetActive(true);
+                                            popUpIndex++;
+                                            Time.timeScale = 0;
+                                            Debug.Log("Time scale 0 popupindex 9");
+                                        }
+                                        else if (popUps[18].activeSelf == true)
+                                        {
+                                            popUps[18].SetActive(false);
+                                        }
+                                        wordCreated += text.text;
+                                        //show popup - if letter common to both target & danger word - highlight in yellow text
+                                    }
+
+                                    Debug.Log("GIVEN WORD: "+ wordCreated);
                                    
                                    
                                     if(dangerWordCreated.Length == bs.dangerWordss[j].Length)
