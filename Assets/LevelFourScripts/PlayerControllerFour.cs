@@ -55,6 +55,12 @@ public class PlayerControllerFour : MonoBehaviour
     public MovementMirrorLevel4 mvmtScript;
     public MovementMirrorLevel4 mvmtScript1;
 
+    //mmodification
+   //record the frequency for each letter in target word
+   Dictionary<char,int> targetLetterFrequency;
+   //record the frequency for each colored letter in target word
+   Dictionary<char,int> targetColoredLetterFrequency;
+
 
     int ind=0;
     void Start()
@@ -75,6 +81,11 @@ public class PlayerControllerFour : MonoBehaviour
         //final = "Aim: " + bs.words[ind];
         nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<NextLevelFour>();
         nextLevelScript.resetValues();
+
+        //mmodification
+         goodword.text = string.Join("", bs.words[ind]);
+        targetLetterFrequency = InitiateLetterFrequency(goodword.text);
+        targetColoredLetterFrequency = InitiateLetterFrequencyToZero(goodword.text);
     }
 
     // Update is called once per frame
@@ -137,7 +148,8 @@ public class PlayerControllerFour : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 8f);
         }
-        goodword.text = "Target:  \n" + bs.words[ind][0];
+        //mmodification
+        goodword.text = "Target:  \n"+UpdateTargetWordColor(string.Join("", bs.words[ind]));
         dangerWord.text = "Danger:  \n";
         
         for(int i=0;i<bs.dangerWordss[ind].Length;i++)
@@ -379,7 +391,16 @@ public class PlayerControllerFour : MonoBehaviour
                                     wordCreated =  Reverse(reverse);
                                                                                                       
 
-                                
+                                //mmodification
+                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.green || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
+                                {
+                                    Debug.Log("diselect!!");
+                                    if (givenWord.Contains(text.text.ToString())){
+                                        ChangeFrequency(givenWord,char.Parse(text.text),targetColoredLetterFrequency,-1);
+                                    }
+
+                                }
+
                                 // if (gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
                                 // {
                                 //     dangerWordCreated = dangerWordCreated.Replace(text.text.ToString(), "");
@@ -417,6 +438,9 @@ public class PlayerControllerFour : MonoBehaviour
                                         
                                         else if (givenWord.Contains(text.text.ToString()))
                                         {
+                                            //mmodification
+                                            ChangeFrequency(givenWord,char.Parse(text.text),targetColoredLetterFrequency,1);
+
                                             if(fla>0)
                                             gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
                                             else
@@ -481,11 +505,15 @@ public class PlayerControllerFour : MonoBehaviour
                                                     ind++;
                                                     localHits = 1;
                                                      mvmtScript.move = false;
-                                            mvmtScript1.move = false;
-                                            Debug.Log("mirror length: " + GameObject.FindGameObjectsWithTag("Mirror").Length);
-                                            platformGameObj[0].transform.position = mvmtScript.originalPos;
-                                            platformGameObj[1].transform.position = mvmtScript1.originalPos;
-                                            StartCoroutine(EnablePlatformMvmt(15.0F));
+                                                    mvmtScript1.move = false;
+                                                    Debug.Log("mirror length: " + GameObject.FindGameObjectsWithTag("Mirror").Length);
+                                                    platformGameObj[0].transform.position = mvmtScript.originalPos;
+                                                    platformGameObj[1].transform.position = mvmtScript1.originalPos;
+                                                    StartCoroutine(EnablePlatformMvmt(15.0F));
+
+                                                    //mmodification
+                                                    targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
+                                                    targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
                                                 }
                                             }
                                             dest=true;
@@ -509,6 +537,10 @@ public class PlayerControllerFour : MonoBehaviour
                                             j++;
                                             ind++;
                                             localHits = 1;
+
+                                            //mmodification
+                                            targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
+                                            targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
                                         }
                                           if(z_is == true)
                                     {
@@ -649,4 +681,85 @@ public class PlayerControllerFour : MonoBehaviour
         Array.Reverse(charArray);
         return new string(charArray);
     }
+
+            /*receive a word and return a map. The keys are letters in word
+   the value is frequency of letter
+*/
+public Dictionary<char,int> InitiateLetterFrequency(String word) {
+   Dictionary<char,int> map = new Dictionary<char,int>();
+   int n = word.Length;
+
+
+   for (int i = 0; i < n; i++) {
+       char key = word[i];
+       if(map.ContainsKey(key)){
+           map[key]++;
+       }else{
+           map.Add(key,1);
+       }
+   }
+   return map;
+}
+
+
+/*receive a word and return a map. The keys are letters in word
+   The value is set to 0 which represents 0 colored frequency
+*/
+public Dictionary<char,int> InitiateLetterFrequencyToZero(String word) {
+   Dictionary<char,int> map = new Dictionary<char,int>();
+   int n = word.Length;
+   for (int i = 0; i < n; i++) {
+       char key = word[i];
+       if(map.ContainsKey(key)){
+            continue;
+       }
+       map.Add(key,0);
+   }
+   return map;
+}
+
+
+/* change the frequency of a given letter in the map by delta
+*/
+public void ChangeFrequency(string word, char letter, Dictionary<char,int> map, int delta) {
+   int n = word.Length;
+
+
+   for (int i = 0; i < n; i++) {
+       if (word[i] == letter) {
+           map[letter] += delta;
+           break;
+       }
+   }
+}
+
+
+    /* use rich text to color letters. For each letter in the given word, take the minimum of the frequency from two maps as colored times.
+    The times of each letter to be colored cannot exceed its frequency of two map which means cannot exceed the frequency in given word
+    and the frequency of colored blocks which include the same letter.
+    */
+    public string UpdateTargetWordColor(string word) {
+        int n = word.Length;
+        string res = "";
+
+        Dictionary<char,int> colorLeftCounter = new Dictionary<char,int>();
+        foreach(var item in targetColoredLetterFrequency){
+            colorLeftCounter[item.Key] = item.Value;
+        }
+        for (int i = 0; i < n; i++){
+            char key = word[i];
+            int x = Math.Min(colorLeftCounter[key],targetLetterFrequency[key]);
+
+            if(colorLeftCounter[key] > 0){
+                colorLeftCounter[key]--;
+                res += "<color=green>" + key + "</color>";
+            }
+
+            if(x == 0){
+                res += key;
+            }
+        }
+        return res;
+    }
+
 }
