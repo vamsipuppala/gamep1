@@ -18,7 +18,7 @@ public class BlockSpawnerTutorialScript : MonoBehaviour
 
     public float fallSpeed = 1.0f;
    
-    public float speed = 1.0f;
+    public float speed = 0.5f;
 
     public GameObject[] blocks; // this is one row of blocks 
     public List<GameObject[]> nestedList = new List<GameObject[]>(); // this is the entire set of rows 
@@ -71,6 +71,9 @@ public class BlockSpawnerTutorialScript : MonoBehaviour
                 GameObject block = Instantiate(blockPrefab, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
                 // block.transform.position = new Vector3(transform.position.x + (i * width) + (i * offset), posy, 0);
                 block.transform.position = new Vector3(transform.position.x + (i * width * blockScale) + (i * offset * blockScale), posy, 0);
+                block.GetComponentInChildren<TextMesh>().fontSize = 18; //added chan
+                block.GetComponentInChildren<TextMesh>().characterSize = 0.5F;
+                block.GetComponentInChildren<TextMesh>().alignment = TextAlignment.Right;
                 block.GetComponentInChildren<TextMesh>().text = Char.ToString(shuffledString[i]);
                 blocks[i] = block;
 
