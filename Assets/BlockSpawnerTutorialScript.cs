@@ -18,7 +18,7 @@ public class BlockSpawnerTutorialScript : MonoBehaviour
 
     public float fallSpeed = 1.0f;
    
-    public float speed = 1.0f;
+    public float speed = 0.5f;
 
     public GameObject[] blocks; // this is one row of blocks 
     public List<GameObject[]> nestedList = new List<GameObject[]>(); // this is the entire set of rows 
