@@ -74,6 +74,7 @@ public class BlockSpawnerTutorialScript : MonoBehaviour
                 block.GetComponentInChildren<TextMesh>().fontSize = 18; //added chan
                 block.GetComponentInChildren<TextMesh>().characterSize = 0.5F;
                 block.GetComponentInChildren<TextMesh>().alignment = TextAlignment.Right;
+                block.GetComponentInChildren<TextMesh>().color = Color.blue;
                 block.GetComponentInChildren<TextMesh>().text = Char.ToString(shuffledString[i]);
                 blocks[i] = block;
 
