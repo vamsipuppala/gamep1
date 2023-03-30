@@ -301,8 +301,8 @@ public class PlayerControllerTutorialScript : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 8f);
         }
-        goodword.text = "Target:" + bs.words[ind];
-         dangerWord.text = "Danger:" + bs.dangerWordss[ind];
+        goodword.text = "TARGET:" + bs.words[ind];
+         dangerWord.text = "DANGER:" + bs.dangerWordss[ind];
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
       
@@ -472,6 +472,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
                                         
                                         if(findMatch(dangerWordCreated, bs.dangerWordss[j]))
                                         {
+                                            
                                             Debug.Log("dangerrrrrr");
                                             ScoreScript.PlayerScore -= 1;
 
