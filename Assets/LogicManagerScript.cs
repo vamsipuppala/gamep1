@@ -31,7 +31,10 @@ public class LogicManagerScript : MonoBehaviour
     public void gameOver()
     {
         // Debug.Log("");
-        gameOverScreen.SetActive(true);
+        //gameOverScreen.SetActive(true);
+
+        Debug.Log("!~~~~ INSIDE LOGIC~~~~");
+        SceneManager.LoadScene("GameOver");
         Time.timeScale = 0;
     }
 }

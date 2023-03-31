@@ -17,15 +17,15 @@ public class BlockSpawnerTutorialScript : MonoBehaviour
     //public Vector3 moveDirection = Vector3.down;
 
     public float fallSpeed = 1.0f;
-   
     public float speed = 0.5f;
+    
 
     public GameObject[] blocks; // this is one row of blocks 
     public List<GameObject[]> nestedList = new List<GameObject[]>(); // this is the entire set of rows 
     public string[] letters = { "A", "Q", "F", "E", "C", "V", "P", "I", "H", "L", "Z", "X", "S", "K" , "J", "N", "M", "T"};
     string allChars = "ABCDEFGHIJKLMNOPQRSTUVWYZ";
     public string[] words = { "BIN"};
-    public string[] dangerWordss = {"SIN"};
+    public string[] dangerWordss = { "SIN" };
 
     // Start is called before the first frame update
     private void Awake()
@@ -34,7 +34,7 @@ public class BlockSpawnerTutorialScript : MonoBehaviour
     }
     void Start()
     {
-        //10 blocks in a row
+        //10 blocks in a row    
         //HINT 0 
         Time.timeScale = 0;
         float width = 1;
@@ -80,6 +80,7 @@ public class BlockSpawnerTutorialScript : MonoBehaviour
 
             }
             nestedList.Add(blocks);
+
         }
     }
 
@@ -125,9 +126,9 @@ public class BlockSpawnerTutorialScript : MonoBehaviour
         return randomChar;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("*****");
+        Debug.Log("*** BST - COLLISION ***");
     }
 
 }

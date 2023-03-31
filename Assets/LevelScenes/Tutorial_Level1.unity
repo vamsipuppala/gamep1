@@ -4099,6 +4099,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   nextLevelScript: {fileID: 0}
+  playerRigidBody: {fileID: 0}
 --- !u!50 &1689211025
 Rigidbody2D:
   serializedVersion: 4
@@ -4140,7 +4141,7 @@ MonoBehaviour:
   LayerDetection:
     serializedVersion: 2
     m_Bits: 2147483647
-  rb: {fileID: 0}
+  rb: {fileID: 1689211025}
   logic: {fileID: 0}
   wordCreated: 
   lol1: 

@@ -40,11 +40,14 @@ public class PlayerController : MonoBehaviour
     public GameObject c;
     public static int timeTargetWordWasHit = 0;
     public static int numberOfTimeDeselectionsOccurred= 0;
-    
+    //public GameObject gameOverScreenTutorial;
+
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     public NextLevelScript nextLevelScript;
 
+    //Player rigidbody (Enemy)
+    public Rigidbody2D playerRigidBody;
 
     int ind=0;
     void Start()
@@ -232,11 +235,9 @@ public class PlayerController : MonoBehaviour
 
                             }
                         }
-                       
-
-                       
-
                     }
+
+
                     LineOfSight.SetPosition(LineOfSight.positionCount - 1, hitInfo.point - ray.direction * -0.1f);
 
                     isMirror = false;
@@ -322,9 +323,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //  Debug.Log("oncollision - ");
-    // logic.gameOver();
-    //}
+    ///*
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("PC - COLLISION!!!!");
+        
+        //gameOverScreenTutorial.SetActive(true);
+        //SceneManager.LoadScene("GameOver");
+        //nextLevelScript.GameOver("blocksTouchedPlayer");
+    }
+    //*/
 }

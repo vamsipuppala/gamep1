@@ -42,6 +42,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     public GameObject[] popUps;
+    public GameObject gameOverScreenTutorial;
 
     //public NextLevelScript nextLevelScript;
 
@@ -592,9 +593,18 @@ public class PlayerControllerTutorialScript : MonoBehaviour
 
     }
 
-    // private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //  Debug.Log("oncollision - ");
-    // logic.gameOver();
-    //}
+    // When blocks collide with the player => Game over
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("PCT --- COLLISION");
+        Debug.Log("*****************");
+        Debug.Log("COLLIDE (name) : " + collision.gameObject.name);
+        
+        if (collision.gameObject.name == "ColoredLetterSquare1(Clone)")
+        {
+            //Debug.Log("GAME OVER BOI !!!!!!");
+            SceneManager.LoadScene("GameOver");
+        }
+
+    }
 }

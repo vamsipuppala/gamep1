@@ -128,11 +128,13 @@ public class PlayerControllerTwo : MonoBehaviour
             }
         }
 
+        /*
         //j is the index of the last row of blocks
         if (nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
         }
+        */
 
         //Debug.Log("finalllllllllllllll" + final);
         //goodword.text = final;
@@ -601,13 +603,23 @@ public string UpdateTargetWordColor(string word) {
    return res;
 }
 
-
-
-
-
     // private void OnCollisionEnter2D(Collision2D collision)
     //{
     //  Debug.Log("oncollision - ");
     // logic.gameOver();
     //}
+    // When blocks collide with the player => Game over
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("PC2 --- COLLISION");
+        Debug.Log("*****************");
+        Debug.Log("COLLIDE (name) : " + collision.gameObject.name);
+
+        if (collision.gameObject.name == "ColoredLetterSquare1(Clone)")
+        {
+            //Debug.Log("GAME OVER BOI !!!!!!");
+            SceneManager.LoadScene("GameOver");
+        }
+
+    }
 }

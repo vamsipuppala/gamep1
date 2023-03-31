@@ -136,11 +136,14 @@ public class PlayerControllerFour : MonoBehaviour
                 }
             }
         }
+
+        /*
         //j is the index of the last row of blocks
         if (nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
         }
+        */
 
         //Debug.Log("finalllllllllllllll" + final);
         //goodword.text = final;
@@ -570,6 +573,7 @@ public class PlayerControllerFour : MonoBehaviour
                                 
 
                             }
+                            Debug.Log("HERE ANA");
                             Debug.Log(wordCreated);
                         }
                        
@@ -762,4 +766,24 @@ public void ChangeFrequency(string word, char letter, Dictionary<char,int> map, 
         return res;
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("PC4 --- COLLISION");
+        Debug.Log("*****************");
+        Debug.Log("COLLIDE (name) : " + collision.gameObject.name);
+
+        
+        if (collision.gameObject.name == "ColoredLetterSquare1(Clone)")
+        {
+            Debug.Log("GAME OVER BOI !!!!!!");
+            SceneManager.LoadScene("GameOver");
+        }
+        
+    
+
+    }
+
 }
+
+

@@ -63,7 +63,7 @@ public class NextLevelFour : MonoBehaviour
     public void resetValues()
     {
         ScoreScript.PlayerScore = 0;
-        TimerFour.TimeValue = 60;
+        TimerFour.TimeValue = 150;
     }
 
     public void GameOver(string gameOverReason)
