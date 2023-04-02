@@ -64,11 +64,16 @@ public class NextLevelThree : MonoBehaviour
     {
         ScoreScript.PlayerScore = 0;
         TimerThree.TimeValue = 330;
+        //TimerThree.TimeValue = 10; // time used for testing timeout.
     }
 
     public void GameOver(string gameOverReason)
     {
         sc.EndOfGameDueToGameOver("3", gameOverReason);
+
+        // Set the game over reason on the GameOver scene. 
+        PlayerPrefs.SetString("GameOverReason", "Game terminated due to timeout!");
+
         SceneManager.LoadScene("GameOver");
     }
 }

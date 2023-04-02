@@ -783,6 +783,8 @@ public string UpdateTargetWordColor(string word) {
         if (collision.gameObject.name == "ColoredLetterSquare1(Clone)")
         {
             //Debug.Log("GAME OVER BOI !!!!!!");
+            // Set the game over reason on the GameOver scene.
+            PlayerPrefs.SetString("GameOverReason", "Game terminated due to collision!");
             SceneManager.LoadScene("GameOver");
         }
 

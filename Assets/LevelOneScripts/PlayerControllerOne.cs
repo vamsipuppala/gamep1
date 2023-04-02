@@ -50,6 +50,9 @@ public class PlayerControllerOne : MonoBehaviour
     public static int numberOfTimesWordHitInOrder = 0;
     public static int numberOfTimesWordHitInReverse = 0;
 
+    // *** Game over reason description ***
+    //public static string gameOverReason;
+    //public static string PreviousLevel { get; private set; }
 
     int ind=0;
     void Start()
@@ -443,8 +446,20 @@ public class PlayerControllerOne : MonoBehaviour
         if (collision.gameObject.name == "ColoredLetterSquare1(Clone)")
         {
             //Debug.Log("GAME OVER BOI !!!!!!");
+            //gameOverReason = "GAME OVER DUE TO COLLISION !!!";
+
+            // Set the game over reason on the GameOver scene.
+            PlayerPrefs.SetString("GameOverReason", "Game terminated due to collision!");
             SceneManager.LoadScene("GameOver");
         }
 
     }
+
+    /* Set static variables accessible across scenes.
+    public void OnDestroy()
+    {
+        PreviousLevel = gameObject.scene.name;
+        gameOverReason = "GAME OVER DUE TO COLLISION !!!";
+    }
+    */ 
 }

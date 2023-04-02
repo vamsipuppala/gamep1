@@ -603,6 +603,7 @@ public class PlayerControllerTutorialScript : MonoBehaviour
         if (collision.gameObject.name == "ColoredLetterSquare1(Clone)")
         {
             //Debug.Log("GAME OVER BOI !!!!!!");
+            PlayerPrefs.SetString("GameOverReason", "Game terminated due to collision!");
             SceneManager.LoadScene("GameOver");
         }
 

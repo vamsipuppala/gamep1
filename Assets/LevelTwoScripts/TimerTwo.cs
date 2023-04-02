@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class TimerTwo : MonoBehaviour
 {
     public static float TimeValue = 240;
+    //public static float TimeValue = 10; // time used for testing timeout.
     public Text TimerText;
 
     // Update is called once per frame

@@ -55,6 +55,7 @@ public class NextLevel : MonoBehaviour
                 PlayerControllerOne.numberOfTimesWordHitInOrder.ToString(), PlayerControllerOne.numberOfTimesWordHitInReverse.ToString());
             //game over screen
             GameOver("noTime");
+
         }
     }
 
@@ -62,11 +63,18 @@ public class NextLevel : MonoBehaviour
     {
         ScoreScript.PlayerScore = 0;
         TimerOne.TimeValue = 150;
+        //TimerOne.TimeValue = 10; // time used for testing timeout.
     }
 
     public void GameOver(string gameOverReason)
     {
         sc.EndOfGameDueToGameOver( "1", gameOverReason);
+
+        // Set the game over reason on the GameOver scene. 
+        PlayerPrefs.SetString("GameOverReason", "Game terminated due to timeout!");
+
         SceneManager.LoadScene("GameOver");
     }
 }
+
+
