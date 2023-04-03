@@ -604,18 +604,20 @@ public void ChangeFrequency(string word, char letter, Dictionary<char,int> map, 
 // }
 public string changecolor(string word, int c){
     int n = word.Length;
+    string temp = wordCreated;
    string res = "";
    int n1=wordCreated.Length,i,j;
    for(i=0;i<n;i++)
    {
-    for(j=0;j<n1;j++)
+    for(j=0;j<temp.Length;j++)
     {
-        if(word[i]==wordCreated[j])
+        if(word[i]==temp[j])
         {
             break;
         }
     }
-    if(j==n1)
+    
+    if(j>=temp.Length)
     {
         res += word[i];
     }
@@ -625,7 +627,10 @@ public string changecolor(string word, int c){
          else{
              res += "<color=red>" + word[i] + "</color>";
          }
+         int index = temp.IndexOf(word[i]);
+        temp = temp.Remove(index, 1); 
     }
+    
 
    }
    return res;
