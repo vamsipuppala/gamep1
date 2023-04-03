@@ -165,10 +165,11 @@ public class PlayerControllerTwo : MonoBehaviour
         // move = Input.GetAxisRaw("Horizontal");
         // rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         float move = Input.GetAxis("Horizontal");
-
         //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
-        float move2 = Input.GetAxis("Vertical");
+        float rotateSpeed = 0.1f;
+        float move2 = Input.GetAxis("Vertical")*rotateSpeed;
+
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
             //  Debug.Log("inside move2"+transform.localEulerAngles+ transform.localRotation.eulerAngles.y);
