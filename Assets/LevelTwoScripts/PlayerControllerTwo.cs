@@ -26,7 +26,7 @@ public class PlayerControllerTwo : MonoBehaviour
     public GameObject NextLevelScreen;
     public string wordCreated;
     public string lol1;
-    public string dangerWordCreated;
+    // public string dangerWordCreated;
     //public float move;
     int numberOfHits;
     int localHits = 1;
@@ -142,7 +142,9 @@ public class PlayerControllerTwo : MonoBehaviour
         }
 
         //mmodification
-        goodword.text = "Target:  \n"+UpdateTargetWordColor(string.Join("", bs.words[ind]));
+        // goodword.text = "Target:  \n"+UpdateTargetWordColor(string.Join("", bs.words[ind]));
+        goodword.text = "Target:  \n"+changecolor(string.Join("", bs.words[ind]));
+
         dangerWord.text = "Danger:  \n";
         
         for(int i=0;i<bs.dangerWordss[ind].Length;i++)
@@ -387,7 +389,7 @@ public class PlayerControllerTwo : MonoBehaviour
                                             dest=true;
                                             wordCreated = "";
                                             timeTargetWordWasHit += 1;
-                                            dangerWordCreated = "";                                            
+                                                                                      
                                             j++;
                                             ind++;
                                             localHits = 1;
@@ -597,6 +599,30 @@ public string UpdateTargetWordColor(string word) {
        if(x == 0){
            res += key;
        }
+   }
+   return res;
+}
+public string changecolor(string word){
+    int n = word.Length;
+   string res = "";
+   int n1=wordCreated.Length,i,j;
+   for(i=0;i<n;i++)
+   {
+    for(j=0;j<n1;j++)
+    {
+        if(word[i]==wordCreated[j])
+        {
+            break;
+        }
+    }
+    if(j==n1)
+    {
+        res += word[i];
+    }
+    else{
+         res += "<color=green>" + word[i] + "</color>";
+    }
+
    }
    return res;
 }

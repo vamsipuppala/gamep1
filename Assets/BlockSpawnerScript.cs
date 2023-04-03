@@ -30,12 +30,10 @@ public class BlockSpawnerScript : MonoBehaviour
     // public string[,] words = { {}};
     // public string[,] dangerWordss = { {}};
 
-string[][] jaggedStrings =  {
-new string[] {"x","y","z"},
-new string[] {"x","y"},
-new string[] {"x"}
-};
-
+    public string[][] L1_block_of_words =  {
+                                            new string[] {"TUFFSSETPT"}, 
+                                            new string[] {"APPECOPPEE"}, 
+                                            };
     public string[][] wordsL2 ={new string[] {"FEST"}, 
                                 new string[] {"COPE"}, 
                                 new string[] {"DARE"}, 
@@ -203,9 +201,13 @@ new string[] {"x"}
             words = wordsL4;
             dangerWordss = dangerWordsL4;
         }
+        int blocks_row_count = words.Length;
+         if(scene.name == "L1")
+         {
+            blocks_row_count=L1_block_of_words.Length;
+         }
 
-
-        for (int j = 0; j < 10; j++) // this is for the total number of rows
+        for (int j = 0; j < blocks_row_count; j++) // this is for the total number of rows
         {
             
             
@@ -227,6 +229,12 @@ new string[] {"x"}
             {
                 shuffledString = block_of_wordsL4[j][0];
             }
+            else if(scene.name == "L1")
+            {
+                shuffledString = L1_block_of_words[j][0];
+            }
+            
+
             else{
                 HashSet<Char> hs = new HashSet<Char>();
             foreach (char c in word)
