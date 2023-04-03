@@ -6,7 +6,10 @@ using UnityEngine.UI;
 
 public class L1_TimerOne : MonoBehaviour
 {
-    public static float TimeValue = 150;
+    public static float TimeValue = 150; // og
+    //public static float TimeValue = 300; // for collision
+    //public static float TimeValue = 10; // for timeout
+
     public Text TimerText;
 
     // Update is called once per frame

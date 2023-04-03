@@ -40,7 +40,7 @@ public class L2_NextLevelTwo : MonoBehaviour
         //Debug.Log("the danger word score is " + PlayerController.timesDangerWordWasHit);
         // SendToGoogle sc = new SendToGoogle();
         //Debug.Log("threshold score is " + thresholdScoree);
-        if (ScoreScript.PlayerScore >= thresholdScoree && TimerTwo.TimeValue > 0)
+        if (ScoreScript.PlayerScore >= thresholdScoree && L2_Timer.TimeValue > 0)
         {
             //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
             sc.EndOfGame(L2_PlayerController.timeTargetWordWasHit.ToString(), "2", L2_PlayerController.numberOfTimeDeselectionsOccurred.ToString(), "1",
@@ -51,7 +51,7 @@ public class L2_NextLevelTwo : MonoBehaviour
             SceneManager.LoadScene("LevelScenes/CompleteLevelTwo");
         }
 
-        if (ScoreScript.PlayerScore < thresholdScoree && TimerTwo.TimeValue <= 0)
+        if (ScoreScript.PlayerScore < thresholdScoree && L2_Timer.TimeValue <= 0)
         {
             sc.EndOfGame(L2_PlayerController.timeTargetWordWasHit.ToString(), "2", L2_PlayerController.numberOfTimeDeselectionsOccurred.ToString(), "0",
                 L2_PlayerController.numberOfTimesWordHitInOrder.ToString(), L2_PlayerController.numberOfTimesWordHitInReverse.ToString());
@@ -64,12 +64,18 @@ public class L2_NextLevelTwo : MonoBehaviour
     public void resetValues()
     {
         ScoreScript.PlayerScore = 0;
-        TimerTwo.TimeValue = 240;
+        L2_Timer.TimeValue = 240;
+        //L2_Timer.TimeValue = 300; // time used for testing collision.
+        //L2_Timer.TimeValue = 10; // time used for testing timeout.
     }
 
     public void GameOver(string gameOverReason)
     {
         sc.EndOfGameDueToGameOver("2", gameOverReason);
+
+        // Set the game over reason on the GameOver scene. 
+        PlayerPrefs.SetString("GameOverReason", "Game terminated due to timeout!");
+
         SceneManager.LoadScene("GameOver");
     }
 }

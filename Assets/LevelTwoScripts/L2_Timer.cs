@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class L2_Timer : MonoBehaviour
 {
     public static float TimeValue = 240;
+    //public static float TimeValue = 300; // for collision
+    //public static float TimeValue = 10; // for timeout
+
     public Text TimerText;
 
     // Update is called once per frame

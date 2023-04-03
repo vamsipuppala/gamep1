@@ -57,6 +57,7 @@ public class L2_PlayerController : MonoBehaviour
     //record the frequency for each colored letter in target word
     Dictionary<char, int> targetColoredLetterFrequency;
 
+    public int levelTwoTargetScore = 5;
 
     int ind = 0;
     void Start()
@@ -602,7 +603,24 @@ public class L2_PlayerController : MonoBehaviour
     }
 
 
+    // When blocks collide with the player => Game over
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("PC2 --- COLLISION");
+        Debug.Log("*****************");
+        Debug.Log("COLLIDE (name) : " + collision.gameObject.name);
 
+        if (collision.gameObject.name == "ColoredLetterSquare1(Clone)")
+        {
+            //Debug.Log("GAME OVER BOI !!!!!!");
+            //gameOverReason = "GAME OVER DUE TO COLLISION !!!";
+
+            // Set the game over reason on the GameOver scene.
+            PlayerPrefs.SetString("GameOverReason", "Game terminated due to collision!");
+            SceneManager.LoadScene("GameOver");
+        }
+
+    }
 
 
     // private void OnCollisionEnter2D(Collision2D collision)
@@ -610,4 +628,14 @@ public class L2_PlayerController : MonoBehaviour
     //  Debug.Log("oncollision - ");
     // logic.gameOver();
     //}
+
+    // All rows annihilated - game over
+    private void allRowsAnnihilated()
+    {
+        if (ScoreScript.PlayerScore < levelTwoTargetScore && L2_Timer.TimeValue > 0)
+        {
+            PlayerPrefs.SetString("GameOverReason", "Game terminated - all rows annihilated, but target score not achieved!");
+            SceneManager.LoadScene("GameOver");
+        }
+    }
 }
