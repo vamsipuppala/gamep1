@@ -187,12 +187,12 @@ public class PlayerControllerThree : MonoBehaviour
         
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
-            //  Debug.Log("inside move2"+transform.localEulerAngles+ transform.localRotation.eulerAngles.y);
+
             transform.Rotate(0, 0, move2 * (2f));
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
-            //    Debug.Log("inside move1"+transform.position.x+ transform.position.y );
+
             transform.Rotate(0, 0, move2 * (2f));
         }
         if (Input.GetButtonDown("Fire1"))
@@ -201,7 +201,7 @@ public class PlayerControllerThree : MonoBehaviour
             LineOfSight.positionCount = 1;
             LineOfSight.SetPosition(0, transform.position);
 
-            //Debug.Log(transform.position);
+
             RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, MaxRayDistance, LayerDetection);
             // Ray
             Ray2D ray = new Ray2D(transform.position, transform.right);
@@ -361,13 +361,13 @@ public class PlayerControllerThree : MonoBehaviour
                     // }
                      if (hitInfo.collider.name.Contains("LetterSquare"))
                     {
-                        //Debug.Log("GIVEN WORD: " + givenWord);
+
                         nestedList = bs.nestedList;
                         GameObject gameObject = hitInfo.collider.gameObject;
                         
-                       // Debug.Log("indexxxxxxxxxxxxx   " + GetIndexOfGameObject(gameObject, nestedList));
+
                         numberOfHits = givenWord.Length;
-                       // Debug.Log("now the numberOfHits is " + numberOfHits);
+
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
                         if(text.text[0]=='Z' && i==0)
                         {
@@ -415,14 +415,14 @@ public class PlayerControllerThree : MonoBehaviour
 
                                 gameObject.GetComponent<SpriteRenderer>().color = Color.white;
                                 
-                               // Debug.Log("hurrrrrayyyyy" + localHits);
+
                             }
                             else
                             {
 
                                 if (localHits > numberOfHits && !(z_is==true && localHits-1<=numberOfHits)&& text.text[0]!='Z')
                                 {
-                                   // Debug.Log("no shooting");
+
                                 }
                                 else
                                 {
@@ -436,7 +436,7 @@ public class PlayerControllerThree : MonoBehaviour
                                         // dangerWordCreated += text.text;
                                         fla++;
                                         break;
-                                        //Debug.Log("the danger word created till now is" + dangerWordCreated);
+
                                     }
                                     }
                                     
@@ -456,7 +456,7 @@ public class PlayerControllerThree : MonoBehaviour
                                         
                                        /* if (wordCreated.Length != bs.words[j].Length && goodword.text.IndexOf(wordCreated)!=-1)
                                         {
-                                            Debug.Log("word createeeeeeddddddd" + wordCreated);
+
                                             string s = goodword.text.Substring(goodword.text.IndexOf(wordCreated), wordCreated.Length + 1);
                                             dummy = goodword.text;
                                             string s1 = dummy.Replace(s, "");
@@ -465,7 +465,7 @@ public class PlayerControllerThree : MonoBehaviour
                                         }*/
                                             
                                       
-                                        //Debug.Log("GIVEN WORD: " + givenWord);
+
                                     }
                                     wordCreated += text.text;
                                    
@@ -496,7 +496,7 @@ public class PlayerControllerThree : MonoBehaviour
                                         {
                                             numberOfTimesWordHitInReverse++;
                                         }
-                                        //Debug.Log("HELLO JI LEVEL 2 - destroying 2 rows");
+
                                         ScoreScript.PlayerScore += 2;
                                             for (int d = 0; d < 2; d++)
                                             {
@@ -526,10 +526,10 @@ public class PlayerControllerThree : MonoBehaviour
 
                                         }
 
-                                        // Debug.Log("the word is       " + wordCreated);
+
                                         else 
                                         {
-                                            //Debug.Log(bs);
+
                                             GameObject[] gs = bs.nestedList[j];
                                             ScoreScript.PlayerScore += 1;
                                             for (int k = 0; k < gs.Length; k++)
