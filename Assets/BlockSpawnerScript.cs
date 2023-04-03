@@ -157,7 +157,7 @@ public class BlockSpawnerScript : MonoBehaviour
 
 
     public static string[][] wordsL1 = {new string[] {"BOLD"},
-                                        new string[] {"DAZE"}, 
+                                        new string[] {"DALE"}, 
                                         new string[] {"MAP"}, 
                                         new string[] {"DENT"} , 
                                         new string[] {"BLUE"}, 
@@ -171,21 +171,21 @@ public class BlockSpawnerScript : MonoBehaviour
                                         new string[]  {"RED"},
                                         new string[]  {"FIX"} , 
                                         new string[]  {"BALD"} };
-    public static string[][] dangerWordsL1 = {new string[] {"FOLD"},
-                                             new string[]  {"MAZE"}, 
-                                             new string[]  {"CAP"},
-                                             new string[] {"RENT"}, 
-                                             new string[] {"GLUE"},
-                                             new string[]  {"SIN"}, 
-                                             new string[] {"FRO"}, 
-                                             new string[] {"RAT"}, 
-                                             new string[] {"MIND"}, 
-                                             new string[] {"PAD"}, 
-                                             new string[] {"LIP"},  
+    public static string[][] dangerWordsL1 = {new string[] {"FO"},
+                                             new string[]  {"DA"}, 
+                                             new string[]  {"P"},
+                                             new string[] {"MP"}, 
+                                             new string[] {"D"},
+                                             new string[]  {"IN"}, 
+                                             new string[] {"O"}, 
+                                             new string[] {"A"}, 
+                                             new string[] {"MI"}, 
+                                             new string[] {"D"}, 
+                                             new string[] {"P"},  
                                              new string[] {"INK"},
-                                             new string[]  {"BED"}, 
-                                             new string[] {"SIX"}, 
-                                             new string[] {"AL"}};
+                                             new string[]  {"ED"}, 
+                                             new string[] {"I"}, 
+                                             new string[] {"BA"}};
     public string[][] words = wordsL1;
     public string[][] dangerWordss = dangerWordsL1;
     // Start is called before the first frame update
@@ -244,6 +244,7 @@ public class BlockSpawnerScript : MonoBehaviour
             blocks_row_count = L2_block_of_words.Length;
         }
 
+
         for (int j = 0; j < blocks_row_count; j++) // this is for the total number of rows
         {
             
@@ -287,6 +288,10 @@ public class BlockSpawnerScript : MonoBehaviour
             {
                 hs.Add(c);
             }
+            // foreach(char c in dangerword)
+            // {
+            //     hs.Add(c);
+            // }
             // Debug.Log("WORD: " + word);
             int numOfRandomLetters = 10 - hs.Count;
             string randomLetters = generateRandomLetters(numOfRandomLetters);

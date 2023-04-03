@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class L3_NewBehaviourScript : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
     public GameObject PanelTwo;
     // Start is called before the first frame update
