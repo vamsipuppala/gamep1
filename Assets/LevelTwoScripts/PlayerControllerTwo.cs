@@ -74,9 +74,9 @@ public class PlayerControllerTwo : MonoBehaviour
         //nextLevelScript.resetValues();
 
          //mmodification
-         goodword.text = string.Join("", bs.words[ind]);
-        targetLetterFrequency = InitiateLetterFrequency(goodword.text);
-        targetColoredLetterFrequency = InitiateLetterFrequencyToZero(goodword.text);
+        //  goodword.text = string.Join("", bs.words[ind]);
+        // targetLetterFrequency = InitiateLetterFrequency(goodword.text);
+        // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(goodword.text);
 
     }
 
@@ -143,13 +143,13 @@ public class PlayerControllerTwo : MonoBehaviour
 
         //mmodification
         // goodword.text = "Target:  \n"+UpdateTargetWordColor(string.Join("", bs.words[ind]));
-        goodword.text = "Target:  \n"+changecolor(string.Join("", bs.words[ind]));
+        goodword.text = "Target:  \n"+changecolor(string.Join("", bs.words[ind]), 0);
 
         dangerWord.text = "Danger:  \n";
         
         for(int i=0;i<bs.dangerWordss[ind].Length;i++)
         {
-           dangerWord.text += bs.dangerWordss[ind][i]+"\n";
+           dangerWord.text += changecolor(bs.dangerWordss[ind][i], 1)+"\n";
         }
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -253,13 +253,13 @@ public class PlayerControllerTwo : MonoBehaviour
                                         z_is=false;
                                     }
                                 //mmodification                                                          
-                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.green || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
-                                {
-                                    if (givenWord.Contains(text.text.ToString())){
-                                        ChangeFrequency(givenWord,char.Parse(text.text),targetColoredLetterFrequency,-1);
-                                    }
+                                // if (gameObject.GetComponent<SpriteRenderer>().color == Color.green || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
+                                // {
+                                //     // if (givenWord.Contains(text.text.ToString())){
+                                //     //     ChangeFrequency(givenWord,char.Parse(text.text),targetColoredLetterFrequency,-1);
+                                //     // }
 
-                                }
+                                // }
                                 
                                 // if (gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
                                 // {
@@ -299,7 +299,7 @@ public class PlayerControllerTwo : MonoBehaviour
                                         else if (givenWord.Contains(text.text.ToString()))
                                         {
                                             //mmodification
-                                            ChangeFrequency(givenWord,char.Parse(text.text),targetColoredLetterFrequency,1);
+                                            // ChangeFrequency(givenWord,char.Parse(text.text),targetColoredLetterFrequency,1);
                                             if(fla>0)
                                             gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
                                             else
@@ -368,8 +368,8 @@ public class PlayerControllerTwo : MonoBehaviour
                                                     localHits = 1;
 
                                                     //mmodification
-                                                    targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
-                                                    targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
+                                                    // targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
+                                                    // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
                                                 }
                                             }
                                             dest=true;
@@ -394,8 +394,8 @@ public class PlayerControllerTwo : MonoBehaviour
                                             ind++;
                                             localHits = 1;
                                             //mmodification
-                                            targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
-                                            targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
+                                            // targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
+                                            // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
                                         }
                                         if(z_is == true)
                                             {
@@ -526,38 +526,38 @@ public class PlayerControllerTwo : MonoBehaviour
     /*receive a word and return a map. The keys are letters in word
    the value is frequency of letter
 */
-public Dictionary<char,int> InitiateLetterFrequency(String word) {
-   Dictionary<char,int> map = new Dictionary<char,int>();
-   int n = word.Length;
+// public Dictionary<char,int> InitiateLetterFrequency(String word) {
+//    Dictionary<char,int> map = new Dictionary<char,int>();
+//    int n = word.Length;
 
 
-   for (int i = 0; i < n; i++) {
-       char key = word[i];
-       if(map.ContainsKey(key)){
-           map[key]++;
-       }else{
-           map.Add(key,1);
-       }
-   }
-   return map;
-}
+//    for (int i = 0; i < n; i++) {
+//        char key = word[i];
+//        if(map.ContainsKey(key)){
+//            map[key]++;
+//        }else{
+//            map.Add(key,1);
+//        }
+//    }
+//    return map;
+// }
 
 
 /*receive a word and return a map. The keys are letters in word
    The value is set to 0 which represents 0 colored frequency
 */
-public Dictionary<char,int> InitiateLetterFrequencyToZero(String word) {
-   Dictionary<char,int> map = new Dictionary<char,int>();
-   int n = word.Length;
-   for (int i = 0; i < n; i++) {
-       char key = word[i];
-        if(map.ContainsKey(key)){
-            continue;
-       }
-       map.Add(key,0);
-   }
-   return map;
-}
+// public Dictionary<char,int> InitiateLetterFrequencyToZero(String word) {
+//    Dictionary<char,int> map = new Dictionary<char,int>();
+//    int n = word.Length;
+//    for (int i = 0; i < n; i++) {
+//        char key = word[i];
+//         if(map.ContainsKey(key)){
+//             continue;
+//        }
+//        map.Add(key,0);
+//    }
+//    return map;
+// }
 
 
 /* change the frequency of a given letter in the map by delta
@@ -579,30 +579,30 @@ public void ChangeFrequency(string word, char letter, Dictionary<char,int> map, 
    The times of each letter to be colored cannot exceed its frequency of two map which means cannot exceed the frequency in given word
    and the frequency of colored blocks which include the same letter.
 */
-public string UpdateTargetWordColor(string word) {
-   int n = word.Length;
-   string res = "";
+// public string UpdateTargetWordColor(string word) {
+//    int n = word.Length;
+//    string res = "";
 
-    Dictionary<char,int> colorLeftCounter = new Dictionary<char,int>();
-    foreach(var item in targetColoredLetterFrequency){
-        colorLeftCounter[item.Key] = item.Value;
-    }
-   for (int i = 0; i < n; i++){
-        char key = word[i];
-       int x = Math.Min(colorLeftCounter[key],targetLetterFrequency[key]);
+//     Dictionary<char,int> colorLeftCounter = new Dictionary<char,int>();
+//     foreach(var item in targetColoredLetterFrequency){
+//         colorLeftCounter[item.Key] = item.Value;
+//     }
+//    for (int i = 0; i < n; i++){
+//         char key = word[i];
+//        int x = Math.Min(colorLeftCounter[key],targetLetterFrequency[key]);
 
-        if(colorLeftCounter[key] > 0){
-            colorLeftCounter[key]--;
-            res += "<color=green>" + key + "</color>";
-        }
+//         if(colorLeftCounter[key] > 0){
+//             colorLeftCounter[key]--;
+//             res += "<color=green>" + key + "</color>";
+//         }
 
-       if(x == 0){
-           res += key;
-       }
-   }
-   return res;
-}
-public string changecolor(string word){
+//        if(x == 0){
+//            res += key;
+//        }
+//    }
+//    return res;
+// }
+public string changecolor(string word, int c){
     int n = word.Length;
    string res = "";
    int n1=wordCreated.Length,i,j;
@@ -620,7 +620,11 @@ public string changecolor(string word){
         res += word[i];
     }
     else{
+        if(c==0)
          res += "<color=green>" + word[i] + "</color>";
+         else{
+             res += "<color=red>" + word[i] + "</color>";
+         }
     }
 
    }
