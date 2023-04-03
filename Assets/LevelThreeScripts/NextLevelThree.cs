@@ -58,12 +58,23 @@ public class NextLevelThree : MonoBehaviour
             sc.endGameWithZHitCount("3", PlayerControllerThree.zHit.ToString());
             GameOver("noTimeLeft");
         }
+
+        /*
+        if ((PlayerPrefs.GetInt("IndexOutBounds") == 1) && ScoreScript.PlayerScore < thresholdScoree && TimerThree.TimeValue > 0)
+        {
+            // Set the game over reason on the GameOver scene.
+            Debug.Log("Game terminated - BLOCK SPAWN STOP! --- INSIDE NL3");
+            PlayerPrefs.SetString("GameOverReason", "Game terminated - BLOCK SPAWN STOP!");
+            //SceneManager.LoadScene("GameOver");
+        }*/
+
     }
 
     public void resetValues()
     {
         ScoreScript.PlayerScore = 0;
-        TimerThree.TimeValue = 330;
+        TimerThree.TimeValue = 330; // OG
+        //TimerThree.TimeValue = 120; // time used for testing collision.
         //TimerThree.TimeValue = 10; // time used for testing timeout.
     }
 

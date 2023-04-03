@@ -65,7 +65,10 @@ public class PlayerControllerThree : MonoBehaviour
    //record the frequency for each colored letter in target word
    Dictionary<char,int> targetColoredLetterFrequency;
 
-    int ind=0;
+    public int levelThreeTargetScore = 4;
+
+    public int ind=0; // Changed access modifier to access in nextlevelthree script. 
+
     void Start()
     {
         ind=0;
@@ -94,6 +97,8 @@ public class PlayerControllerThree : MonoBehaviour
          goodword.text = string.Join("", bs.words[ind]);
         targetLetterFrequency = InitiateLetterFrequency(goodword.text);
         targetColoredLetterFrequency = InitiateLetterFrequencyToZero(goodword.text);
+
+        //nextLevelThreeScore = GameObject.FindGameObjectWithTag("Target Score").GetComponent<NextLevelThree>();
     }
 
     // Update is called once per frame
@@ -157,6 +162,14 @@ public class PlayerControllerThree : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, 8f);
+        }
+
+        // Check for index out of bounds.
+        if (ind >= bs.words.Length)
+        {
+            Debug.Log("Game terminated - BLOCK SPAWN STOP -- INSIDE PC3!");
+            //PlayerPrefs.SetInt("IndexOutBounds", 1);
+            allRowsAnnihilated(); // Annihilated all rows
         }
 
         //mmodification
@@ -403,7 +416,7 @@ public class PlayerControllerThree : MonoBehaviour
                                 //mmodification
                                 if (gameObject.GetComponent<SpriteRenderer>().color == Color.green || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
                                 {
-                                    Debug.Log("diselect!!");
+                                    Debug.Log("deselect!!");
                                     if (givenWord.Contains(text.text.ToString())){
                                         ChangeFrequency(givenWord,char.Parse(text.text),targetColoredLetterFrequency,-1);
                                     }
@@ -627,6 +640,7 @@ public class PlayerControllerThree : MonoBehaviour
                 LineOfSight.positionCount = 0;
             }
         }
+
     }
 
     //private void FixedUpdate()
@@ -788,5 +802,14 @@ public string UpdateTargetWordColor(string word) {
             SceneManager.LoadScene("GameOver");
         }
 
+    }
+
+    // All rows annihilated - game over
+    private void allRowsAnnihilated()
+    {
+        if (ScoreScript.PlayerScore < levelThreeTargetScore && TimerThree.TimeValue > 0) { 
+            PlayerPrefs.SetString("GameOverReason", "Game terminated - all rows annihilated, but target score not achieved!");
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }

@@ -18,9 +18,9 @@ public class BlockSpawnerScript : MonoBehaviour
     //public Vector3 moveDirection = Vector3.down;
 
     public float fallSpeed = 1.0f;
-   
     public float speed = 1.0f;
-     
+
+    //bool areBlocksSpawned = false; 
 
     public GameObject[] blocks; // this is one row of blocks 
     public List<GameObject[]> nestedList = new List<GameObject[]>(); // this is the entire set of rows 
@@ -169,6 +169,9 @@ new string[] {"x"}
                                              new string[] {"AL"}};
     public string[][] words = wordsL1;
     public string[][] dangerWordss = dangerWordsL1;
+
+
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -256,15 +259,29 @@ new string[] {"x"}
                 block.GetComponentInChildren<TextMesh>().text = Char.ToString(shuffledString[i]);               
                 blocks[i] = block;
 
+                /*
+                // Blocks spawning ongoing
+                PlayerPrefs.SetInt("BlocksSpawned", i);
+                Debug.Log("BLOCKS SPAWNED ==>" + PlayerPrefs.GetInt("BlocksSpawned"));
+                */
             }
+
             nestedList.Add(blocks);
         }
+        //areBlocksSpawned = true;
     }
 
     // Update is called once per frame  
     void Update()
-    {
-        
+    {   /*
+        if (nestedList.Count == 0)
+        {
+            ///*
+            // Blocks spawning completed
+            PlayerPrefs.SetString("GameOverReason", "Game terminated - BLOCK SPAWN STOP!");
+            SceneManager.LoadScene("GameOver");
+            //Debug.Log("BLOCKS SPAWNED ==>" + PlayerPrefs.GetInt("BlocksSpawned"));
+        } */
     }
 
     public string shuffleAllLetters(string str)

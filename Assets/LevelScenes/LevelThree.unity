@@ -2828,6 +2828,8 @@ MonoBehaviour:
   obstacle1: {fileID: 0}
   obstacle2: {fileID: 0}
   hoveringPlatform: {fileID: 0}
+  levelThreeTargetScore: 4
+  ind: 0
 --- !u!1 &1702891007
 GameObject:
   m_ObjectHideFlags: 0
@@ -2914,7 +2916,7 @@ GameObject:
   - component: {fileID: 1738910181}
   - component: {fileID: 1738910180}
   m_Layer: 5
-  m_Name: 'Target Score '
+  m_Name: Target Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3764,8 +3766,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1.05, y: 1.05}
+    newSize: {x: 1.05, y: 1.05}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
