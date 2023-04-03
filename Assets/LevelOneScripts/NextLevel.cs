@@ -61,7 +61,8 @@ public class NextLevel : MonoBehaviour
     public void resetValues()
     {
         ScoreScript.PlayerScore = 0;
-        TimerOne.TimeValue = 150;
+        //TimerOne.TimeValue = 150;
+        TimerOne.TimeValue = 10;
     }
 
     public void GameOver(string gameOverReason)

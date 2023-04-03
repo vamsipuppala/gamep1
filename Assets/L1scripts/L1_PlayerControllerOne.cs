@@ -121,13 +121,14 @@ public class L1_PlayerControllerOne : MonoBehaviour
             }
         }
 
-          
+
+        /*
         //j is the index of the last row of blocks
         if ( nestedList[j][0]!=null && nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
         }
-
+        */
 
         //Debug.Log("finalllllllllllllll" + final);
         //goodword.text = final;
@@ -441,10 +442,30 @@ public class L1_PlayerControllerOne : MonoBehaviour
         return Physics2D.OverlapCircle(transform.position, 1f, groundLayer);
 
     }
-    
+
     // private void OnCollisionEnter2D(Collision2D collision)
     //{
     //  Debug.Log("oncollision - ");
     // logic.gameOver();
     //}
+
+    // When blocks collide with the player => Game over
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("PC1 --- COLLISION");
+        Debug.Log("*****************");
+        Debug.Log("COLLIDE (name) : " + collision.gameObject.name);
+
+        if (collision.gameObject.name == "ColoredLetterSquare1(Clone)")
+        {
+            //Debug.Log("GAME OVER BOI !!!!!!");
+            //gameOverReason = "GAME OVER DUE TO COLLISION !!!";
+
+            // Set the game over reason on the GameOver scene.
+            PlayerPrefs.SetString("GameOverReason", "Game terminated due to collision!");
+            SceneManager.LoadScene("GameOver");
+        }
+
+    }
+
 }
