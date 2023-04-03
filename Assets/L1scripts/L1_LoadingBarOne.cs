@@ -24,7 +24,7 @@ public class L1_LoadingBarOne : MonoBehaviour
 
     public void startNextLevel()
     {
-        SceneManager.LoadScene("LevelScenes/LevelOne");
+        SceneManager.LoadScene("LevelScenes/L2");
     }
 
     
