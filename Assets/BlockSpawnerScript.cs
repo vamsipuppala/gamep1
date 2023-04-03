@@ -34,6 +34,16 @@ public class BlockSpawnerScript : MonoBehaviour
                                             new string[] {"TUFFSSETPT"}, 
                                             new string[] {"APPECOPPEE"}, 
                                             };
+
+    public string[][] L2_block_of_words ={new string[] {"FEST"},
+                                new string[] {"COPE"},
+                                new string[] {"DARE"},
+                                new string[] {"CAT"},
+                                new string[] {"ICE"},
+                                new string[] {"ABLE"},
+                                };
+
+
     public string[][] wordsL2 ={new string[] {"FEST"}, 
                                 new string[] {"COPE"}, 
                                 new string[] {"DARE"}, 
@@ -55,6 +65,17 @@ public class BlockSpawnerScript : MonoBehaviour
                                         new string[] {"A", "AL","MP"}, 
                                         new string[] {"BE", "BA", "AR"}, 
                                         new string[] {"S", "IL","SI"} };
+    public string[][] L2_block_of_wordsL2 =  {
+                                            new string[] {"TUFFSSETZT"},
+                                            new string[] {"ZPPECOPPEE"},
+                                            new string[] {"DBARDERRRZ"},
+                                            new string[] {"TTZTTACACT"},
+                                            new string[] {"ICEIIIEIZE"},
+                                            new string[] {"ABABLLZLLE"}
+                                             };
+
+
+
     public string[][] block_of_wordsL2 =  {
                                             new string[] {"TUFFSSETZT"}, 
                                             new string[] {"ZPPECOPPEE"}, 
@@ -170,7 +191,15 @@ public class BlockSpawnerScript : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "L2")
+
+        {
+            Debug.Log("0000000000111111111");
+            words = L2_block_of_words;
+            //blocks_row_count = L2_block_of_words.Length;
+        }
+
     }
     void Start()
     {
@@ -207,6 +236,14 @@ public class BlockSpawnerScript : MonoBehaviour
             blocks_row_count=L1_block_of_words.Length;
          }
 
+        if (scene.name == "L2")
+
+        {
+            Debug.Log("0000000000");
+            words = L2_block_of_words;
+            blocks_row_count = L2_block_of_words.Length;
+        }
+
         for (int j = 0; j < blocks_row_count; j++) // this is for the total number of rows
         {
             
@@ -233,6 +270,11 @@ public class BlockSpawnerScript : MonoBehaviour
             {
                 shuffledString = L1_block_of_words[j][0];
             }
+            else if(scene.name== "L2")
+            {
+                shuffledString = L2_block_of_wordsL2[j][0];
+            }
+
             
 
             else{

@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DentedPixel;
 using UnityEngine.SceneManagement;
 
-public class LoadingBarOne : MonoBehaviour
+public class L2_LoadingBar : MonoBehaviour
 {
     public GameObject bar;
     public int time;
@@ -24,10 +23,10 @@ public class LoadingBarOne : MonoBehaviour
 
     public void startNextLevel()
     {
-        SceneManager.LoadScene("LevelScenes/L2");
+        SceneManager.LoadScene("LevelScenes/LevelThree");
     }
 
-    
+
     /*
     IEnumerator ChangeAfter5SecondsCoroutine()
     {
@@ -41,7 +40,10 @@ public class LoadingBarOne : MonoBehaviour
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
 
         //And load the scene
-        SceneManager.LoadScene("LevelScenes/LevelTwo");
+        Debug.Log("IN LOADING BAR TWO == ENTERING LEVEL 3");
+        SceneManager.LoadScene("LevelScenes/LevelThree");
+        //SceneManager.LoadScene(6);
     }
     */
+
 }
