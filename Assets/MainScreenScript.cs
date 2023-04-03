@@ -24,7 +24,7 @@ public class MainScreenScript : MonoBehaviour
     public void loadLevelOneScene()
     {
         //nextLevelScript.resetValues();
-        SceneManager.LoadScene("LevelOne");
+        SceneManager.LoadScene("L1");
     }
 
     public void loadMainScreen()
@@ -36,7 +36,7 @@ public class MainScreenScript : MonoBehaviour
     public void loadLevelTwoScene()
     {
         //nextLevelScript.resetValues();
-        SceneManager.LoadScene("LevelScenes/LevelTwo");
+        SceneManager.LoadScene("LevelScenes/L2");
     }
 
     public void loadLevelThreeScene()

@@ -383,11 +383,15 @@ public class L1_PlayerControllerOne : MonoBehaviour
                 
                 LineOfSight.positionCount = 0;
             }
+
+            // blinking color change effect
+            /*
              if (Time.time - blinkTime > (float)0.5){
                 blinkTime=Time.time;
             // aim.enabled = !aim.enabled;
             aim.color = UnityEngine.Random.ColorHSV();
              }
+            */
         }
     }
 
