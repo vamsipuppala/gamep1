@@ -23,7 +23,7 @@ public class L2_LoadingBar : MonoBehaviour
 
     public void startNextLevel()
     {
-        SceneManager.LoadScene("LevelScenes/LevelThree");
+        SceneManager.LoadScene("LevelScenes/L3");
     }
 
 

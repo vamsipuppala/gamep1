@@ -48,7 +48,7 @@ public class L3_NextLevelTwo : MonoBehaviour
             // sc.endGameWithZHitCount("2", PlayerControllerTwo.zHit.ToString());
             loadScene = true;
             resetValues();
-            SceneManager.LoadScene("LevelScenes/CompleteLevelTwo");
+            SceneManager.LoadScene("LevelScenes/CompleteLevelThree");
         }
 
         if (ScoreScript.PlayerScore < thresholdScoree && TimerTwo.TimeValue <= 0)
