@@ -24,6 +24,8 @@ public class PlayerControllerFour : MonoBehaviour
     public LogicManagerScript logic;
     public NextLevelScript nextLevel;
     public GameObject NextLevelScreen;
+    //mmodification
+    public MessageManagerScript messageManagerScript;
     public string wordCreated;
      bool z_is = false;
     public string lol1;
@@ -71,6 +73,8 @@ public class PlayerControllerFour : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
+        //mmodification
+        messageManagerScript = GameObject.FindGameObjectWithTag("MessageManagerScript").GetComponent<MessageManagerScript>();
 
         platformGameObj = GameObject.FindGameObjectsWithTag("Mirror");
         mvmtScript = platformGameObj[0].GetComponent<MovementMirrorLevel4>();
@@ -557,7 +561,9 @@ public class PlayerControllerFour : MonoBehaviour
                                                     
                                                     if(findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                                     {
-                                                        
+                                                        //mmodification
+                                                        messageManagerScript.ChangeDangerMessageText("You hit : "+wordCreated+"!!");
+                                                        messageManagerScript.DisplayDangerMessage(1f);
                                                         ScoreScript.PlayerScore -= 1;
                                                         Debug.Log(ScoreScript.PlayerScore);
 

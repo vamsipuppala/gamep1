@@ -13,6 +13,9 @@ TagManager:
   - obstacle1
   - obstacle2
   - HoveringPlatform
+  - MessageManagerScript
+  - DangerPopUpPanel
+  - DangerPopUpMessage
   layers:
   - Default
   - TransparentFX

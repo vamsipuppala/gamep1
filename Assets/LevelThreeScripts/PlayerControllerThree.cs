@@ -23,6 +23,8 @@ public class PlayerControllerThree : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     public LogicManagerScript logic;
     public NextLevelScript nextLevel;
+    //mmodification
+    public MessageManagerScript messageManagerScript;
     public GameObject NextLevelScreen;
     public string wordCreated;
     public string lol1;
@@ -74,6 +76,8 @@ public class PlayerControllerThree : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
+        //mmodification
+        messageManagerScript = GameObject.FindGameObjectWithTag("MessageManagerScript").GetComponent<MessageManagerScript>();
         //nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
         //final = "Aim: " + bs.words[ind];
@@ -556,7 +560,9 @@ public class PlayerControllerThree : MonoBehaviour
                                                     
                                                     if(findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                                     {
-                                                        
+                                                        //mmodification
+                                                        messageManagerScript.ChangeDangerMessageText("You hit : "+wordCreated+"!!");
+                                                        messageManagerScript.DisplayDangerMessage(1f);
                                                         ScoreScript.PlayerScore -= 1;
                                                         Debug.Log(ScoreScript.PlayerScore);
 
