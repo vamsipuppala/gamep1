@@ -39,6 +39,12 @@ public class L3_PlayerControllerTwo : MonoBehaviour
     List<GameObject[]> nestedList;
     public string final;
     public float moveSpeed;
+    public float shakeDuration = 2f; //duration of the shake
+    public float shakeAmount = 0.1f; //amount of shake
+    public float decreaseFactor = 1.0f; //how fast the shake decreases
+
+    private Vector3 originalPos; //original position of the camera
+    private float shakeTimer = 0.3f; //timer for the shake
     public float st, ct;
     public GameObject c;
     public static int timeTargetWordWasHit = 0;
@@ -63,6 +69,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
     {
         //int ind=0;
         st = Time.time;
+        originalPos = transform.localPosition;
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
@@ -386,12 +393,14 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                             {
                                                 Destroy(gs[k]);
                                             }
+                                            
                                             dest=true;
                                             wordCreated = "";
                                             timeTargetWordWasHit += 1;
                                                                                       
                                             j++;
-                                            ind++;
+                                    addCollider(j, bs.nestedList[j]);
+                                    ind++;
                                             localHits = 1;
                                             //mmodification
                                             // targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
@@ -412,7 +421,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                                     
                                                     if(findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                                     {
-                                                        
+                                                //Shake();
                                                         ScoreScript.PlayerScore -= 1;
                                                         Debug.Log(ScoreScript.PlayerScore);
 
@@ -482,6 +491,23 @@ public class L3_PlayerControllerTwo : MonoBehaviour
 
     //}
 
+    void addCollider(int j, GameObject[] gs)
+    {
+        if (j == 1)
+        {
+            Debug.Log("omgomgomgomg" +j);
+            for (int i = 0; i < 10; i++)
+            {
+                gs[i].AddComponent<BoxCollider2D>();
+            }
+        }
+        else
+        {
+            Debug.Log("wowowowowo");
+        }
+       
+    }
+
     private int GetIndexOfGameObject(GameObject target, List<GameObject[]> list)
     {
         for (int i = 0; i < list.Capacity; i++)
@@ -523,46 +549,69 @@ public class L3_PlayerControllerTwo : MonoBehaviour
         return new string(charArray);
     }
 
+    void Shake()
+    {
+        Debug.Log("whatttt");
+        if (shakeTimer > 0)
+
+        {
+            Debug.Log("kuhu" +transform.localPosition);
+
+            transform.localPosition = originalPos + (UnityEngine.Random.insideUnitSphere * shakeAmount);
+
+            Debug.Log("pihu" + transform.localPosition);
+
+            shakeTimer -= Time.deltaTime * decreaseFactor;
+            Debug.Log("what bro" + shakeTimer);
+        }
+        else
+        {
+            Debug.Log("omg");
+            shakeTimer = 0f;
+            transform.localPosition = originalPos;
+        }
+    }
+
     /*receive a word and return a map. The keys are letters in word
    the value is frequency of letter
 */
-// public Dictionary<char,int> InitiateLetterFrequency(String word) {
-//    Dictionary<char,int> map = new Dictionary<char,int>();
-//    int n = word.Length;
+    // public Dictionary<char,int> InitiateLetterFrequency(String word) {
+    //    Dictionary<char,int> map = new Dictionary<char,int>();
+    //    int n = word.Length;
 
 
-//    for (int i = 0; i < n; i++) {
-//        char key = word[i];
-//        if(map.ContainsKey(key)){
-//            map[key]++;
-//        }else{
-//            map.Add(key,1);
-//        }
-//    }
-//    return map;
-// }
+    //    for (int i = 0; i < n; i++) {
+    //        char key = word[i];
+    //        if(map.ContainsKey(key)){
+    //            map[key]++;
+    //        }else{
+    //            map.Add(key,1);
+    //        }
+    //    }
+    //    return map;
+    // }
 
 
-/*receive a word and return a map. The keys are letters in word
-   The value is set to 0 which represents 0 colored frequency
-*/
-// public Dictionary<char,int> InitiateLetterFrequencyToZero(String word) {
-//    Dictionary<char,int> map = new Dictionary<char,int>();
-//    int n = word.Length;
-//    for (int i = 0; i < n; i++) {
-//        char key = word[i];
-//         if(map.ContainsKey(key)){
-//             continue;
-//        }
-//        map.Add(key,0);
-//    }
-//    return map;
-// }
+    /*receive a word and return a map. The keys are letters in word
+       The value is set to 0 which represents 0 colored frequency
+    */
+    // public Dictionary<char,int> InitiateLetterFrequencyToZero(String word) {
+    //    Dictionary<char,int> map = new Dictionary<char,int>();
+    //    int n = word.Length;
+    //    for (int i = 0; i < n; i++) {
+    //        char key = word[i];
+    //         if(map.ContainsKey(key)){
+    //             continue;
+    //        }
+    //        map.Add(key,0);
+    //    }
+    //    return map;
+    // }
 
 
-/* change the frequency of a given letter in the map by delta
-*/
-public void ChangeFrequency(string word, char letter, Dictionary<char,int> map, int delta) {
+    /* change the frequency of a given letter in the map by delta
+    */
+    public void ChangeFrequency(string word, char letter, Dictionary<char,int> map, int delta) {
    int n = word.Length;
 
 
