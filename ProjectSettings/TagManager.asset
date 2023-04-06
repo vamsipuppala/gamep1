@@ -24,8 +24,8 @@ TagManager:
   - Water
   - UI
   - ground
-  - 
-  - 
+  - toppanel
+  - blocks
   - 
   - 
   - 
@@ -52,4 +52,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: toppanel
+    uniqueID: 3265741189
+    locked: 0
+  - name: canvas
+    uniqueID: 873856855
     locked: 0
