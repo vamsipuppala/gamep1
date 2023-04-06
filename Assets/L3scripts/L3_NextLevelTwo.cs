@@ -13,7 +13,7 @@ public class L3_NextLevelTwo : MonoBehaviour
     private bool loadScene = false;
     [SerializeField] private TextMeshProUGUI targetScore;
     public int thresholdScoree = 5;
-    public SendToGoogle sc;
+    //public SendToGoogle sc;
     public PlayerControllerTwo pc;
    
 
@@ -21,7 +21,7 @@ public class L3_NextLevelTwo : MonoBehaviour
     private void Start()
     {
         targetScore.text = "Target Score:  " + thresholdScoree;
-        sc = GameObject.FindGameObjectWithTag("Logic").GetComponent<SendToGoogle>();
+       // sc = GameObject.FindGameObjectWithTag("Logic").GetComponent<SendToGoogle>();
         pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerTwo>();
         //nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
     }
@@ -69,7 +69,7 @@ public class L3_NextLevelTwo : MonoBehaviour
 
     public void GameOver(string gameOverReason)
     {
-        sc.EndOfGameDueToGameOver("2", gameOverReason);
+       // sc.EndOfGameDueToGameOver("2", gameOverReason);
         SceneManager.LoadScene("GameOver");
     }
 }

@@ -2183,7 +2183,6 @@ MonoBehaviour:
   levelName: 
   targetScore: {fileID: 1738910180}
   thresholdScoree: 5
-  sc: {fileID: 0}
   pc: {fileID: 0}
 --- !u!1 &1549444998
 GameObject:
@@ -2543,6 +2542,9 @@ MonoBehaviour:
   text2: {fileID: 0}
   final: 
   moveSpeed: 16
+  shakeDuration: 2
+  shakeAmount: 0.1
+  decreaseFactor: 1
   st: 0
   ct: 0
   c: {fileID: 0}
@@ -2604,7 +2606,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1702891007}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 178283c8203cbe142a07f039e0da1307, type: 3}
   m_Name: 
@@ -3476,7 +3478,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6497469061103453332}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
