@@ -23,6 +23,11 @@ public class L3_PlayerControllerTwo : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     public LogicManagerScript logic;
     public NextLevelScript nextLevel;
+    public Color flashColor = Color.red; // The color to set the background to
+    public float flashDuration = 1f; // The duration for which to set the background color
+
+    private Color originalColor; // The original background color
+    private bool isFlashing = false;
     public GameObject NextLevelScreen;
     public string wordCreated;
     public string lol1;
@@ -69,6 +74,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
     {
         //int ind=0;
         st = Time.time;
+        originalColor = Camera.main.backgroundColor;
         originalPos = transform.localPosition;
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();
@@ -421,8 +427,11 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                                     
                                                     if(findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                                     {
-                                                //Shake();
-                                                        ScoreScript.PlayerScore -= 1;
+                                                if (!isFlashing)
+                                                {
+                                                    StartCoroutine(FlashCoroutine());
+                                                }
+                                                ScoreScript.PlayerScore -= 1;
                                                         Debug.Log(ScoreScript.PlayerScore);
 
                                                     }
@@ -493,20 +502,18 @@ public class L3_PlayerControllerTwo : MonoBehaviour
 
     void addCollider(int j, GameObject[] gs)
     {
-        if (j == 1)
-        {
+        
             Debug.Log("omgomgomgomg" +j);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 8; i++)
             {
                 gs[i].AddComponent<BoxCollider2D>();
             }
-        }
-        else
-        {
-            Debug.Log("wowowowowo");
-        }
+       
+        
        
     }
+
+
 
     private int GetIndexOfGameObject(GameObject target, List<GameObject[]> list)
     {
@@ -549,28 +556,27 @@ public class L3_PlayerControllerTwo : MonoBehaviour
         return new string(charArray);
     }
 
-    void Shake()
-    {
-        Debug.Log("whatttt");
-        if (shakeTimer > 0)
-
+      IEnumerator FlashCoroutine()
         {
-            Debug.Log("kuhu" +transform.localPosition);
-
-            transform.localPosition = originalPos + (UnityEngine.Random.insideUnitSphere * shakeAmount);
-
-            Debug.Log("pihu" + transform.localPosition);
-
-            shakeTimer -= Time.deltaTime * decreaseFactor;
-            Debug.Log("what bro" + shakeTimer);
-        }
-        else
+            isFlashing = true;
+        //Vector3 originalPosition = transform.position;
+        //float elapsed = 0f;
+        Camera.main.backgroundColor = flashColor;
+        yield return new WaitForSeconds(flashDuration);
+        Camera.main.backgroundColor = originalColor;
+        /*while (elapsed < shakeDuration)
         {
-            Debug.Log("omg");
-            shakeTimer = 0f;
-            transform.localPosition = originalPos;
+            float x = originalPosition.x + UnityEngine.Random.Range(-1f, 1f) * 0.1f;
+            float y = originalPosition.y + UnityEngine.Random.Range(-1f, 1f) * 0.1f;
+            transform.position = new Vector3(x, y, originalPosition.z);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }*/
+        //transform.position = originalPosition;
+       
+            isFlashing = false;
         }
-    }
+    
 
     /*receive a word and return a map. The keys are letters in word
    the value is frequency of letter

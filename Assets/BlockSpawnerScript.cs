@@ -41,15 +41,12 @@ public class BlockSpawnerScript : MonoBehaviour
                                 new string[] {"CAT"},
                                 new string[] {"ICE"},
                                 new string[] {"ABLE"},
-                                new string[] {"ABLE"},
-                                new string[] {"ABLE"},
-                                new string[] {"ABLE"},
-                                new string[] {"ABLE"},
-                                new string[] {"ABLE"},
-                                new string[] {"ABLE"},
-                                new string[] {"ABLE"},
-                                new string[] {"ABLE"},
-                                new string[] {"ABLE"}
+                                new string[] {"HEAT"},
+                                new string[] {"LAMP"},
+                                new string[] {"BEAR"},
+                                new string[] {"SILK"},
+                                new string[] {"TREE"},
+                                new string[] {"COW"}
                                 };
 
 
@@ -75,17 +72,18 @@ public class BlockSpawnerScript : MonoBehaviour
                                         new string[] {"BE", "BA", "AR"}, 
                                         new string[] {"S", "IL","SI"} };
     public string[][] L2_block_of_wordsL2 =  {
-                                            new string[] {"TUFFSSETZT"},
-                                            new string[] {"ZPPECOPPEE"},
-                                            new string[] {"DBARDERRRZ"},
-                                            new string[] {"TTZTTACACT"},
-                                            new string[] {"ICEIIIEIZE"},
-                                            new string[] {"ABABLLZLLE"},
-                                            new string[] {"ABABLLZLLE"},
-                                            new string[] {"ABABLLZLLE"},
-                                            new string[] {"ABABLLZLLE"},
-                                            new string[] {"ABABLLZLLE"},
-                                            new string[] {"ABABLLZLLE"}
+                                            new string[] {"TUXFSNEM"},
+                                            new string[] {"ZDBECOPQ"},
+                                            new string[] {"DCARKELM"},
+                                            new string[] {"TXAFENCK"},
+                                            new string[] {"LCBFGHEI"},
+                                            new string[] {"AIKLEOZN"},
+                                            new string[] {"TUOBAHZE"},
+                                            new string[] {"DMCPLAZH"},
+                                            new string[] {"ABAXRIZE"},
+                                            new string[] {"AVLKEIZS"},
+                                            new string[] {"RBEALTZE"},
+                                            new string[] {"BNCRTODW"}
                                              };
 
 
@@ -101,6 +99,34 @@ public class BlockSpawnerScript : MonoBehaviour
                                             new string[] {"AZALMPMPAM"}, 
                                             new string[] {"BEBEBAARAZ"}, 
                                             new string[] {"ZSSSSILKIL"} };
+
+    public string[][] block_of_wordsL3 =  {
+                                             new string[] {"TUXJSNAM"},
+                                            new string[] {"ZABSCOPQ"},
+                                            new string[] {"HCARKYLM"},
+                                            new string[] {"LOBFSHEW"},
+                                            new string[] {"WIKLEOZN"},
+                                            new string[] {"TUINAFZE"},
+                                            new string[] {"DFCPLOZG"},
+                                            new string[] {"ABAXLTZE"},
+                                            new string[] {"ADLKEIZT"},
+                                            new string[] {"ADLKEIZT"},
+                                             };
+
+
+    public string[][] L4_block_of_wordsL4 =  {
+                                            new string[] {"TUXJSNAM"},
+                                            new string[] {"ZABSCOPQ"},
+                                            new string[] {"HCARKYLM"},
+                                            new string[] {"LOBFSHEW"},
+                                            new string[] {"WIKLEOZN"},
+                                            new string[] {"TUINAFZE"},
+                                            new string[] {"DFCPLOZG"},
+                                            new string[] {"ABAXLTZE"},
+                                            new string[] {"ADLKEIZT"},
+                                            new string[] {"ADLKEIZT"},
+                                             };
+
     public string[][] wordsL3 = {new string[] {"JAM"}, 
                                  new string[] {"SOAP"}, 
                                  new string[] {"HAY"}, 
@@ -112,21 +138,50 @@ public class BlockSpawnerScript : MonoBehaviour
                                  new string[] {"DIET"}, 
                                  new string[] {"KIT"}
     };
-    public string[][] dangerWordsL3 = { 
-                                       new string[]  {"AM", "JM", "M"}, 
-                                       new string[] {"SOA", "OS", "A"}, 
-                                       new string[] {"HA", "YA", "A"}, 
-                                      new string[] {"S", "HOW", "OW"}, 
-                                       new string[] {"NO", "E", "W"}, 
-                                       new string[] {"F","FI", "FF"}, 
-                                       new string[] {"GOL", "LF", "OL"}, 
-                                       new string[] {"T", "BE", "LT"}, 
-                                       new string[] {"DE","E","P"}, 
-                                       new string[] {"K","I","T"} 
+
+    public string[][] L5_wordsL5 = { new string[] {"VAMSIIIEZM"},
+                                            new string[] {"AMOAHGZIAO"},
+                                            new string[] {"GPRETRUEZE"},
+                                            new string[] {"UZUANPQSHU"},
+                                            new string[] {"CHANIZIDII"},
+                                            new string[] {"HENGHENGZH"},
+                                            new string[] {"CENGHENGZH"},
+                                            new string[] {"NUUUZUUATA"},
+                                            new string[] {"LSHATELOVZ"},
+                                            new string[] {"PYAAAARAZP"}};
+
+
+
+    public string[][] L4_wordsL4 = {new string[] {"JAM"},
+                                 new string[] {"SOAP"},
+                                 new string[] {"HAY"},
+                                 new string[] {"SHOW"},
+                                 new string[] {"NEW"},
+                                 new string[] {"FIN"},
+                                 new string[] {"GOLF"},
+                                 new string[] {"BELT"},
+                                 new string[] {"DIET"},
+                                 new string[] {"KIT"}
     };
+
+
+    public string[][] dangerWordsL3 = { 
+                                       new string[]  {"AU"}, 
+                                       new string[] {"ZBA"}, 
+                                       new string[] {"HC"}, 
+                                      new string[] {"LOB"}, 
+                                       new string[] {"NO"}, 
+                                       new string[] {"F"}, 
+                                       new string[] {"GZ"}, 
+                                       new string[] {"T"}, 
+                                       new string[] {"DE"}, 
+                                       new string[] {"K"} 
+    };
+
     
 
-    public string[][] wordsL4 = { 
+
+    public string[][] wordsL5 = { 
                                     new string[] {"VAMSI"}, 
                                     new string[] {"AMOGHA"}, 
                                     new string[] {"GURPREET"}, 
@@ -137,7 +192,35 @@ public class BlockSpawnerScript : MonoBehaviour
                                     new string[] {"NAATU"}, 
                                     new string[] {"LOVE"}, 
                                     new string[] {"PYAAAAR"} };
+
     public string[][] dangerWordsL4 = {
+                                    new string[]  {"AM", "JM", "M"},
+                                       new string[] {"SOA", "OS", "A"},
+                                       new string[] {"HA", "YA", "A"},
+                                      new string[] {"S", "HOW", "OW"},
+                                       new string[] {"NO", "E", "W"},
+                                       new string[] {"F","FI", "FF"},
+                                       new string[] {"GOL", "LF", "OL"},
+                                       new string[] {"T", "BE", "LT"},
+                                       new string[] {"DE","E","P"},
+                                       new string[] {"K","I","T"} };
+
+    public string[][] L4_dangerWordsL4 = {
+                                       new string[]  {"AU" , "M"},
+                                       new string[] {"ZBA" , "OP"},
+                                       new string[] {"HC" , "Y" },
+                                      new string[] {"LOB", "BS"},
+                                       new string[] {"NO" , "ZE"},
+                                       new string[] {"F" , "AE"},
+                                       new string[] {"GZ" , "PL"},
+                                       new string[] {"T", "BX"},
+                                       new string[] {"DE", "DL"},
+                                       new string[] {"K", "KE"}
+    };
+
+
+
+    public string[][] dangerWordsL5 = {
                                         new string[] {"I", "VA", "ME"},
                                         new string[] {"G", "AMO", "HA"}, 
                                         new string[] {"E", "T", "PRE"}, 
@@ -148,7 +231,7 @@ public class BlockSpawnerScript : MonoBehaviour
                                         new string[] {"NA", "TU", "U"}, 
                                         new string[] {"L", "VE", "HATE"}, 
                                         new string[] {"P", "YAAR", "RA"} };
-    public string[][] block_of_wordsL4 =  {
+    public string[][] block_of_wordsL5 =  {
                                             new string[] {"VAMSIIIEZM"}, 
                                             new string[] {"AMOAHGZIAO"}, 
                                             new string[] {"GPRETRUEZE"}, 
@@ -233,8 +316,8 @@ public class BlockSpawnerScript : MonoBehaviour
         }
         else if (scene.name == "LevelFour")
         {
-            words = wordsL4;
-            dangerWordss = dangerWordsL4;
+            //words = wordsL4;
+            //dangerWordss = dangerWordsL4;
         }
         int blocks_row_count = words.Length;
          if(scene.name == "L1")
@@ -257,12 +340,26 @@ public class BlockSpawnerScript : MonoBehaviour
             dangerWordss = dangerWordsL3;
         }
 
+        if(scene.name == "L4")
+        {
+            blocks_row_count = L4_wordsL4.Length;
+            words = L4_wordsL4;
+            dangerWordss = L4_dangerWordsL4;
+        }
+
+        if(scene.name== "L5")
+        {
+            blocks_row_count = wordsL5.Length;
+            words = wordsL5;
+            dangerWordss = dangerWordsL5;
+        }
+
 
         for (int j = 0; j < blocks_row_count; j++) // this is for the total number of rows
         {
             
             
-            blocks = new GameObject[10];
+            blocks = new GameObject[8];
             if (j == 0)
             {
                 Debug.Log("j is 0");
@@ -282,7 +379,7 @@ public class BlockSpawnerScript : MonoBehaviour
             
             else if(scene.name == "LevelFour")
             {
-                shuffledString = block_of_wordsL4[j][0];
+                shuffledString = block_of_wordsL5[j][0];
             }
             else if(scene.name == "L1")
             {
@@ -292,7 +389,18 @@ public class BlockSpawnerScript : MonoBehaviour
             {
                 shuffledString = L2_block_of_wordsL2[j][0];
             }
-
+            else if(scene.name == "L3")
+            {
+                shuffledString = block_of_wordsL3[j][0];
+            }
+            else if(scene.name == "L4")
+            {
+                shuffledString = L4_block_of_wordsL4[j][0];
+            }
+            else if(scene.name == "L5")
+            {
+                shuffledString = block_of_wordsL5[j][0];
+            }
             
 
             else{
@@ -310,7 +418,7 @@ public class BlockSpawnerScript : MonoBehaviour
             //     hs.Add(c);
             // }
             // Debug.Log("WORD: " + word);
-            int numOfRandomLetters = 10 - hs.Count;
+            int numOfRandomLetters = 8 - hs.Count;
             string randomLetters = generateRandomLetters(numOfRandomLetters);
             string shuffleLetters = "";
             string finalWord = string.Join("", hs.ToArray());
@@ -320,7 +428,7 @@ public class BlockSpawnerScript : MonoBehaviour
             
             // char[] shuffledString1 = block_of_words[j].ToCharArray();
             float posy = transform.position.y + 1.1f * j*blockScale; // this is for making the rows come one below the other
-            for (int i = 0; i < 10; i++) // this is for the 10 blocks in a single row 
+            for (int i = 0; i < 8; i++) // this is for the 10 blocks in a single row 
             {
                 GameObject block = Instantiate(blockPrefab, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
                 // block.transform.position = new Vector3(transform.position.x + (i * width) + (i * offset), posy, 0);

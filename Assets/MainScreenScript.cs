@@ -48,13 +48,13 @@ public class MainScreenScript : MonoBehaviour
     public void loadLevelFourScene()
     {
         //nextLevelScript.resetValues();
-        SceneManager.LoadScene("LevelScenes/LevelTwo");
+        SceneManager.LoadScene("LevelScenes/L4");
     }
 
     public void loadLevelFiveScene()
     {
         //nextLevelScript.resetValues();
-        SceneManager.LoadScene("LevelScenes/LevelThree");
+        SceneManager.LoadScene("LevelScenes/L5");
     }
 
 

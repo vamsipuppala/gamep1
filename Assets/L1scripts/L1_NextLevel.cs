@@ -12,7 +12,7 @@ public class L1_NextLevel : MonoBehaviour
     //private int nextSceneToLoad;
     private bool loadScene = false;
     [SerializeField] private TextMeshProUGUI targetScore;
-    public int thresholdScoree = 20;
+    public int thresholdScoree = 16;
     public SendToGoogle sc;
     public L1_PlayerControllerOne pc;
     public float blinkTime = 0.5f;

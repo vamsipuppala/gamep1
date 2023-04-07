@@ -7,7 +7,7 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class L2_PlayerController : MonoBehaviour
+public class L4_PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     // Line OF Renderer
@@ -22,7 +22,12 @@ public class L2_PlayerController : MonoBehaviour
     //public float moveSpeed = 16f;
     [SerializeField] private Rigidbody2D rb;
     public LogicManagerScript logic;
-    
+    public NextLevelScript nextLevel;
+    public Color flashColor = Color.red; // The color to set the background to
+    public float flashDuration = 1f; // The duration for which to set the background color
+
+    private Color originalColor; // The original background color
+    private bool isFlashing = false;
     public GameObject NextLevelScreen;
     public string wordCreated;
     public string lol1;
@@ -32,13 +37,19 @@ public class L2_PlayerController : MonoBehaviour
     int localHits = 1;
     bool z_is = false;
     [SerializeField] private TextMeshProUGUI goodword;
-    //[SerializeField] public TextMeshProUGUI dangerWord;
+    [SerializeField] public TextMeshProUGUI dangerWord;
     public string dummy;
     public Text text1;
     public Text text2;
     List<GameObject[]> nestedList;
     public string final;
     public float moveSpeed;
+    public float shakeDuration = 2f; //duration of the shake
+    public float shakeAmount = 0.1f; //amount of shake
+    public float decreaseFactor = 1.0f; //how fast the shake decreases
+
+    private Vector3 originalPos; //original position of the camera
+    private float shakeTimer = 0.3f; //timer for the shake
     public float st, ct;
     public GameObject c;
     public static int timeTargetWordWasHit = 0;
@@ -46,7 +57,7 @@ public class L2_PlayerController : MonoBehaviour
     //public static int numberOfDeselections = 0;
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    public L2_NextLevelTwo nextLevelScript;
+    public L3_NextLevelTwo nextLevelScript;
     public static int numberOfTimesWordHitInOrder = 0;
     public static int numberOfTimesWordHitInReverse = 0;
     public static int zHit = 0;
@@ -57,13 +68,14 @@ public class L2_PlayerController : MonoBehaviour
     //record the frequency for each colored letter in target word
     Dictionary<char, int> targetColoredLetterFrequency;
 
-    public int levelTwoTargetScore = 5;
 
     int ind = 0;
     void Start()
     {
         //int ind=0;
         st = Time.time;
+        originalColor = Camera.main.backgroundColor;
+        originalPos = transform.localPosition;
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
@@ -71,14 +83,13 @@ public class L2_PlayerController : MonoBehaviour
         //nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
         //final = "Aim: " + bs.words[ind];
-        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L2_NextLevelTwo>();
+        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L3_NextLevelTwo>();
         //nextLevelScript.resetValues();
 
         //mmodification
-        goodword.text = string.Join("", bs.words[ind]);
-        targetLetterFrequency = InitiateLetterFrequency(goodword.text);
-        Debug.Log("the good word is " + goodword.text);
-        targetColoredLetterFrequency = InitiateLetterFrequencyToZero(goodword.text);
+        //  goodword.text = string.Join("", bs.words[ind]);
+        // targetLetterFrequency = InitiateLetterFrequency(goodword.text);
+        // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(goodword.text);
 
     }
 
@@ -145,9 +156,14 @@ public class L2_PlayerController : MonoBehaviour
 
         //mmodification
         // goodword.text = "Target:  \n"+UpdateTargetWordColor(string.Join("", bs.words[ind]));
-        goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]));
+        goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]), 0);
 
-        
+        dangerWord.text = "Danger:  \n";
+
+        for (int i = 0; i < bs.dangerWordss[ind].Length; i++)
+        {
+            dangerWord.text += changecolor(bs.dangerWordss[ind][i], 1) + "\n";
+        }
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         //Vector2 direction = new Vector2(
@@ -188,7 +204,7 @@ public class L2_PlayerController : MonoBehaviour
 
             move = Input.GetAxisRaw("Horizontal");
             String givenWord = bs.words[j][0];
-            Debug.Log("the given word is " + givenWord);           
+            string[] givenDangerWord = bs.dangerWordss[j];
 
 
             // rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
@@ -204,21 +220,18 @@ public class L2_PlayerController : MonoBehaviour
                     {
                         //Debug.Log("GIVEN WORD: " + givenWord);
                         nestedList = bs.nestedList;
-                        Debug.Log("the nested list is" + nestedList);
                         GameObject gameObject = hitInfo.collider.gameObject;
 
                         // Debug.Log("indexxxxxxxxxxxxx   " + GetIndexOfGameObject(gameObject, nestedList));
                         numberOfHits = givenWord.Length;
                         // Debug.Log("now the numberOfHits is " + numberOfHits);
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
-                        Debug.Log("the given text is " + text);
                         if (text.text[0] == 'Z' && i == 0)
                         {
 
                         }
                         else if (j == GetIndexOfGameObject(gameObject, nestedList))
                         {
-                            Debug.Log("the index found is  " + j);
 
                             if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green
                                 || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
@@ -254,14 +267,13 @@ public class L2_PlayerController : MonoBehaviour
                                     z_is = false;
                                 }
                                 //mmodification                                                          
-                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.green || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
-                                {
-                                    if (givenWord.Contains(text.text.ToString()))
-                                    {
-                                        ChangeFrequency(givenWord, char.Parse(text.text), targetColoredLetterFrequency, -1);
-                                    }
+                                // if (gameObject.GetComponent<SpriteRenderer>().color == Color.green || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
+                                // {
+                                //     // if (givenWord.Contains(text.text.ToString())){
+                                //     //     ChangeFrequency(givenWord,char.Parse(text.text),targetColoredLetterFrequency,-1);
+                                //     // }
 
-                                }
+                                // }
 
                                 // if (gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
                                 // {
@@ -274,7 +286,7 @@ public class L2_PlayerController : MonoBehaviour
                             }
                             else
                             {
-                                Debug.Log("elseeeeeeeeeee");
+
                                 if (localHits > numberOfHits && !(z_is == true && localHits - 1 <= numberOfHits) && text.text[0] != 'Z')
                                 {
                                     // Debug.Log("no shooting");
@@ -283,17 +295,26 @@ public class L2_PlayerController : MonoBehaviour
                                 {
                                     localHits++;
                                     int fla = 0;
+                                    for (int z1 = 0; z1 < givenDangerWord.Length; z1++)
+                                    {
 
-                                    Debug.Log("wowowo " + givenWord);
+                                        if (givenDangerWord[z1].Contains(text.text.ToString()))
+                                        {
+                                            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                                            // dangerWordCreated += text.text;
+                                            fla++;
+                                            break;
+                                            //Debug.Log("the danger word created till now is" + dangerWordCreated);
+                                        }
+                                    }
+
                                     if (!givenWord.Contains(text.text.ToString()) && fla == 0)
                                         gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
 
                                     else if (givenWord.Contains(text.text.ToString()))
                                     {
                                         //mmodification
-                                        Debug.Log("yes it contains it " + char.Parse(text.text));
-                                        ChangeFrequency(givenWord, char.Parse(text.text), targetColoredLetterFrequency, 1);
-                                        Debug.Log("the fla is " + fla);
+                                        // ChangeFrequency(givenWord,char.Parse(text.text),targetColoredLetterFrequency,1);
                                         if (fla > 0)
                                             gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
                                         else
@@ -318,7 +339,6 @@ public class L2_PlayerController : MonoBehaviour
                                 }
 
                                 bool dest = false;
-                                Debug.Log("the wordssssssssssssssssssss " + wordCreated);
                                 if (wordCreated.Contains('Z'))
                                 {
                                     z_is = true;
@@ -332,7 +352,6 @@ public class L2_PlayerController : MonoBehaviour
                                 }
                                 if ((wordCreated.Length == bs.words[j][0].Length) && findMatch(wordCreated, bs.words[j][0]))
                                 {
-                                    Debug.Log("THIS IS A MATCH");
                                     if (bs.words[j][0].Equals(wordCreated))
                                     {
                                         numberOfTimesWordHitInOrder++;
@@ -344,37 +363,85 @@ public class L2_PlayerController : MonoBehaviour
 
                                     //IF WORD IS SPELLED IN ORDER - REWARD THE PLAYER
 
-                                   // if (bs.words[j][0].Equals(wordCreated) || Reverse(bs.words[j][0]).Equals(wordCreated))
-                                    //{
-                                      //  Debug.Log("******");
-                                    //}
+                                    // if (bs.words[j][0].Equals(wordCreated) || Reverse(bs.words[j][0]).Equals(wordCreated))
+                                    // {
+                                    //     //Debug.Log("HELLO JI LEVEL 2 - destroying 2 rows");
+                                    //     ScoreScript.PlayerScore += 2;
 
-                                    // Debug.Log("the word is       " + wordCreated);
-                                   // if(bs.words[j][0].Equals(wordCreated))
-                                    //{
-                                        //Debug.Log(bs);
-                                        Debug.Log("!!!!!!!!!");
-                                        GameObject[] gs = bs.nestedList[j];
-                                        ScoreScript.PlayerScore += 1;
-                                        for (int k = 0; k < gs.Length; k++)
-                                        {
-                                            Destroy(gs[k]);
-                                        }
-                                        dest = true;
-                                        wordCreated = "";
-                                        timeTargetWordWasHit += 1;
+                                    //     for (int d = 0; d < 2; d++)
+                                    //     {
+                                    //         if (d < nestedList.Count)
+                                    //         {
+                                    //             GameObject[] gs = bs.nestedList[j];
+                                    //             for (int k = 0; k < gs.Length; k++)
+                                    //             {
+                                    //                 Destroy(gs[k]);
+                                    //             }
+                                    //             wordCreated = "";
+                                    //             j++;
+                                    //             ind++;
+                                    //             Debug.Log("ind changed!!!");
+                                    //             localHits = 1;
 
-                                        j++;
+                                    //             //mmodification
+                                    //             // targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
+                                    //             // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
+                                    //         }
+                                    //     }
+                                    //     dest=true;
+
+                                    // }
+
+                                    // // Debug.Log("the word is       " + wordCreated);
+                                    // else 
+                                    // {
+                                    //Debug.Log(bs);
+                                    GameObject[] gs = bs.nestedList[j];
+                                    ScoreScript.PlayerScore += 1;
+                                    for (int k = 0; k < gs.Length; k++)
+                                    {
+                                        Destroy(gs[k]);
+                                    }
+
+                                    dest = true;
+                                    wordCreated = "";
+                                    timeTargetWordWasHit += 1;
+
+                                    j++;
                                     addCollider(j, bs.nestedList[j]);
                                     ind++;
-                                        localHits = 1;
-                                        //mmodification
-                                        targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
-                                        targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
-                                   // }
-
+                                    localHits = 1;
+                                    //mmodification
+                                    // targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
+                                    // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
+                                    // }
+                                    // if(z_is == true)
+                                    //     {
+                                    // zHit++;
+                                    //         ScoreScript.PlayerScore += 1;
+                                    //     }
                                 }
-                               
+                                else
+                                {
+                                    for (int z1 = 0; z1 < bs.dangerWordss[j].Length; z1++)
+                                    {
+
+                                        if (wordCreated.Length == bs.dangerWordss[j][z1].Length)
+                                        {
+
+                                            if (findMatch(wordCreated, bs.dangerWordss[j][z1]))
+                                            {
+                                                if (!isFlashing)
+                                                {
+                                                    StartCoroutine(FlashCoroutine());
+                                                }
+                                                ScoreScript.PlayerScore -= 1;
+                                                Debug.Log(ScoreScript.PlayerScore);
+
+                                            }
+                                        }
+                                    }
+                                }
                                 if (!dest && z_is)
                                     wordCreated += "Z";
 
@@ -451,6 +518,7 @@ public class L2_PlayerController : MonoBehaviour
     }
 
 
+
     private int GetIndexOfGameObject(GameObject target, List<GameObject[]> list)
     {
         for (int i = 0; i < list.Capacity; i++)
@@ -492,50 +560,63 @@ public class L2_PlayerController : MonoBehaviour
         return new string(charArray);
     }
 
+    IEnumerator FlashCoroutine()
+    {
+        isFlashing = true;
+        //Vector3 originalPosition = transform.position;
+        //float elapsed = 0f;
+        Camera.main.backgroundColor = flashColor;
+        yield return new WaitForSeconds(flashDuration);
+        Camera.main.backgroundColor = originalColor;
+        /*while (elapsed < shakeDuration)
+        {
+            float x = originalPosition.x + UnityEngine.Random.Range(-1f, 1f) * 0.1f;
+            float y = originalPosition.y + UnityEngine.Random.Range(-1f, 1f) * 0.1f;
+            transform.position = new Vector3(x, y, originalPosition.z);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }*/
+        //transform.position = originalPosition;
+
+        isFlashing = false;
+    }
+
+
     /*receive a word and return a map. The keys are letters in word
    the value is frequency of letter
 */
-    public Dictionary<char, int> InitiateLetterFrequency(String word)
-    {
-        Dictionary<char, int> map = new Dictionary<char, int>();
-        int n = word.Length;
+    // public Dictionary<char,int> InitiateLetterFrequency(String word) {
+    //    Dictionary<char,int> map = new Dictionary<char,int>();
+    //    int n = word.Length;
 
 
-        for (int i = 0; i < n; i++)
-        {
-            char key = word[i];
-            if (map.ContainsKey(key))
-            {
-                map[key]++;
-            }
-            else
-            {
-                map.Add(key, 1);
-            }
-        }
-        return map;
-    }
+    //    for (int i = 0; i < n; i++) {
+    //        char key = word[i];
+    //        if(map.ContainsKey(key)){
+    //            map[key]++;
+    //        }else{
+    //            map.Add(key,1);
+    //        }
+    //    }
+    //    return map;
+    // }
 
 
     /*receive a word and return a map. The keys are letters in word
        The value is set to 0 which represents 0 colored frequency
     */
-    public Dictionary<char, int> InitiateLetterFrequencyToZero(String word)
-    {
-        Debug.Log("the good word is " + word);
-        Dictionary<char, int> map = new Dictionary<char, int>();
-        int n = word.Length;
-        for (int i = 0; i < n; i++)
-        {
-            char key = word[i];
-            if (map.ContainsKey(key))
-            {
-                continue;
-            }
-            map.Add(key, 0);
-        }
-        return map;
-    }
+    // public Dictionary<char,int> InitiateLetterFrequencyToZero(String word) {
+    //    Dictionary<char,int> map = new Dictionary<char,int>();
+    //    int n = word.Length;
+    //    for (int i = 0; i < n; i++) {
+    //        char key = word[i];
+    //         if(map.ContainsKey(key)){
+    //             continue;
+    //        }
+    //        map.Add(key,0);
+    //    }
+    //    return map;
+    // }
 
 
     /* change the frequency of a given letter in the map by delta
@@ -543,7 +624,7 @@ public class L2_PlayerController : MonoBehaviour
     public void ChangeFrequency(string word, char letter, Dictionary<char, int> map, int delta)
     {
         int n = word.Length;
-        Debug.Log("the worddddddddddd" + word);
+
 
         for (int i = 0; i < n; i++)
         {
@@ -553,8 +634,6 @@ public class L2_PlayerController : MonoBehaviour
                 break;
             }
         }
-
-        Debug.Log("the map now is " + map);
     }
 
 
@@ -562,80 +641,67 @@ public class L2_PlayerController : MonoBehaviour
        The times of each letter to be colored cannot exceed its frequency of two map which means cannot exceed the frequency in given word
        and the frequency of colored blocks which include the same letter.
     */
-    public string UpdateTargetWordColor(string word)
+    // public string UpdateTargetWordColor(string word) {
+    //    int n = word.Length;
+    //    string res = "";
+
+    //     Dictionary<char,int> colorLeftCounter = new Dictionary<char,int>();
+    //     foreach(var item in targetColoredLetterFrequency){
+    //         colorLeftCounter[item.Key] = item.Value;
+    //     }
+    //    for (int i = 0; i < n; i++){
+    //         char key = word[i];
+    //        int x = Math.Min(colorLeftCounter[key],targetLetterFrequency[key]);
+
+    //         if(colorLeftCounter[key] > 0){
+    //             colorLeftCounter[key]--;
+    //             res += "<color=green>" + key + "</color>";
+    //         }
+
+    //        if(x == 0){
+    //            res += key;
+    //        }
+    //    }
+    //    return res;
+    // }
+    public string changecolor(string word, int c)
     {
         int n = word.Length;
-        string res = "";
-
-        Dictionary<char, int> colorLeftCounter = new Dictionary<char, int>();
-        foreach (var item in targetColoredLetterFrequency)
-        {
-            colorLeftCounter[item.Key] = item.Value;
-        }
-        for (int i = 0; i < n; i++)
-        {
-            char key = word[i];
-            int x = Math.Min(colorLeftCounter[key], targetLetterFrequency[key]);
-
-            if (colorLeftCounter[key] > 0)
-            {
-                colorLeftCounter[key]--;
-                res += "<color=green>" + key + "</color>";
-            }
-
-            if (x == 0)
-            {
-                res += key;
-            }
-        }
-        return res;
-    }
-    public string changecolor(string word)
-    {
-        int n = word.Length;
+        string temp = wordCreated;
         string res = "";
         int n1 = wordCreated.Length, i, j;
         for (i = 0; i < n; i++)
         {
-            for (j = 0; j < n1; j++)
+            for (j = 0; j < temp.Length; j++)
             {
-                if (word[i] == wordCreated[j])
+                if (word[i] == temp[j])
                 {
                     break;
                 }
             }
-            if (j == n1)
+
+            if (j >= temp.Length)
             {
                 res += word[i];
             }
             else
             {
-                res += "<color=green>" + word[i] + "</color>";
+                if (c == 0)
+                    res += "<color=green>" + word[i] + "</color>";
+                else
+                {
+                    res += "<color=red>" + word[i] + "</color>";
+                }
+                int index = temp.IndexOf(word[i]);
+                temp = temp.Remove(index, 1);
             }
+
 
         }
         return res;
     }
 
 
-    // When blocks collide with the player => Game over
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("PC2 --- COLLISION");
-        Debug.Log("*****************");
-        Debug.Log("COLLIDE (name) : " + collision.gameObject.name);
-
-        if (collision.gameObject.name == "ColoredLetterSquare1(Clone)")
-        {
-            //Debug.Log("GAME OVER BOI !!!!!!");
-            //gameOverReason = "GAME OVER DUE TO COLLISION !!!";
-
-            // Set the game over reason on the GameOver scene.
-            PlayerPrefs.SetString("GameOverReason", "Game terminated due to collision!");
-            SceneManager.LoadScene("GameOver");
-        }
-
-    }
 
 
     // private void OnCollisionEnter2D(Collision2D collision)
@@ -643,14 +709,4 @@ public class L2_PlayerController : MonoBehaviour
     //  Debug.Log("oncollision - ");
     // logic.gameOver();
     //}
-
-    // All rows annihilated - game over
-    private void allRowsAnnihilated()
-    {
-        if (ScoreScript.PlayerScore < levelTwoTargetScore && L2_Timer.TimeValue > 0)
-        {
-            PlayerPrefs.SetString("GameOverReason", "Game terminated - all rows annihilated, but target score not achieved!");
-            SceneManager.LoadScene("GameOver");
-        }
-    }
 }

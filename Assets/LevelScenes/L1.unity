@@ -1088,7 +1088,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584138344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.65, y: 13.33, z: 0}
+  m_LocalPosition: {x: -10.05, y: 13.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1792,7 +1792,7 @@ MonoBehaviour:
   NextLevelObject: {fileID: 0}
   levelName: 
   targetScore: {fileID: 97137278}
-  thresholdScoree: 20
+  thresholdScoree: 16
   sc: {fileID: 0}
   pc: {fileID: 0}
   blinkTime: 0.5

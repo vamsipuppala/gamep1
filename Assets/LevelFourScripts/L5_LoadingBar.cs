@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class L1_LoadingBarOne : MonoBehaviour
+public class L5_LoadingBar : MonoBehaviour
 {
     public GameObject bar;
     public int time;
@@ -23,7 +23,7 @@ public class L1_LoadingBarOne : MonoBehaviour
 
     public void startNextLevel()
     {
-        SceneManager.LoadScene("LevelScenes/L2");
+        SceneManager.LoadScene("LevelScenes/L6");
     }
 
 
