@@ -374,7 +374,7 @@ public class BlockSpawnerScript : MonoBehaviour
             }
             else if(scene.name == "LevelThree")
             {
-                shuffledString = wordsL3[j][0];
+                shuffledString = block_of_wordsL3[j][0];
             }
             
             else if(scene.name == "LevelFour")
@@ -432,13 +432,11 @@ public class BlockSpawnerScript : MonoBehaviour
             {
                 GameObject block = Instantiate(blockPrefab, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
                 // block.transform.position = new Vector3(transform.position.x + (i * width) + (i * offset), posy, 0);
-                 block.transform.position = new Vector3(transform.position.x + (i * width*blockScale) + (i * offset*blockScale), posy, 0);
-                block.GetComponentInChildren<TextMesh>().text = Char.ToString(shuffledString[i]);
-                if (j == 0)
-                {
-                    Debug.Log("ammamama");
-                    block.AddComponent<BoxCollider2D>();
-                }
+                block.transform.position = new Vector3(transform.position.x + (i * width*blockScale) + (i * offset*blockScale), posy, 0);
+                block.GetComponentInChildren<TextMesh>().fontSize = 18; 
+                block.GetComponentInChildren<TextMesh>().characterSize = 0.5F;
+                block.GetComponentInChildren<TextMesh>().alignment = TextAlignment.Right;
+                block.GetComponentInChildren<TextMesh>().text = Char.ToString(shuffledString[i]);               
                 blocks[i] = block;
 
             }

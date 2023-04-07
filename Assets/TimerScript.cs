@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TimerScript : MonoBehaviour
 {
-    public static float TimeValue = 120;
+    public static float TimeValue = 90;
     public Text TimerText;
 
     // Update is called once per frame
@@ -37,5 +37,9 @@ public class TimerScript : MonoBehaviour
         float seconds = Mathf.FloorToInt(TimeToDisplay % 60);
 
         TimerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+        if (TimeToDisplay <= 11f){
+           TimerText.color = Color.red;
+        }
     }
 }
