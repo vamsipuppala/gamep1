@@ -20,7 +20,7 @@ public class L4_NextLevel : MonoBehaviour
 
     private void Start()
     {
-        targetScore.text = "Target Score:  " + thresholdScoree;
+        targetScore.text = thresholdScoree.ToString();
         sc = GameObject.FindGameObjectWithTag("Logic").GetComponent<SendToGoogle>();
         pc = GameObject.FindGameObjectWithTag("Player").GetComponent<L4_PlayerController>();
         //nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
