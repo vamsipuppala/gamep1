@@ -23,7 +23,45 @@ public class L1_LoadingBarOne : MonoBehaviour
 
     public void startNextLevel()
     {
-        SceneManager.LoadScene("LevelScenes/L2");
+       // SceneManager.LoadScene("LevelScenes/L2");
+        loadLevelTwoScene();
+    }
+
+    public void loadLevelTwoScene()
+    {
+        //Start loading the Scene asynchronously and show the guidance text
+        StartCoroutine(LoadSceneTwo());
+    }
+
+    IEnumerator LoadSceneTwo()
+    {
+        //Begin to load the Scene you specify
+        AsyncOperation asyncOperationTwo = SceneManager.LoadSceneAsync("L2");
+
+        //Don't let the Scene activate until you allow it to
+        asyncOperationTwo.allowSceneActivation = false;
+
+        Debug.Log("ASYNC PROGRESS INSIDE LOADSCENETWO:" + asyncOperationTwo.progress);
+
+        //Wait till the load is still in progress
+        while (!asyncOperationTwo.isDone)
+        {
+            Debug.Log("ASYNC INSIDE ISDONE");
+
+            // Check if the load has finished
+            if (asyncOperationTwo.progress >= 0.9f)
+            {
+                Debug.Log("ASYNC INSIDE .PROGRESS");
+
+                //Activate the Scene
+                asyncOperationTwo.allowSceneActivation = true;
+
+                // Set timescale to 0 to stop the background (level 2) from starting. 
+                Time.timeScale = 0;
+
+            }
+            yield return null;
+        }
     }
 
 

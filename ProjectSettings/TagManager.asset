@@ -16,6 +16,11 @@ TagManager:
   - MessageManagerScript
   - DangerPopUpPanel
   - DangerPopUpMessage
+  - GuidePopup1
+  - GuidePop2
+  - GuidePop3
+  - GuidePop4
+  - GuidePop5
   layers:
   - Default
   - TransparentFX
