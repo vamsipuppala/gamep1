@@ -1344,7 +1344,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1702891011}
         m_TargetAssemblyTypeName: MainScreenScript, Assembly-CSharp
         m_MethodName: loadMainScreen
         m_Mode: 1
