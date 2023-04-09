@@ -684,6 +684,8 @@ MonoBehaviour:
   obstacle1: {fileID: 0}
   obstacle2: {fileID: 0}
   hoveringPlatform: {fileID: 0}
+  obstacleDisableColor: {r: 0.3882353, g: 0.31764707, b: 0.2, a: 130}
+  obstacleOriginalColor: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 130}
 --- !u!114 &153392235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,6 +738,7 @@ MonoBehaviour:
   bs: {fileID: 0}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 1
+  originalColor: {r: 0.79607844, g: 0.6862745, b: 0.59607846, a: 0}
   reflections: 5
   MaxRayDistance: 100
   LayerDetection:
