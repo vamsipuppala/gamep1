@@ -64,7 +64,6 @@ public class L3_PlayerControllerTwo : MonoBehaviour
     public static int numberOfTimesWordHitInReverse=0;
     public static int zHit = 0;
 
-    //mmodification
    //record the frequency for each letter in target word
    Dictionary<char,int> targetLetterFrequency;
    //record the frequency for each colored letter in target word
@@ -200,7 +199,6 @@ public class L3_PlayerControllerTwo : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 8f);
         }
 
-        //mmodification
         // goodword.text = "Target:  \n"+UpdateTargetWordColor(string.Join("", bs.words[ind]));
         goodword.text = "Target:  \n"+changecolor(string.Join("", bs.words[ind]), 0);
 
@@ -309,8 +307,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                         z_is=false;
                                     }*/
 
-
-                                //mmodification                                                          
+                                                       
                                 // if (gameObject.GetComponent<SpriteRenderer>().color == Color.green || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
                                 // {
                                 //     // if (givenWord.Contains(text.text.ToString())){
@@ -345,7 +342,8 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                     {
                                         gameObject.GetComponent<SpriteRenderer>().color = redColor;
                                         //mmodification
-                                        textBlinkScript.StartBlinking("dangerBorder");
+                                        if ((wordCreated.Length == bs.words[j][0].Length) && findMatch(wordCreated, bs.words[j][0]))
+                                            textBlinkScript.StartBlinking("dangerBorder");
                                         // dangerWordCreated += text.text;
                                         fla++;
                                         break;
@@ -359,7 +357,8 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                         else if (givenWord.Contains(text.text.ToString()))
                                         {
                                             //mmodification
-                                            textBlinkScript.StartBlinking("targetBorder");
+                                            if ((wordCreated.Length == bs.words[j][0].Length) && findMatch(wordCreated, bs.words[j][0]))
+                                                textBlinkScript.StartBlinking("targetBorder");
 
                                             if(fla>0)
                                             gameObject.GetComponent<SpriteRenderer>().color = yellowColor;
@@ -428,7 +427,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                         //             Debug.Log("ind changed!!!");
                                         //             localHits = 1;
 
-                                        //             //mmodification
+
                                         //             // targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
                                         //             // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
                                         //         }
@@ -456,7 +455,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                     addCollider(j, bs.nestedList[j]);
                                     ind++;
                                             localHits = 1;
-                                            //mmodification
+
                                             // targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
                                             // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
                                         // }
