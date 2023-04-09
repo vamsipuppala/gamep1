@@ -34,7 +34,6 @@ public class TextBlinkScript : MonoBehaviour
         float timer = 0f;
         while (timer < blinkDuration)
         {
-            Debug.Log("Blinking!!!");
             border.enabled = !border.enabled;
             yield return new WaitForSeconds(blinkInterval);
             timer += blinkInterval;

@@ -336,48 +336,38 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                 {
                                     localHits++;
                                     int fla =0;
-                                    for( int z1=0 ; z1<givenDangerWord.Length;z1++){
-                                    
-                                    if (givenDangerWord[z1].Contains(text.text.ToString()))
+                                    for( int z1=0 ; z1<givenDangerWord.Length;z1++)
                                     {
-                                        gameObject.GetComponent<SpriteRenderer>().color = redColor;
-                                        //mmodification
-                                        if ((wordCreated.Length == bs.words[j][0].Length) && findMatch(wordCreated, bs.words[j][0]))
-                                            textBlinkScript.StartBlinking("dangerBorder");
-                                        // dangerWordCreated += text.text;
-                                        fla++;
-                                        break;
-                                        //Debug.Log("the danger word created till now is" + dangerWordCreated);
-                                    }
+                                        if (givenDangerWord[z1].Contains(text.text.ToString()))
+                                        {
+                                            gameObject.GetComponent<SpriteRenderer>().color = redColor;
+                                            //mmodification
+                                            bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
+                                            if (!isTargetCompleted)
+                                                textBlinkScript.StartBlinking("dangerBorder");
+                                            // dangerWordCreated += text.text;
+                                            fla++;
+                                            break;
+                                            //Debug.Log("the danger word created till now is" + dangerWordCreated);
+                                        }
                                     }
                                     
-                                        if (!givenWord.Contains(text.text.ToString()) && fla==0)
-                                            gameObject.GetComponent<SpriteRenderer>().color = grayColor;
-                                        
-                                        else if (givenWord.Contains(text.text.ToString()))
-                                        {
-                                            //mmodification
-                                            if ((wordCreated.Length == bs.words[j][0].Length) && findMatch(wordCreated, bs.words[j][0]))
-                                                textBlinkScript.StartBlinking("targetBorder");
+                                    if (!givenWord.Contains(text.text.ToString()) && fla==0)
+                                        gameObject.GetComponent<SpriteRenderer>().color = grayColor;
+                                    
+                                    else if (givenWord.Contains(text.text.ToString()))
+                                    {
+                                        bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
+                                        //mmodification
+                                        Debug.Log("wordCreated: "+wordCreated);
+                                        Debug.Log(isTargetCompleted);
+                                        if (!isTargetCompleted)
+                                            textBlinkScript.StartBlinking("targetBorder");
 
-                                            if(fla>0)
-                                            gameObject.GetComponent<SpriteRenderer>().color = yellowColor;
-                                            else
-                                            gameObject.GetComponent<SpriteRenderer>().color = greenColor;
-                                            //givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
-                                        
-                                       /* if (wordCreated.Length != bs.words[j].Length && goodword.text.IndexOf(wordCreated)!=-1)
-                                        {
-                                            Debug.Log("word createeeeeeddddddd" + wordCreated);
-                                            string s = goodword.text.Substring(goodword.text.IndexOf(wordCreated), wordCreated.Length + 1);
-                                            dummy = goodword.text;
-                                            string s1 = dummy.Replace(s, "");
-                                            final = s1 + "<u>" + s + "</u>";
-                                            goodword.text = final;
-                                        }*/
-                                            
-                                      
-                                        //Debug.Log("GIVEN WORD: " + givenWord);
+                                        if(fla>0)
+                                        gameObject.GetComponent<SpriteRenderer>().color = yellowColor;
+                                        else
+                                        gameObject.GetComponent<SpriteRenderer>().color = greenColor;
                                     }
                                     wordCreated += text.text;
                                    
