@@ -52,7 +52,7 @@ public class L7_PlayerController : MonoBehaviour
     public float moveSpeed;
     public float st, ct;
     public GameObject c;
-    public Color flashColor = Color.red; // The color to set the background to
+    //public Color flashColor = redColor; // The color to set the background to
     public float flashDuration = 1f; // The duration for which to set the background color
 
     private Color originalColor; // The original background color
@@ -76,6 +76,47 @@ public class L7_PlayerController : MonoBehaviour
     Dictionary<char, int> targetLetterFrequency;
     //record the frequency for each colored letter in target word
     Dictionary<char, int> targetColoredLetterFrequency;
+
+    static string greenHexCode = "#56a500";
+    Color greenColor = new Color(
+        (float)System.Convert.ToInt32(greenHexCode.Substring(1, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(greenHexCode.Substring(3, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(greenHexCode.Substring(5, 2), 16) / 255f,
+        1f
+    );
+
+    static string yellowHexCode = "#ecbd00";
+    Color yellowColor = new Color(
+        (float)System.Convert.ToInt32(yellowHexCode.Substring(1, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(yellowHexCode.Substring(3, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(yellowHexCode.Substring(5, 2), 16) / 255f,
+        1f
+    );
+
+    static string redHexCode = "#b90200";
+    Color redColor = new Color(
+        (float)System.Convert.ToInt32(redHexCode.Substring(1, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(redHexCode.Substring(3, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(redHexCode.Substring(5, 2), 16) / 255f,
+        1f
+    );
+
+    static string grayHexCode = "#69675E";
+    Color grayColor = new Color(
+        (float)System.Convert.ToInt32(grayHexCode.Substring(1, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(grayHexCode.Substring(3, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(grayHexCode.Substring(5, 2), 16) / 255f,
+        1f
+    );
+
+
+    static string flashRedHexCode = "#CF7272";
+    public Color flashColor = new Color(
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(1, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(3, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(5, 2), 16) / 255f,
+        130f
+    );
 
 
     int ind = 0;
@@ -381,8 +422,8 @@ public class L7_PlayerController : MonoBehaviour
                         else if (j == GetIndexOfGameObject(gameObject, nestedList))
                         {
 
-                            if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green
-                                || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
+                            if (gameObject.GetComponent<SpriteRenderer>().color == grayColor || gameObject.GetComponent<SpriteRenderer>().color == redColor || gameObject.GetComponent<SpriteRenderer>().color == greenColor
+                                || gameObject.GetComponent<SpriteRenderer>().color == yellowColor)
                             {
                                 localHits--;
                                 // numberOfTimeDeselectionsOccurred++;
@@ -412,8 +453,8 @@ public class L7_PlayerController : MonoBehaviour
                                 wordCreated = Reverse(reverse);
 
 
-
-                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.green || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
+                                //mmodification
+                                if (gameObject.GetComponent<SpriteRenderer>().color == greenColor || gameObject.GetComponent<SpriteRenderer>().color == yellowColor)
                                 {
                                     // Debug.Log("diselect!!");
                                     // if (givenWord.Contains(text.text.ToString())){
@@ -461,7 +502,7 @@ public class L7_PlayerController : MonoBehaviour
                                     }
 
                                     if (!givenWord.Contains(text.text.ToString()) && fla == 0)
-                                        gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+                                        gameObject.GetComponent<SpriteRenderer>().color = grayColor;
 
                                     else if (givenWord.Contains(text.text.ToString()))
                                     {
@@ -472,9 +513,9 @@ public class L7_PlayerController : MonoBehaviour
                                         // ChangeFrequency(givenWord,char.Parse(text.text),targetColoredLetterFrequency,1);
 
                                         if (fla > 0)
-                                            gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+                                            gameObject.GetComponent<SpriteRenderer>().color = yellowColor;
                                         else
-                                            gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                                            gameObject.GetComponent<SpriteRenderer>().color = greenColor;
                                         //givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
 
                                         /* if (wordCreated.Length != bs.words[j].Length && goodword.text.IndexOf(wordCreated)!=-1)
@@ -817,10 +858,10 @@ the value is frequency of letter
             else
             {
                 if (c == 0)
-                    res += "<color=green>" + word[i] + "</color>";
+                    res += "<color=#56a500>" + word[i] + "</color>";
                 else
                 {
-                    res += "<color=red>" + word[i] + "</color>";
+                    res += "<color=#b90200>" + word[i] + "</color>";
                 }
                 int index = temp.IndexOf(word[i]);
                 temp = temp.Remove(index, 1);

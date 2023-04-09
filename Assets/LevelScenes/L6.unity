@@ -4083,7 +4083,7 @@ GameObject:
   - component: {fileID: 1274279809}
   - component: {fileID: 1274279808}
   m_Layer: 5
-  m_Name: LevelFiveTitle
+  m_Name: LevelSixTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
