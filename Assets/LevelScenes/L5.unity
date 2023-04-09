@@ -1104,6 +1104,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 852752353263809529, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
+      propertyPath: m_Radius
+      value: 0.59239125
+      objectReference: {fileID: 0}
+    - target: {fileID: 852752353263809529, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.027173996
+      objectReference: {fileID: 0}
     - target: {fileID: 852752353263809530, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Color.b
       value: 0.047058824
@@ -1126,11 +1134,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.13
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.47
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1309,6 +1317,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   logic: {fileID: 0}
   nextLevel: {fileID: 0}
+  flashColor: {r: 0.8117647, g: 0.44705883, b: 0.44705883, a: 0.50980395}
   flashDuration: 1
   NextLevelScreen: {fileID: 0}
   wordCreated: 
@@ -1330,7 +1339,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   nextLevelScript: {fileID: 0}
-  flashColor: {r: 0.8117647, g: 0.44705883, b: 0.44705883, a: 0.50980395}
 --- !u!1 &373776536
 GameObject:
   m_ObjectHideFlags: 0
