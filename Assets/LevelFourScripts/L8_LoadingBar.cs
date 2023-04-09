@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class L7_LoadingBar : MonoBehaviour
+public class L8_LoadingBar : MonoBehaviour
 {
     public GameObject bar;
     public int time;
@@ -36,7 +36,7 @@ public class L7_LoadingBar : MonoBehaviour
     IEnumerator LoadSceneThree()
     {
         //Begin to load the Scene you specify
-        AsyncOperation asyncOperationThree = SceneManager.LoadSceneAsync("L8");
+        AsyncOperation asyncOperationThree = SceneManager.LoadSceneAsync("L9");
 
         //Don't let the Scene activate until you allow it to
         asyncOperationThree.allowSceneActivation = false;

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 
-public class L7_Timer : MonoBehaviour
+public class L8_Timer : MonoBehaviour
 {
     public static float TimeValue = 240;
     //public static float TimeValue = 300; // for collision

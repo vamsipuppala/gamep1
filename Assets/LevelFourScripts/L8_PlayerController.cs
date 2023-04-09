@@ -7,7 +7,7 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class L6_PlayerController : MonoBehaviour
+public class L8_PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     // Line OF Renderer
@@ -15,12 +15,6 @@ public class L6_PlayerController : MonoBehaviour
     public LineRenderer LineOfSight2;
 
     int j = 0;
-    public float shakeDuration = 2f; //duration of the shake
-    public float shakeAmount = 0.1f; //amount of shake
-    public float decreaseFactor = 1.0f; //how fast the shake decreases
-
-    private Vector3 originalPos; //original position of the camera
-    private float shakeTimer = 0.3f; //timer for the shake
     public BlockSpawnerScript bs;
     public int reflections;
     public float MaxRayDistance;
@@ -29,12 +23,12 @@ public class L6_PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     public LogicManagerScript logic;
     public NextLevelScript nextLevel;
-    public GameObject NextLevelScreen;
     //mmodification
-    public MessageManagerScript messageManagerScript;
+    //public MessageManagerScript messageManagerScript;
+    public GameObject NextLevelScreen;
     public string wordCreated;
-    bool z_is = false;
     public string lol1;
+    bool z_is = false;
     public string dangerWordCreated;
     //public float move;
     int numberOfHits;
@@ -49,24 +43,28 @@ public class L6_PlayerController : MonoBehaviour
     public float moveSpeed;
     public float st, ct;
     public GameObject c;
+    public static int numberOfDeselections = 0;
+    public static int timeTargetWordWasHit = 0;
+    public static int numberOfTimesWordHitInOrder = 0;
+    public static int numberOfTimesWordHitInReverse = 0;
+    public static int zHit = 0;
     public Color flashColor = Color.red; // The color to set the background to
     public float flashDuration = 1f; // The duration for which to set the background color
 
     private Color originalColor; // The original background color
     private bool isFlashing = false;
-    public static int timeTargetWordWasHit = 0;
-    public static int numberOfDeselections = 0;
-    public static int numberOfTimesWordHitInOrder = 0;
-    public static int numberOfTimesWordHitInReverse = 0;
-    public static int zHit = 0;
 
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    public L6_NextLevel nextLevelScript;
+    public L8_NextLevel nextLevelScript;
 
-    public GameObject[] platformGameObj;
-    public MovementMirrorLevel4 mvmtScript;
-    public MovementMirrorLevel4 mvmtScript1;
+    public BoxCollider2D boxCollider1;
+    public BoxCollider2D boxCollider2;
+
+    public GameObject obstacle1;
+    public GameObject obstacle2;
+
+    public GameObject hoveringPlatform;
 
     //mmodification
     //record the frequency for each letter in target word
@@ -74,28 +72,32 @@ public class L6_PlayerController : MonoBehaviour
     //record the frequency for each colored letter in target word
     Dictionary<char, int> targetColoredLetterFrequency;
 
-
     int ind = 0;
     void Start()
     {
-        //int ind=0;
+        ind = 0;
         st = Time.time;
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
         //mmodification
-        //messageManagerScript = GameObject.FindGameObjectWithTag("MessageManagerScript").GetComponent<MessageManagerScript>();
-
-        platformGameObj = GameObject.FindGameObjectsWithTag("Mirror");
-        mvmtScript = platformGameObj[0].GetComponent<MovementMirrorLevel4>();
-        mvmtScript1 = platformGameObj[1].GetComponent<MovementMirrorLevel4>();
-
+      //  messageManagerScript = GameObject.FindGameObjectWithTag("MessageManagerScript").GetComponent<MessageManagerScript>();
         //nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
         //final = "Aim: " + bs.words[ind];
-        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L6_NextLevel>();
+        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L8_NextLevel>();
         nextLevelScript.resetValues();
+
+        hoveringPlatform = GameObject.FindGameObjectWithTag("HoveringPlatform");
+        Debug.Log("child: " + hoveringPlatform.transform.childCount);
+
+        obstacle1 = hoveringPlatform.transform.GetChild(0).gameObject;
+        Debug.Log("OBSTACLE 1: " + obstacle1.name);
+        obstacle2 = hoveringPlatform.transform.GetChild(1).gameObject;
+
+        boxCollider1 = obstacle1.GetComponent<BoxCollider2D>();
+        boxCollider2 = obstacle2.GetComponent<BoxCollider2D>();
 
         //mmodification
         goodword.text = string.Join("", bs.words[ind]);
@@ -106,7 +108,6 @@ public class L6_PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         LineOfSight2.positionCount = 1;
         LineOfSight2.SetPosition(0, transform.position);
 
@@ -151,18 +152,21 @@ public class L6_PlayerController : MonoBehaviour
                 }
             }
         }
+
+
         //j is the index of the last row of blocks
         if (nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
         }
 
-
+        //Debug.Log("finalllllllllllllll" + final);
         //goodword.text = final;
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, 8f);
         }
+
         //mmodification
         goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]), 0);
         dangerWord.text = "Danger:  \n";
@@ -185,6 +189,7 @@ public class L6_PlayerController : MonoBehaviour
         rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
         float rotateSpeed = 0.1f;
         float move2 = Input.GetAxis("Vertical") * rotateSpeed;
+
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
 
@@ -238,8 +243,8 @@ public class L6_PlayerController : MonoBehaviour
 
                     //         if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                     //         {
-                    //             localHits--;
                     //             numberOfDeselections++;
+                    //             localHits--;
                     //             if (gameObject.GetComponent<SpriteRenderer>().color == Color.green)
                     //             {
 
@@ -300,7 +305,6 @@ public class L6_PlayerController : MonoBehaviour
 
                     //                     if(findMatch(dangerWordCreated, bs.dangerWordss[j][0]))
                     //                     {
-                    //                         //Debug.Log("dangerrrrrr");
                     //                         ScoreScript.PlayerScore -= 1;
 
                     //                     }
@@ -312,7 +316,7 @@ public class L6_PlayerController : MonoBehaviour
                     //                     //IF WORD IS SPELLED IN ORDER - REWARD THE PLAYER
                     //                     if (bs.words[j][0].Equals(wordCreated))
                     //                     {
-                    //                         Debug.Log("HELLO JI LEVEL 4 - pausing moving walls at original pos for few seconds");
+                    //                         Debug.Log("HELLO JI LEVEL 3 - pausing obstacle mvmt for few seconds");
 
                     //                         GameObject[] gs = bs.nestedList[j];
                     //                         ScoreScript.PlayerScore += 2;
@@ -325,12 +329,12 @@ public class L6_PlayerController : MonoBehaviour
                     //                         j++;
                     //                         ind++;
                     //                         localHits = 1;
-                    //                         mvmtScript.move = false;
-                    //                         mvmtScript1.move = false;
-                    //                         Debug.Log("mirror length: " + GameObject.FindGameObjectsWithTag("Mirror").Length);
-                    //                         platformGameObj[0].transform.position = mvmtScript.originalPos;
-                    //                         platformGameObj[1].transform.position = mvmtScript1.originalPos;
-                    //                         StartCoroutine(EnablePlatformMvmt(10.0F));
+
+                    //                         obstacle1.GetComponent<SpriteRenderer>().color = Color.red;
+                    //                         obstacle2.GetComponent<SpriteRenderer>().color = Color.red;
+                    //                         boxCollider1.enabled = false;
+                    //                         boxCollider2.enabled = false;
+                    //                         StartCoroutine(EnableBox(10.0F));
                     //                     }
 
                     //                     // Debug.Log("the word is       " + wordCreated);
@@ -343,8 +347,8 @@ public class L6_PlayerController : MonoBehaviour
                     //                         {
                     //                             Destroy(gs[k]);
                     //                         }
-                    //                         wordCreated = "";
                     //                         timeTargetWordWasHit += 1;
+                    //                         wordCreated = "";
                     //                         dangerWordCreated = "";                                            
                     //                         j++;
                     //                         ind++;
@@ -407,16 +411,8 @@ public class L6_PlayerController : MonoBehaviour
 
                                 wordCreated = Reverse(reverse);
 
-
                                 //mmodification
-                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.green || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
-                                {
-                                    // Debug.Log("diselect!!");
-                                    // if (givenWord.Contains(text.text.ToString())){
-                                    //     ChangeFrequency(givenWord,char.Parse(text.text),targetColoredLetterFrequency,-1);
-                                    // }
 
-                                }
 
                                 // if (gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
                                 // {
@@ -425,14 +421,14 @@ public class L6_PlayerController : MonoBehaviour
 
                                 gameObject.GetComponent<SpriteRenderer>().color = Color.white;
 
-                                // Debug.Log("hurrrrrayyyyy" + localHits);
+
                             }
                             else
                             {
 
                                 if (localHits > numberOfHits && !(z_is == true && localHits - 1 <= numberOfHits) && text.text[0] != 'Z')
                                 {
-                                    // Debug.Log("no shooting");
+
                                 }
                                 else
                                 {
@@ -457,7 +453,7 @@ public class L6_PlayerController : MonoBehaviour
                                     else if (givenWord.Contains(text.text.ToString()))
                                     {
                                         //mmodification
-                                        // ChangeFrequency(givenWord,char.Parse(text.text),targetColoredLetterFrequency,1);
+
 
                                         if (fla > 0)
                                             gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
@@ -467,7 +463,7 @@ public class L6_PlayerController : MonoBehaviour
 
                                         /* if (wordCreated.Length != bs.words[j].Length && goodword.text.IndexOf(wordCreated)!=-1)
                                          {
-                                             Debug.Log("word createeeeeeddddddd" + wordCreated);
+
                                              string s = goodword.text.Substring(goodword.text.IndexOf(wordCreated), wordCreated.Length + 1);
                                              dummy = goodword.text;
                                              string s1 = dummy.Replace(s, "");
@@ -481,11 +477,11 @@ public class L6_PlayerController : MonoBehaviour
                                     wordCreated += text.text;
 
                                 }
-
                                 bool dest = false;
                                 if (wordCreated.Contains('Z'))
                                 {
                                     z_is = true;
+
 
                                     wordCreated = wordCreated.Replace("Z", "");
                                     Debug.Log("Z deleted" + wordCreated);
@@ -494,15 +490,12 @@ public class L6_PlayerController : MonoBehaviour
                                 {
                                     z_is = false;
                                 }
-                                Debug.Log("(((((((((((((" + wordCreated);
-                                Debug.Log(")))))))))))) " + bs.words[j][0]);
                                 if (wordCreated.Length == bs.words[j][0].Length && findMatch(wordCreated, bs.words[j][0]))
                                 {
-                                    Debug.Log("******************   " + wordCreated);
+
                                     //IF WORD IS SPELLED IN ORDER - REWARD THE PLAYER
-                                    /*if (bs.words[j][0].Equals(wordCreated) || Reverse(bs.words[j][0]).Equals(wordCreated))
+                                    if (bs.words[j][0].Equals(wordCreated) || Reverse(bs.words[j][0]).Equals(wordCreated))
                                     {
-                                        Debug.Log("oooooooooooooooooooooooooooooooooooooooooooooooooo");
                                         if (bs.words[j][0].Equals(wordCreated))
                                         {
                                             numberOfTimesWordHitInOrder++;
@@ -512,7 +505,7 @@ public class L6_PlayerController : MonoBehaviour
                                             numberOfTimesWordHitInReverse++;
                                         }
 
-                                        // ScoreScript.PlayerScore += 2;
+                                        ScoreScript.PlayerScore += 2;
                                         for (int d = 0; d < 2; d++)
                                         {
                                             if (d < nestedList.Count)
@@ -526,24 +519,25 @@ public class L6_PlayerController : MonoBehaviour
                                                 j++;
                                                 ind++;
                                                 localHits = 1;
-                                                mvmtScript.move = false;
-                                                mvmtScript1.move = false;
-                                                Debug.Log("mirror length: " + GameObject.FindGameObjectsWithTag("Mirror").Length);
-                                                platformGameObj[0].transform.position = mvmtScript.originalPos;
-                                                platformGameObj[1].transform.position = mvmtScript1.originalPos;
-                                                StartCoroutine(EnablePlatformMvmt(15.0F));
 
                                                 //mmodification
-                                                //targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
-                                                //targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
+                                                // targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
+                                                // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
                                             }
                                         }
                                         dest = true;
+                                        obstacle1.GetComponent<SpriteRenderer>().color = Color.red;
+                                        obstacle2.GetComponent<SpriteRenderer>().color = Color.red;
+                                        boxCollider1.enabled = false;
+                                        boxCollider2.enabled = false;
+                                        StartCoroutine(EnableBox(15.0F));
 
-                                    }*/
+                                    }
 
 
-                                   
+                                    else
+                                    {
+
                                         GameObject[] gs = bs.nestedList[j];
                                         ScoreScript.PlayerScore += 1;
                                         for (int k = 0; k < gs.Length; k++)
@@ -559,9 +553,8 @@ public class L6_PlayerController : MonoBehaviour
                                         localHits = 1;
 
                                         //mmodification
-                                        // targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
-                                        // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
-                                    
+
+                                    }
                                     if (z_is == true)
                                     {
                                         zHit++;
@@ -579,14 +572,14 @@ public class L6_PlayerController : MonoBehaviour
                                             if (findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                             {
                                                 //mmodification
-                                                //messageManagerScript.ChangeDangerMessageText("You hit : " + wordCreated + "!!");
-                                                //messageManagerScript.DisplayDangerMessage(1f);
+                                               // messageManagerScript.ChangeDangerMessageText("You hit : " + wordCreated + "!!");
+                                               // messageManagerScript.DisplayDangerMessage(1f);
+                                                ScoreScript.PlayerScore -= 1;
+                                                Debug.Log(ScoreScript.PlayerScore);
                                                 if (!isFlashing)
                                                 {
                                                     StartCoroutine(FlashCoroutine());
                                                 }
-                                                ScoreScript.PlayerScore -= 1;
-                                                Debug.Log(ScoreScript.PlayerScore);
 
                                             }
                                         }
@@ -641,6 +634,7 @@ public class L6_PlayerController : MonoBehaviour
         {
             if (Time.time - st > (float)0.5)
             {//Debug.Log("************");
+                //Debug.Log("SET VERTEXT COUNT - OBSOLETE");
                 //LineOfSight.SetVertexCount(0);
                 LineOfSight.positionCount = 0;
             }
@@ -654,18 +648,14 @@ public class L6_PlayerController : MonoBehaviour
 
     //}
 
-    private int GetIndexOfGameObject(GameObject target, List<GameObject[]> list)
+    IEnumerator EnableBox(float waitTime)
     {
-        for (int i = 0; i < list.Capacity; i++)
-        {
-            if (list[i].Contains(target))
-            {
-                return i;
-            }
-        }
-        return -1;
+        yield return new WaitForSeconds(waitTime);
+        obstacle1.GetComponent<SpriteRenderer>().color = Color.white;
+        obstacle2.GetComponent<SpriteRenderer>().color = Color.white;
+        boxCollider1.enabled = true;
+        boxCollider2.enabled = true;
     }
-
 
     IEnumerator FlashCoroutine()
     {
@@ -687,6 +677,27 @@ public class L6_PlayerController : MonoBehaviour
 
         isFlashing = false;
     }
+    private int GetIndexOfGameObject(GameObject target, List<GameObject[]> list)
+    {
+        for (int i = 0; i < list.Capacity; i++)
+        {
+            if (list[i].Contains(target))
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+    public static string Reverse(string s)
+    {
+        char[] charArray = s.ToCharArray();
+        Array.Reverse(charArray);
+        return new string(charArray);
+    }
+
+
+
+
     private bool findMatch(string createdWord, string givenWord)
     {
 
@@ -708,66 +719,16 @@ public class L6_PlayerController : MonoBehaviour
 
     }
 
-    // private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //  Debug.Log("oncollision - ");
-    // logic.gameOver();
-    //}
-
-    IEnumerator EnablePlatformMvmt(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        mvmtScript.move = true;
-        mvmtScript1.move = true;
-
-    }
-    public static string Reverse(string s)
-    {
-        char[] charArray = s.ToCharArray();
-        Array.Reverse(charArray);
-        return new string(charArray);
-    }
-
     /*receive a word and return a map. The keys are letters in word
 the value is frequency of letter
 */
-    public Dictionary<char, int> InitiateLetterFrequency(String word)
-    {
-        Dictionary<char, int> map = new Dictionary<char, int>();
-        int n = word.Length;
 
-
-        for (int i = 0; i < n; i++)
-        {
-            char key = word[i];
-            if (map.ContainsKey(key))
-            {
-                map[key]++;
-            }
-            else
-            {
-                map.Add(key, 1);
-            }
-        }
-        return map;
-    }
 
 
     /*receive a word and return a map. The keys are letters in word
        The value is set to 0 which represents 0 colored frequency
     */
-    // public Dictionary<char,int> InitiateLetterFrequencyToZero(String word) {
-    //    Dictionary<char,int> map = new Dictionary<char,int>();
-    //    int n = word.Length;
-    //    for (int i = 0; i < n; i++) {
-    //        char key = word[i];
-    //        if(map.ContainsKey(key)){
-    //             continue;
-    //        }
-    //        map.Add(key,0);
-    //    }
-    //    return map;
-    // }
+
 
 
     /* change the frequency of a given letter in the map by delta
@@ -775,28 +736,27 @@ the value is frequency of letter
 
 
 
+
     /* use rich text to color letters. For each letter in the given word, take the minimum of the frequency from two maps as colored times.
-    The times of each letter to be colored cannot exceed its frequency of two map which means cannot exceed the frequency in given word
-    and the frequency of colored blocks which include the same letter.
+       The times of each letter to be colored cannot exceed its frequency of two map which means cannot exceed the frequency in given word
+       and the frequency of colored blocks which include the same letter.
     */
 
     public string changecolor(string word, int c)
     {
         int n = word.Length;
-        string temp = wordCreated;
         string res = "";
         int n1 = wordCreated.Length, i, j;
         for (i = 0; i < n; i++)
         {
-            for (j = 0; j < temp.Length; j++)
+            for (j = 0; j < n1; j++)
             {
-                if (word[i] == temp[j])
+                if (word[i] == wordCreated[j])
                 {
                     break;
                 }
             }
-
-            if (j >= temp.Length)
+            if (j == n1)
             {
                 res += word[i];
             }
@@ -808,13 +768,15 @@ the value is frequency of letter
                 {
                     res += "<color=red>" + word[i] + "</color>";
                 }
-                int index = temp.IndexOf(word[i]);
-                temp = temp.Remove(index, 1);
             }
-
 
         }
         return res;
     }
 
+    // private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //  Debug.Log("oncollision - ");
+    // logic.gameOver();
+    //}
 }

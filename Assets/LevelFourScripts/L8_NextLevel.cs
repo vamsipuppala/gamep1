@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class L7_NextLevel : MonoBehaviour
+public class L8_NextLevel : MonoBehaviour
 {
     public GameObject NextLevel;
     public string levelName;
@@ -14,7 +14,7 @@ public class L7_NextLevel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI targetScore;
     public int thresholdScoree = 5;
     public SendToGoogle sc;
-    public L7_PlayerController pc;
+    public L8_PlayerController pc;
 
 
 
@@ -22,7 +22,7 @@ public class L7_NextLevel : MonoBehaviour
     {
         targetScore.text = thresholdScoree.ToString();
         sc = GameObject.FindGameObjectWithTag("Logic").GetComponent<SendToGoogle>();
-        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<L7_PlayerController>();
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<L8_PlayerController>();
         //nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
@@ -40,7 +40,7 @@ public class L7_NextLevel : MonoBehaviour
         //Debug.Log("the danger word score is " + PlayerController.timesDangerWordWasHit);
         // SendToGoogle sc = new SendToGoogle();
         //Debug.Log("threshold score is " + thresholdScoree);
-        if (ScoreScript.PlayerScore >= thresholdScoree && L7_Timer.TimeValue > 0)
+        if (ScoreScript.PlayerScore >= thresholdScoree && L8_Timer.TimeValue > 0)
         {
             //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
             //sc.EndOfGame(L4_PlayerController.timeTargetWordWasHit.ToString(), "2", L2_PlayerController.numberOfTimeDeselectionsOccurred.ToString(), "1",
@@ -48,10 +48,10 @@ public class L7_NextLevel : MonoBehaviour
             //sc.endGameWithZHitCount("2", L2_PlayerController.zHit.ToString());
             loadScene = true;
             resetValues();
-            SceneManager.LoadScene("LevelScenes/CompleteLevel7");
+            SceneManager.LoadScene("LevelScenes/CompleteLevel8");
         }
 
-        if (ScoreScript.PlayerScore < thresholdScoree && L7_Timer.TimeValue <= 0)
+        if (ScoreScript.PlayerScore < thresholdScoree && L8_Timer.TimeValue <= 0)
         {
             // sc.EndOfGame(L2_PlayerController.timeTargetWordWasHit.ToString(), "2", L2_PlayerController.numberOfTimeDeselectionsOccurred.ToString(), "0",
             //L2_PlayerController.numberOfTimesWordHitInOrder.ToString(), L2_PlayerController.numberOfTimesWordHitInReverse.ToString());

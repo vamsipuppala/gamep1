@@ -207,6 +207,35 @@ public class BlockSpawnerScript : MonoBehaviour
                                     new string[] {"PYAAAAR"}
     };
 
+    public string[][] wordsL7 =
+  {
+         new string[] {"VAMSI"},
+                                    new string[] {"AMOGHA"},
+                                    new string[] {"GURPREET"},
+                                    new string[] {"ANSHU"},
+                                    new string[] {"CHAND"},
+                                    new string[] {"HENG"},
+                                    new string[] {"CHENG"},
+                                    new string[] {"NAATU"},
+                                    new string[] {"LOVE"},
+                                    new string[] {"PYAAAAR"}
+    };
+
+    public string[][] wordsL8 =
+{
+         new string[] {"VAMSI"},
+                                    new string[] {"AMOGHA"},
+                                    new string[] {"GURPREET"},
+                                    new string[] {"ANSHU"},
+                                    new string[] {"CHAND"},
+                                    new string[] {"HENG"},
+                                    new string[] {"CHENG"},
+                                    new string[] {"NAATU"},
+                                    new string[] {"LOVE"},
+                                    new string[] {"PYAAAAR"}
+    };
+
+
     public string[][] dangerWordsL4 = {
                                     new string[]  {"AM", "JM", "M"},
                                        new string[] {"SOA", "OS", "A"},
@@ -247,7 +276,31 @@ public class BlockSpawnerScript : MonoBehaviour
                                         new string[] {"P", "YAAR", "RA"} };
 
     public string[][] dangerWordsL6 = {
-                                        new string[] {"I", "VA", "ME"},
+                                        new string[] {"I", "I", "ME"},
+                                        new string[] {"G", "AMO", "HA"},
+                                        new string[] {"E", "T", "PRE"},
+                                        new string[] {"U", "AN", "SHU"},
+                                        new string[] {"I", "CH", "AND"},
+                                        new string[] {"H", "HE", "BEN"},
+                                        new string[] {"G", "CH", "HENG"},
+                                        new string[] {"NA", "TU", "U"},
+                                        new string[] {"L", "VE", "HATE"},
+                                        new string[] {"P", "YAAR", "RA"} };
+
+    public string[][] dangerWordsL7 = {
+                                        new string[] {"I", "I", "ME"},
+                                        new string[] {"G", "AMO", "HA"},
+                                        new string[] {"E", "T", "PRE"},
+                                        new string[] {"U", "AN", "SHU"},
+                                        new string[] {"I", "CH", "AND"},
+                                        new string[] {"H", "HE", "BEN"},
+                                        new string[] {"G", "CH", "HENG"},
+                                        new string[] {"NA", "TU", "U"},
+                                        new string[] {"L", "VE", "HATE"},
+                                        new string[] {"P", "YAAR", "RA"} };
+
+    public string[][] dangerWordsL8 = {
+                                        new string[] {"I", "I", "ME"},
                                         new string[] {"G", "AMO", "HA"},
                                         new string[] {"E", "T", "PRE"},
                                         new string[] {"U", "AN", "SHU"},
@@ -271,6 +324,30 @@ public class BlockSpawnerScript : MonoBehaviour
                                             new string[] {"PYAAAARAZP"} };
 
     public string[][] block_of_wordsL6 =  {
+                                            new string[] {"VAMSIIIEZM"},
+                                            new string[] {"AMOAHGZIAO"},
+                                            new string[] {"GPRETRUEZE"},
+                                            new string[] {"UZUANPQSHU"},
+                                            new string[] {"CHANIZIDII"},
+                                            new string[] {"HENGHENGZH"},
+                                            new string[] {"CENGHENGZH"},
+                                            new string[] {"NUUUZUUATA"},
+                                            new string[] {"LSHATELOVZ"},
+                                            new string[] {"PYAAAARAZP"} };
+
+    public string[][] block_of_wordsL7 =  {
+                                            new string[] {"VAMSIIIEZM"},
+                                            new string[] {"AMOAHGZIAO"},
+                                            new string[] {"GPRETRUEZE"},
+                                            new string[] {"UZUANPQSHU"},
+                                            new string[] {"CHANIZIDII"},
+                                            new string[] {"HENGHENGZH"},
+                                            new string[] {"CENGHENGZH"},
+                                            new string[] {"NUUUZUUATA"},
+                                            new string[] {"LSHATELOVZ"},
+                                            new string[] {"PYAAAARAZP"} };
+
+    public string[][] block_of_wordsL8 =  {
                                             new string[] {"VAMSIIIEZM"},
                                             new string[] {"AMOAHGZIAO"},
                                             new string[] {"GPRETRUEZE"},
@@ -400,6 +477,19 @@ public class BlockSpawnerScript : MonoBehaviour
             dangerWordss = dangerWordsL6;
         }
 
+        if (scene.name == "L7")
+        {
+            blocks_row_count = wordsL7.Length;
+            words = wordsL7;
+            dangerWordss = dangerWordsL7;
+        }
+
+        if (scene.name == "L8")
+        {
+            blocks_row_count = wordsL8.Length;
+            words = wordsL8;
+            dangerWordss = dangerWordsL8;
+        }
 
         for (int j = 0; j < blocks_row_count; j++) // this is for the total number of rows
         {
@@ -450,9 +540,18 @@ public class BlockSpawnerScript : MonoBehaviour
             {
                 shuffledString = block_of_wordsL6[j][0];
             }
-            
+            else if (scene.name == "L7")
+            {
+                shuffledString = block_of_wordsL7[j][0];
+            }
+            else if (scene.name == "L8")
+            {
+                shuffledString = block_of_wordsL8[j][0];
+            }
 
-            else{
+
+            else
+            {
                 HashSet<Char> hs = new HashSet<Char>();
             foreach (char c in word)
             {
