@@ -3999,7 +3999,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   logic: {fileID: 0}
   nextLevel: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 1
   NextLevelScreen: {fileID: 0}
   wordCreated: 
@@ -4021,6 +4020,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   nextLevelScript: {fileID: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &1826739839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4079,7 +4079,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   logic: {fileID: 0}
   nextLevel: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 1
   NextLevelScreen: {fileID: 0}
   wordCreated: 
@@ -4101,6 +4100,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   nextLevelScript: {fileID: 0}
+  flashColor: {r: 0.8117647, g: 0.44705883, b: 0.44705883, a: 0.50980395}
 --- !u!1 &1830783571
 GameObject:
   m_ObjectHideFlags: 0
