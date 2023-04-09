@@ -60,6 +60,42 @@ public class L2_PlayerController : MonoBehaviour
     public int levelTwoTargetScore = 5;
 
     int ind = 0;
+
+    //Color greenColor = new Color(60,121,0,255);
+    //Color greenColor = Color.HSVToRGB(90.248f, 1.98f, 0.24f);
+    static string greenHexCode = "#56a500";
+    Color greenColor = new Color(
+        (float)System.Convert.ToInt32(greenHexCode.Substring(1, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(greenHexCode.Substring(3, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(greenHexCode.Substring(5, 2), 16) / 255f,
+        1f
+    );
+
+    static string yellowHexCode = "#ecbd00";
+    Color yellowColor = new Color(
+        (float)System.Convert.ToInt32(yellowHexCode.Substring(1, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(yellowHexCode.Substring(3, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(yellowHexCode.Substring(5, 2), 16) / 255f,
+        1f
+    );
+
+    static string redHexCode = "#b90200";
+    Color redColor = new Color(
+        (float)System.Convert.ToInt32(redHexCode.Substring(1, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(redHexCode.Substring(3, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(redHexCode.Substring(5, 2), 16) / 255f,
+        1f
+    );
+
+    static string grayHexCode = "#69675E";
+    Color grayColor = new Color(
+        (float)System.Convert.ToInt32(grayHexCode.Substring(1, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(grayHexCode.Substring(3, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(grayHexCode.Substring(5, 2), 16) / 255f,
+        1f
+    );
+
+
     void Start()
     {
         //int ind=0;
@@ -220,8 +256,8 @@ public class L2_PlayerController : MonoBehaviour
                         {
                             Debug.Log("the index found is  " + j);
 
-                            if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green
-                                || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
+                            if (gameObject.GetComponent<SpriteRenderer>().color == grayColor || gameObject.GetComponent<SpriteRenderer>().color == redColor || gameObject.GetComponent<SpriteRenderer>().color == greenColor
+                                || gameObject.GetComponent<SpriteRenderer>().color == yellowColor)
                             {
                                 localHits--;
                                 numberOfTimeDeselectionsOccurred++;
@@ -254,7 +290,7 @@ public class L2_PlayerController : MonoBehaviour
                                     z_is = false;
                                 }
                                 //mmodification                                                          
-                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.green || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
+                                if (gameObject.GetComponent<SpriteRenderer>().color == greenColor || gameObject.GetComponent<SpriteRenderer>().color == yellowColor)
                                 {
                                     if (givenWord.Contains(text.text.ToString()))
                                     {
@@ -286,7 +322,7 @@ public class L2_PlayerController : MonoBehaviour
 
                                     Debug.Log("wowowo " + givenWord);
                                     if (!givenWord.Contains(text.text.ToString()) && fla == 0)
-                                        gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+                                        gameObject.GetComponent<SpriteRenderer>().color = grayColor;
 
                                     else if (givenWord.Contains(text.text.ToString()))
                                     {
@@ -295,9 +331,13 @@ public class L2_PlayerController : MonoBehaviour
                                         ChangeFrequency(givenWord, char.Parse(text.text), targetColoredLetterFrequency, 1);
                                         Debug.Log("the fla is " + fla);
                                         if (fla > 0)
-                                            gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
-                                        else
-                                            gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                                            gameObject.GetComponent<SpriteRenderer>().color = yellowColor;
+                                        else {
+                                            Debug.Log("HELLO color");
+                                            //Color greenColor = new Color(60f, 121f, 0f, 255f);
+                                            gameObject.GetComponent<SpriteRenderer>().color = greenColor;
+                                            Debug.Log("HELLO green:"+ gameObject.GetComponent<SpriteRenderer>().color);
+                                        }
                                         //givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
 
                                         /* if (wordCreated.Length != bs.words[j].Length && goodword.text.IndexOf(wordCreated)!=-1)
