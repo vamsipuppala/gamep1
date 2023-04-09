@@ -24,7 +24,8 @@ public class L8_PlayerController : MonoBehaviour
     public LogicManagerScript logic;
     public NextLevelScript nextLevel;
     //mmodification
-    //public MessageManagerScript messageManagerScript;
+    public TextBlinkScript textBlinkScript;
+
     public GameObject NextLevelScreen;
     public string wordCreated;
     public string lol1;
@@ -130,7 +131,7 @@ public class L8_PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
-        //mmodification
+
       //  messageManagerScript = GameObject.FindGameObjectWithTag("MessageManagerScript").GetComponent<MessageManagerScript>();
         //nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
@@ -148,10 +149,11 @@ public class L8_PlayerController : MonoBehaviour
         boxCollider1 = obstacle1.GetComponent<BoxCollider2D>();
         boxCollider2 = obstacle2.GetComponent<BoxCollider2D>();
 
-        //mmodification
+
         goodword.text = string.Join("", bs.words[ind]);
-        // targetLetterFrequency = InitiateLetterFrequency(goodword.text);
-        // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(goodword.text);
+        
+        //mmodification
+        textBlinkScript = GameObject.FindGameObjectWithTag("TextBlinkScript").GetComponent<TextBlinkScript>();
     }
 
     // Update is called once per frame
@@ -216,7 +218,7 @@ public class L8_PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 8f);
         }
 
-        //mmodification
+
         goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]), 0);
         dangerWord.text = "Danger:  \n";
 
@@ -460,7 +462,7 @@ public class L8_PlayerController : MonoBehaviour
 
                                 wordCreated = Reverse(reverse);
 
-                                //mmodification
+
 
 
                                 // if (gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
@@ -488,7 +490,12 @@ public class L8_PlayerController : MonoBehaviour
 
                                         if (givenDangerWord[z1].Contains(text.text.ToString()))
                                         {
-                                            gameObject.GetComponent<SpriteRenderer>().color = redColor;
+                                            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                                            //mmodification
+                                            bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
+                                            if (!isTargetCompleted)
+                                                textBlinkScript.StartBlinking("dangerBorder");
+                                                
                                             // dangerWordCreated += text.text;
                                             fla++;
                                             break;
@@ -502,7 +509,9 @@ public class L8_PlayerController : MonoBehaviour
                                     else if (givenWord.Contains(text.text.ToString()))
                                     {
                                         //mmodification
-
+                                        bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
+                                        if (!isTargetCompleted)
+                                            textBlinkScript.StartBlinking("targetBorder");
                                         
                                         if (fla > 0)
                                             gameObject.GetComponent<SpriteRenderer>().color = yellowColor;
@@ -569,9 +578,7 @@ public class L8_PlayerController : MonoBehaviour
                                                 ind++;
                                                 localHits = 1;
 
-                                                //mmodification
-                                                // targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
-                                                // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
+                                                
                                             }
                                         }
                                         dest = true;
@@ -601,7 +608,7 @@ public class L8_PlayerController : MonoBehaviour
                                         ind++;
                                         localHits = 1;
 
-                                        //mmodification
+
 
                                     }
                                     if (z_is == true)
@@ -620,9 +627,7 @@ public class L8_PlayerController : MonoBehaviour
 
                                             if (findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                             {
-                                                //mmodification
-                                               // messageManagerScript.ChangeDangerMessageText("You hit : " + wordCreated + "!!");
-                                               // messageManagerScript.DisplayDangerMessage(1f);
+                                                
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
                                                 if (!isFlashing)
