@@ -101,30 +101,30 @@ public class BlockSpawnerScript : MonoBehaviour
                                             new string[] {"ZSSSSILKIL"} };
 
     public string[][] block_of_wordsL3 =  {
-                                             new string[] {"TUXJSNAM"},
-                                            new string[] {"ZABSCOPQ"},
-                                            new string[] {"HCARKYLM"},
-                                            new string[] {"LOBFSHEW"},
-                                            new string[] {"WIKLEOZN"},
-                                            new string[] {"TUINAFZE"},
-                                            new string[] {"DFCPLOZG"},
-                                            new string[] {"ABAXLTZE"},
-                                            new string[] {"ADLKEIZT"},
-                                            new string[] {"ADLKEIZT"},
+                                             new string[] {"TUXJSNAMTY"},
+                                            new string[] {"ZABSCOPQTT"},
+                                            new string[] {"HCARKYLMTT"},
+                                            new string[] {"LOBFSHEWTT"},
+                                            new string[] {"WIKLEOZNTT"},
+                                            new string[] {"TUINAFZETT"},
+                                            new string[] {"DFCPLOZGTT"},
+                                            new string[] {"ABAXLTZETT"},
+                                            new string[] {"ADLKEIZTTT"},
+                                            new string[] {"ADLKEIZTTT"},
                                              };
 
 
     public string[][] L4_block_of_wordsL4 =  {
-                                            new string[] {"TUXJSNAM"},
-                                            new string[] {"ZABSCOPQ"},
-                                            new string[] {"HCARKYLM"},
-                                            new string[] {"LOBFSHEW"},
-                                            new string[] {"WIKLEOZN"},
-                                            new string[] {"TUINAFZE"},
-                                            new string[] {"DFCPLOZG"},
-                                            new string[] {"ABAXLTZE"},
-                                            new string[] {"ADLKEIZT"},
-                                            new string[] {"ADLKEIZT"},
+                                            new string[] {"TUXJSNAMQQ"},
+                                            new string[] {"ZABSCOPQRR"},
+                                            new string[] {"HCARKYLMTT"},
+                                            new string[] {"LOBFSHEWHH"},
+                                            new string[] {"WIKLEOZNJJ"},
+                                            new string[] {"TUINAFZEDD"},
+                                            new string[] {"DFCPLOZGAA"},
+                                            new string[] {"ABAXLTZEMM"},
+                                            new string[] {"ADLKEIZTII"},
+                                            new string[] {"ADLKEIZTWW"},
                                              };
 
     public string[][] wordsL3 = {new string[] {"JAM"}, 
