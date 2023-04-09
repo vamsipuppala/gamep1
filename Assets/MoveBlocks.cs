@@ -66,9 +66,7 @@ public class MoveBlocks : MonoBehaviour
 
         //     yield return new WaitForSeconds(pauseDuration);
         // }
-        while (true)
-        {
-            
+         
             Vector3 endPosition = startPosition - Vector3.up * moveSpeed * Time.deltaTime;
             
             float t = 0.0f;
@@ -84,6 +82,6 @@ public class MoveBlocks : MonoBehaviour
              yield return null;
 
             yield return new WaitForSeconds(pauseDuration);
-        }
+        
     }
 }
