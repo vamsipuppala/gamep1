@@ -289,7 +289,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.254717, g: 0.17264979, b: 0.046618, a: 1}
+  m_Color: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -381,8 +381,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278987841
-  m_fontColor: {r: 0.25490198, g: 0.17254902, b: 0.047058824, a: 1}
+    rgba: 4280295469
+  m_fontColor: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -770,15 +770,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 852752353263809530, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Color.b
-      value: 0.047058824
+      value: 0.1985048
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809530, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Color.g
-      value: 0.1764706
+      value: 0.31574053
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809530, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Color.r
-      value: 0.25490198
+      value: 0.38679248
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_RootOrder
@@ -910,7 +910,6 @@ MonoBehaviour:
   st: 0
   ct: 0
   c: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 1
   groundLayer:
     serializedVersion: 2
@@ -919,6 +918,7 @@ MonoBehaviour:
   platformGameObj: []
   mvmtScript: {fileID: 0}
   mvmtScript1: {fileID: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &227852196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1277,8 +1277,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278988097
-  m_fontColor: {r: 0.25490198, g: 0.1764706, b: 0.047058824, a: 1}
+    rgba: 4280295469
+  m_fontColor: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1559,7 +1559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7924528, g: 0.6836422, b: 0.593592, a: 1}
+  m_Color: {r: 0.91764706, g: 0.8039216, b: 0.65882355, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2566,7 +2566,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0ae2b74b1edd14bb18dd7b65ae916a54, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2675,7 +2675,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.79607844, g: 0.6862745, b: 0.59607846, a: 1}
+  m_Color: {r: 0.91764706, g: 0.8039216, b: 0.65882355, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2801,7 +2801,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0ae2b74b1edd14bb18dd7b65ae916a54, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4398,7 +4398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.25490198, g: 0.1764706, b: 0.047058824, a: 1}
+  m_Color: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4799,15 +4799,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7593427726440742134, guid: c03d53fb20512804ea2df9f54940e669, type: 3}
       propertyPath: m_Color.b
-      value: 0.1882353
+      value: 0.1254902
       objectReference: {fileID: 0}
     - target: {fileID: 7593427726440742134, guid: c03d53fb20512804ea2df9f54940e669, type: 3}
       propertyPath: m_Color.g
-      value: 0.2901961
+      value: 0.1254902
       objectReference: {fileID: 0}
     - target: {fileID: 7593427726440742134, guid: c03d53fb20512804ea2df9f54940e669, type: 3}
       propertyPath: m_Color.r
-      value: 0.35686275
+      value: 0.1764706
       objectReference: {fileID: 0}
     - target: {fileID: 7593427726440742135, guid: c03d53fb20512804ea2df9f54940e669, type: 3}
       propertyPath: m_RootOrder
@@ -5040,7 +5040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.25490198, g: 0.17254902, b: 0.047058824, a: 1}
+  m_Color: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5455,8 +5455,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278987841
-  m_fontColor: {r: 0.25490198, g: 0.17254902, b: 0.047058824, a: 1}
+    rgba: 4280295469
+  m_fontColor: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5711,7 +5711,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.35686275, g: 0.2901961, b: 0.1882353, a: 1}
+  m_Color: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5787,7 +5787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.79607844, g: 0.6862745, b: 0.59607846, a: 1}
+  m_Color: {r: 0.91764706, g: 0.8039216, b: 0.65882355, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5905,7 +5905,7 @@ GameObject:
   - component: {fileID: 1583213862}
   - component: {fileID: 1583213861}
   m_Layer: 5
-  m_Name: LevelFiveTitle
+  m_Name: LevelEightTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5944,7 +5944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.25490198, g: 0.17254902, b: 0.047058824, a: 1}
+  m_Color: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5964,7 +5964,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LEVEL 6
+  m_Text: LEVEL 8
 --- !u!222 &1583213862
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6025,7 +6025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.79607844, g: 0.6862745, b: 0.59607846, a: 1}
+  m_Color: {r: 0.91764706, g: 0.8039216, b: 0.65882355, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6197,15 +6197,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5183352428544629533, guid: 3c2e192942f54a34192650f9c51642f5, type: 3}
       propertyPath: m_Color.b
-      value: 0.1882353
+      value: 0.1254902
       objectReference: {fileID: 0}
     - target: {fileID: 5183352428544629533, guid: 3c2e192942f54a34192650f9c51642f5, type: 3}
       propertyPath: m_Color.g
-      value: 0.2901961
+      value: 0.1254902
       objectReference: {fileID: 0}
     - target: {fileID: 5183352428544629533, guid: 3c2e192942f54a34192650f9c51642f5, type: 3}
       propertyPath: m_Color.r
-      value: 0.35686275
+      value: 0.1764706
       objectReference: {fileID: 0}
     - target: {fileID: 5183352428544629534, guid: 3c2e192942f54a34192650f9c51642f5, type: 3}
       propertyPath: m_RootOrder
@@ -6572,7 +6572,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.79607844, g: 0.6862745, b: 0.59607846, a: 0}
+  m_BackGroundColor: {r: 0.91764706, g: 0.8039216, b: 0.65882355, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -7132,7 +7132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.79607844, g: 0.6862745, b: 0.59607846, a: 1}
+  m_Color: {r: 0.91764706, g: 0.8039216, b: 0.65882355, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
