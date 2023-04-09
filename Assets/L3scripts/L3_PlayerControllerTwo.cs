@@ -131,10 +131,6 @@ public class L3_PlayerControllerTwo : MonoBehaviour
         nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L3_NextLevelTwo>();
         //mmodification
         textBlinkScript = GameObject.FindGameObjectWithTag("TextBlinkScript").GetComponent<TextBlinkScript>();
-        // textBlinkScript.StartBlinking("targetBorder");
-        // textBlinkScript.StartBlinking("dangerBorder");
-        //nextLevelScript.resetValues();
-
 
     }
 
@@ -327,7 +323,6 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                             }
                             else
                             {
-
                                 if (localHits > numberOfHits && !(localHits-1<=numberOfHits)) 
                                 {
                                    // Debug.Log("no shooting");
@@ -345,10 +340,8 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                             bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
                                             if (!isTargetCompleted)
                                                 textBlinkScript.StartBlinking("dangerBorder");
-                                            // dangerWordCreated += text.text;
                                             fla++;
                                             break;
-                                            //Debug.Log("the danger word created till now is" + dangerWordCreated);
                                         }
                                     }
                                     
@@ -359,8 +352,6 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                     {
                                         bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
                                         //mmodification
-                                        Debug.Log("wordCreated: "+wordCreated);
-                                        Debug.Log(isTargetCompleted);
                                         if (!isTargetCompleted)
                                             textBlinkScript.StartBlinking("targetBorder");
 
@@ -370,7 +361,6 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                         gameObject.GetComponent<SpriteRenderer>().color = greenColor;
                                     }
                                     wordCreated += text.text;
-                                   
                                 }
                                 
                                 bool dest = false;

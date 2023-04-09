@@ -67,6 +67,7 @@ public class L1_PlayerControllerOne : MonoBehaviour
         //final = "Aim: " + bs.words[ind];
         nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L1_NextLevel>();
         nextLevelScript.resetValues();
+        Debug.Log("L1!!");
     }
 
     // Update is called once per frame
