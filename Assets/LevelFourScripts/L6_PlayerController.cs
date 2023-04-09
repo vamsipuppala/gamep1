@@ -51,10 +51,10 @@ public class L6_PlayerController : MonoBehaviour
     public float moveSpeed;
     public float st, ct;
     public GameObject c;
-    //public Color flashColor = Color.red; // The color to set the background to
+    // public Color flashColor = Color.red; // The color to set the background to
     public float flashDuration = 1f; // The duration for which to set the background color
 
-    private Color originalColor; // The original background color
+    public Color originalColor; // The original background color
     private bool isFlashing = false;
     public static int timeTargetWordWasHit = 0;
     public static int numberOfDeselections = 0;

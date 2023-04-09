@@ -55,7 +55,7 @@ public class L7_PlayerController : MonoBehaviour
     //public Color flashColor = redColor; // The color to set the background to
     public float flashDuration = 1f; // The duration for which to set the background color
 
-    private Color originalColor; // The original background color
+    public Color originalColor; // The original background color
     private bool isFlashing = false;
     public static int timeTargetWordWasHit = 0;
     public static int numberOfDeselections = 0;

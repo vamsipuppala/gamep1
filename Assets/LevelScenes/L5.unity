@@ -1330,6 +1330,7 @@ MonoBehaviour:
   nextLevel: {fileID: 0}
   textBlinkScript: {fileID: 0}
   flashDuration: 1
+  originalColor: {r: 0.79607844, g: 0.6862745, b: 0.59607846, a: 0}
   NextLevelScreen: {fileID: 0}
   wordCreated: 
   lol1: 
@@ -1397,6 +1398,7 @@ MonoBehaviour:
   nextLevel: {fileID: 0}
   textBlinkScript: {fileID: 0}
   flashDuration: 1
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
   NextLevelScreen: {fileID: 0}
   wordCreated: 
   lol1: 

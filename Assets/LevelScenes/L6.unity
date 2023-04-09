@@ -2907,6 +2907,7 @@ MonoBehaviour:
   nextLevel: {fileID: 0}
   textBlinkScript: {fileID: 0}
   flashDuration: 1
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
   NextLevelScreen: {fileID: 0}
   wordCreated: 
   lol1: 
@@ -2954,6 +2955,7 @@ MonoBehaviour:
   nextLevel: {fileID: 0}
   textBlinkScript: {fileID: 0}
   flashDuration: 1
+  originalColor: {r: 0.91764706, g: 0.8039216, b: 0.65882355, a: 0}
   NextLevelScreen: {fileID: 0}
   wordCreated: 
   lol1: 
@@ -3053,6 +3055,7 @@ MonoBehaviour:
   ct: 0
   c: {fileID: 0}
   flashDuration: 1
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
