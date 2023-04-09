@@ -114,10 +114,9 @@ public class L2_PlayerController : MonoBehaviour
         goodword.text = string.Join("", bs.words[ind]);
         targetLetterFrequency = InitiateLetterFrequency(goodword.text);
         targetColoredLetterFrequency = InitiateLetterFrequencyToZero(goodword.text);
-        Debug.Log("L2");
+
         //mmodification
         textBlinkScript = GameObject.FindGameObjectWithTag("TextBlinkScript").GetComponent<TextBlinkScript>();
-                                            textBlinkScript.StartBlinking("targetBorder");
 
     }
 

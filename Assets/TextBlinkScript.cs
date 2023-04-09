@@ -13,8 +13,10 @@ public class TextBlinkScript : MonoBehaviour
 
     private void Start()
     {
-        targetBorder.enabled = false;
-        dangerBorder.enabled = false;
+        if(targetBorder != null)
+            targetBorder.enabled = false;
+        if(dangerBorder != null)
+            dangerBorder.enabled = false;
     }
 
     public void StartBlinking(string name)
