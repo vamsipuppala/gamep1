@@ -21,6 +21,7 @@ TagManager:
   - GuidePop3
   - GuidePop4
   - GuidePop5
+  - TextBlinkScript
   layers:
   - Default
   - TransparentFX

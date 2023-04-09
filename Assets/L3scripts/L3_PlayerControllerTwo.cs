@@ -23,6 +23,8 @@ public class L3_PlayerControllerTwo : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     public LogicManagerScript logic;
     public NextLevelScript nextLevel;
+    //mmodification
+    public TextBlinkScript textBlinkScript;
     //public Color flashColor = Color.red; // The color to set the background to
     public float flashDuration = 1f; // The duration for which to set the background color
 
@@ -128,12 +130,12 @@ public class L3_PlayerControllerTwo : MonoBehaviour
         nestedList = bs.nestedList;
         //final = "Aim: " + bs.words[ind];
         nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L3_NextLevelTwo>();
+        //mmodification
+        textBlinkScript = GameObject.FindGameObjectWithTag("TextBlinkScript").GetComponent<TextBlinkScript>();
+        // textBlinkScript.StartBlinking("targetBorder");
+        // textBlinkScript.StartBlinking("dangerBorder");
         //nextLevelScript.resetValues();
 
-         //mmodification
-        //  goodword.text = string.Join("", bs.words[ind]);
-        // targetLetterFrequency = InitiateLetterFrequency(goodword.text);
-        // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(goodword.text);
 
     }
 
@@ -342,6 +344,8 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                     if (givenDangerWord[z1].Contains(text.text.ToString()))
                                     {
                                         gameObject.GetComponent<SpriteRenderer>().color = redColor;
+                                        //mmodification
+                                        textBlinkScript.StartBlinking("dangerBorder");
                                         // dangerWordCreated += text.text;
                                         fla++;
                                         break;
@@ -355,7 +359,8 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                         else if (givenWord.Contains(text.text.ToString()))
                                         {
                                             //mmodification
-                                            // ChangeFrequency(givenWord,char.Parse(text.text),targetColoredLetterFrequency,1);
+                                            textBlinkScript.StartBlinking("targetBorder");
+
                                             if(fla>0)
                                             gameObject.GetComponent<SpriteRenderer>().color = yellowColor;
                                             else
