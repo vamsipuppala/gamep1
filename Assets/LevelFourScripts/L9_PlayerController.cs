@@ -29,7 +29,7 @@ public class L9_PlayerController : MonoBehaviour
     public LogicManagerScript logic;
     public NextLevelScript nextLevel;
     public GameObject NextLevelScreen;
-    //mmodification
+
    // public MessageManagerScript messageManagerScript;
     public string wordCreated;
     bool z_is = false;
@@ -62,12 +62,14 @@ public class L9_PlayerController : MonoBehaviour
     public MovementMirrorLevel4 mvmtScript;
     public MovementMirrorLevel4 mvmtScript1;
 
-    //mmodification
+
     //record the frequency for each letter in target word
     Dictionary<char, int> targetLetterFrequency;
     //record the frequency for each colored letter in target word
     Dictionary<char, int> targetColoredLetterFrequency;
 
+   //mmodification
+    public TextBlinkScript textBlinkScript;
 
     int ind = 0;
     void Start()
@@ -78,7 +80,7 @@ public class L9_PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
-        //mmodification
+
       //  messageManagerScript = GameObject.FindGameObjectWithTag("MessageManagerScript").GetComponent<MessageManagerScript>();
 
         platformGameObj = GameObject.FindGameObjectsWithTag("Mirror");
@@ -91,10 +93,10 @@ public class L9_PlayerController : MonoBehaviour
         nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L9_NextLevel>();
         nextLevelScript.resetValues();
 
-        //mmodification
+
         goodword.text = string.Join("", bs.words[ind]);
-        // targetLetterFrequency = InitiateLetterFrequency(goodword.text);
-        // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(goodword.text);
+        //mmodification
+        textBlinkScript = GameObject.FindGameObjectWithTag("TextBlinkScript").GetComponent<TextBlinkScript>();
     }
 
     // Update is called once per frame
@@ -157,7 +159,7 @@ public class L9_PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 8f);
         }
-        //mmodification
+
         goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]), 0);
         dangerWord.text = "Danger:  \n";
 
@@ -402,7 +404,7 @@ public class L9_PlayerController : MonoBehaviour
                                 wordCreated = Reverse(reverse);
 
 
-                                //mmodification
+
                                 if (gameObject.GetComponent<SpriteRenderer>().color == Color.green || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
                                 {
                                     // Debug.Log("diselect!!");
@@ -438,6 +440,11 @@ public class L9_PlayerController : MonoBehaviour
                                         if (givenDangerWord[z1].Contains(text.text.ToString()))
                                         {
                                             gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                                            //mmodification
+                                            bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
+                                            if (!isTargetCompleted)
+                                                textBlinkScript.StartBlinking("dangerBorder");
+
                                             // dangerWordCreated += text.text;
                                             fla++;
                                             break;
@@ -451,6 +458,10 @@ public class L9_PlayerController : MonoBehaviour
                                     else if (givenWord.Contains(text.text.ToString()))
                                     {
                                         //mmodification
+                                        bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
+                                        if (!isTargetCompleted)
+                                            textBlinkScript.StartBlinking("targetBorder");
+                                            
                                         // ChangeFrequency(givenWord,char.Parse(text.text),targetColoredLetterFrequency,1);
 
                                         if (fla > 0)
@@ -524,7 +535,7 @@ public class L9_PlayerController : MonoBehaviour
                                                 platformGameObj[1].transform.position = mvmtScript1.originalPos;
                                                 StartCoroutine(EnablePlatformMvmt(15.0F));
 
-                                                //mmodification
+
                                                 //targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
                                                 //targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
                                             }
@@ -551,7 +562,7 @@ public class L9_PlayerController : MonoBehaviour
                                         ind++;
                                         localHits = 1;
 
-                                        //mmodification
+
                                         // targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
                                         // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
                                     }
@@ -571,7 +582,7 @@ public class L9_PlayerController : MonoBehaviour
 
                                             if (findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                             {
-                                                //mmodification
+
                                                // messageManagerScript.ChangeDangerMessageText("You hit : " + wordCreated + "!!");
                                                // messageManagerScript.DisplayDangerMessage(1f);
                                                 ScoreScript.PlayerScore -= 1;
