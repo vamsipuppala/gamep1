@@ -226,11 +226,8 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                         numberOfHits = givenWord.Length;
                        // Debug.Log("now the numberOfHits is " + numberOfHits);
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
-                        if(text.text[0]=='Z' && i==0)
-                        {
-                            
-                        }
-                        else if(j==GetIndexOfGameObject(gameObject, nestedList))
+                        
+                         if(j==GetIndexOfGameObject(gameObject, nestedList))
                         {
 
                             if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green
@@ -261,10 +258,12 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                     }
                                   
                                     wordCreated =  Reverse(reverse);
-                                    if(text.text[0]=='Z')
+                                    /*if(text.text[0]=='Z')
                                     {
                                         z_is=false;
-                                    }
+                                    }*/
+
+
                                 //mmodification                                                          
                                 // if (gameObject.GetComponent<SpriteRenderer>().color == Color.green || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
                                 // {
@@ -286,7 +285,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                             else
                             {
 
-                                if (localHits > numberOfHits && !(z_is==true && localHits-1<=numberOfHits) && text.text[0]!='Z') 
+                                if (localHits > numberOfHits && !(localHits-1<=numberOfHits)) 
                                 {
                                    // Debug.Log("no shooting");
                                 }
@@ -337,7 +336,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                 }
                                 
                                 bool dest = false;
-                                if(wordCreated.Contains('Z'))
+                               /* if(wordCreated.Contains('Z'))
                                 {
                                     z_is = true;
                                    
@@ -346,7 +345,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                 }
                                 else{
                                     z_is=false;
-                                }
+                                }*/
                                     if ((wordCreated.Length == bs.words[j][0].Length) && findMatch(wordCreated, bs.words[j][0]))
                                     {
                                     if (bs.words[j][0].Equals(wordCreated))
@@ -438,8 +437,8 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                                 }
                                             }
                                     }
-                                    if(!dest && z_is)
-                                    wordCreated += "Z";
+                                   // if(!dest && z_is)
+                                    //wordCreated += "Z";
                                 
 
                             }

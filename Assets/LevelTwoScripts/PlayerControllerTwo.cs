@@ -429,8 +429,7 @@ public class PlayerControllerTwo : MonoBehaviour
                                             }
                                     }
                                     if(!dest && z_is)
-                                    wordCreated += "Z";
-                                
+                                    wordCreated += "Z";                                
 
                             }
 
