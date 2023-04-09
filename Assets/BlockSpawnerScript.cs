@@ -193,6 +193,20 @@ public class BlockSpawnerScript : MonoBehaviour
                                     new string[] {"LOVE"}, 
                                     new string[] {"PYAAAAR"} };
 
+    public string[][] wordsL6 =
+    {
+         new string[] {"VAMSI"},
+                                    new string[] {"AMOGHA"},
+                                    new string[] {"GURPREET"},
+                                    new string[] {"ANSHU"},
+                                    new string[] {"CHAND"},
+                                    new string[] {"HENG"},
+                                    new string[] {"CHENG"},
+                                    new string[] {"NAATU"},
+                                    new string[] {"LOVE"},
+                                    new string[] {"PYAAAAR"}
+    };
+
     public string[][] dangerWordsL4 = {
                                     new string[]  {"AM", "JM", "M"},
                                        new string[] {"SOA", "OS", "A"},
@@ -231,6 +245,19 @@ public class BlockSpawnerScript : MonoBehaviour
                                         new string[] {"NA", "TU", "U"}, 
                                         new string[] {"L", "VE", "HATE"}, 
                                         new string[] {"P", "YAAR", "RA"} };
+
+    public string[][] dangerWordsL6 = {
+                                        new string[] {"I", "VA", "ME"},
+                                        new string[] {"G", "AMO", "HA"},
+                                        new string[] {"E", "T", "PRE"},
+                                        new string[] {"U", "AN", "SHU"},
+                                        new string[] {"I", "CH", "AND"},
+                                        new string[] {"H", "HE", "BEN"},
+                                        new string[] {"G", "CH", "HENG"},
+                                        new string[] {"NA", "TU", "U"},
+                                        new string[] {"L", "VE", "HATE"},
+                                        new string[] {"P", "YAAR", "RA"} };
+
     public string[][] block_of_wordsL5 =  {
                                             new string[] {"VAMSIIIEZM"}, 
                                             new string[] {"AMOAHGZIAO"}, 
@@ -241,6 +268,18 @@ public class BlockSpawnerScript : MonoBehaviour
                                             new string[] {"CENGHENGZH"},
                                             new string[] {"NUUUZUUATA"}, 
                                             new string[] {"LSHATELOVZ"},                  
+                                            new string[] {"PYAAAARAZP"} };
+
+    public string[][] block_of_wordsL6 =  {
+                                            new string[] {"VAMSIIIEZM"},
+                                            new string[] {"AMOAHGZIAO"},
+                                            new string[] {"GPRETRUEZE"},
+                                            new string[] {"UZUANPQSHU"},
+                                            new string[] {"CHANIZIDII"},
+                                            new string[] {"HENGHENGZH"},
+                                            new string[] {"CENGHENGZH"},
+                                            new string[] {"NUUUZUUATA"},
+                                            new string[] {"LSHATELOVZ"},
                                             new string[] {"PYAAAARAZP"} };
 
 
@@ -354,12 +393,19 @@ public class BlockSpawnerScript : MonoBehaviour
             dangerWordss = dangerWordsL5;
         }
 
+        if (scene.name == "L6")
+        {
+            blocks_row_count = wordsL6.Length;
+            words = wordsL6;
+            dangerWordss = dangerWordsL6;
+        }
+
 
         for (int j = 0; j < blocks_row_count; j++) // this is for the total number of rows
         {
             
             
-            blocks = new GameObject[8];
+            blocks = new GameObject[10];
             if (j == 0)
             {
                 Debug.Log("j is 0");
@@ -400,6 +446,9 @@ public class BlockSpawnerScript : MonoBehaviour
             else if(scene.name == "L5")
             {
                 shuffledString = block_of_wordsL5[j][0];
+            }else if (scene.name == "L6")
+            {
+                shuffledString = block_of_wordsL6[j][0];
             }
             
 
@@ -418,7 +467,7 @@ public class BlockSpawnerScript : MonoBehaviour
             //     hs.Add(c);
             // }
             // Debug.Log("WORD: " + word);
-            int numOfRandomLetters = 8 - hs.Count;
+            int numOfRandomLetters = 10 - hs.Count;
             string randomLetters = generateRandomLetters(numOfRandomLetters);
             string shuffleLetters = "";
             string finalWord = string.Join("", hs.ToArray());
@@ -428,7 +477,7 @@ public class BlockSpawnerScript : MonoBehaviour
             
             // char[] shuffledString1 = block_of_words[j].ToCharArray();
             float posy = transform.position.y + 1.1f * j*blockScale; // this is for making the rows come one below the other
-            for (int i = 0; i < 8; i++) // this is for the 10 blocks in a single row 
+            for (int i = 0; i < 10; i++) // this is for the 10 blocks in a single row 
             {
                 GameObject block = Instantiate(blockPrefab, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
                 // block.transform.position = new Vector3(transform.position.x + (i * width) + (i * offset), posy, 0);

@@ -248,11 +248,8 @@ public class L2_PlayerController : MonoBehaviour
                         // Debug.Log("now the numberOfHits is " + numberOfHits);
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
                         Debug.Log("the given text is " + text);
-                        if (text.text[0] == 'Z' && i == 0)
-                        {
-
-                        }
-                        else if (j == GetIndexOfGameObject(gameObject, nestedList))
+                        
+                         if (j == GetIndexOfGameObject(gameObject, nestedList))
                         {
                             Debug.Log("the index found is  " + j);
 
@@ -285,10 +282,10 @@ public class L2_PlayerController : MonoBehaviour
                                 }
 
                                 wordCreated = Reverse(reverse);
-                                if (text.text[0] == 'Z')
-                                {
-                                    z_is = false;
-                                }
+                               // if (text.text[0] == 'Z')
+                                //{
+                                  //  z_is = false;
+                                //}
                                 //mmodification                                                          
                                 if (gameObject.GetComponent<SpriteRenderer>().color == greenColor || gameObject.GetComponent<SpriteRenderer>().color == yellowColor)
                                 {
@@ -311,7 +308,7 @@ public class L2_PlayerController : MonoBehaviour
                             else
                             {
                                 Debug.Log("elseeeeeeeeeee");
-                                if (localHits > numberOfHits && !(z_is == true && localHits - 1 <= numberOfHits) && text.text[0] != 'Z')
+                                if (localHits > numberOfHits)
                                 {
                                     // Debug.Log("no shooting");
                                 }
@@ -359,17 +356,7 @@ public class L2_PlayerController : MonoBehaviour
 
                                 bool dest = false;
                                 Debug.Log("the wordssssssssssssssssssss " + wordCreated);
-                                if (wordCreated.Contains('Z'))
-                                {
-                                    z_is = true;
-
-                                    wordCreated = wordCreated.Replace("Z", "");
-                                    Debug.Log("Z deleted" + wordCreated);
-                                }
-                                else
-                                {
-                                    z_is = false;
-                                }
+              
                                 if ((wordCreated.Length == bs.words[j][0].Length) && findMatch(wordCreated, bs.words[j][0]))
                                 {
                                     Debug.Log("THIS IS A MATCH");
@@ -415,8 +402,7 @@ public class L2_PlayerController : MonoBehaviour
 
                                 }
                                
-                                if (!dest && z_is)
-                                    wordCreated += "Z";
+                              
 
 
                             }
