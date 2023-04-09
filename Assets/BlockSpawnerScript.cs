@@ -72,18 +72,18 @@ public class BlockSpawnerScript : MonoBehaviour
                                         new string[] {"BE", "BA", "AR"}, 
                                         new string[] {"S", "IL","SI"} };
     public string[][] L2_block_of_wordsL2 =  {
-                                            new string[] {"TUXFSNEM"},
-                                            new string[] {"ZDBECOPQ"},
-                                            new string[] {"DCARKELM"},
-                                            new string[] {"TXAFENCK"},
-                                            new string[] {"LCBFGHEI"},
-                                            new string[] {"AIKLEOZN"},
-                                            new string[] {"TUOBAHZE"},
-                                            new string[] {"DMCPLAZH"},
-                                            new string[] {"ABAXRIZE"},
-                                            new string[] {"AVLKEIZS"},
-                                            new string[] {"RBEALTZE"},
-                                            new string[] {"BNCRTODW"}
+                                            new string[] {"TUXFSNEMCC"},
+                                            new string[] {"ZDBECOPQJJ"},
+                                            new string[] {"DCARKELMKK"},
+                                            new string[] {"TXAFENCKOO"},
+                                            new string[] {"LCBFGHEIWW"},
+                                            new string[] {"AIKLEOZNPP"},
+                                            new string[] {"TUOBAHZEDD"},
+                                            new string[] {"DMCPLAZHQQ"},
+                                            new string[] {"ABAXRIZEUU"},
+                                            new string[] {"AVLKEIZSII"},
+                                            new string[] {"RBEALTZERR"},
+                                            new string[] {"BNCRTODWDD"}
                                              };
 
 
