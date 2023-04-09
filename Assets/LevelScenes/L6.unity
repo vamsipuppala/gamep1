@@ -2298,7 +2298,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 742600517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.16, y: 13.93, z: 0}
+  m_LocalPosition: {x: 8, y: 13.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2752,6 +2752,7 @@ MonoBehaviour:
   decreaseFactor: 1
   st: 0
   ct: 0
+  jump_time: 0
   c: {fileID: 0}
   groundLayer:
     serializedVersion: 2
@@ -2780,7 +2781,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   logic: {fileID: 0}
   nextLevel: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  textBlinkScript: {fileID: 0}
   flashDuration: 1
   NextLevelScreen: {fileID: 0}
   wordCreated: 
@@ -2802,6 +2803,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   nextLevelScript: {fileID: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &945942198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2851,6 +2853,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LineOfSight: {fileID: 945942194}
   LineOfSight2: {fileID: 1175533850}
+  shakeDuration: 2
+  shakeAmount: 0.1
+  decreaseFactor: 1
   bs: {fileID: 0}
   reflections: 5
   MaxRayDistance: 100
@@ -2875,6 +2880,8 @@ MonoBehaviour:
   st: 0
   ct: 0
   c: {fileID: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
