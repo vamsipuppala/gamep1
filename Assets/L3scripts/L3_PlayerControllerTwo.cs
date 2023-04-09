@@ -350,8 +350,8 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                     
                                     else if (givenWord.Contains(text.text.ToString()))
                                     {
-                                        bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
                                         //mmodification
+                                        bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
                                         if (!isTargetCompleted)
                                             textBlinkScript.StartBlinking("targetBorder");
 
