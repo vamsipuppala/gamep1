@@ -463,10 +463,10 @@ public class L5_PlayerController : MonoBehaviour
 
                                             if (findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                             {
-                                                if (!isFlashing)
-                                                {
-                                                    StartCoroutine(FlashCoroutine());
-                                                }
+                                                // if (!isFlashing)
+                                                // {
+                                                //     StartCoroutine(FlashCoroutine());
+                                                // }
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
 
@@ -949,10 +949,10 @@ public class L5_PlayerController : MonoBehaviour
 
                                             if (findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                             {
-                                                if (!isFlashing)
-                                                {
-                                                    StartCoroutine(FlashCoroutine());
-                                                }
+                                                // if (!isFlashing)
+                                                // {
+                                                //     StartCoroutine(FlashCoroutine());
+                                                // }
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
 

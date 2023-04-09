@@ -630,10 +630,10 @@ public class L8_PlayerController : MonoBehaviour
                                                 
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
-                                                if (!isFlashing)
-                                                {
-                                                    StartCoroutine(FlashCoroutine());
-                                                }
+                                                // if (!isFlashing)
+                                                // {
+                                                //     StartCoroutine(FlashCoroutine());
+                                                // }
 
                                             }
                                         }

@@ -587,10 +587,10 @@ public class L9_PlayerController : MonoBehaviour
                                                // messageManagerScript.DisplayDangerMessage(1f);
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
-                                                if (!isFlashing)
-                                                {
-                                                    StartCoroutine(FlashCoroutine());
-                                                }
+                                                // if (!isFlashing)
+                                                // {
+                                                //     StartCoroutine(FlashCoroutine());
+                                                // }
 
                                             }
                                         }
