@@ -60,7 +60,6 @@ public class PlayerControllerTwo : MonoBehaviour
    Dictionary<char,int> targetColoredLetterFrequency;
    
 
-
     int ind=0;
     void Start()
     {

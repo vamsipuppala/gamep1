@@ -606,7 +606,7 @@ public class L2_PlayerController : MonoBehaviour
             if (colorLeftCounter[key] > 0)
             {
                 colorLeftCounter[key]--;
-                res += "<color=green>" + key + "</color>";
+                res += "<color=#56a500>" + key + "</color>";
             }
 
             if (x == 0)
@@ -636,7 +636,7 @@ public class L2_PlayerController : MonoBehaviour
             }
             else
             {
-                res += "<color=green>" + word[i] + "</color>";
+                res += "<color=#56a500>" + word[i] + "</color>";
             }
 
         }

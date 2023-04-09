@@ -1377,6 +1377,7 @@ MonoBehaviour:
   decreaseFactor: 1
   st: 0
   ct: 0
+  jump_time: 0
   c: {fileID: 0}
   groundLayer:
     serializedVersion: 2
@@ -1430,7 +1431,6 @@ MonoBehaviour:
   logic: {fileID: 0}
   nextLevel: {fileID: 0}
   NextLevelScreen: {fileID: 0}
-  messageManagerScript: {fileID: 0}
   wordCreated: 
   lol1: 
   dangerWordCreated: 
@@ -3283,7 +3283,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412571107}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.16, y: 13.93, z: 0}
+  m_LocalPosition: {x: -8, y: 13.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
