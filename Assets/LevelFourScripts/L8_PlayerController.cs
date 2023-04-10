@@ -817,10 +817,10 @@ the value is frequency of letter
             else
             {
                 if (c == 0)
-                    res += "<color=green>" + word[i] + "</color>";
+                    res += "<color=#56a500>" + word[i] + "</color>";
                 else
                 {
-                    res += "<color=red>" + word[i] + "</color>";
+                    res += "<color=#b90200>" + word[i] + "</color>";
                 }
             }
 
