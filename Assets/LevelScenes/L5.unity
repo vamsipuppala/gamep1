@@ -888,11 +888,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 852752353263809529, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Radius
-      value: 0.59239125
+      value: 0.6336471
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809529, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Offset.y
-      value: -0.027173996
+      value: -0.06842983
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809530, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Color.b
@@ -4251,7 +4251,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.09303665}
+  m_Offset: {x: 0, y: -0.0019234419}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4262,7 +4262,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.8139267}
+  m_Size: {x: 1, y: 0.9961531}
   m_EdgeRadius: 0
 --- !u!50 &1750582648
 Rigidbody2D:
