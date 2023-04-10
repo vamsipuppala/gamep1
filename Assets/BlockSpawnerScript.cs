@@ -534,13 +534,14 @@ public class BlockSpawnerScript : MonoBehaviour
         if (scene.name == "L2")
 
         {
-            Debug.Log("0000000000");
+            
             words = L2_block_of_words;
             blocks_row_count = L2_block_of_words.Length;
         }
 
         if(scene.name == "L3")
         {
+            Debug.Log("0000000000");
             blocks_row_count = wordsL3.Length;
             words = wordsL3;
             dangerWordss = dangerWordsL3;
