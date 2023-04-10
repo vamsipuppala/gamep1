@@ -15,6 +15,7 @@ public class L10_PlayerController : MonoBehaviour
     public LineRenderer LineOfSight2;
     public Slider slider;
     public GameObject mySliderObject; 
+    private ParticleSystem pars;
      public static int numberOfTimeDeselectionsOccurred = 0;
     int j = 0;
     public float shakeDuration = 2f; //duration of the shake
@@ -113,6 +114,8 @@ public class L10_PlayerController : MonoBehaviour
     {
         //int ind=0;
         st = Time.time;
+        pars = GameObject.Find("particles").GetComponent<ParticleSystem>();
+        pars.Play();
         jump_time =Time.time;
         Physics2D.queriesStartInColliders = false;
         mySlider = mySliderObject.GetComponent<Slider>();
@@ -204,13 +207,13 @@ public class L10_PlayerController : MonoBehaviour
 
 
         //goodword.text = final;
-        Debug.Log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh" +IsGrounded());
+        // Debug.Log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh" +IsGrounded());
         if (Input.GetButtonDown("Jump") && IsGrounded())
-        {   Debug.Log(mySlider.value);
+        {   
             
             if(mySlider.value>=1)
             {
-                Debug.Log("Inside");
+                
                 rb.velocity = new Vector2(rb.velocity.x, 20f);
             }
             else{
@@ -652,7 +655,7 @@ public class L10_PlayerController : MonoBehaviour
                                                     StartCoroutine(FlashCoroutine());
                                                 }
                                                 ScoreScript.PlayerScore -= 1;
-                                                Debug.Log(ScoreScript.PlayerScore);
+                                                // Debug.Log(ScoreScript.PlayerScore);
                                                  mySlider.value = 0.0f;
                                                  prev_seq_hit=0;
 
@@ -666,7 +669,7 @@ public class L10_PlayerController : MonoBehaviour
 
 
                             }
-                            Debug.Log(wordCreated);
+                            // Debug.Log(wordCreated);
                         }
 
 
