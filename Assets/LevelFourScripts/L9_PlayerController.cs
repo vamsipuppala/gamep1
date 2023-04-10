@@ -554,7 +554,7 @@ public class L9_PlayerController : MonoBehaviour
                                         }
 
                                         ScoreScript.PlayerScore += 2;
-                                        for (int d = 0; d < 2; d++)
+                                        for (int d = 0; d < 1; d++)
                                         {
                                             if (d < nestedList.Count)
                                             {
