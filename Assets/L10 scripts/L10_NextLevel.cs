@@ -5,16 +5,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class L9_NextLevel : MonoBehaviour
+public class L10_NextLevel : MonoBehaviour
 {
     public GameObject NextLevel;
     public string levelName;
     //private int nextSceneToLoad;
     private bool loadScene = false;
     [SerializeField] private TextMeshProUGUI targetScore;
-    public int thresholdScoree = 5;
+    public int thresholdScoree = 10;
     public SendToGoogle sc;
-    public L9_PlayerController pc;
+    public L10_PlayerController pc;
 
 
 
@@ -22,7 +22,7 @@ public class L9_NextLevel : MonoBehaviour
     {
         targetScore.text = thresholdScoree.ToString();
         sc = GameObject.FindGameObjectWithTag("Logic").GetComponent<SendToGoogle>();
-        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<L9_PlayerController>();
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<L10_PlayerController>();
         //nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
@@ -40,7 +40,7 @@ public class L9_NextLevel : MonoBehaviour
         //Debug.Log("the danger word score is " + PlayerController.timesDangerWordWasHit);
         // SendToGoogle sc = new SendToGoogle();
         //Debug.Log("threshold score is " + thresholdScoree);
-        if (ScoreScript.PlayerScore >= thresholdScoree && L9_Timer.TimeValue > 0)
+        if (ScoreScript.PlayerScore >= thresholdScoree && L10_Timer.TimeValue > 0)
         {
             //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
             //sc.EndOfGame(L4_PlayerController.timeTargetWordWasHit.ToString(), "2", L2_PlayerController.numberOfTimeDeselectionsOccurred.ToString(), "1",
@@ -51,7 +51,7 @@ public class L9_NextLevel : MonoBehaviour
             SceneManager.LoadScene("LevelScenes/CompleteLevel10");
         }
 
-        if (ScoreScript.PlayerScore < thresholdScoree && L9_Timer.TimeValue <= 0)
+        if (ScoreScript.PlayerScore < thresholdScoree && L10_Timer.TimeValue <= 0)
         {
             // sc.EndOfGame(L2_PlayerController.timeTargetWordWasHit.ToString(), "2", L2_PlayerController.numberOfTimeDeselectionsOccurred.ToString(), "0",
             //L2_PlayerController.numberOfTimesWordHitInOrder.ToString(), L2_PlayerController.numberOfTimesWordHitInReverse.ToString());
@@ -64,7 +64,7 @@ public class L9_NextLevel : MonoBehaviour
     public void resetValues()
     {
         ScoreScript.PlayerScore = 0;
-        L7_Timer.TimeValue = 240;
+        L10_Timer.TimeValue = 240;
         //L2_Timer.TimeValue = 300; // time used for testing collision.
         //L2_Timer.TimeValue = 10; // time used for testing timeout.
     }
