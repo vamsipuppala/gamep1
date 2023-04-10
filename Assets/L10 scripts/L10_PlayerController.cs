@@ -626,7 +626,7 @@ public class L10_PlayerController : MonoBehaviour
                                         {
                                             Destroy(gs[k]);
                                         }
-                                        mySlider.value += 0.2f;
+                                        mySlider.value += 1.0f;
                                         prev_seq_hit=0;
                                         dest = true;
                                         wordCreated = "";
