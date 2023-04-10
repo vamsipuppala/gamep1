@@ -435,8 +435,8 @@ public class L10_PlayerController : MonoBehaviour
                         else if (j == GetIndexOfGameObject(gameObject, nestedList))
                         {
 
-                            if (gameObject.GetComponent<SpriteRenderer>().color == Color.gray || gameObject.GetComponent<SpriteRenderer>().color == Color.red || gameObject.GetComponent<SpriteRenderer>().color == Color.green
-                                || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
+                            if (gameObject.GetComponent<SpriteRenderer>().color == grayColor || gameObject.GetComponent<SpriteRenderer>().color == redColor || gameObject.GetComponent<SpriteRenderer>().color == greenColor
+                                || gameObject.GetComponent<SpriteRenderer>().color == yellowColor)
                             {
                                 localHits--;
                                 // numberOfTimeDeselectionsOccurred++;
@@ -467,7 +467,7 @@ public class L10_PlayerController : MonoBehaviour
 
 
                                 //mmodification
-                                if (gameObject.GetComponent<SpriteRenderer>().color == Color.green || gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
+                                if (gameObject.GetComponent<SpriteRenderer>().color == greenColor || gameObject.GetComponent<SpriteRenderer>().color == yellowColor)
                                 {
                                     // Debug.Log("diselect!!");
                                     // if (givenWord.Contains(text.text.ToString())){
@@ -501,7 +501,7 @@ public class L10_PlayerController : MonoBehaviour
 
                                         if (givenDangerWord[z1].Contains(text.text.ToString()))
                                         {
-                                            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                                            gameObject.GetComponent<SpriteRenderer>().color = redColor;
                                             //mmodification
                                             bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
                                             if (!isTargetCompleted)
@@ -514,7 +514,7 @@ public class L10_PlayerController : MonoBehaviour
                                     }
 
                                     if (!givenWord.Contains(text.text.ToString()) && fla == 0)
-                                        gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+                                        gameObject.GetComponent<SpriteRenderer>().color = grayColor;
 
                                     else if (givenWord.Contains(text.text.ToString()))
                                     {
@@ -523,9 +523,9 @@ public class L10_PlayerController : MonoBehaviour
                                         if (!isTargetCompleted)
                                             textBlinkScript.StartBlinking("targetBorder");
                                         if (fla > 0)
-                                            gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+                                            gameObject.GetComponent<SpriteRenderer>().color = yellowColor;
                                         else
-                                            gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                                            gameObject.GetComponent<SpriteRenderer>().color = greenColor;
                                         //givenWord = givenWord.Replace(text.text.ToString(), String.Empty);
 
                                         /* if (wordCreated.Length != bs.words[j].Length && goodword.text.IndexOf(wordCreated)!=-1)
