@@ -250,6 +250,12 @@ public class MainScreenScript : MonoBehaviour
         StartCoroutine(LoadSceneNine());
     }
 
+    public void loadLevelTenScene()
+    {
+        //Start loading the Scene asynchronously and show the guidance text
+        StartCoroutine(LoadSceneTen());
+    }
+
     IEnumerator LoadSceneFive()
     {
         //Begin to load the Scene you specify
@@ -406,4 +412,35 @@ public class MainScreenScript : MonoBehaviour
         }
     }
 
+
+    IEnumerator LoadSceneTen()
+    {
+        //Begin to load the Scene you specify
+        AsyncOperation asyncOperationFive = SceneManager.LoadSceneAsync("L10");
+
+        //Don't let the Scene activate until you allow it to
+        asyncOperationFive.allowSceneActivation = false;
+
+        Debug.Log("ASYNC PROGRESS INSIDE LOADSCENEFIVE:" + asyncOperationFive.progress);
+
+        //Wait till the load is still in progress
+        while (!asyncOperationFive.isDone)
+        {
+            Debug.Log("ASYNC INSIDE ISDONE");
+
+            // Check if the load has finished
+            if (asyncOperationFive.progress >= 0.9f)
+            {
+                Debug.Log("ASYNC INSIDE .PROGRESS");
+
+                //Activate the Scene
+                asyncOperationFive.allowSceneActivation = true;
+
+                // Set timescale to 0 to stop the background (level 4) from starting. 
+                Time.timeScale = 0;
+
+            }
+            yield return null;
+        }
+    }
 }

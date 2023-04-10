@@ -1459,7 +1459,7 @@ MonoBehaviour:
   flashDuration: 1
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   nextLevelScript: {fileID: 0}
   platformGameObj: []
   mvmtScript: {fileID: 0}
