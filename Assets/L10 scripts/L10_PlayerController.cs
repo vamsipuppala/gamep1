@@ -109,6 +109,8 @@ public class L10_PlayerController : MonoBehaviour
     );
 
     int ind = 0;
+       //mmodification
+    public TextBlinkScript textBlinkScript;
     void Start()
     {
         //int ind=0;
@@ -135,6 +137,8 @@ public class L10_PlayerController : MonoBehaviour
 
         //mmodification
         goodword.text = string.Join("", bs.words[ind]);
+        //mmodification
+        textBlinkScript = GameObject.FindGameObjectWithTag("TextBlinkScript").GetComponent<TextBlinkScript>();
         // slider mySlider = mySliderObject.GetComponent<Slider>();
         // slider = GameObject.GetComponent<Slider>();
         // targetLetterFrequency = InitiateLetterFrequency(goodword.text);
@@ -498,6 +502,10 @@ public class L10_PlayerController : MonoBehaviour
                                         if (givenDangerWord[z1].Contains(text.text.ToString()))
                                         {
                                             gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                                            //mmodification
+                                            bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
+                                            if (!isTargetCompleted)
+                                                textBlinkScript.StartBlinking("dangerBorder");
                                             // dangerWordCreated += text.text;
                                             fla++;
                                             break;
@@ -511,8 +519,9 @@ public class L10_PlayerController : MonoBehaviour
                                     else if (givenWord.Contains(text.text.ToString()))
                                     {
                                         //mmodification
-                                        // ChangeFrequency(givenWord,char.Parse(text.text),targetColoredLetterFrequency,1);
-
+                                        bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
+                                        if (!isTargetCompleted)
+                                            textBlinkScript.StartBlinking("targetBorder");
                                         if (fla > 0)
                                             gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
                                         else
