@@ -1089,7 +1089,7 @@ MonoBehaviour:
   obstacle1: {fileID: 0}
   obstacle2: {fileID: 0}
   hoveringPlatform: {fileID: 0}
-  obstacleDisableColor: {r: 0.3882353, g: 0.31764707, b: 0.2, a: 130}
+  obstacleDisableColor: {r: 1, g: 0, b: 0, a: 130}
   obstacleOriginalColor: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 130}
 --- !u!1 &250718975
 GameObject:

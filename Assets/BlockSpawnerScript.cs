@@ -219,10 +219,10 @@ public class BlockSpawnerScript : MonoBehaviour
 
 
     public string[][] block_of_wordsL6 =  {
-                                            new string[] {"CRBEASXRAY"},
-                                            new string[] {"DOLSIKOLAD"},
-                                            new string[] {"SPOPCIERHA"},
-                                            new string[] {"XLOKEXEART"},
+                                            new string[] {"CRBEAZXRAY"},
+                                            new string[] {"DOLSIZOLAD"},
+                                            new string[] {"SPOZCIERHA"},
+                                            new string[] {"XLZKEXEART"},
                                             new string[] {"RAPQZXGEWT"},
                                             new string[] {"ELCPERTETE"},
                                             new string[] {"CGTBORAOIT"},
