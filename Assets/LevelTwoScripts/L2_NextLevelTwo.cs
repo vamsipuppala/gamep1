@@ -21,6 +21,7 @@ public class L2_NextLevelTwo : MonoBehaviour
     private void Start()
     {
         targetScore.text = thresholdScoree.ToString();
+        ScoreScript.PlayerScore = 0;
         sc = GameObject.FindGameObjectWithTag("Logic").GetComponent<SendToGoogle>();
         pc = GameObject.FindGameObjectWithTag("Player").GetComponent<L2_PlayerController>();
         //nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
@@ -63,6 +64,7 @@ public class L2_NextLevelTwo : MonoBehaviour
 
     public void resetValues()
     {
+        Debug.Log("oouuchhh");
         ScoreScript.PlayerScore = 0;
         L2_Timer.TimeValue = 240;
         //L2_Timer.TimeValue = 300; // time used for testing collision.

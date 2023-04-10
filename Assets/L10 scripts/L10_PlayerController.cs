@@ -110,6 +110,8 @@ public class L10_PlayerController : MonoBehaviour
     );
 
     int ind = 0;
+       //mmodification
+    public TextBlinkScript textBlinkScript;
     void Start()
     {
         //int ind=0;
@@ -138,6 +140,8 @@ public class L10_PlayerController : MonoBehaviour
 
         //mmodification
         goodword.text = string.Join("", bs.words[ind]);
+        //mmodification
+        textBlinkScript = GameObject.FindGameObjectWithTag("TextBlinkScript").GetComponent<TextBlinkScript>();
         // slider mySlider = mySliderObject.GetComponent<Slider>();
         // slider = GameObject.GetComponent<Slider>();
         // targetLetterFrequency = InitiateLetterFrequency(goodword.text);
@@ -501,6 +505,10 @@ public class L10_PlayerController : MonoBehaviour
                                         if (givenDangerWord[z1].Contains(text.text.ToString()))
                                         {
                                             gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                                            //mmodification
+                                            bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
+                                            if (!isTargetCompleted)
+                                                textBlinkScript.StartBlinking("dangerBorder");
                                             // dangerWordCreated += text.text;
                                             fla++;
                                             break;
@@ -514,8 +522,9 @@ public class L10_PlayerController : MonoBehaviour
                                     else if (givenWord.Contains(text.text.ToString()))
                                     {
                                         //mmodification
-                                        // ChangeFrequency(givenWord,char.Parse(text.text),targetColoredLetterFrequency,1);
-
+                                        bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
+                                        if (!isTargetCompleted)
+                                            textBlinkScript.StartBlinking("targetBorder");
                                         if (fla > 0)
                                             gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
                                         else
@@ -650,10 +659,10 @@ public class L10_PlayerController : MonoBehaviour
                                                 //mmodification
                                                 //messageManagerScript.ChangeDangerMessageText("You hit : " + wordCreated + "!!");
                                                 //messageManagerScript.DisplayDangerMessage(1f);
-                                                if (!isFlashing)
-                                                {
-                                                    StartCoroutine(FlashCoroutine());
-                                                }
+                                                //if (!isFlashing)
+                                                //{
+                                                //    StartCoroutine(FlashCoroutine());
+                                                //}
                                                 ScoreScript.PlayerScore -= 1;
                                                 // Debug.Log(ScoreScript.PlayerScore);
                                                  mySlider.value = 0.0f;
@@ -875,10 +884,10 @@ the value is frequency of letter
             else
             {
                 if (c == 0)
-                    res += "<color=green>" + word[i] + "</color>";
+                    res += "<color=#56a500>" + word[i] + "</color>";
                 else
                 {
-                    res += "<color=red>" + word[i] + "</color>";
+                    res += "<color=#b90200>" + word[i] + "</color>";
                 }
                 int index = temp.IndexOf(word[i]);
                 temp = temp.Remove(index, 1);
@@ -1124,10 +1133,10 @@ the value is frequency of letter
 
                                             if (findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                             {
-                                                if (!isFlashing)
-                                                {
-                                                    StartCoroutine(FlashCoroutine());
-                                                }
+                                                //if (!isFlashing)
+                                                //{
+                                                 //   StartCoroutine(FlashCoroutine());
+                                                //}
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
 

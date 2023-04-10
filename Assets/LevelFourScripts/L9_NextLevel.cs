@@ -21,6 +21,7 @@ public class L9_NextLevel : MonoBehaviour
     private void Start()
     {
         targetScore.text = thresholdScoree.ToString();
+        ScoreScript.PlayerScore = 0;
         sc = GameObject.FindGameObjectWithTag("Logic").GetComponent<SendToGoogle>();
         pc = GameObject.FindGameObjectWithTag("Player").GetComponent<L9_PlayerController>();
         //nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;

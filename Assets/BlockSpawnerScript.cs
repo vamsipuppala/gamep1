@@ -114,19 +114,7 @@ public class BlockSpawnerScript : MonoBehaviour
                                              };
 
 
-    public string[][] L4_block_of_wordsL4 =  {
-                                            new string[] {"TUXJSNAMQQ"},
-                                            new string[] {"ZABSCOPQRR"},
-                                            new string[] {"HCARKYLMTT"},
-                                            new string[] {"LOBFSHEWHH"},
-                                            new string[] {"WIKLEOZNJJ"},
-                                            new string[] {"TUINAFZEDD"},
-                                            new string[] {"DFCPLOZGAA"},
-                                            new string[] {"ABAXLTZEMM"},
-                                            new string[] {"ADLKEIZTII"},
-                                            new string[] {"ADLKEIZTWW"},
-                                             };
-
+    
     public string[][] wordsL3 = {new string[] {"JAM"}, 
                                  new string[] {"SOAP"}, 
                                  new string[] {"HAY"}, 
@@ -139,31 +127,7 @@ public class BlockSpawnerScript : MonoBehaviour
                                  new string[] {"KIT"}
     };
 
-    public string[][] L5_wordsL5 = { new string[] {"VAMSIIIEZM"},
-                                            new string[] {"AMOAHGZIAO"},
-                                            new string[] {"GPRETRUEZE"},
-                                            new string[] {"UZUANPQSHU"},
-                                            new string[] {"CHANIZIDII"},
-                                            new string[] {"HENGHENGZH"},
-                                            new string[] {"CENGHENGZH"},
-                                            new string[] {"NUUUZUUATA"},
-                                            new string[] {"LSHATELOVZ"},
-                                            new string[] {"PYAAAARAZP"}};
-
-
-
-    public string[][] L4_wordsL4 = {new string[] {"JAM"},
-                                 new string[] {"SOAP"},
-                                 new string[] {"HAY"},
-                                 new string[] {"SHOW"},
-                                 new string[] {"NEW"},
-                                 new string[] {"FIN"},
-                                 new string[] {"GOLF"},
-                                 new string[] {"BELT"},
-                                 new string[] {"DIET"},
-                                 new string[] {"KIT"}
-    };
-
+    
 
     public string[][] dangerWordsL3 = { 
                                        new string[]  {"AU"}, 
@@ -177,227 +141,231 @@ public class BlockSpawnerScript : MonoBehaviour
                                        new string[] {"DE"}, 
                                        new string[] {"K"} 
     };
+    public string[][] L4_block_of_wordsL4 =  {
+                                            new string[] {"FIUCOSREVF"},
+                                            new string[] {"KRARKCPEFD"},
+                                            new string[] {"PLOVKEEEVC"},
+                                            new string[] {"PXRGNIECAA"},
+                                            new string[] {"EXMMELPSIS"},
+                                            new string[] {"GLIOWQZWOA"},
+                                            new string[] {"DPLOXMDKSI"},
+                                            new string[] {"RCOAEDPOLE"},
+                                            new string[] {"ADLKETZTII"},
+                                            new string[] {"BBPIUYZSOM"},
+                                             };
+    public string[][] L4_wordsL4 = {new string[] {"FOUR"},
+                                    new string[] {"DARK"},
+                                    new string[] {"KEEP"},
+                                 new string[] {"RING"},
+                                 new string[] {"MISS"},
+                                 new string[] {"GOAL"},
+                                 new string[] {"DISK"},
+                                 new string[] {"READ"},
+                                 new string[] {"DIET"},
+                                 new string[] {"BOMB"}
+    };
+    public string[][] L4_dangerWordsL4 = {
+                                       new string[]  {"OU" , "OS"},
+                                       new string[] {"DA" , "EF"},
+                                       new string[] {"KA" , "KC" },
+                                      new string[] {"RIN", "AA"},
+                                       new string[] {"EX" , "SS"},
+                                       new string[] {"I" , "GL"},
+                                       new string[] {"DIK" , "DX"},
+                                       new string[] {"EA", "PO"},
+                                       new string[] {"DA", "K"},
+                                       new string[] {"BP", "BU"}
+    };
 
-    
 
 
-    public string[][] wordsL5 = { 
-                                    new string[] {"VAMSI"}, 
-                                    new string[] {"AMOGHA"}, 
-                                    new string[] {"GURPREET"}, 
-                                    new string[] {"ANSHU"}, 
-                                    new string[] {"CHAND"}, 
-                                    new string[] {"HENG"}, 
-                                    new string[] {"CHENG"}, 
-                                    new string[] {"NAATU"}, 
-                                    new string[] {"LOVE"}, 
-                                    new string[] {"PYAAAAR"} };
 
+    public string[][] block_of_wordsL5 = {        new string[] {"FERPOISVEI"},
+                                            new string[] {"LOCURYTEWD"},
+                                            new string[] {"REROPIREYT"},
+                                            new string[] {"TSBMCXZWOO"},
+                                            new string[] {"STROVPLSIL"},
+                                            new string[] {"EAXETHROPE"},
+                                            new string[] {"RDTRENRRWY"},
+                                            new string[] {"ADIBIEWQXE"},
+                                            new string[] {"GIPOIWDDUE"},
+                                            new string[] {"FAOPLOSSMU"}};
+
+    public string[][] wordsL5 = {
+
+                                    new string[] {"FIVE"},
+                                    new string[] { "CLOUD" },
+                                    new string[] { "RETRY" },
+                                    new string[] { "BOOST" },
+                                    new string[] { "LIST" },
+                                    new string[] { "EARTH" },
+                                    new string[] { "ENTRY" },
+                                    new string[] { "ABIDE" },
+                                    new string[] { "GUIDE" },
+                                    new string[] { "FAMOUS" } };
+
+    public string[][] dangerWordsL5 = {
+                                        new string[] {"VE", "FE", "FR"},
+                                        new string[] {"CLO", "CLD", "CUO"},
+                                        new string[] {"RE", "RP", "POI"},
+                                        new string[] {"OO", "OST", "ZOO"},
+                                        new string[] {"IST", "P", "V"},
+                                        new string[] {"EAT", "EAR", "ROP"},
+                                        new string[] {"TRY", "RED", "YEN"},
+                                        new string[] {"BID", "Q", "XA"},
+                                        new string[] {"GUI", "POD", "PIE"},
+                                        new string[] { "FAM", "MU", "MOSS" } };
+
+
+
+    public string[][] block_of_wordsL6 =  {
+                                            new string[] {"CRBEASXRAY"},
+                                            new string[] {"DOLSIKOLAD"},
+                                            new string[] {"SPOPCIERHA"},
+                                            new string[] {"XLOKEXEART"},
+                                            new string[] {"RAPQZXGEWT"},
+                                            new string[] {"ELCPERTETE"},
+                                            new string[] {"CGTBORAOIT"},
+                                            new string[] {"KABDEIEANR"},
+                                            new string[] {"TBMOIYILEE"},
+                                            new string[] {"YTTBESRLFE"} };
     public string[][] wordsL6 =
     {
-         new string[] {"VAMSI"},
-                                    new string[] {"AMOGHA"},
-                                    new string[] {"GURPREET"},
-                                    new string[] {"ANSHU"},
-                                    new string[] {"CHAND"},
-                                    new string[] {"HENG"},
-                                    new string[] {"CHENG"},
-                                    new string[] {"NAATU"},
-                                    new string[] {"LOVE"},
-                                    new string[] {"PYAAAAR"}
+                                    new string[] {"CARRY"},
+                                    new string[] {"SOLID"},
+                                    new string[] {"SHARP"},
+                                    new string[] {"EXTRA"},
+                                    new string[] {"WATER"},
+                                    new string[] {"ELECT"},
+                                    new string[] {"CARGO"},
+                                    new string[] {"DRINK"},
+                                    new string[] {"ELITE"},
+                                    new string[] {"FLYER"}
     };
+    public string[][] dangerWordsL6 = {
+                                        new string[] {"CAB", "CAR", "RY"},
+                                        new string[] {"SOIL", "LID", "SAD"},
+                                        new string[] {"PAR", "SIP", "SHO"},
+                                        new string[] {"EX", "RAT", "TAX"},
+                                        new string[] {"GET", "WE", "EAT"},
+                                        new string[] {"PR", "EC", "PEL"},
+                                        new string[] {"CAT", "CAR", "RIG"},
+                                        new string[] {"INK", "DIN", "RIN"},
+                                        new string[] {"LIT", "LIE", "LEE"},
+                                        new string[] {"FLY", "LES", "YET"} };
+
+    public string[][] block_of_wordsL7 =  {
+                                            new string[] {"NPOXICOCIT"},
+                                            new string[] {"APOSXEMXIO"},
+                                            new string[] {"VAPPLIEOKD"},
+                                            new string[] {"CKALOKEEHC"},
+                                            new string[] {"FPOLICTHIA"},
+                                            new string[] {"SSOSSETOEL"},
+                                            new string[] {"ILEPOLECAD"},
+                                            new string[] {"OSODAISEGO"},
+                                            new string[] {"VPOQWXLUEA"},
+                                            new string[] {"NICPIRCKAP"} };
+
 
     public string[][] wordsL7 =
   {
-         new string[] {"VAMSI"},
-                                    new string[] {"AMOGHA"},
-                                    new string[] {"GURPREET"},
-                                    new string[] {"ANSHU"},
-                                    new string[] {"CHAND"},
-                                    new string[] {"HENG"},
-                                    new string[] {"CHENG"},
-                                    new string[] {"NAATU"},
-                                    new string[] {"LOVE"},
-                                    new string[] {"PYAAAAR"}
+         new string[] {"TONIC"},
+                                    new string[] {"AXIOM"},
+                                    new string[] {"VODKA"},
+                                    new string[] {"CHECK"},
+                                    new string[] {"FAITH"},
+                                    new string[] {"STOLE"},
+                                    new string[] {"IDEAL"},
+                                    new string[] {"GOOSE"},
+                                    new string[] {"VALUE"},
+                                    new string[] {"PANIC"}
     };
+    public string[][] dangerWordsL7 = {
+                                        new string[] {"TON", "TIN", "TIME"},
+                                        new string[] {"XI", "MIO", "AXIS"},
+                                        new string[] {"KAP", "K", "POD"},
+                                        new string[] {"CC", "HACK", "KECK"},
+                                        new string[] {"FAT", "HA", "FIL"},
+                                        new string[] {"SS", "TOE", "LET"},
+                                        new string[] {"ID", "EE", "LEAD"},
+                                        new string[] {"SAD", "SOD", "GO"},
+                                        new string[] {"VAL", "XUE", "VP"},
+                                        new string[] {"P", "NICK", "CARP"} };
 
+
+    public string[][] block_of_wordsL8 =  {
+                                            new string[] {"VTARIVRSUI"},
+                                            new string[] {"FRERCOELIC"},
+                                            new string[] {"ABPOIMEMRE"},
+                                            new string[] {"YLOICEOGUN"},
+                                            new string[] {"ESLOKEINEC"},
+                                            new string[] {"TRAHUIRVEC"},
+                                            new string[] {"IDPTNICENX"},
+                                            new string[] {"UETDNWITRS"},
+                                            new string[] {"LAHALELOHE"},
+                                            new string[] {"EMPLICEILS"} };
     public string[][] wordsL8 =
 {
-         new string[] {"VAMSI"},
-                                    new string[] {"AMOGHA"},
-                                    new string[] {"GURPREET"},
-                                    new string[] {"ANSHU"},
-                                    new string[] {"CHAND"},
-                                    new string[] {"HENG"},
-                                    new string[] {"CHENG"},
-                                    new string[] {"NAATU"},
-                                    new string[] {"LOVE"},
-                                    new string[] {"PYAAAAR"}
+                                    new string[] {"VIRUS"},
+                                    new string[] {"FORCE"},
+                                    new string[] {"AMBER"},
+                                    new string[] {"YOUNG"},
+                                    new string[] {"SINCE"},
+                                    new string[] {"HEART"},
+                                    new string[] {"INDEX"},
+                                    new string[] {"TRUST"},
+                                    new string[] {"HELLO"},
+                                    new string[] {"SLIME"}
     };
+
+    public string[][] dangerWordsL8 = {
+                                        new string[] {"VIT", "RIT", "RIS"},
+                                        new string[] {"FORE", "COR", "EE"},
+                                        new string[] {"AB", "MEM", "RAB"},
+                                        new string[] {"GUN", "YOG", "GE"},
+                                        new string[] {"SIN", "INK", "EE"},
+                                        new string[] {"HIR", "TRACE", "HEAR"},
+                                        new string[] {"DEX", "INT", "DEN"},
+                                        new string[] {"UN", "UT", "RUST"},
+                                        new string[] {"LLL", "HEL", "ALO"},
+                                        new string[] {"SLIM", "LIP", "SEM"} };
+    public string[][] block_of_wordsL9 =  {
+                                            new string[] {"VOXIVAREIP"},
+                                            new string[] {"BEAEYNFUNY"},
+                                            new string[] {"UPEORGLEEA"},
+                                            new string[] {"PLABSCITEL"},
+                                            new string[] {"SEITLEURYF"},
+                                            new string[] {"KGOETSISME"},
+                                            new string[] {"ATBOPVGNRE"},
+                                            new string[] {"NLOIVRIESG"},
+                                            new string[] {"MRTRMEASSI"},
+                                            new string[] {"PARRRROTRR"} };
 
     public string[][] wordsL9 =
 {
-         new string[] {"VAMSI"},
-                                    new string[] {"AMOGHA"},
-                                    new string[] {"GURPREET"},
-                                    new string[] {"ANSHU"},
-                                    new string[] {"CHAND"},
-                                    new string[] {"HENG"},
-                                    new string[] {"CHENG"},
-                                    new string[] {"NAATU"},
-                                    new string[] {"LOVE"},
-                                    new string[] {"PYAAAAR"}
+                                    new string[] {"VIPER"},
+                                    new string[] {"FUNNY"},
+                                    new string[] {"GLARE"},
+                                    new string[] {"BLAST"},
+                                    new string[] {"SURFY"},
+                                    new string[] {"KISMET"},
+                                    new string[] {"ARGENT"},
+                                    new string[] {"RIVING"},
+                                    new string[] {"MAREIS"},
+                                    new string[] {"PARROT"}
     };
-
-
-
-    public string[][] dangerWordsL4 = {
-                                    new string[]  {"AM", "JM", "M"},
-                                       new string[] {"SOA", "OS", "A"},
-                                       new string[] {"HA", "YA", "A"},
-                                      new string[] {"S", "HOW", "OW"},
-                                       new string[] {"NO", "E", "W"},
-                                       new string[] {"F","FI", "FF"},
-                                       new string[] {"GOL", "LF", "OL"},
-                                       new string[] {"T", "BE", "LT"},
-                                       new string[] {"DE","E","P"},
-                                       new string[] {"K","I","T"} };
-
-    public string[][] L4_dangerWordsL4 = {
-                                       new string[]  {"AU" , "M"},
-                                       new string[] {"ZBA" , "OP"},
-                                       new string[] {"HC" , "Y" },
-                                      new string[] {"LOB", "BS"},
-                                       new string[] {"NO" , "ZE"},
-                                       new string[] {"F" , "AE"},
-                                       new string[] {"GZ" , "PL"},
-                                       new string[] {"T", "BX"},
-                                       new string[] {"DE", "DL"},
-                                       new string[] {"K", "KE"}
-    };
-
-
-
-    public string[][] dangerWordsL5 = {
-                                        new string[] {"I", "VA", "ME"},
-                                        new string[] {"G", "AMO", "HA"}, 
-                                        new string[] {"E", "T", "PRE"}, 
-                                        new string[] {"U", "AN", "SHU"},
-                                        new string[] {"I", "CH", "AND"}, 
-                                        new string[] {"H", "HE", "BEN"}, 
-                                        new string[] {"G", "CH", "HENG"}, 
-                                        new string[] {"NA", "TU", "U"}, 
-                                        new string[] {"L", "VE", "HATE"}, 
-                                        new string[] {"P", "YAAR", "RA"} };
-
-    public string[][] dangerWordsL6 = {
-                                        new string[] {"I", "I", "ME"},
-                                        new string[] {"G", "AMO", "HA"},
-                                        new string[] {"E", "T", "PRE"},
-                                        new string[] {"U", "AN", "SHU"},
-                                        new string[] {"I", "CH", "AND"},
-                                        new string[] {"H", "HE", "BEN"},
-                                        new string[] {"G", "CH", "HENG"},
-                                        new string[] {"NA", "TU", "U"},
-                                        new string[] {"L", "VE", "HATE"},
-                                        new string[] {"P", "YAAR", "RA"} };
-
-    public string[][] dangerWordsL7 = {
-                                        new string[] {"I", "I", "ME"},
-                                        new string[] {"G", "AMO", "HA"},
-                                        new string[] {"E", "T", "PRE"},
-                                        new string[] {"U", "AN", "SHU"},
-                                        new string[] {"I", "CH", "AND"},
-                                        new string[] {"H", "HE", "BEN"},
-                                        new string[] {"G", "CH", "HENG"},
-                                        new string[] {"NA", "TU", "U"},
-                                        new string[] {"L", "VE", "HATE"},
-                                        new string[] {"P", "YAAR", "RA"} };
-
-    public string[][] dangerWordsL8 = {
-                                        new string[] {"I", "I", "ME"},
-                                        new string[] {"G", "AMO", "HA"},
-                                        new string[] {"E", "T", "PRE"},
-                                        new string[] {"U", "AN", "SHU"},
-                                        new string[] {"I", "CH", "AND"},
-                                        new string[] {"H", "HE", "BEN"},
-                                        new string[] {"G", "CH", "HENG"},
-                                        new string[] {"NA", "TU", "U"},
-                                        new string[] {"L", "VE", "HATE"},
-                                        new string[] {"P", "YAAR", "RA"} };
-
 
     public string[][] dangerWordsL9 = {
-                                        new string[] {"I", "I", "ME"},
-                                        new string[] {"G", "AMO", "HA"},
-                                        new string[] {"E", "T", "PRE"},
-                                        new string[] {"U", "AN", "SHU"},
-                                        new string[] {"I", "CH", "AND"},
-                                        new string[] {"H", "HE", "BEN"},
-                                        new string[] {"G", "CH", "HENG"},
-                                        new string[] {"NA", "TU", "U"},
-                                        new string[] {"L", "VE", "HATE"},
-                                        new string[] {"P", "YAAR", "RA"} };
-
-    public string[][] block_of_wordsL5 =  {
-                                            new string[] {"VAMSIIIEZM"}, 
-                                            new string[] {"AMOAHGZIAO"}, 
-                                            new string[] {"GPRETRUEZE"}, 
-                                            new string[] {"UZUANPQSHU"}, 
-                                            new string[] {"CHANIZIDII"}, 
-                                            new string[] {"HENGHENGZH"}, 
-                                            new string[] {"CENGHENGZH"},
-                                            new string[] {"NUUUZUUATA"}, 
-                                            new string[] {"LSHATELOVZ"},                  
-                                            new string[] {"PYAAAARAZP"} };
-
-    public string[][] block_of_wordsL6 =  {
-                                            new string[] {"VAMSIIIEZM"},
-                                            new string[] {"AMOAHGZIAO"},
-                                            new string[] {"GPRETRUEZE"},
-                                            new string[] {"UZUANPQSHU"},
-                                            new string[] {"CHANIZIDII"},
-                                            new string[] {"HENGHENGZH"},
-                                            new string[] {"CENGHENGZH"},
-                                            new string[] {"NUUUZUUATA"},
-                                            new string[] {"LSHATELOVZ"},
-                                            new string[] {"PYAAAARAZP"} };
-
-    public string[][] block_of_wordsL7 =  {
-                                            new string[] {"VAMSIIIEZM"},
-                                            new string[] {"AMOAHGZIAO"},
-                                            new string[] {"GPRETRUEZE"},
-                                            new string[] {"UZUANPQSHU"},
-                                            new string[] {"CHANIZIDII"},
-                                            new string[] {"HENGHENGZH"},
-                                            new string[] {"CENGHENGZH"},
-                                            new string[] {"NUUUZUUATA"},
-                                            new string[] {"LSHATELOVZ"},
-                                            new string[] {"PYAAAARAZP"} };
-
-    public string[][] block_of_wordsL8 =  {
-                                            new string[] {"VAMSIIIEZM"},
-                                            new string[] {"AMOAHGZIAO"},
-                                            new string[] {"GPRETRUEZE"},
-                                            new string[] {"UZUANPQSHU"},
-                                            new string[] {"CHANIZIDII"},
-                                            new string[] {"HENGHENGZH"},
-                                            new string[] {"CENGHENGZH"},
-                                            new string[] {"NUUUZUUATA"},
-                                            new string[] {"LSHATELOVZ"},
-                                            new string[] {"PYAAAARAZP"} };
-
-    public string[][] block_of_wordsL9 =  {
-                                            new string[] {"VAMSIIIEZM"},
-                                            new string[] {"AMOAHGZIAO"},
-                                            new string[] {"GPRETRUEZE"},
-                                            new string[] {"UZUANPQSHU"},
-                                            new string[] {"CHANIZIDII"},
-                                            new string[] {"HENGHENGZH"},
-                                            new string[] {"CENGHENGZH"},
-                                            new string[] {"NUUUZUUATA"},
-                                            new string[] {"LSHATELOVZ"},
-                                            new string[] {"PYAAAARAZP"} };
+                                        new string[] {"VIP", "PAR", "RIP"},
+                                        new string[] {"FUN", "FAN", "NAN"},
+                                        new string[] {"EAR", "LURE", "GOR"},
+                                        new string[] {"LAST", "PLAT", "BAT"},
+                                        new string[] {"SUR", "FLY", "YET"},
+                                        new string[] {"KISS", "MEET", "SET"},
+                                        new string[] {"ANT", "GEN", "BAR"},
+                                        new string[] {"RING", "SIV", "ROI"},
+                                        new string[] {"MARS", "MEAT", "RISE"},
+                                        new string[] {"POT", "RRR", "PAR"} };
 
 
     public static string[][] wordsL10 = {
@@ -534,13 +502,14 @@ public class BlockSpawnerScript : MonoBehaviour
         if (scene.name == "L2")
 
         {
-            Debug.Log("0000000000");
+            
             words = L2_block_of_words;
             blocks_row_count = L2_block_of_words.Length;
         }
 
         if(scene.name == "L3")
         {
+            Debug.Log("0000000000");
             blocks_row_count = wordsL3.Length;
             words = wordsL3;
             dangerWordss = dangerWordsL3;

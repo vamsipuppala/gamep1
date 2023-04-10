@@ -271,7 +271,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Congratulations!\nYou have completed Level 9. \n"
+  m_Text: "Congratulations!\nYou have completed Level 10. \n"
 --- !u!222 &66848327
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -396,6 +396,7 @@ GameObject:
   - component: {fileID: 447190110}
   - component: {fileID: 447190108}
   - component: {fileID: 447190113}
+  - component: {fileID: 447190114}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -496,9 +497,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447190106}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04238bb6c58ee4b45b428b6c39f2d208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bar: {fileID: 447190106}
+  time: 2
+--- !u!114 &447190114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447190106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 996705fbc83b9e74881e399a93ba58fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bar: {fileID: 447190106}
