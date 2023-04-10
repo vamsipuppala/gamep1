@@ -323,7 +323,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                             }
                             else
                             {
-                                if (localHits > numberOfHits && !(localHits-1<=numberOfHits)) 
+                                if (localHits > numberOfHits)
                                 {
                                    // Debug.Log("no shooting");
                                 }
@@ -364,16 +364,17 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                 }
                                 
                                 bool dest = false;
-                               /* if(wordCreated.Contains('Z'))
-                                {
-                                    z_is = true;
-                                   
-                                    wordCreated = wordCreated.Replace("Z","");
-                                    Debug.Log("Z deleted"+wordCreated);
-                                }
-                                else{
-                                    z_is=false;
-                                }*/
+                                /* if(wordCreated.Contains('Z'))
+                                 {
+                                     z_is = true;
+
+                                     wordCreated = wordCreated.Replace("Z","");
+                                     Debug.Log("Z deleted"+wordCreated);
+                                 }
+                                 else{
+                                     z_is=false;
+                                 }*/
+                                Debug.Log("+++++++++++++++++  " + bs.words[j][0].Length);
                                     if ((wordCreated.Length == bs.words[j][0].Length) && findMatch(wordCreated, bs.words[j][0]))
                                     {
                                     if (bs.words[j][0].Equals(wordCreated))
@@ -432,7 +433,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                             timeTargetWordWasHit += 1;
                                                                                       
                                             j++;
-                                    addCollider(j, bs.nestedList[j]);
+                                    //addCollider(j, bs.nestedList[j]);
                                     ind++;
                                             localHits = 1;
 
