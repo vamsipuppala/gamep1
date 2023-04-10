@@ -116,8 +116,8 @@ public class L10_PlayerController : MonoBehaviour
     {
         //int ind=0;
         st = Time.time;
-        pars = GameObject.Find("particles").GetComponent<ParticleSystem>();
-        pars.Play();
+        // pars = GameObject.Find("particles").GetComponent<ParticleSystem>();
+        // pars.Play();
         jump_time =Time.time;
         Physics2D.queriesStartInColliders = false;
         mySlider = mySliderObject.GetComponent<Slider>();
