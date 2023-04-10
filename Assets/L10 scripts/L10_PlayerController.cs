@@ -116,7 +116,7 @@ public class L10_PlayerController : MonoBehaviour
         jump_time =Time.time;
         Physics2D.queriesStartInColliders = false;
         mySlider = mySliderObject.GetComponent<Slider>();
-        mySlider.value = 1.0f;
+        mySlider.value = 0.0f;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
@@ -206,13 +206,16 @@ public class L10_PlayerController : MonoBehaviour
         //goodword.text = final;
         Debug.Log(IsGrounded());
         if (Input.GetButtonDown("Jump"))
-        {
+        {   Debug.Log(mySlider.value);
             
-            if(mySlider.value>=1.0f)
+            if(mySlider.value>=1)
             {
-                rb.velocity = new Vector2(rb.velocity.x, 16f);
+                Debug.Log("Inside");
+                rb.velocity = new Vector2(rb.velocity.x, 20f);
             }
+            else{
             rb.velocity = new Vector2(rb.velocity.x, 8f);
+            }
         }
         //mmodification
         goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]), 0);
@@ -895,7 +898,7 @@ the value is frequency of letter
             TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
             if(text!=null ){
             GameObject[] gs = bs.nestedList[j];
-                                    ScoreScript.PlayerScore += 1;
+                                    ScoreScript.PlayerScore += 2;
                                     for (int k = 0; k < gs.Length; k++)
                                     {
                                         Destroy(gs[k]);
