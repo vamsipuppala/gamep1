@@ -647,10 +647,10 @@ public class L10_PlayerController : MonoBehaviour
                                                 //mmodification
                                                 //messageManagerScript.ChangeDangerMessageText("You hit : " + wordCreated + "!!");
                                                 //messageManagerScript.DisplayDangerMessage(1f);
-                                                if (!isFlashing)
-                                                {
-                                                    StartCoroutine(FlashCoroutine());
-                                                }
+                                                //if (!isFlashing)
+                                                //{
+                                                //    StartCoroutine(FlashCoroutine());
+                                                //}
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
                                                  mySlider.value = 0.0f;
@@ -872,10 +872,10 @@ the value is frequency of letter
             else
             {
                 if (c == 0)
-                    res += "<color=green>" + word[i] + "</color>";
+                    res += "<color=#56a500>" + word[i] + "</color>";
                 else
                 {
-                    res += "<color=red>" + word[i] + "</color>";
+                    res += "<color=#b90200>" + word[i] + "</color>";
                 }
                 int index = temp.IndexOf(word[i]);
                 temp = temp.Remove(index, 1);
@@ -1121,10 +1121,10 @@ the value is frequency of letter
 
                                             if (findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                             {
-                                                if (!isFlashing)
-                                                {
-                                                    StartCoroutine(FlashCoroutine());
-                                                }
+                                                //if (!isFlashing)
+                                                //{
+                                                 //   StartCoroutine(FlashCoroutine());
+                                                //}
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
 
