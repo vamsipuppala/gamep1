@@ -195,7 +195,7 @@ public class L5_PlayerController : MonoBehaviour
         //goodword.text = final;
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            rb.velocity = new Vector2(rb.velocity.x, 16f);
+            rb.velocity = new Vector2(rb.velocity.x, 8f);
         }
 
         goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]), 0);
@@ -463,10 +463,10 @@ public class L5_PlayerController : MonoBehaviour
 
                                             if (findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                             {
-                                                if (!isFlashing)
-                                                {
-                                                    StartCoroutine(FlashCoroutine());
-                                                }
+                                                // if (!isFlashing)
+                                                // {
+                                                //     StartCoroutine(FlashCoroutine());
+                                                // }
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
 
@@ -949,10 +949,10 @@ public class L5_PlayerController : MonoBehaviour
 
                                             if (findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                             {
-                                                if (!isFlashing)
-                                                {
-                                                    StartCoroutine(FlashCoroutine());
-                                                }
+                                                // if (!isFlashing)
+                                                // {
+                                                //     StartCoroutine(FlashCoroutine());
+                                                // }
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
 
