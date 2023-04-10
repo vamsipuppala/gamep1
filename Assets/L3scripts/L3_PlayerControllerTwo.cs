@@ -433,7 +433,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                             timeTargetWordWasHit += 1;
                                                                                       
                                             j++;
-                                    //addCollider(j, bs.nestedList[j]);
+                                    addCollider(j, bs.nestedList[j]);
                                     ind++;
                                             localHits = 1;
 
@@ -455,10 +455,10 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                                     
                                                     if(findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                                     {
-                                                // if (!isFlashing)
-                                                // {
-                                                //     StartCoroutine(FlashCoroutine());
-                                                // }
+                                                 if (!isFlashing)
+                                                 {
+                                                     StartCoroutine(FlashCoroutine());
+                                                 }
                                                 ScoreScript.PlayerScore -= 1;
                                                         Debug.Log(ScoreScript.PlayerScore);
 
