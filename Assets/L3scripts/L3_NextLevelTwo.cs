@@ -14,7 +14,7 @@ public class L3_NextLevelTwo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI targetScore;
     public int thresholdScoree = 5;
     //public SendToGoogle sc;
-    public PlayerControllerTwo pc;
+    public L3_PlayerControllerTwo pc;
    
 
 
@@ -23,7 +23,7 @@ public class L3_NextLevelTwo : MonoBehaviour
         ScoreScript.PlayerScore = 0;
         targetScore.text = thresholdScoree.ToString();
        // sc = GameObject.FindGameObjectWithTag("Logic").GetComponent<SendToGoogle>();
-        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerTwo>();
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<L3_PlayerControllerTwo>();
         //nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
@@ -41,7 +41,7 @@ public class L3_NextLevelTwo : MonoBehaviour
         //Debug.Log("the danger word score is " + PlayerController.timesDangerWordWasHit);
        // SendToGoogle sc = new SendToGoogle();
         //Debug.Log("threshold score is " + thresholdScoree);
-        if (ScoreScript.PlayerScore >= thresholdScoree && TimerTwo.TimeValue > 0)
+        if (ScoreScript.PlayerScore >= thresholdScoree && L3_TimerTwo.TimeValue > 0)
         {
             //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
             // sc.EndOfGame(PlayerControllerTwo.timeTargetWordWasHit.ToString(), "2", PlayerControllerTwo.numberOfTimeDeselectionsOccurred.ToString(), "1",
@@ -52,7 +52,7 @@ public class L3_NextLevelTwo : MonoBehaviour
             SceneManager.LoadScene("LevelScenes/CompleteLevelThree");
         }
 
-        if (ScoreScript.PlayerScore < thresholdScoree && TimerTwo.TimeValue <= 0)
+        if (ScoreScript.PlayerScore < thresholdScoree && L3_TimerTwo.TimeValue <= 0)
         {
             // sc.EndOfGame(PlayerControllerTwo.timeTargetWordWasHit.ToString(), "2", PlayerControllerTwo.numberOfTimeDeselectionsOccurred.ToString(), "0",
             //     PlayerControllerTwo.numberOfTimesWordHitInOrder.ToString(), PlayerControllerTwo.numberOfTimesWordHitInReverse.ToString());
@@ -65,7 +65,7 @@ public class L3_NextLevelTwo : MonoBehaviour
     public void resetValues()
     {
         ScoreScript.PlayerScore = 0;
-        TimerTwo.TimeValue = 240;
+        L3_TimerTwo.TimeValue = 240;
     }
 
     public void GameOver(string gameOverReason)
