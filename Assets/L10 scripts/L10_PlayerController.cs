@@ -204,8 +204,8 @@ public class L10_PlayerController : MonoBehaviour
 
 
         //goodword.text = final;
-        Debug.Log(IsGrounded());
-        if (Input.GetButtonDown("Jump"))
+        Debug.Log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh" +IsGrounded());
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {   Debug.Log(mySlider.value);
             
             if(mySlider.value>=1)
@@ -909,7 +909,7 @@ the value is frequency of letter
                                     timeTargetWordWasHit += 1;
 
                                     j++;
-                                    addCollider(j, bs.nestedList[j]);
+                                    //addCollider(j, bs.nestedList[j]);
                                     ind++;
                                     localHits = 1;
                                     mySlider.value =0.0f;
