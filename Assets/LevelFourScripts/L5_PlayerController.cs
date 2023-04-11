@@ -195,7 +195,7 @@ public class L5_PlayerController : MonoBehaviour
         //goodword.text = final;
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            rb.velocity = new Vector2(rb.velocity.x, 8f);
+            rb.velocity = new Vector2(rb.velocity.x, 16f);
         }
 
         goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]), 0);

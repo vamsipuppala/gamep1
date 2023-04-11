@@ -26,6 +26,7 @@ public class L10_PlayerController : MonoBehaviour
     private float shakeTimer = 0.3f; //timer for the shake
     public BlockSpawnerScript bs;
     public int reflections;
+     public GameObject canvas;
     public float MaxRayDistance;
     public LayerMask LayerDetection;
     //public float moveSpeed = 16f;
@@ -121,6 +122,8 @@ public class L10_PlayerController : MonoBehaviour
         jump_time =Time.time;
         Physics2D.queriesStartInColliders = false;
         mySlider = mySliderObject.GetComponent<Slider>();
+         Physics2D.IgnoreCollision(canvas.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+    
         mySlider.value = 0.0f;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
@@ -905,6 +908,7 @@ the value is frequency of letter
                             // Debug.Log("indexxxxxxxxxxxxx   " + GetIndexOfGameObject(gameObject, nestedList));
                             
                             // Debug.Log("now the numberOfHits is " + numberOfHits);
+                             Debug.Log("Collision with: " + collision.gameObject.name);
         if(gameObject!=null &&  mySlider.value>=1.0f)
         {
             TextMesh text = gameObject.GetComponentInChildren<TextMesh>();

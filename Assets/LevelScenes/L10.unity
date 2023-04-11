@@ -1192,10 +1192,11 @@ MonoBehaviour:
   prev_seq_hit: 0
   bs: {fileID: 0}
   reflections: 5
+  canvas: {fileID: 1329507012}
   MaxRayDistance: 100
   LayerDetection:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 471
   rb: {fileID: 0}
   logic: {fileID: 0}
   nextLevel: {fileID: 0}
@@ -1542,7 +1543,7 @@ GameObject:
   - component: {fileID: 478832888}
   - component: {fileID: 478832887}
   - component: {fileID: 478832886}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TextBlink
   m_TagString: TextBlinkScript
   m_Icon: {fileID: 0}
@@ -1992,7 +1993,7 @@ GameObject:
   - component: {fileID: 679255062}
   - component: {fileID: 679255064}
   - component: {fileID: 679255063}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
