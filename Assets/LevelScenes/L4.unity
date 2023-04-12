@@ -510,7 +510,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 988.63, y: -49.727}
+  m_AnchoredPosition: {x: 988.63, y: -49.727005}
   m_SizeDelta: {x: 219.05, y: 73.455}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &212595069
@@ -4777,6 +4777,7 @@ GameObject:
   - component: {fileID: 1992609278}
   - component: {fileID: 1992609277}
   - component: {fileID: 1992609276}
+  - component: {fileID: 1992609279}
   m_Layer: 5
   m_Name: Help_Button4
   m_TagString: Untagged
@@ -4898,6 +4899,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992609274}
   m_CullTransparentMesh: 1
+--- !u!114 &1992609279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992609274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aecce0a6ed0645b4a87f3aa0a6c5bd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guideFourObject: {fileID: 1558438605}
 --- !u!1 &2030068544
 GameObject:
   m_ObjectHideFlags: 0
