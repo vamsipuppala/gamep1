@@ -419,6 +419,7 @@ public class BlockSpawnerScript : MonoBehaviour
                                             new string[] {"LURIDZURIL"},
                                             new string[] {"GIDZDYIDDX"} , 
                                             new string[] {"WINCELLLZX"}};
+    
     public static string[][] wordsL1 = {new string[] {"BOLD"},
                                         new string[] {"DALE"}, 
                                         new string[] {"MAP"}, 
@@ -449,7 +450,58 @@ public class BlockSpawnerScript : MonoBehaviour
                                              new string[]  {"ED"}, 
                                              new string[] {"I"}, 
                                              new string[] {"BA"}};
+    public static string[][] wordsLfun = {
+                                        new string[] {"MANGO"},
+                                        new string[] {"PEACH"}, 
+                                        new string[] {"KIWI"}, 
+                                        new string[] {"BANANA"} , 
+                                        new string[] {"GUAVA"}, 
+                                        new string[]  {"GRAPE"}, 
+                                        new string[]  {"FIG"}, 
+                                        new string[]  {"PAPAYA"}, 
+                                        new string[]  {"APRICOT"}, 
+                                        new string[]  {"MELON"}, 
+                                        
+
+    };
+    public static string[][] dangerWordsLfun = {
+                                        new string[] {"MAN", "AN", "GO"},
+                                        new string[] {"ACH", "PE", "EACH"},
+                                        new string[] {"I", "KI", "IWI"},
+                                        new string[] {"AN", "ANA", "B"},
+                                        new string[] {"G", "UVA", "A"},
+                                        new string[] {"GE", "RAP", "R"},
+                                        new string[] {"F", "FI", "G"},
+                                        new string[] {"A", "Y", "PAYA"},
+                                        new string[] {"RTI", "CO", "AP"},
+                                        new string[] {"LE", "M", "ON"},
+                                         };
+    public string[][] block_of_wordsLfun =  {
+                                            new string[] {"LLMMGOANZR"},
+                                            new string[] {"PAEAZCHHHL"}, 
+                                            new string[] {"IIIKISKKWZ"}, 
+                                            new string[] {"ZBANMNAMGS"} , 
+                                            new string[] {"AAAGUAVAZU"}, 
+                                            new string[] {"RAPRAPRZGE"}, 
+                                            new string[] {"GGZIFFIIGG"}, 
+                                            new string[] {"PAPAPAYAZP"}, 
+                                            new string[] {"AZAPOCIRNT"}, 
+                                            new string[] {"MELONMELZN"}, 
+                                            };
+    public string[][] facts_Lfun =  {
+                                            new string[] {"considered as the king of fruits."},
+                                            new string[] {"member of the rose family"}, 
+                                            new string[] {"were originally known as Chinese gooseberries."}, 
+                                            new string[] {"great source of potassium"} , 
+                                            new string[] {"leaves are commonly used in traditional medicine"}, 
+                                            new string[] {"Use in winemaking"}, 
+                                            new string[] {"Excellent source of dietary fiber"}, 
+                                            new string[] {"rich in enzymes called papain and chymopapain"}, 
+                                            new string[] {"believed to have anti-inflammatory properties."}, 
+                                            new string[] {"refreshing on a hot summer day"}, 
+                                            };
     public string[][] words = wordsL1;
+    public string[][] facts = wordsL1;
     public string[][] dangerWordss = dangerWordsL1;
     // Start is called before the first frame update
     private void Awake()
@@ -562,6 +614,13 @@ public class BlockSpawnerScript : MonoBehaviour
             words = wordsL10;
             dangerWordss = dangerWordsL10;
         }
+        if (scene.name == "Lfun")
+        {
+            blocks_row_count = wordsLfun.Length;
+            words = wordsLfun;
+            dangerWordss = dangerWordsLfun;
+            facts = facts_Lfun;
+        }
 
         for (int j = 0; j < blocks_row_count; j++) // this is for the total number of rows
         {
@@ -628,7 +687,10 @@ public class BlockSpawnerScript : MonoBehaviour
             {
                 shuffledString = block_of_wordsL10[j][0];
             }
-
+            else if (scene.name == "Lfun")
+            {
+                shuffledString = block_of_wordsLfun[j][0];
+            }
             else
             {
                 HashSet<Char> hs = new HashSet<Char>();

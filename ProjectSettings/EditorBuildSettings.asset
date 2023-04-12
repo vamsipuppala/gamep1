@@ -86,4 +86,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/LevelScenes/CompleteLevel10.unity
     guid: 6bb6c636dbba9754bb978041838ba735
+  - enabled: 1
+    path: Assets/LevelScenes/Lfun.unity
+    guid: 4f08945cf879d194f9052fd443dd8501
+  - enabled: 1
+    path: Assets/LevelScenes/CompleteLevelfun.unity
+    guid: ee17f8d4d81d4b841905e82cd81a4e29
   m_configObjects: {}

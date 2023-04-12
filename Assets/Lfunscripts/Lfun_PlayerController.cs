@@ -7,7 +7,7 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class L10_PlayerController : MonoBehaviour
+public class Lfun_PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     // Line OF Renderer
@@ -26,6 +26,7 @@ public class L10_PlayerController : MonoBehaviour
     private float shakeTimer = 0.3f; //timer for the shake
     public BlockSpawnerScript bs;
     public int reflections;
+     public GameObject canvas;
     public float MaxRayDistance;
     public LayerMask LayerDetection;
     //public float moveSpeed = 16f;
@@ -44,9 +45,10 @@ public class L10_PlayerController : MonoBehaviour
     int localHits = 1;
     [SerializeField] private TextMeshProUGUI goodword;
     [SerializeField] public TextMeshProUGUI dangerWord;
-    public string dummy;
-    public Text text1;
-    public Text text2;
+    [SerializeField] public TextMeshProUGUI def;
+    // public string dummy;
+    // public Text text1;
+    // public Text text2;
     List<GameObject[]> nestedList;
     public string final;
     public float moveSpeed;
@@ -65,7 +67,7 @@ public class L10_PlayerController : MonoBehaviour
 
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    public L10_NextLevel nextLevelScript;
+    public Lfun_NextLevel nextLevelScript;
 
     public GameObject[] platformGameObj;
     public MovementMirrorLevel4 mvmtScript;
@@ -121,6 +123,8 @@ public class L10_PlayerController : MonoBehaviour
         jump_time =Time.time;
         Physics2D.queriesStartInColliders = false;
         mySlider = mySliderObject.GetComponent<Slider>();
+         Physics2D.IgnoreCollision(canvas.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+    
         mySlider.value = 0.0f;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
@@ -135,7 +139,7 @@ public class L10_PlayerController : MonoBehaviour
         //nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
         //final = "Aim: " + bs.words[ind];
-        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L10_NextLevel>();
+        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<Lfun_NextLevel>();
         nextLevelScript.resetValues();
 
         //mmodification
@@ -225,7 +229,26 @@ public class L10_PlayerController : MonoBehaviour
             }
         }
         //mmodification
-        goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]), 0);
+        //goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]), 0);
+        string ra1 = "";
+        string temp1= wordCreated;
+        def.text = "  Hint  \n"+bs.facts[ind][0];
+        // Debug.Log(bs.words[ind][0]+" "+ra1);
+        for (int i = 0; i < bs.words[ind][0].Length; i++)
+        {   
+           
+            if(temp1.Contains(bs.words[ind][0][i]))
+            {
+                ra1+= "<color=#56a500>" + bs.words[ind][0][i] + "</color>";
+                int index = temp1.IndexOf( bs.words[ind][0][i]);
+                temp1 = temp1.Remove(index, 1);
+            }
+            else{
+                 ra1+= "<color=#56a500>" + "_ " + "</color>";
+            }
+        }
+        
+        goodword.text = "Target:  \n" + ra1;
         dangerWord.text = "Danger:  \n";
 
         for (int i = 0; i < bs.dangerWordss[ind].Length; i++)
@@ -905,6 +928,7 @@ the value is frequency of letter
                             // Debug.Log("indexxxxxxxxxxxxx   " + GetIndexOfGameObject(gameObject, nestedList));
                             
                             // Debug.Log("now the numberOfHits is " + numberOfHits);
+                             Debug.Log("Collision with: " + collision.gameObject.name);
         if(gameObject!=null &&  mySlider.value>=1.0f)
         {
             TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
