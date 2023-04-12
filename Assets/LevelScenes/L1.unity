@@ -2170,6 +2170,7 @@ GameObject:
   - component: {fileID: 1270300694}
   - component: {fileID: 1270300693}
   - component: {fileID: 1270300692}
+  - component: {fileID: 1270300695}
   m_Layer: 5
   m_Name: Help_Button1
   m_TagString: Untagged
@@ -2194,7 +2195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 160.84, y: -50.968}
+  m_AnchoredPosition: {x: 160.84, y: -50.968002}
   m_SizeDelta: {x: 105.3, y: 101.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1270300692
@@ -2291,6 +2292,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270300690}
   m_CullTransparentMesh: 1
+--- !u!114 &1270300695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270300690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4013de813a46a4d978913df9483a8169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guideOneObject: {fileID: 1778985768}
 --- !u!1 &1438980863
 GameObject:
   m_ObjectHideFlags: 0
@@ -2326,7 +2340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 988.63, y: -49.727}
+  m_AnchoredPosition: {x: 988.63, y: -49.727005}
   m_SizeDelta: {x: 219.05, y: 73.455}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1438980866
