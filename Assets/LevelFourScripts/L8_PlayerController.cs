@@ -106,7 +106,7 @@ public class L8_PlayerController : MonoBehaviour
     );
 
 
-    static string obstacleDisableColorHexCode = "#635133";
+    static string obstacleDisableColorHexCode = "#FF0000";
     public Color obstacleDisableColor = new Color(
         (float)System.Convert.ToInt32(obstacleDisableColorHexCode.Substring(1, 2), 16) / 255f,
         (float)System.Convert.ToInt32(obstacleDisableColorHexCode.Substring(3, 2), 16) / 255f,
