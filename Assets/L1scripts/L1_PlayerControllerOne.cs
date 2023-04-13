@@ -34,6 +34,7 @@ public class L1_PlayerControllerOne : MonoBehaviour
     public string dummy;
     public Text text1 ;
     public Text text2;
+    public GameObject canvas;
     List<GameObject[]> nestedList;
     public string final;
     public float moveSpeed;
@@ -59,6 +60,7 @@ public class L1_PlayerControllerOne : MonoBehaviour
       
         st = Time.time;
         Physics2D.queriesStartInColliders = false;
+        Physics2D.IgnoreCollision(canvas.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();

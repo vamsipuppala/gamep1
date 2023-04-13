@@ -19,7 +19,8 @@ public class L7_PlayerController : MonoBehaviour
     public float shakeDuration = 2f; //duration of the shake
     public float shakeAmount = 0.1f; //amount of shake
     public float decreaseFactor = 1.0f; //how fast the shake decreases
-
+    public GameObject canvas;
+    
     private Vector3 originalPos; //original position of the camera
     private float shakeTimer = 0.3f; //timer for the shake
     public BlockSpawnerScript bs;
@@ -130,7 +131,7 @@ public class L7_PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
-
+        Physics2D.IgnoreCollision(canvas.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         //messageManagerScript = GameObject.FindGameObjectWithTag("MessageManagerScript").GetComponent<MessageManagerScript>();
 
         platformGameObj = GameObject.FindGameObjectsWithTag("Mirror");

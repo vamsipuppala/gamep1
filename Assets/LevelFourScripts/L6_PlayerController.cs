@@ -14,7 +14,8 @@ public class L6_PlayerController : MonoBehaviour
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
     public float  jump_time;
-
+    public GameObject canvas;
+    
     int j = 0;
     public float shakeDuration = 2f; //duration of the shake
     public float shakeAmount = 0.1f; //amount of shake
@@ -124,7 +125,8 @@ public class L6_PlayerController : MonoBehaviour
         //int ind=0;
         originalColor = Camera.main.backgroundColor;
         jump_time = Time.time;
-      
+       
+        Physics2D.IgnoreCollision(canvas.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         st = Time.time;
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();

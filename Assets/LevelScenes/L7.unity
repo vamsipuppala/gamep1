@@ -1049,6 +1049,7 @@ MonoBehaviour:
   shakeDuration: 2
   shakeAmount: 0.1
   decreaseFactor: 1
+  canvas: {fileID: 0}
   st: 0
   ct: 0
   jump_time: 0
@@ -1097,6 +1098,7 @@ MonoBehaviour:
   shakeDuration: 2
   shakeAmount: 0.1
   decreaseFactor: 1
+  canvas: {fileID: 1538925509}
   bs: {fileID: 0}
   reflections: 5
   MaxRayDistance: 100

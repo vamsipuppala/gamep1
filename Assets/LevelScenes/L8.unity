@@ -951,58 +951,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
   m_PrefabInstance: {fileID: 227852190}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &227852194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 227852191}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91237a8b0de58bb449c64704a5af5165, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LineOfSight: {fileID: 227852192}
-  LineOfSight2: {fileID: 754708136}
-  jump_time: 0
-  shakeDuration: 2
-  shakeAmount: 0.1
-  decreaseFactor: 1
-  bs: {fileID: 0}
-  reflections: 5
-  MaxRayDistance: 100
-  LayerDetection:
-    serializedVersion: 2
-    m_Bits: 2147483647
-  rb: {fileID: 0}
-  logic: {fileID: 0}
-  nextLevel: {fileID: 0}
-  textBlinkScript: {fileID: 0}
-  NextLevelScreen: {fileID: 0}
-  wordCreated: 
-  lol1: 
-  dangerWordCreated: 
-  goodword: {fileID: 1398275430}
-  dangerWord: {fileID: 142219569}
-  dummy: 
-  text1: {fileID: 0}
-  text2: {fileID: 0}
-  final: 
-  moveSpeed: 16
-  st: 0
-  ct: 0
-  c: {fileID: 0}
-  flashDuration: 1
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  nextLevelScript: {fileID: 0}
-  platformGameObj: []
-  mvmtScript: {fileID: 0}
-  mvmtScript1: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &227852196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,6 +1002,7 @@ MonoBehaviour:
   LineOfSight2: {fileID: 754708136}
   jump_time: 0
   bs: {fileID: 0}
+  canvas: {fileID: 1007590131}
   reflections: 5
   MaxRayDistance: 100
   LayerDetection:

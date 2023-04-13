@@ -16,6 +16,9 @@ public class L8_PlayerController : MonoBehaviour
     public float jump_time;
     int j = 0;
     public BlockSpawnerScript bs;
+    public GameObject canvas;
+   
+
     public int reflections;
     public float MaxRayDistance;
     public LayerMask LayerDetection;

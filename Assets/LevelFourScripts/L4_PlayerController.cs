@@ -23,6 +23,8 @@ public class L4_PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     public LogicManagerScript logic;
     public NextLevelScript nextLevel;
+    public GameObject canvas;
+    
     //mmodification
     public TextBlinkScript textBlinkScript;
     //public Color flashColor = Color.red; // The color to set the background to
@@ -120,6 +122,8 @@ public class L4_PlayerController : MonoBehaviour
         originalPos = transform.localPosition;
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();
+
+        Physics2D.IgnoreCollision(canvas.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
         //nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();

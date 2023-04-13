@@ -14,7 +14,8 @@ public class L9_PlayerController : MonoBehaviour
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
     public float jump_time;
-
+    public GameObject canvas;
+    
     int j = 0;
     public BlockSpawnerScript bs;
     public Color flashColor = Color.red; // The color to set the background to
@@ -111,6 +112,7 @@ public class L9_PlayerController : MonoBehaviour
         st = Time.time;
         jump_time = Time.time;
         Physics2D.queriesStartInColliders = false;
+        Physics2D.IgnoreCollision(canvas.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();

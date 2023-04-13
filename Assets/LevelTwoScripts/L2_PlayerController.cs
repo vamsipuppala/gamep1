@@ -18,6 +18,8 @@ public class L2_PlayerController : MonoBehaviour
     public BlockSpawnerScript bs;
     public int reflections;
     public float MaxRayDistance;
+    public GameObject canvas;
+    
     public LayerMask LayerDetection;
     //public float moveSpeed = 16f;
     [SerializeField] private Rigidbody2D rb;
@@ -102,6 +104,7 @@ public class L2_PlayerController : MonoBehaviour
         //int ind=0;
         st = Time.time;
         Physics2D.queriesStartInColliders = false;
+       Physics2D.IgnoreCollision(canvas.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();

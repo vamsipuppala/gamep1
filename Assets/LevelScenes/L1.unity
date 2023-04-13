@@ -2194,7 +2194,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 160.84, y: -50.968}
+  m_AnchoredPosition: {x: 160.84, y: -50.968002}
   m_SizeDelta: {x: 105.3, y: 101.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1270300692
@@ -2326,7 +2326,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 988.63, y: -49.727}
+  m_AnchoredPosition: {x: 988.63, y: -49.727005}
   m_SizeDelta: {x: 219.05, y: 73.455}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1438980866
@@ -2846,6 +2846,7 @@ MonoBehaviour:
   dummy: 
   text1: {fileID: 0}
   text2: {fileID: 0}
+  canvas: {fileID: 818967096}
   final: 
   moveSpeed: 16
   st: 0

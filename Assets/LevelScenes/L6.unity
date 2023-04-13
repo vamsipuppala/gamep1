@@ -2406,6 +2406,7 @@ MonoBehaviour:
   shakeDuration: 2
   shakeAmount: 0.1
   decreaseFactor: 1
+  canvas: {fileID: 0}
   st: 0
   ct: 0
   jump_time: 0
@@ -2444,6 +2445,7 @@ MonoBehaviour:
   NextLevelScreen: {fileID: 0}
   wordCreated: 
   lol1: 
+  canvas: {fileID: 0}
   goodword: {fileID: 0}
   dangerWord: {fileID: 0}
   dummy: 
@@ -2512,6 +2514,7 @@ MonoBehaviour:
   LineOfSight: {fileID: 945942194}
   LineOfSight2: {fileID: 1175533850}
   jump_time: 0
+  canvas: {fileID: 553396703}
   shakeDuration: 2
   shakeAmount: 0.1
   decreaseFactor: 1

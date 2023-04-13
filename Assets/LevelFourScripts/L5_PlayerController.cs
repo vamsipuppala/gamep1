@@ -49,7 +49,7 @@ public class L5_PlayerController : MonoBehaviour
     public float shakeDuration = 2f; //duration of the shake
     public float shakeAmount = 0.1f; //amount of shake
     public float decreaseFactor = 1.0f; //how fast the shake decreases
-
+    public GameObject canvas;
     private Vector3 originalPos; //original position of the camera
     private float shakeTimer = 0.3f; //timer for the shake
     public float st, ct, jump_time;
@@ -122,6 +122,7 @@ public class L5_PlayerController : MonoBehaviour
         jump_time =Time.time;
         st = Time.time;
         originalColor = Camera.main.backgroundColor;
+        Physics2D.IgnoreCollision(canvas.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         originalPos = transform.localPosition;
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();

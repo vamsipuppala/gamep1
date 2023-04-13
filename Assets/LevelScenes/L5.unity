@@ -1039,6 +1039,7 @@ MonoBehaviour:
   NextLevelScreen: {fileID: 0}
   wordCreated: 
   lol1: 
+  canvas: {fileID: 0}
   goodword: {fileID: 0}
   dangerWord: {fileID: 0}
   dummy: 
@@ -1117,6 +1118,7 @@ MonoBehaviour:
   shakeDuration: 2
   shakeAmount: 0.1
   decreaseFactor: 1
+  canvas: {fileID: 1329507012}
   st: 0
   ct: 0
   jump_time: 0
