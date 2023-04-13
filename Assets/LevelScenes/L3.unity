@@ -3441,6 +3441,7 @@ MonoBehaviour:
   NextLevelScreen: {fileID: 0}
   wordCreated: 
   lol1: 
+  canvas: {fileID: 644126295}
   goodword: {fileID: 1563448083}
   dangerWord: {fileID: 920433512}
   dummy: 
@@ -3978,7 +3979,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 988.63, y: -49.727013}
+  m_AnchoredPosition: {x: 988.63, y: -49.72702}
   m_SizeDelta: {x: 219.05, y: 73.455}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1785365793

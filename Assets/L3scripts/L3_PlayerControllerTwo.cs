@@ -38,6 +38,8 @@ public class L3_PlayerControllerTwo : MonoBehaviour
     int numberOfHits;
     int localHits = 1;
     bool z_is = false;
+    public GameObject canvas;
+
     [SerializeField]  private TextMeshProUGUI  goodword;
     [SerializeField]  public TextMeshProUGUI dangerWord;
     public string dummy;
@@ -122,6 +124,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
         originalColor = Camera.main.backgroundColor;
         originalPos = transform.localPosition;
         Physics2D.queriesStartInColliders = false;
+         Physics2D.IgnoreCollision(canvas.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
