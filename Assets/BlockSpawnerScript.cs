@@ -480,7 +480,7 @@ public class BlockSpawnerScript : MonoBehaviour
                                             new string[] {"LLMMGOANZR"},
                                             new string[] {"PAEAZCHHHL"}, 
                                             new string[] {"IIIKISKKWZ"}, 
-                                            new string[] {"ZBANMNAMGS"} , 
+                                            new string[] {"ZBANANAMGS"} , 
                                             new string[] {"AAAGUAVAZU"}, 
                                             new string[] {"RAPRAPRZGE"}, 
                                             new string[] {"GGZIFFIIGG"}, 
