@@ -237,6 +237,7 @@ public class L9_PlayerController : MonoBehaviour
             st = Time.time;
             LineOfSight.positionCount = 1;
             LineOfSight.SetPosition(0, transform.position);
+        
 
 
             RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, MaxRayDistance, LayerDetection);

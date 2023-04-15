@@ -1092,6 +1092,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91237a8b0de58bb449c64704a5af5165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &798720251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798720241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81783bc72e4c29f4d984d8b13a824474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   LineOfSight: {fileID: 798720242}
   LineOfSight2: {fileID: 907653116}
   jump_time: 0
@@ -1124,7 +1136,7 @@ MonoBehaviour:
   ct: 0
   c: {fileID: 0}
   flashDuration: 1
-  originalColor: {r: 0.91764706, g: 0.8039216, b: 0.65882355, a: 0}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1132,7 +1144,7 @@ MonoBehaviour:
   platformGameObj: []
   mvmtScript: {fileID: 0}
   mvmtScript1: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashColor: {r: 0.8117647, g: 0.44705883, b: 0.44705883, a: 130}
 --- !u!1 &865636865
 GameObject:
   m_ObjectHideFlags: 0
@@ -4936,6 +4948,7 @@ GameObject:
   - component: {fileID: 2038742027}
   - component: {fileID: 2038742026}
   - component: {fileID: 2038742028}
+  - component: {fileID: 2038742029}
   m_Layer: 0
   m_Name: NextLevelManager
   m_TagString: NextLevelManager
@@ -4985,6 +4998,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7749af3595f1ca644835fd7922c02bc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2038742029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038742025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6185528f68ec4b8439b2cef247f1662b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   NextLevel: {fileID: 0}

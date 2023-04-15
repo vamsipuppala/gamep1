@@ -698,11 +698,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.03
+      value: -0.23
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.41
+      value: 0.44
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_LocalPosition.z
@@ -790,48 +790,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be24b8752dc47744b7255d1d9b7e3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LineOfSight: {fileID: 153392232}
-  LineOfSight2: {fileID: 422486561}
-  jump_time: 0
-  bs: {fileID: 0}
-  canvas: {fileID: 0}
-  reflections: 5
-  MaxRayDistance: 100
-  LayerDetection:
-    serializedVersion: 2
-    m_Bits: 2147483647
-  rb: {fileID: 0}
-  logic: {fileID: 0}
-  nextLevel: {fileID: 0}
-  textBlinkScript: {fileID: 0}
-  NextLevelScreen: {fileID: 0}
-  wordCreated: 
-  lol1: 
-  dangerWordCreated: 
-  goodword: {fileID: 1345437635}
-  dangerWord: {fileID: 1929236714}
-  dummy: 
-  text1: {fileID: 0}
-  text2: {fileID: 0}
-  final: 
-  moveSpeed: 16
-  st: 0
-  ct: 0
-  c: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 1
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  nextLevelScript: {fileID: 0}
-  boxCollider1: {fileID: 0}
-  boxCollider2: {fileID: 0}
-  obstacle1: {fileID: 0}
-  obstacle2: {fileID: 0}
-  hoveringPlatform: {fileID: 0}
-  obstacleDisableColor: {r: 0.3882353, g: 0.31764707, b: 0.2, a: 130}
-  obstacleOriginalColor: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 130}
 --- !u!114 &153392235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -879,19 +837,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4aa05afb4425d42979195045d06678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &153392243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153392231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde5c455552e6b84891f7ef8af1cb5c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   LineOfSight: {fileID: 153392232}
   LineOfSight2: {fileID: 422486561}
   jump_time: 0
   canvas: {fileID: 554955261}
-  bs: {fileID: 0}
+  bs: {fileID: 718395357}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 1
-  originalColor: {r: 0.79607844, g: 0.6862745, b: 0.59607846, a: 0}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
   reflections: 5
   MaxRayDistance: 100
   LayerDetection:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 471
   rb: {fileID: 0}
   logic: {fileID: 0}
   nextLevel: {fileID: 0}
@@ -2932,7 +2902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1030093295
 Transform:
   m_ObjectHideFlags: 0
@@ -4751,6 +4721,7 @@ GameObject:
   - component: {fileID: 2011788808}
   - component: {fileID: 2011788806}
   - component: {fileID: 2011788809}
+  - component: {fileID: 2011788810}
   m_Layer: 0
   m_Name: NextLevelManager
   m_TagString: NextLevelManager
@@ -4770,12 +4741,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f88cb99a863de349a2225a79dab2f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextLevel: {fileID: 0}
-  levelName: 
-  targetScore: {fileID: 22089149}
-  thresholdScoree: 5
-  sc: {fileID: 0}
-  pc: {fileID: 0}
 --- !u!4 &2011788808
 Transform:
   m_ObjectHideFlags: 0
@@ -4801,6 +4766,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee079b190091b5b43925c323d9317e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2011788810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011788805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e34e85cf5a86604ebbdad1da92517d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   NextLevel: {fileID: 0}
