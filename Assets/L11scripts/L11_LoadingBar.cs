@@ -36,7 +36,7 @@ public class L11_LoadingBar : MonoBehaviour
     IEnumerator LoadSceneThree()
     {
         //Begin to load the Scene you specify
-        AsyncOperation asyncOperationThree = SceneManager.LoadSceneAsync("L8");
+        AsyncOperation asyncOperationThree = SceneManager.LoadSceneAsync("L12");
 
         //Don't let the Scene activate until you allow it to
         asyncOperationThree.allowSceneActivation = false;
