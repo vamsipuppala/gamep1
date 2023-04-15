@@ -431,7 +431,7 @@ public class L12_PlayerController : MonoBehaviour
                         numberOfHits = givenWord.Length;
 
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
-                        if (text.text[0] == 'Z' && i == 0)
+                        if (i == 0)
                         {
 
                         }
