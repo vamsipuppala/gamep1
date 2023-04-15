@@ -597,7 +597,6 @@ public class L8_PlayerController : MonoBehaviour
                                         boxCollider1.enabled = false;
                                         boxCollider2.enabled = false;
                                         StartCoroutine(EnableBox(15.0F));
-
                                     }
 
 
