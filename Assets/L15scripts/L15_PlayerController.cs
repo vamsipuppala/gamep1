@@ -7,7 +7,7 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class L8_PlayerController : MonoBehaviour
+public class L15_PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     // Line OF Renderer
@@ -60,7 +60,7 @@ public class L8_PlayerController : MonoBehaviour
 
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    public L8_NextLevel nextLevelScript;
+    public L15_NextLevel nextLevelScript;
 
     public BoxCollider2D boxCollider1;
     public BoxCollider2D boxCollider2;
@@ -140,7 +140,7 @@ public class L8_PlayerController : MonoBehaviour
         //nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
         //final = "Aim: " + bs.words[ind];
-        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L8_NextLevel>();
+        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L15_NextLevel>();
         nextLevelScript.resetValues();
         Physics2D.IgnoreCollision(canvas.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         hoveringPlatform = GameObject.FindGameObjectWithTag("HoveringPlatform");

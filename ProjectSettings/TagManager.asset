@@ -22,6 +22,7 @@ TagManager:
   - GuidePop4
   - GuidePop5
   - TextBlinkScript
+  - spikes
   layers:
   - Default
   - TransparentFX

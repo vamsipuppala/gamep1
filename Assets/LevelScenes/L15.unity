@@ -1049,7 +1049,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 227852191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5044c575fa3ce904c8b36aae7e39c29c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b2ec7a375ae19649824e56359c82e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LineOfSight: {fileID: 227852192}
@@ -1173,7 +1173,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 250718975}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28295826c8c8eb94ba6b66e14998186c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a1a235dce3f9034b8665155d1e29e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   NextLevel: {fileID: 0}
@@ -3894,6 +3894,7 @@ GameObject:
   - component: {fileID: 1268394420}
   - component: {fileID: 1268394419}
   - component: {fileID: 1268394418}
+  - component: {fileID: 1268394423}
   m_Layer: 5
   m_Name: TimerText
   m_TagString: Untagged
@@ -3928,7 +3929,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268394416}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 836f74c7029afad498005bccac5fc03d, type: 3}
   m_Name: 
@@ -4002,6 +4003,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268394416}
   m_CullTransparentMesh: 1
+--- !u!114 &1268394423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268394416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da284c1c57b0abc4b88e0c70bd7bbf10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimerText: {fileID: 0}
 --- !u!1 &1273269736
 GameObject:
   m_ObjectHideFlags: 0

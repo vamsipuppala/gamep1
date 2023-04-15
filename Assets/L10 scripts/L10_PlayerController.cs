@@ -33,6 +33,7 @@ public class L10_PlayerController : MonoBehaviour
     public LogicManagerScript logic;
     public NextLevelScript nextLevel;
     public GameObject NextLevelScreen;
+    public GameObject canvas;
     //mmodification
     //public MessageManagerScript messageManagerScript;
     public string wordCreated;
@@ -118,6 +119,7 @@ public class L10_PlayerController : MonoBehaviour
         st = Time.time;
         // pars = GameObject.Find("particles").GetComponent<ParticleSystem>();
         // pars.Play();
+        Physics2D.IgnoreCollision(canvas.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         jump_time =Time.time;
         Physics2D.queriesStartInColliders = false;
         mySlider = mySliderObject.GetComponent<Slider>();

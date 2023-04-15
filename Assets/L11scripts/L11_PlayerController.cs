@@ -12,10 +12,14 @@ public class L11_PlayerController : MonoBehaviour
     // Start is called before the first frame update
     // Line OF Renderer
     public LineRenderer LineOfSight;
+    public GameObject enemy; 
+    public float rotateSpeed = 50f;
     public LineRenderer LineOfSight2;
     public Slider slider;
+    public GameObject canvas;
     public GameObject mySliderObject; 
     private ParticleSystem pars;
+  
      public static int numberOfTimeDeselectionsOccurred = 0;
     int j = 0;
     public float shakeDuration = 2f; //duration of the shake
@@ -37,16 +41,17 @@ public class L11_PlayerController : MonoBehaviour
     //public MessageManagerScript messageManagerScript;
     public string wordCreated;
     bool z_is = false;
-   
+   public float hinderence_stop_time ;
     public string dangerWordCreated;
     //public float move;
     int numberOfHits;
     int localHits = 1;
     [SerializeField] private TextMeshProUGUI goodword;
     [SerializeField] public TextMeshProUGUI dangerWord;
-    public string dummy;
+    public float jump_speed=8f;
     public Text text1;
     public Text text2;
+    private float blinking_time;
     List<GameObject[]> nestedList;
     public string final;
     public float moveSpeed;
@@ -62,6 +67,7 @@ public class L11_PlayerController : MonoBehaviour
     public static int numberOfTimesWordHitInOrder = 0;
     public static int numberOfTimesWordHitInReverse = 0;
     public static int zHit = 0;
+    public string enemy_color;
 
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -108,17 +114,22 @@ public class L11_PlayerController : MonoBehaviour
         (float)System.Convert.ToInt32(grayHexCode.Substring(5, 2), 16) / 255f,
         1f
     );
-
+    Color p_c;
     int ind = 0;
+    
        //mmodification
     public TextBlinkScript textBlinkScript;
     void Start()
     {
         //int ind=0;
         st = Time.time;
+        hinderence_stop_time = st-8;
+        Physics2D.IgnoreCollision(canvas.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         // pars = GameObject.Find("particles").GetComponent<ParticleSystem>();
         // pars.Play();
         jump_time =Time.time;
+        p_c = enemy.GetComponent<SpriteRenderer>().color;
+        blinking_time = Time.time;
         Physics2D.queriesStartInColliders = false;
         mySlider = mySliderObject.GetComponent<Slider>();
         mySlider.value = 0.0f;
@@ -151,6 +162,28 @@ public class L11_PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if( Time.time-hinderence_stop_time<8)
+        {  if(Time.time-blinking_time>0.5f){
+            blinking_time = Time.time;
+            if(enemy.GetComponent<SpriteRenderer>().color == redColor)
+            {
+                enemy.GetComponent<SpriteRenderer>().color = p_c;
+            }
+            else{
+                    enemy.GetComponent<SpriteRenderer>().color = redColor;
+            }
+        }
+         jump_speed = 5f;
+         moveSpeed = 3f;
+         rotateSpeed = 1;
+
+        }
+        else{
+             enemy.GetComponent<SpriteRenderer>().color = p_c;
+            jump_speed = 8f;
+            moveSpeed = 5f;
+            rotateSpeed = 50;
+        }
         if(mySlider.value<0.0f)
         {
             mySlider.value = 0.0f;
@@ -219,9 +252,10 @@ public class L11_PlayerController : MonoBehaviour
             {
                 
                 rb.velocity = new Vector2(rb.velocity.x, 20f);
+                hinderence_stop_time -=8;
             }
             else{
-            rb.velocity = new Vector2(rb.velocity.x, 8f);
+            rb.velocity = new Vector2(rb.velocity.x, jump_speed);
             }
         }
         //mmodification
@@ -241,20 +275,24 @@ public class L11_PlayerController : MonoBehaviour
         // move = Input.GetAxisRaw("Horizontal");
         // rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         float move = Input.GetAxis("Horizontal");
+        // if(IsGrounded()){
+        
+        rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
+        // }
 
         //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
-        rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
-        float rotateSpeed = 0.1f;
-        float move2 = Input.GetAxis("Vertical") * rotateSpeed;
-        if (move2 < 0 && !(transform.localEulerAngles.z > 300))
+        
+        
+        float move2 = Input.GetAxis("Vertical")*rotateSpeed;
+        if (move2 < 0 && !(transform.localEulerAngles.z > 300) &&  IsGrounded())
         {
 
-            transform.Rotate(0, 0, move2 * (500f)* Time.deltaTime);
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
-        else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
+        else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270) && IsGrounded())
         {
 
-            transform.Rotate(0, 0, move2 * (500f)* Time.deltaTime);
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         if (Input.GetButtonDown("Fire1"))
         {
@@ -905,6 +943,11 @@ the value is frequency of letter
                             // Debug.Log("indexxxxxxxxxxxxx   " + GetIndexOfGameObject(gameObject, nestedList));
                             
                             // Debug.Log("now the numberOfHits is " + numberOfHits);
+        if(gameObject!=null && gameObject.tag == "spikes")
+        {
+               
+                hinderence_stop_time=Time.time;
+        }
         if(gameObject!=null &&  mySlider.value>=1.0f)
         {
             TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
