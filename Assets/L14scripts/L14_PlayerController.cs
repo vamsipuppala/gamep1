@@ -174,39 +174,39 @@ public class L14_PlayerController : MonoBehaviour
         Vector2 mirrorHitPoint2 = Vector2.zero;
         Vector2 mirrorHitNormal2 = Vector2.zero;
 
-        // for (int i = 0; i < reflections; i++)
-        // {
-        //     LineOfSight2.positionCount += 1;
+        for (int i = 0; i < reflections; i++)
+        {
+            LineOfSight2.positionCount += 1;
 
-        //     if (hitInfo2.collider != null)
-        //     {
-        //         LineOfSight2.SetPosition(LineOfSight2.positionCount - 1, hitInfo2.point - ray2.direction * -0.1f);
+            if (hitInfo2.collider != null)
+            {
+                LineOfSight2.SetPosition(LineOfSight2.positionCount - 1, hitInfo2.point - ray2.direction * -0.1f);
 
-        //         isMirror2 = false;
-        //         if (hitInfo2.collider.CompareTag("Mirror"))
-        //         {
-        //             mirrorHitPoint2 = (Vector2)hitInfo2.point;
-        //             mirrorHitNormal2 = (Vector2)hitInfo2.normal;
-        //             hitInfo2 = Physics2D.Raycast((Vector2)hitInfo2.point - ray2.direction * -0.1f, Vector2.Reflect(hitInfo2.point - ray2.direction * -0.1f, hitInfo2.normal), MaxRayDistance, LayerDetection);
-        //             isMirror2 = true;
-        //         }
-        //         else
-        //             break;
-        //     }
-        //     else
-        //     {
-        //         if (isMirror2)
-        //         {
-        //             LineOfSight2.SetPosition(LineOfSight2.positionCount - 1, mirrorHitPoint2 + Vector2.Reflect(mirrorHitPoint2, mirrorHitNormal2) * MaxRayDistance);
-        //             break;
-        //         }
-        //         else
-        //         {
-        //             LineOfSight2.SetPosition(LineOfSight2.positionCount - 1, transform.position + transform.right * MaxRayDistance);
-        //             break;
-        //         }
-        //     }
-        // }
+                isMirror2 = false;
+                if (hitInfo2.collider.CompareTag("Mirror"))
+                {
+                    mirrorHitPoint2 = (Vector2)hitInfo2.point;
+                    mirrorHitNormal2 = (Vector2)hitInfo2.normal;
+                    hitInfo2 = Physics2D.Raycast((Vector2)hitInfo2.point - ray2.direction * -0.1f, Vector2.Reflect(hitInfo2.point - ray2.direction * -0.1f, hitInfo2.normal), MaxRayDistance, LayerDetection);
+                    isMirror2 = true;
+                }
+                else
+                    break;
+            }
+            else
+            {
+                if (isMirror2)
+                {
+                    LineOfSight2.SetPosition(LineOfSight2.positionCount - 1, mirrorHitPoint2 + Vector2.Reflect(mirrorHitPoint2, mirrorHitNormal2) * MaxRayDistance);
+                    break;
+                }
+                else
+                {
+                    LineOfSight2.SetPosition(LineOfSight2.positionCount - 1, transform.position + transform.right * MaxRayDistance);
+                    break;
+                }
+            }
+        }
 
 
         //j is the index of the last row of blocks
@@ -435,7 +435,7 @@ public class L14_PlayerController : MonoBehaviour
                         numberOfHits = givenWord.Length;
 
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
-                        if (i == 0)
+                        if (text.text[0] == 'Z' && i == 0)
                         {
 
                         }
