@@ -9,7 +9,10 @@ public class L4_Timer : MonoBehaviour
     public static float TimeValue = 240;
     //public static float TimeValue = 300; // for collision
     //public static float TimeValue = 10; // for timeout
-
+    private void Start()
+    {
+        TimeValue = 240;
+    }
     public Text TimerText;
 
     // Update is called once per frame

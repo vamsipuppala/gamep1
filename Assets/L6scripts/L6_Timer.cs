@@ -11,6 +11,10 @@ public class L6_Timer : MonoBehaviour
     //public static float TimeValue = 10; // for timeout
 
     public Text TimerText;
+    private void Start()
+    {
+        TimeValue = 240;
+    }
 
     // Update is called once per frame
     void Update()
