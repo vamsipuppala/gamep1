@@ -193,10 +193,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
 
         //Debug.Log("finalllllllllllllll" + final);
         //goodword.text = final;
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 8f);
-        }
+     
 
         // goodword.text = "Target:  \n"+UpdateTargetWordColor(string.Join("", bs.words[ind]));
         goodword.text = "Target:  \n"+changecolor(string.Join("", bs.words[ind]), 0);

@@ -223,7 +223,7 @@ public class L10_PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, 20f);
             }
             else{
-            rb.velocity = new Vector2(rb.velocity.x, 8f);
+            rb.velocity = new Vector2(rb.velocity.x, 7f);
             }
         }
         //mmodification
