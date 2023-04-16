@@ -428,10 +428,15 @@ public class L7_PlayerController : MonoBehaviour
                         }
                         else if (j == GetIndexOfGameObject(gameObject, nestedList))
                         {
-
+                            Debug.Log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-----------------------      " + gameObject.GetComponent<SpriteRenderer>().color);
                             if (gameObject.GetComponent<SpriteRenderer>().color == grayColor || gameObject.GetComponent<SpriteRenderer>().color == redColor || gameObject.GetComponent<SpriteRenderer>().color == greenColor
                                 || gameObject.GetComponent<SpriteRenderer>().color == yellowColor)
                             {
+                                Debug.Log("red colorrrrr" + gameObject.GetComponent<SpriteRenderer>().color);
+                                if(gameObject.GetComponent<SpriteRenderer>().color == redColor)
+                                {
+                                    Debug.Log("red block was hit");
+                                }
                                 localHits--;
                                 // numberOfTimeDeselectionsOccurred++;
                                 int n = wordCreated.Length;
@@ -495,7 +500,7 @@ public class L7_PlayerController : MonoBehaviour
 
                                         if (givenDangerWord[z1].Contains(text.text.ToString()))
                                         {
-                                            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                                            gameObject.GetComponent<SpriteRenderer>().color = redColor;
                                             //mmodification
                                             bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
                                             if (!isTargetCompleted)

@@ -500,7 +500,7 @@ public class L8_PlayerController : MonoBehaviour
 
                                         if (givenDangerWord[z1].Contains(text.text.ToString()))
                                         {
-                                            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                                            gameObject.GetComponent<SpriteRenderer>().color = redColor;
                                             //mmodification
                                             bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
                                             if (!isTargetCompleted)
