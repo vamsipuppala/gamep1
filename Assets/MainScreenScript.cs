@@ -635,7 +635,7 @@ public class MainScreenScript : MonoBehaviour
     IEnumerator LoadScene16()
     {
         //Begin to load the Scene you specify
-        AsyncOperation asyncOperation16 = SceneManager.LoadSceneAsync("L16");
+        AsyncOperation asyncOperation16 = SceneManager.LoadSceneAsync("Lfun");
 
         //Don't let the Scene activate until you allow it to
         asyncOperation16.allowSceneActivation = false;
