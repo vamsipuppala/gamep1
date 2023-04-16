@@ -72,8 +72,18 @@ public class L1_NextLevel : MonoBehaviour
     {
         sc.EndOfGameDueToGameOver( "1", gameOverReason);
 
+        if (gameOverReason.Equals("noTimeLeft"))
+        {
+            PlayerPrefs.SetString("GameOverReason", "Game terminated due to timeout!");
+
+        }
+        else
+        {
+            PlayerPrefs.SetString("GameOverReason", "Game terminated due to collision with blocks!");
+        }
+
         // Set the game over reason on the GameOver scene. 
-        PlayerPrefs.SetString("GameOverReason", "Game terminated due to timeout!");
+        
 
         SceneManager.LoadScene("GameOver");
     }

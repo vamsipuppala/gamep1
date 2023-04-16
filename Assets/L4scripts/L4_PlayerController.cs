@@ -61,7 +61,7 @@ public class L4_PlayerController : MonoBehaviour
     //public static int numberOfDeselections = 0;
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    public L3_NextLevelTwo nextLevelScript;
+    public L4_NextLevel nextLevelScript;
     public static int numberOfTimesWordHitInOrder = 0;
     public static int numberOfTimesWordHitInReverse = 0;
     public static int zHit = 0;
@@ -129,7 +129,7 @@ public class L4_PlayerController : MonoBehaviour
         //nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
         //final = "Aim: " + bs.words[ind];
-        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L3_NextLevelTwo>();
+        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L4_NextLevel>();
         //nextLevelScript.resetValues();
 
         //mmodification

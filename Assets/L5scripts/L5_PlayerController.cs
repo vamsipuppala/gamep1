@@ -59,7 +59,7 @@ public class L5_PlayerController : MonoBehaviour
     //public static int numberOfDeselections = 0;
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    public L3_NextLevelTwo nextLevelScript;
+    public L5_NextLevel nextLevelScript;
     public static int numberOfTimesWordHitInOrder = 0;
     public static int numberOfTimesWordHitInReverse = 0;
     public static int zHit = 0;
@@ -131,7 +131,7 @@ public class L5_PlayerController : MonoBehaviour
         //nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
         //final = "Aim: " + bs.words[ind];
-        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L3_NextLevelTwo>();
+        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L5_NextLevel>();
         //nextLevelScript.resetValues();
         //mmodification
         textBlinkScript = GameObject.FindGameObjectWithTag("TextBlinkScript").GetComponent<TextBlinkScript>();
