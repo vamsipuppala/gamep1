@@ -56,7 +56,6 @@ public class L14_PlayerController : MonoBehaviour
     public static int numberOfTimesWordHitInOrder = 0;
     public static int numberOfTimesWordHitInReverse = 0;
     public static int zHit = 0;
-    public Color flashColor = Color.red; // The color to set the background to
     public float flashDuration = 1f; // The duration for which to set the background color
 
     public Color originalColor; // The original background color
@@ -129,6 +128,15 @@ public class L14_PlayerController : MonoBehaviour
         130f
     );
 
+    static string flashRedHexCode = "#CF7272";
+    public Color flashColor = new Color(
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(1, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(3, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(5, 2), 16) / 255f,
+        130f
+    );
+
+
     int ind = 0;
     void Start()
     {
@@ -136,6 +144,7 @@ public class L14_PlayerController : MonoBehaviour
         st = Time.time;
         jump_time = Time.time;
         Physics2D.queriesStartInColliders = false;
+        originalColor = Camera.main.backgroundColor;
         mySlider = mySliderObject.GetComponent<Slider>();
         mySlider.value = 0.0f;
         rb = GetComponent<Rigidbody2D>();
@@ -674,10 +683,10 @@ public class L14_PlayerController : MonoBehaviour
                                                 mySlider.value = 0.0f;
                                                  prev_seq_hit=0;
                                                 // Debug.Log(ScoreScript.PlayerScore);
-                                                // if (!isFlashing)
-                                                // {
-                                                //     StartCoroutine(FlashCoroutine());
-                                                // }
+                                                 if (!isFlashing)
+                                                 {
+                                                     StartCoroutine(FlashCoroutine());
+                                                 }
 
                                             }
                                         }

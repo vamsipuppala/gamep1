@@ -857,7 +857,7 @@ MonoBehaviour:
   mySlider: {fileID: 1913510705}
   canvas: {fileID: 554955261}
   bs: {fileID: 718395357}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashColor: {r: 0.8117647, g: 0.44705883, b: 0.44705883, a: 1}
   flashDuration: 1
   originalColor: {r: 0, g: 0, b: 0, a: 0}
   reflections: 5
