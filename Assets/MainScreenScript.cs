@@ -256,6 +256,38 @@ public class MainScreenScript : MonoBehaviour
         StartCoroutine(LoadSceneTen());
     }
 
+    public void loadLevel11Scene()
+    {
+        StartCoroutine(LoadScene11());
+    }
+
+ 
+    public void loadLevel12Scene()
+    {
+        StartCoroutine(LoadScene12());
+    }
+    public void loadLevel13Scene()
+    {
+        StartCoroutine(LoadScene13());
+    }
+    public void loadLevel14Scene()
+    {
+        StartCoroutine(LoadScene14());
+    }
+    public void loadLevel15Scene()
+    {
+        StartCoroutine(LoadScene15());
+    }
+    public void loadLevel16Scene()
+    {
+        StartCoroutine(LoadScene16());
+    }
+
+    public void loadLevel17Scene()
+    {
+        StartCoroutine(LoadScene17());
+    }
+
     IEnumerator LoadSceneFive()
     {
         //Begin to load the Scene you specify
@@ -443,4 +475,226 @@ public class MainScreenScript : MonoBehaviour
             yield return null;
         }
     }
+
+
+    IEnumerator LoadScene11()
+    {
+        //Begin to load the Scene you specify
+        AsyncOperation asyncOperation11 = SceneManager.LoadSceneAsync("L11");
+
+        //Don't let the Scene activate until you allow it to
+        asyncOperation11.allowSceneActivation = false;
+
+        Debug.Log("ASYNC PROGRESS INSIDE LOADSCENE11:" + asyncOperation11.progress);
+
+        //Wait till the load is still in progress
+        while (!asyncOperation11.isDone)
+        {
+            Debug.Log("ASYNC INSIDE ISDONE");
+
+            // Check if the load has finished
+            if (asyncOperation11.progress >= 0.9f)
+            {
+                Debug.Log("ASYNC INSIDE .PROGRESS");
+
+                //Activate the Scene
+                asyncOperation11.allowSceneActivation = true;
+
+                // Set timescale to 0 to stop the background (level 4) from starting. 
+                Time.timeScale = 0;
+
+            }
+            yield return null;
+        }
+    }
+
+    IEnumerator LoadScene12()
+    {
+        //Begin to load the Scene you specify
+        AsyncOperation asyncOperation12 = SceneManager.LoadSceneAsync("L12");
+
+        //Don't let the Scene activate until you allow it to
+        asyncOperation12.allowSceneActivation = false;
+
+        Debug.Log("ASYNC PROGRESS INSIDE LOADSCENE11:" + asyncOperation12.progress);
+
+        //Wait till the load is still in progress
+        while (!asyncOperation12.isDone)
+        {
+            Debug.Log("ASYNC INSIDE ISDONE");
+
+            // Check if the load has finished
+            if (asyncOperation12.progress >= 0.9f)
+            {
+                Debug.Log("ASYNC INSIDE .PROGRESS");
+
+                //Activate the Scene
+                asyncOperation12.allowSceneActivation = true;
+
+                // Set timescale to 0 to stop the background (level 4) from starting. 
+                Time.timeScale = 0;
+
+            }
+            yield return null;
+        }
+    }
+
+    IEnumerator LoadScene13()
+    {
+        //Begin to load the Scene you specify
+        AsyncOperation asyncOperation13 = SceneManager.LoadSceneAsync("L13");
+
+        //Don't let the Scene activate until you allow it to
+        asyncOperation13.allowSceneActivation = false;
+
+        Debug.Log("ASYNC PROGRESS INSIDE LOADSCENE11:" + asyncOperation13.progress);
+
+        //Wait till the load is still in progress
+        while (!asyncOperation13.isDone)
+        {
+            Debug.Log("ASYNC INSIDE ISDONE");
+
+            // Check if the load has finished
+            if (asyncOperation13.progress >= 0.9f)
+            {
+                Debug.Log("ASYNC INSIDE .PROGRESS");
+
+                //Activate the Scene
+                asyncOperation13.allowSceneActivation = true;
+
+                // Set timescale to 0 to stop the background (level 4) from starting. 
+                Time.timeScale = 0;
+
+            }
+            yield return null;
+        }
+    }
+
+    IEnumerator LoadScene14()
+    {
+        //Begin to load the Scene you specify
+        AsyncOperation asyncOperation14 = SceneManager.LoadSceneAsync("L14");
+
+        //Don't let the Scene activate until you allow it to
+        asyncOperation14.allowSceneActivation = false;
+
+        Debug.Log("ASYNC PROGRESS INSIDE LOADSCENE11:" + asyncOperation14.progress);
+
+        //Wait till the load is still in progress
+        while (!asyncOperation14.isDone)
+        {
+            Debug.Log("ASYNC INSIDE ISDONE");
+
+            // Check if the load has finished
+            if (asyncOperation14.progress >= 0.9f)
+            {
+                Debug.Log("ASYNC INSIDE .PROGRESS");
+
+                //Activate the Scene
+                asyncOperation14.allowSceneActivation = true;
+
+                // Set timescale to 0 to stop the background (level 4) from starting. 
+                Time.timeScale = 0;
+
+            }
+            yield return null;
+        }
+    }
+
+    IEnumerator LoadScene15()
+    {
+        //Begin to load the Scene you specify
+        AsyncOperation asyncOperation15 = SceneManager.LoadSceneAsync("L15");
+
+        //Don't let the Scene activate until you allow it to
+        asyncOperation15.allowSceneActivation = false;
+
+        Debug.Log("ASYNC PROGRESS INSIDE LOADSCENE11:" + asyncOperation15.progress);
+
+        //Wait till the load is still in progress
+        while (!asyncOperation15.isDone)
+        {
+            Debug.Log("ASYNC INSIDE ISDONE");
+
+            // Check if the load has finished
+            if (asyncOperation15.progress >= 0.9f)
+            {
+                Debug.Log("ASYNC INSIDE .PROGRESS");
+
+                //Activate the Scene
+                asyncOperation15.allowSceneActivation = true;
+
+                // Set timescale to 0 to stop the background (level 4) from starting. 
+                Time.timeScale = 0;
+
+            }
+            yield return null;
+        }
+    }
+
+    IEnumerator LoadScene16()
+    {
+        //Begin to load the Scene you specify
+        AsyncOperation asyncOperation16 = SceneManager.LoadSceneAsync("L16");
+
+        //Don't let the Scene activate until you allow it to
+        asyncOperation16.allowSceneActivation = false;
+
+        Debug.Log("ASYNC PROGRESS INSIDE LOADSCENE11:" + asyncOperation16.progress);
+
+        //Wait till the load is still in progress
+        while (!asyncOperation16.isDone)
+        {
+            Debug.Log("ASYNC INSIDE ISDONE");
+
+            // Check if the load has finished
+            if (asyncOperation16.progress >= 0.9f)
+            {
+                Debug.Log("ASYNC INSIDE .PROGRESS");
+
+                //Activate the Scene
+                asyncOperation16.allowSceneActivation = true;
+
+                // Set timescale to 0 to stop the background (level 4) from starting. 
+                Time.timeScale = 0;
+
+            }
+            yield return null;
+        }
+    }
+
+    IEnumerator LoadScene17()
+    {
+        //Begin to load the Scene you specify
+        AsyncOperation asyncOperation17 = SceneManager.LoadSceneAsync("L17");
+
+        //Don't let the Scene activate until you allow it to
+        asyncOperation17.allowSceneActivation = false;
+
+        Debug.Log("ASYNC PROGRESS INSIDE LOADSCENE11:" + asyncOperation17.progress);
+
+        //Wait till the load is still in progress
+        while (!asyncOperation17.isDone)
+        {
+            Debug.Log("ASYNC INSIDE ISDONE");
+
+            // Check if the load has finished
+            if (asyncOperation17.progress >= 0.9f)
+            {
+                Debug.Log("ASYNC INSIDE .PROGRESS");
+
+                //Activate the Scene
+                asyncOperation17.allowSceneActivation = true;
+
+                // Set timescale to 0 to stop the background (level 4) from starting. 
+                Time.timeScale = 0;
+
+            }
+            yield return null;
+        }
+    }
+
+
+
+
 }
