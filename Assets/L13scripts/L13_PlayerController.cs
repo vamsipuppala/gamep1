@@ -13,7 +13,10 @@ public class L13_PlayerController : MonoBehaviour
     // Line OF Renderer
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
+    public int prev_seq_hit = 0;
     public float jump_time;
+    public GameObject mySliderObject; 
+    public Slider mySlider;
     public GameObject canvas;
     
     int j = 0;
@@ -111,6 +114,8 @@ public class L13_PlayerController : MonoBehaviour
         //int ind=0;
         st = Time.time;
         jump_time = Time.time;
+        mySlider = mySliderObject.GetComponent<Slider>();
+        mySlider.value = 0.0f;
         Physics2D.queriesStartInColliders = false;
         Physics2D.IgnoreCollision(canvas.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         rb = GetComponent<Rigidbody2D>();
@@ -138,7 +143,14 @@ public class L13_PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(mySlider.value<0.0f)
+        {
+            mySlider.value = 0.0f;
+        }
+        if(mySlider.value>1.0f)
+        {
+            mySlider.value = 1.0f;
+        }
         LineOfSight2.positionCount = 1;
         LineOfSight2.SetPosition(0, transform.position);
 
@@ -189,16 +201,24 @@ public class L13_PlayerController : MonoBehaviour
             nextLevelScript.GameOver("blocksTouchedPlayer");
         }
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 8f);
-        }
+        // if (Input.GetButtonDown("Jump") && IsGrounded())
+        // {
+        //     rb.velocity = new Vector2(rb.velocity.x, 8f);
+        // }
 
 
         //goodword.text = final;
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
+       if (Input.GetButtonDown("Jump") && IsGrounded())
+        {   
+            
+            if(mySlider.value>=1)
+            {
+                
+                rb.velocity = new Vector2(rb.velocity.x, 20f);
+            }
+            else{
             rb.velocity = new Vector2(rb.velocity.x, 8f);
+            }
         }
 
         goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]), 0);
@@ -225,19 +245,19 @@ public class L13_PlayerController : MonoBehaviour
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
 
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * (5f));
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
 
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * (5f));
         }
         if (Input.GetButtonDown("Fire1"))
         {
             st = Time.time;
             LineOfSight.positionCount = 1;
             LineOfSight.SetPosition(0, transform.position);
-        
+            Debug.Log("here1");
 
 
             RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, MaxRayDistance, LayerDetection);
@@ -260,7 +280,7 @@ public class L13_PlayerController : MonoBehaviour
                 LineOfSight.positionCount += 1;
 
                 if (hitInfo.collider != null)
-                {
+                {     Debug.Log("here2");
                     // if (hitInfo.collider.name.Contains("LetterSquare"))
                     // {
                     //     //Debug.Log("GIVEN WORD: " + givenWord);
@@ -576,6 +596,15 @@ public class L13_PlayerController : MonoBehaviour
                                                 platformGameObj[0].transform.position = mvmtScript.originalPos;
                                                 platformGameObj[1].transform.position = mvmtScript1.originalPos;
                                                 StartCoroutine(EnablePlatformMvmt(15.0F));
+                                                if(prev_seq_hit==1)
+                                                {
+                                                    mySlider.value += mySlider.value;
+                                                    //prev_seq_hit=1;
+                                                }
+                                                else{
+                                                      mySlider.value += 0.3f;
+                                                    prev_seq_hit=1;
+                                                }
 
 
                                                 //targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
@@ -596,6 +625,8 @@ public class L13_PlayerController : MonoBehaviour
                                         {
                                             Destroy(gs[k]);
                                         }
+                                        mySlider.value += 1.0f;
+                                        prev_seq_hit=0;
                                         dest = true;
                                         wordCreated = "";
                                         timeTargetWordWasHit += 1;
@@ -628,7 +659,9 @@ public class L13_PlayerController : MonoBehaviour
                                                // messageManagerScript.ChangeDangerMessageText("You hit : " + wordCreated + "!!");
                                                // messageManagerScript.DisplayDangerMessage(1f);
                                                 ScoreScript.PlayerScore -= 1;
-                                                Debug.Log(ScoreScript.PlayerScore);
+                                                mySlider.value = 0.0f;
+                                                 prev_seq_hit=0;
+                                                // Debug.Log(ScoreScript.PlayerScore);
                                                 // if (!isFlashing)
                                                 // {
                                                 //     StartCoroutine(FlashCoroutine());
@@ -708,7 +741,29 @@ public class L13_PlayerController : MonoBehaviour
         // Debug.Log("indexxxxxxxxxxxxx   " + GetIndexOfGameObject(gameObject, nestedList));
 
         // Debug.Log("now the numberOfHits is " + numberOfHits);
-        if (gameObject != null && Time.time - jump_time > 0.2)
+        if(gameObject!=null &&  mySlider.value>=1.0f)
+        {
+            TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
+            if(text!=null ){
+            GameObject[] gs = bs.nestedList[j];
+                                    ScoreScript.PlayerScore += 2;
+                                    for (int k = 0; k < gs.Length; k++)
+                                    {
+                                        Destroy(gs[k]);
+                                    }
+
+                                    
+                                    wordCreated = "";
+                                    timeTargetWordWasHit += 1;
+
+                                    j++;
+                                    //addCollider(j, bs.nestedList[j]);
+                                    ind++;
+                                    localHits = 1;
+                                    mySlider.value =0.0f;
+            }
+        }
+        else if (gameObject != null && Time.time - jump_time > 0.2)
         {
             jump_time = Time.time;
 

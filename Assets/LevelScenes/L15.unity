@@ -919,11 +919,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 852752353263809529, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Radius
-      value: 0.8432281
+      value: 0.70282686
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809529, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Offset.y
-      value: 0.1567719
+      value: 0.016370654
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809530, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Color.b
@@ -1074,48 +1074,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be24b8752dc47744b7255d1d9b7e3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LineOfSight: {fileID: 227852192}
-  LineOfSight2: {fileID: 754708136}
-  jump_time: 0
-  bs: {fileID: 0}
-  canvas: {fileID: 1007590131}
-  reflections: 5
-  MaxRayDistance: 100
-  LayerDetection:
-    serializedVersion: 2
-    m_Bits: 2147483647
-  rb: {fileID: 0}
-  logic: {fileID: 0}
-  nextLevel: {fileID: 0}
-  textBlinkScript: {fileID: 0}
-  NextLevelScreen: {fileID: 0}
-  wordCreated: 
-  lol1: 
-  dangerWordCreated: 
-  goodword: {fileID: 1398275430}
-  dangerWord: {fileID: 142219569}
-  dummy: 
-  text1: {fileID: 0}
-  text2: {fileID: 0}
-  final: 
-  moveSpeed: 16
-  st: 0
-  ct: 0
-  c: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 1
-  originalColor: {r: 0.91764706, g: 0.8039216, b: 0.65882355, a: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  nextLevelScript: {fileID: 0}
-  boxCollider1: {fileID: 0}
-  boxCollider2: {fileID: 0}
-  obstacle1: {fileID: 0}
-  obstacle2: {fileID: 0}
-  hoveringPlatform: {fileID: 0}
-  obstacleDisableColor: {r: 1, g: 0, b: 0, a: 130}
-  obstacleOriginalColor: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 130}
 --- !u!114 &227852199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1130,6 +1088,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LineOfSight: {fileID: 227852192}
   LineOfSight2: {fileID: 754708136}
+  mySliderObject: {fileID: 1589848442}
+  mySlider: {fileID: 1589848444}
   jump_time: 0
   bs: {fileID: 0}
   canvas: {fileID: 1007590131}
@@ -1156,6 +1116,7 @@ MonoBehaviour:
   st: 0
   ct: 0
   c: {fileID: 0}
+  prev_seq_hit: 0
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 1
   originalColor: {r: 0, g: 0, b: 0, a: 0}
@@ -1201,12 +1162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7749af3595f1ca644835fd7922c02bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextLevel: {fileID: 0}
-  levelName: 
-  targetScore: {fileID: 262765430}
-  thresholdScoree: 5
-  sc: {fileID: 0}
-  pc: {fileID: 0}
 --- !u!4 &250718978
 Transform:
   m_ObjectHideFlags: 0
@@ -1234,12 +1189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f88cb99a863de349a2225a79dab2f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextLevel: {fileID: 0}
-  levelName: 
-  targetScore: {fileID: 262765430}
-  thresholdScoree: 5
-  sc: {fileID: 0}
-  pc: {fileID: 0}
 --- !u!114 &250718980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4165,7 +4114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da284c1c57b0abc4b88e0c70bd7bbf10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimerText: {fileID: 0}
+  TimerText: {fileID: 1268394421}
 --- !u!1 &1273269736
 GameObject:
   m_ObjectHideFlags: 0
@@ -5158,7 +5107,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1373356795}
   m_HandleRect: {fileID: 0}

@@ -13,6 +13,9 @@ public class L15_PlayerController : MonoBehaviour
     // Line OF Renderer
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
+    
+    public GameObject mySliderObject; 
+    public Slider mySlider;
     public float jump_time;
     int j = 0;
     public BlockSpawnerScript bs;
@@ -52,6 +55,7 @@ public class L15_PlayerController : MonoBehaviour
     public static int numberOfTimesWordHitInOrder = 0;
     public static int numberOfTimesWordHitInReverse = 0;
     public static int zHit = 0;
+    public int prev_seq_hit = 0;
     public Color flashColor = Color.red; // The color to set the background to
     public float flashDuration = 1f; // The duration for which to set the background color
 
@@ -132,6 +136,8 @@ public class L15_PlayerController : MonoBehaviour
         st = Time.time;
         jump_time = Time.time;
         Physics2D.queriesStartInColliders = false;
+        mySlider = mySliderObject.GetComponent<Slider>();
+        mySlider.value = 0.0f;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
@@ -162,7 +168,14 @@ public class L15_PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   if(mySlider.value<0.0f)
+        {
+            mySlider.value = 0.0f;
+        }
+        if(mySlider.value>1.0f)
+        {
+            mySlider.value = 1.0f;
+        }
         LineOfSight2.positionCount = 1;
         LineOfSight2.SetPosition(0, transform.position);
 
@@ -216,17 +229,24 @@ public class L15_PlayerController : MonoBehaviour
         }
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
+        {   
+            Debug.Log(mySlider.value);
+            if(mySlider.value>=1)
+            {
+                
+                rb.velocity = new Vector2(rb.velocity.x, 20f);
+            }
+            else{
             rb.velocity = new Vector2(rb.velocity.x, 8f);
+            }
         }
-
 
         //Debug.Log("finalllllllllllllll" + final);
         //goodword.text = final;
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 8f);
-        }
+        // if (Input.GetButtonDown("Jump") && IsGrounded())
+        // {
+        //     rb.velocity = new Vector2(rb.velocity.x, 8f);
+        // }
 
 
         goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]), 0);
@@ -587,6 +607,15 @@ public class L15_PlayerController : MonoBehaviour
                                                 j++;
                                                 ind++;
                                                 localHits = 1;
+                                                if(prev_seq_hit==1)
+                                                {
+                                                    mySlider.value += mySlider.value;
+                                                    //prev_seq_hit=1;
+                                                }
+                                                else{
+                                                      mySlider.value += 0.3f;
+                                                    prev_seq_hit=1;
+                                                }
 
                                                 
                                             }
@@ -610,6 +639,8 @@ public class L15_PlayerController : MonoBehaviour
                                         {
                                             Destroy(gs[k]);
                                         }
+                                        mySlider.value += 1.0f;
+                                        prev_seq_hit=0;
                                         dest = true;
                                         wordCreated = "";
                                         timeTargetWordWasHit += 1;
@@ -639,7 +670,9 @@ public class L15_PlayerController : MonoBehaviour
                                             {
                                                 
                                                 ScoreScript.PlayerScore -= 1;
-                                                Debug.Log(ScoreScript.PlayerScore);
+                                                mySlider.value = 0.0f;
+                                                 prev_seq_hit=0;
+                                                // Debug.Log(ScoreScript.PlayerScore);
                                                 // if (!isFlashing)
                                                 // {
                                                 //     StartCoroutine(FlashCoroutine());
@@ -719,7 +752,29 @@ public class L15_PlayerController : MonoBehaviour
         // Debug.Log("indexxxxxxxxxxxxx   " + GetIndexOfGameObject(gameObject, nestedList));
 
         // Debug.Log("now the numberOfHits is " + numberOfHits);
-        if (gameObject != null && Time.time - jump_time > 0.2)
+        if(gameObject!=null &&  mySlider.value>=1.0f)
+        {
+            TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
+            if(text!=null ){
+            GameObject[] gs = bs.nestedList[j];
+                                    ScoreScript.PlayerScore += 2;
+                                    for (int k = 0; k < gs.Length; k++)
+                                    {
+                                        Destroy(gs[k]);
+                                    }
+
+                                    
+                                    wordCreated = "";
+                                    timeTargetWordWasHit += 1;
+
+                                    j++;
+                                    //addCollider(j, bs.nestedList[j]);
+                                    ind++;
+                                    localHits = 1;
+                                    mySlider.value =0.0f;
+            }
+        }
+        else if (gameObject != null && Time.time - jump_time > 0.2)
         {
             jump_time = Time.time;
 
