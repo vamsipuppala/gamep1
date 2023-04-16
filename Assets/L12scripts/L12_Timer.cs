@@ -12,6 +12,11 @@ public class L12_Timer : MonoBehaviour
 
     public Text TimerText;
 
+    private void Start()
+    {
+        TimeValue = 240;
+    }
+
     // Update is called once per frame
     void Update()
     {
