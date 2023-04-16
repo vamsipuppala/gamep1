@@ -128,6 +128,7 @@ public class L7_PlayerController : MonoBehaviour
         st = Time.time;
         jump_time = Time.time;
         Physics2D.queriesStartInColliders = false;
+        originalColor = Camera.main.backgroundColor;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
@@ -648,10 +649,10 @@ public class L7_PlayerController : MonoBehaviour
 
                                                 //messageManagerScript.ChangeDangerMessageText("You hit : " + wordCreated + "!!");
                                                 //messageManagerScript.DisplayDangerMessage(1f);
-                                                // if (!isFlashing)
-                                                // {
-                                                //     StartCoroutine(FlashCoroutine());
-                                                // }
+                                                 if (!isFlashing)
+                                                 {
+                                                     StartCoroutine(FlashCoroutine());
+                                                 }
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
 
