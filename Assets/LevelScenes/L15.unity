@@ -947,11 +947,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.03
+      value: -3.73
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.41
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1132,7 +1132,6 @@ MonoBehaviour:
   boxCollider1: {fileID: 0}
   boxCollider2: {fileID: 0}
   obstacle1: {fileID: 0}
-  obstacle2: {fileID: 0}
   hoveringPlatform: {fileID: 0}
   obstacleDisableColor: {r: 1, g: 0, b: 0, a: 130}
   obstacleOriginalColor: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 130}
