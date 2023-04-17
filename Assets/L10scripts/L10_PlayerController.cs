@@ -277,13 +277,13 @@ public class L10_PlayerController : MonoBehaviour
         float move2 = Input.GetAxis("Vertical") * rotateSpeed;
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
-
             transform.Rotate(0, 0, move2 * (2f));
+            Debug.Log("rotate speed: "+move2);
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
-
             transform.Rotate(0, 0, move2 * (2f));
+            Debug.Log("rotate speed: "+move2);
         }
         if (Input.GetButtonDown("Fire1"))
         {
