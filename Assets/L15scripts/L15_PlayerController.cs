@@ -13,6 +13,12 @@ public class L15_PlayerController : MonoBehaviour
     // Line OF Renderer
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
+    public GameObject enemy; 
+    public float jump_speed=8f;
+    public float hinderence_stop_time ;
+    public float rotateSpeed = 50f;
+    public GameObject mySliderObject; 
+    public Slider mySlider;
     public float jump_time;
     int j = 0;
     public BlockSpawnerScript bs;
@@ -52,7 +58,9 @@ public class L15_PlayerController : MonoBehaviour
     public static int numberOfTimesWordHitInOrder = 0;
     public static int numberOfTimesWordHitInReverse = 0;
     public static int zHit = 0;
-    public Color flashColor = Color.red; // The color to set the background to
+    public string enemy_color;
+    public int prev_seq_hit = 0;
+    private float blinking_time;
     public float flashDuration = 1f; // The duration for which to set the background color
 
     public Color originalColor; // The original background color
@@ -66,7 +74,7 @@ public class L15_PlayerController : MonoBehaviour
     public BoxCollider2D boxCollider2;
 
     public GameObject obstacle1;
-    public GameObject obstacle2;
+    // public GameObject obstacle2;
 
     public GameObject hoveringPlatform;
 
@@ -108,7 +116,7 @@ public class L15_PlayerController : MonoBehaviour
         1f
     );
 
-
+     Color p_c;
     static string obstacleDisableColorHexCode = "#FF0000";
     public Color obstacleDisableColor = new Color(
         (float)System.Convert.ToInt32(obstacleDisableColorHexCode.Substring(1, 2), 16) / 255f,
@@ -125,13 +133,29 @@ public class L15_PlayerController : MonoBehaviour
         130f
     );
 
+
+    static string flashRedHexCode = "#CF7272";
+    public Color flashColor = new Color(
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(1, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(3, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(5, 2), 16) / 255f,
+        130f
+    );
+
+
     int ind = 0;
     void Start()
     {
         ind = 0;
         st = Time.time;
+        hinderence_stop_time = st-8;
         jump_time = Time.time;
+        originalColor = Camera.main.backgroundColor;
+        p_c = enemy.GetComponent<SpriteRenderer>().color;
+        blinking_time = Time.time;
         Physics2D.queriesStartInColliders = false;
+        mySlider = mySliderObject.GetComponent<Slider>();
+        mySlider.value = 0.0f;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
@@ -148,10 +172,10 @@ public class L15_PlayerController : MonoBehaviour
 
         obstacle1 = hoveringPlatform.transform.GetChild(0).gameObject;
         Debug.Log("OBSTACLE 1: " + obstacle1.name);
-        obstacle2 = hoveringPlatform.transform.GetChild(1).gameObject;
+        // obstacle2 = hoveringPlatform.transform.GetChild(1).gameObject;
 
         boxCollider1 = obstacle1.GetComponent<BoxCollider2D>();
-        boxCollider2 = obstacle2.GetComponent<BoxCollider2D>();
+        // boxCollider2 = obstacle2.GetComponent<BoxCollider2D>();
 
 
         goodword.text = string.Join("", bs.words[ind]);
@@ -162,7 +186,36 @@ public class L15_PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   if( Time.time-hinderence_stop_time<8)
+        {  if(Time.time-blinking_time>0.5f){
+            blinking_time = Time.time;
+            if(enemy.GetComponent<SpriteRenderer>().color == redColor)
+            {
+                enemy.GetComponent<SpriteRenderer>().color = p_c;
+            }
+            else{
+                    enemy.GetComponent<SpriteRenderer>().color = redColor;
+            }
+        }
+         jump_speed = 5f;
+         moveSpeed = 3f;
+         rotateSpeed = 1;
+
+        }
+        else{
+             enemy.GetComponent<SpriteRenderer>().color = p_c;
+            jump_speed = 8f;
+            moveSpeed = 5f;
+            rotateSpeed = 50;
+        }
+        if(mySlider.value<0.0f)
+        {
+            mySlider.value = 0.0f;
+        }
+        if(mySlider.value>1.0f)
+        {
+            mySlider.value = 1.0f;
+        }
         LineOfSight2.positionCount = 1;
         LineOfSight2.SetPosition(0, transform.position);
 
@@ -216,17 +269,25 @@ public class L15_PlayerController : MonoBehaviour
         }
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 8f);
+        {   
+            
+            if(mySlider.value>=1)
+            {
+                
+                rb.velocity = new Vector2(rb.velocity.x, 20f);
+                hinderence_stop_time -=8;
+            }
+            else{
+            rb.velocity = new Vector2(rb.velocity.x, jump_speed);
+            }
         }
-
 
         //Debug.Log("finalllllllllllllll" + final);
         //goodword.text = final;
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 8f);
-        }
+        // if (Input.GetButtonDown("Jump") && IsGrounded())
+        // {
+        //     rb.velocity = new Vector2(rb.velocity.x, 8f);
+        // }
 
 
         goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]), 0);
@@ -248,18 +309,18 @@ public class L15_PlayerController : MonoBehaviour
 
         //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
-        float rotateSpeed = 0.1f;
+       
         float move2 = Input.GetAxis("Vertical") * rotateSpeed;
 
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
 
-            transform.Rotate(0, 0, move2 * (2f));
+             transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
 
-            transform.Rotate(0, 0, move2 * (2f));
+           transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         if (Input.GetButtonDown("Fire1"))
         {
@@ -435,7 +496,7 @@ public class L15_PlayerController : MonoBehaviour
                         numberOfHits = givenWord.Length;
 
                         TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
-                        if (text.text[0] == 'Z' && i == 0)
+                        if ( i == 0)
                         {
 
                         }
@@ -587,13 +648,22 @@ public class L15_PlayerController : MonoBehaviour
                                                 j++;
                                                 ind++;
                                                 localHits = 1;
+                                                if(prev_seq_hit==1)
+                                                {
+                                                    mySlider.value += mySlider.value;
+                                                    //prev_seq_hit=1;
+                                                }
+                                                else{
+                                                      mySlider.value += 0.3f;
+                                                    prev_seq_hit=1;
+                                                }
 
                                                 
                                             }
                                         }
                                         dest = true;
                                         obstacle1.GetComponent<SpriteRenderer>().color = obstacleDisableColor;
-                                        obstacle2.GetComponent<SpriteRenderer>().color = obstacleDisableColor;
+                                        // obstacle2.GetComponent<SpriteRenderer>().color = obstacleDisableColor;
                                         boxCollider1.enabled = false;
                                         boxCollider2.enabled = false;
                                         StartCoroutine(EnableBox(15.0F));
@@ -610,6 +680,8 @@ public class L15_PlayerController : MonoBehaviour
                                         {
                                             Destroy(gs[k]);
                                         }
+                                        mySlider.value += 1.0f;
+                                        prev_seq_hit=0;
                                         dest = true;
                                         wordCreated = "";
                                         timeTargetWordWasHit += 1;
@@ -639,11 +711,13 @@ public class L15_PlayerController : MonoBehaviour
                                             {
                                                 
                                                 ScoreScript.PlayerScore -= 1;
-                                                Debug.Log(ScoreScript.PlayerScore);
-                                                // if (!isFlashing)
-                                                // {
-                                                //     StartCoroutine(FlashCoroutine());
-                                                // }
+                                                mySlider.value = 0.0f;
+                                                 prev_seq_hit=0;
+                                                // Debug.Log(ScoreScript.PlayerScore);
+                                                 if (!isFlashing)
+                                                 {
+                                                     StartCoroutine(FlashCoroutine());
+                                                 }
 
                                             }
                                         }
@@ -719,7 +793,34 @@ public class L15_PlayerController : MonoBehaviour
         // Debug.Log("indexxxxxxxxxxxxx   " + GetIndexOfGameObject(gameObject, nestedList));
 
         // Debug.Log("now the numberOfHits is " + numberOfHits);
-        if (gameObject != null && Time.time - jump_time > 0.2)
+        if(gameObject!=null && gameObject.tag == "spikes")
+        {
+               
+                hinderence_stop_time=Time.time;
+        }
+        if(gameObject!=null &&  mySlider.value>=1.0f)
+        {
+            TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
+            if(text!=null ){
+            GameObject[] gs = bs.nestedList[j];
+                                    ScoreScript.PlayerScore += 2;
+                                    for (int k = 0; k < gs.Length; k++)
+                                    {
+                                        Destroy(gs[k]);
+                                    }
+
+                                    
+                                    wordCreated = "";
+                                    timeTargetWordWasHit += 1;
+
+                                    j++;
+                                    //addCollider(j, bs.nestedList[j]);
+                                    ind++;
+                                    localHits = 1;
+                                    mySlider.value =0.0f;
+            }
+        }
+        else if (gameObject != null && Time.time - jump_time > 0.2)
         {
             jump_time = Time.time;
 
@@ -952,7 +1053,7 @@ public class L15_PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         obstacle1.GetComponent<SpriteRenderer>().color = obstacleOriginalColor;
-        obstacle2.GetComponent<SpriteRenderer>().color = obstacleOriginalColor;
+        // obstacle2.GetComponent<SpriteRenderer>().color = obstacleOriginalColor;
         boxCollider1.enabled = true;
         boxCollider2.enabled = true;
     }

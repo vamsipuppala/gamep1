@@ -9,6 +9,11 @@ public class L3_TimerTwo : MonoBehaviour
     public static float TimeValue = 240;
     public Text TimerText;
 
+    private void Start()
+    {
+        TimeValue = 240;
+    }
+
     // Update is called once per frame
     void Update()
     {

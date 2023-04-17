@@ -59,7 +59,7 @@ public class L5_PlayerController : MonoBehaviour
     //public static int numberOfDeselections = 0;
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    public L3_NextLevelTwo nextLevelScript;
+    public L5_NextLevel nextLevelScript;
     public static int numberOfTimesWordHitInOrder = 0;
     public static int numberOfTimesWordHitInReverse = 0;
     public static int zHit = 0;
@@ -131,7 +131,7 @@ public class L5_PlayerController : MonoBehaviour
         //nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
         //final = "Aim: " + bs.words[ind];
-        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L3_NextLevelTwo>();
+        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L5_NextLevel>();
         //nextLevelScript.resetValues();
         //mmodification
         textBlinkScript = GameObject.FindGameObjectWithTag("TextBlinkScript").GetComponent<TextBlinkScript>();
@@ -196,7 +196,7 @@ public class L5_PlayerController : MonoBehaviour
         //goodword.text = final;
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            rb.velocity = new Vector2(rb.velocity.x, 16f);
+            rb.velocity = new Vector2(rb.velocity.x, 7f);
         }
 
         goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]), 0);
@@ -464,10 +464,10 @@ public class L5_PlayerController : MonoBehaviour
 
                                             if (findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                             {
-                                                // if (!isFlashing)
-                                                // {
-                                                //     StartCoroutine(FlashCoroutine());
-                                                // }
+                                                 if (!isFlashing)
+                                                 {
+                                                     StartCoroutine(FlashCoroutine());
+                                                 }
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
 

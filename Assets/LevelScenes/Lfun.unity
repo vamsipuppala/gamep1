@@ -1212,7 +1212,6 @@ MonoBehaviour:
   ct: 0
   jump_time: 0
   c: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 1
   groundLayer:
     serializedVersion: 2
@@ -1222,6 +1221,7 @@ MonoBehaviour:
   mvmtScript: {fileID: 0}
   mvmtScript1: {fileID: 0}
   mySlider: {fileID: 0}
+  flashColor: {r: 0.8117647, g: 0.44705883, b: 0.44705883, a: 1}
   textBlinkScript: {fileID: 0}
 --- !u!1 &366434536
 GameObject:
@@ -4873,7 +4873,7 @@ GameObject:
   - component: {fileID: 1873891699}
   - component: {fileID: 1873891698}
   m_Layer: 7
-  m_Name: LevelTenTitle
+  m_Name: LevelSixteenTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4919,7 +4919,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LEVEL 10
+  m_text: LEVEL 16
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

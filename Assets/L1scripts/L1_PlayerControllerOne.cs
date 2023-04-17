@@ -125,20 +125,17 @@ public class L1_PlayerControllerOne : MonoBehaviour
         }
 
 
-        /*
+        
         //j is the index of the last row of blocks
-        if ( nestedList[j][0]!=null && nestedList[j][0].transform.position.y < 3)
+        if (nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
         }
-        */
+        
 
         //Debug.Log("finalllllllllllllll" + final);
         //goodword.text = final;
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 8f);
-        }
+       
         // goodword.text = "Target:  " + bs.words[ind][0];
         //dangerWord.text = "Danger:  " + bs.dangerWordss[ind];
         Vector2 mousePosition = Input.mousePosition;

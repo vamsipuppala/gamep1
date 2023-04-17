@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 
-public class L14_Timer : MonoBehaviour
+public class L10_Timer : MonoBehaviour
 {
     public static float TimeValue = 240;
     //public static float TimeValue = 300; // for collision
@@ -16,7 +16,6 @@ public class L14_Timer : MonoBehaviour
     {
         TimeValue = 240;
     }
-
     // Update is called once per frame
     void Update()
     {

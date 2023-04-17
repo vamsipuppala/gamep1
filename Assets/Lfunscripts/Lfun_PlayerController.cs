@@ -54,7 +54,6 @@ public class Lfun_PlayerController : MonoBehaviour
     public float moveSpeed;
     public float st, ct, jump_time;
     public GameObject c;
-    public Color flashColor = Color.red; // The color to set the background to
     public float flashDuration = 1f; // The duration for which to set the background color
 
     private Color originalColor; // The original background color
@@ -111,6 +110,17 @@ public class Lfun_PlayerController : MonoBehaviour
         1f
     );
 
+    static string flashRedHexCode = "#CF7272";
+    public Color flashColor = new Color(
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(1, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(3, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(5, 2), 16) / 255f,
+        130f
+    );
+
+
+
+
     int ind = 0;
        //mmodification
     public TextBlinkScript textBlinkScript;
@@ -121,6 +131,7 @@ public class Lfun_PlayerController : MonoBehaviour
         // pars = GameObject.Find("particles").GetComponent<ParticleSystem>();
         // pars.Play();
         jump_time =Time.time;
+        originalColor = Camera.main.backgroundColor;
         Physics2D.queriesStartInColliders = false;
         mySlider = mySliderObject.GetComponent<Slider>();
          Physics2D.IgnoreCollision(canvas.GetComponent<Collider2D>(), GetComponent<Collider2D>());
@@ -682,10 +693,10 @@ public class Lfun_PlayerController : MonoBehaviour
                                                 //mmodification
                                                 //messageManagerScript.ChangeDangerMessageText("You hit : " + wordCreated + "!!");
                                                 //messageManagerScript.DisplayDangerMessage(1f);
-                                                //if (!isFlashing)
-                                                //{
-                                                //    StartCoroutine(FlashCoroutine());
-                                                //}
+                                                if (!isFlashing)
+                                                {
+                                                    StartCoroutine(FlashCoroutine());
+                                                }
                                                 ScoreScript.PlayerScore -= 1;
                                                 // Debug.Log(ScoreScript.PlayerScore);
                                                  mySlider.value = 0.0f;

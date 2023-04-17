@@ -206,7 +206,7 @@ public class L6_PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            rb.velocity = new Vector2(rb.velocity.x, 8f);
+            rb.velocity = new Vector2(rb.velocity.x, 7f);
         }
 
         //goodword.text = final;
@@ -634,10 +634,10 @@ public class L6_PlayerController : MonoBehaviour
                                             {
                                                 //messageManagerScript.ChangeDangerMessageText("You hit : " + wordCreated + "!!");
                                                 //messageManagerScript.DisplayDangerMessage(1f);
-                                                // if (!isFlashing)
-                                                // {
-                                                //     StartCoroutine(FlashCoroutine());
-                                                // }
+                                                 if (!isFlashing)
+                                                 {
+                                                     StartCoroutine(FlashCoroutine());
+                                                 }
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
 
