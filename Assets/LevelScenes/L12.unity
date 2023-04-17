@@ -1190,6 +1190,7 @@ MonoBehaviour:
   LineOfSight2: {fileID: 1477995853}
   slider: {fileID: 1605172853}
   mySliderObject: {fileID: 1605172851}
+  canvas: {fileID: 1329507012}
   shakeDuration: 2
   shakeAmount: 0.1
   decreaseFactor: 1
