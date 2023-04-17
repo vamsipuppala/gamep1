@@ -610,7 +610,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 652ab34f81e604934bc91487a953c55b, type: 2}
     - target: {fileID: 852752353690173484, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
-      value: 0
+      value: 0.0021820068
       objectReference: {fileID: 0}
     - target: {fileID: 852752353690173484, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
@@ -3187,7 +3187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1778985769
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3554,8 +3554,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.053231448
+        time: 0.0021820068
+        value: 0.054757327
         inSlope: 0
         outSlope: 0
         tangentMode: 0
