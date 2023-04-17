@@ -1736,7 +1736,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159, y: -46.225}
+  m_AnchoredPosition: {x: 159, y: -46.22499}
   m_SizeDelta: {x: 88.07, y: 73.359}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &560306882
@@ -4130,6 +4130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1672025839}
+  - component: {fileID: 1672025840}
   m_Layer: 5
   m_Name: Guide10
   m_TagString: GuidePop5
@@ -4164,6 +4165,19 @@ RectTransform:
   m_AnchoredPosition: {x: -25, y: -20}
   m_SizeDelta: {x: 800, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1672025840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672025838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f423c26783894bacb471161bc73e542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guideObject: {fileID: 1672025838}
 --- !u!1 &1687272641
 GameObject:
   m_ObjectHideFlags: 0
