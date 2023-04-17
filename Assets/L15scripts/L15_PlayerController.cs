@@ -146,6 +146,21 @@ public class L15_PlayerController : MonoBehaviour
     int ind = 0;
     void Start()
     {
+        string folderName = "Videos";
+        string fileName = "L15";
+
+        string fileFormat = ".mp4";
+
+        UnityEngine.Video.VideoPlayer videoPlayer;
+
+        // Find the VideoPlayer component in the Canvas hierarchy
+        videoPlayer = canvas.GetComponentInChildren<UnityEngine.Video.VideoPlayer>();
+        videoPlayer.source = UnityEngine.Video.VideoSource.Url;
+        //string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, fileName + fileFormat);
+        string filePath = Application.streamingAssetsPath + "/" + fileName + fileFormat;
+        Debug.Log("Filepath: " + filePath);
+        videoPlayer.url = filePath;
+
         ind = 0;
         st = Time.time;
         hinderence_stop_time = st-8;
