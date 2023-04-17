@@ -2286,6 +2286,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 530670519}
+  - component: {fileID: 530670520}
   m_Layer: 5
   m_Name: Guide8
   m_TagString: GuidePop5
@@ -2320,6 +2321,19 @@ RectTransform:
   m_AnchoredPosition: {x: -89, y: -16}
   m_SizeDelta: {x: 986.92, y: 747.78}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &530670520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530670518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f9ceef54bb14881942bcd0fdf9eb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guideObject: {fileID: 530670518}
 --- !u!1 &542860172
 GameObject:
   m_ObjectHideFlags: 0
