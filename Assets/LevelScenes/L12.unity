@@ -1190,6 +1190,7 @@ MonoBehaviour:
   LineOfSight2: {fileID: 1477995853}
   slider: {fileID: 1605172853}
   mySliderObject: {fileID: 1605172851}
+  canvas: {fileID: 1329507012}
   shakeDuration: 2
   shakeAmount: 0.1
   decreaseFactor: 1
@@ -1663,8 +1664,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159, y: -51.095}
-  m_SizeDelta: {x: 88.07, y: 83.099}
+  m_AnchoredPosition: {x: 159, y: -46.225}
+  m_SizeDelta: {x: 88.07, y: 73.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &560306882
 MonoBehaviour:
