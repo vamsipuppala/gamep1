@@ -122,4 +122,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/LevelScenes/CompleteLevel15.unity
     guid: 593f8dea88531d64a81c8fde93f6ba13
+  - enabled: 1
+    path: Assets/LevelScenes/Lfun_blind.unity
+    guid: 8f7a0cbaa5aa4cc4fae0af0d7fc9fe20
+  - enabled: 1
+    path: Assets/LevelScenes/CompleteLevelfun_blind.unity
+    guid: 81c864f54aca779408e65a3888f3e76f
   m_configObjects: {}
