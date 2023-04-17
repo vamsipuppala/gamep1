@@ -61,7 +61,6 @@ public class L15_PlayerController : MonoBehaviour
     public string enemy_color;
     public int prev_seq_hit = 0;
     private float blinking_time;
-    public Color flashColor = Color.red; // The color to set the background to
     public float flashDuration = 1f; // The duration for which to set the background color
 
     public Color originalColor; // The original background color
@@ -134,6 +133,16 @@ public class L15_PlayerController : MonoBehaviour
         130f
     );
 
+
+    static string flashRedHexCode = "#CF7272";
+    public Color flashColor = new Color(
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(1, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(3, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(5, 2), 16) / 255f,
+        130f
+    );
+
+
     int ind = 0;
     void Start()
     {
@@ -141,6 +150,7 @@ public class L15_PlayerController : MonoBehaviour
         st = Time.time;
         hinderence_stop_time = st-8;
         jump_time = Time.time;
+        originalColor = Camera.main.backgroundColor;
         p_c = enemy.GetComponent<SpriteRenderer>().color;
         blinking_time = Time.time;
         Physics2D.queriesStartInColliders = false;
@@ -704,10 +714,10 @@ public class L15_PlayerController : MonoBehaviour
                                                 mySlider.value = 0.0f;
                                                  prev_seq_hit=0;
                                                 // Debug.Log(ScoreScript.PlayerScore);
-                                                // if (!isFlashing)
-                                                // {
-                                                //     StartCoroutine(FlashCoroutine());
-                                                // }
+                                                 if (!isFlashing)
+                                                 {
+                                                     StartCoroutine(FlashCoroutine());
+                                                 }
 
                                             }
                                         }

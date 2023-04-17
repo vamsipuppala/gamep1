@@ -22,7 +22,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
     //public float moveSpeed = 16f;
     [SerializeField] private Rigidbody2D rb;
     public LogicManagerScript logic;
-    public NextLevelScript nextLevel;
+    public L3_NextLevelTwo nextLevel;
     //mmodification
     public TextBlinkScript textBlinkScript;
     //public Color flashColor = Color.red; // The color to set the background to

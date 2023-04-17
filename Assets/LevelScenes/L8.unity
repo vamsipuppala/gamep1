@@ -637,7 +637,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 988.63, y: -49.726974}
+  m_AnchoredPosition: {x: 988.63, y: -49.72699}
   m_SizeDelta: {x: 219.05, y: 73.455}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &207353961
@@ -921,6 +921,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 852752353690173484, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 652ab34f81e604934bc91487a953c55b, type: 2}
     - target: {fileID: 852752353690173485, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -998,48 +1002,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be24b8752dc47744b7255d1d9b7e3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LineOfSight: {fileID: 227852192}
-  LineOfSight2: {fileID: 754708136}
-  jump_time: 0
-  bs: {fileID: 0}
-  canvas: {fileID: 1007590131}
-  reflections: 5
-  MaxRayDistance: 100
-  LayerDetection:
-    serializedVersion: 2
-    m_Bits: 2147483647
-  rb: {fileID: 0}
-  logic: {fileID: 0}
-  nextLevel: {fileID: 0}
-  textBlinkScript: {fileID: 0}
-  NextLevelScreen: {fileID: 0}
-  wordCreated: 
-  lol1: 
-  dangerWordCreated: 
-  goodword: {fileID: 1398275430}
-  dangerWord: {fileID: 142219569}
-  dummy: 
-  text1: {fileID: 0}
-  text2: {fileID: 0}
-  final: 
-  moveSpeed: 16
-  st: 0
-  ct: 0
-  c: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 1
-  originalColor: {r: 0.91764706, g: 0.8039216, b: 0.65882355, a: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  nextLevelScript: {fileID: 0}
-  boxCollider1: {fileID: 0}
-  boxCollider2: {fileID: 0}
-  obstacle1: {fileID: 0}
-  obstacle2: {fileID: 0}
-  hoveringPlatform: {fileID: 0}
-  obstacleDisableColor: {r: 1, g: 0, b: 0, a: 130}
-  obstacleOriginalColor: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 130}
 --- !u!114 &227852199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,7 +1042,6 @@ MonoBehaviour:
   st: 0
   ct: 0
   c: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 1
   originalColor: {r: 0, g: 0, b: 0, a: 0}
   groundLayer:
@@ -1092,8 +1053,9 @@ MonoBehaviour:
   obstacle1: {fileID: 0}
   obstacle2: {fileID: 0}
   hoveringPlatform: {fileID: 0}
-  obstacleDisableColor: {r: 1, g: 0, b: 0, a: 130}
+  obstacleDisableColor: {r: 0.3882353, g: 0.31764707, b: 0.2, a: 130}
   obstacleOriginalColor: {r: 0.1764706, g: 0.1254902, b: 0.1254902, a: 130}
+  flashColor: {r: 0.8117647, g: 0.44705883, b: 0.44705883, a: 1}
 --- !u!1 &250718975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,12 +1087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7749af3595f1ca644835fd7922c02bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextLevel: {fileID: 0}
-  levelName: 
-  targetScore: {fileID: 262765430}
-  thresholdScoree: 5
-  sc: {fileID: 0}
-  pc: {fileID: 0}
 --- !u!4 &250718978
 Transform:
   m_ObjectHideFlags: 0
@@ -1158,12 +1114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f88cb99a863de349a2225a79dab2f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextLevel: {fileID: 0}
-  levelName: 
-  targetScore: {fileID: 262765430}
-  thresholdScoree: 5
-  sc: {fileID: 0}
-  pc: {fileID: 0}
 --- !u!114 &250718980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2461,7 +2411,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 72500f83fd00345449df7db58f7961e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

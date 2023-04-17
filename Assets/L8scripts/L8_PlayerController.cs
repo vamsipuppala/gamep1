@@ -52,7 +52,7 @@ public class L8_PlayerController : MonoBehaviour
     public static int numberOfTimesWordHitInOrder = 0;
     public static int numberOfTimesWordHitInReverse = 0;
     public static int zHit = 0;
-    public Color flashColor = Color.red; // The color to set the background to
+    
     public float flashDuration = 1f; // The duration for which to set the background color
 
     public Color originalColor; // The original background color
@@ -109,7 +109,7 @@ public class L8_PlayerController : MonoBehaviour
     );
 
 
-    static string obstacleDisableColorHexCode = "#FF0000";
+    static string obstacleDisableColorHexCode = "#635133";
     public Color obstacleDisableColor = new Color(
         (float)System.Convert.ToInt32(obstacleDisableColorHexCode.Substring(1, 2), 16) / 255f,
         (float)System.Convert.ToInt32(obstacleDisableColorHexCode.Substring(3, 2), 16) / 255f,
@@ -125,12 +125,22 @@ public class L8_PlayerController : MonoBehaviour
         130f
     );
 
+    static string flashRedHexCode = "#CF7272";
+    public Color flashColor = new Color(
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(1, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(3, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(5, 2), 16) / 255f,
+        130f
+    );
+
+
     int ind = 0;
     void Start()
     {
         ind = 0;
         st = Time.time;
         jump_time = Time.time;
+        originalColor = Camera.main.backgroundColor;
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
@@ -500,7 +510,7 @@ public class L8_PlayerController : MonoBehaviour
 
                                         if (givenDangerWord[z1].Contains(text.text.ToString()))
                                         {
-                                            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                                            gameObject.GetComponent<SpriteRenderer>().color = redColor;
                                             //mmodification
                                             bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
                                             if (!isTargetCompleted)
@@ -640,10 +650,10 @@ public class L8_PlayerController : MonoBehaviour
                                                 
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
-                                                // if (!isFlashing)
-                                                // {
-                                                //     StartCoroutine(FlashCoroutine());
-                                                // }
+                                                 if (!isFlashing)
+                                                 {
+                                                     StartCoroutine(FlashCoroutine());
+                                                 }
 
                                             }
                                         }

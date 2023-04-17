@@ -59,7 +59,7 @@ public class L5_PlayerController : MonoBehaviour
     //public static int numberOfDeselections = 0;
     //[SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    public L3_NextLevelTwo nextLevelScript;
+    public L5_NextLevel nextLevelScript;
     public static int numberOfTimesWordHitInOrder = 0;
     public static int numberOfTimesWordHitInReverse = 0;
     public static int zHit = 0;
@@ -131,7 +131,7 @@ public class L5_PlayerController : MonoBehaviour
         //nextLevel = GameObject.FindGameObjectWithTag("NextLevel").GetComponent<NextLevelScript>();
         nestedList = bs.nestedList;
         //final = "Aim: " + bs.words[ind];
-        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L3_NextLevelTwo>();
+        nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L5_NextLevel>();
         //nextLevelScript.resetValues();
         //mmodification
         textBlinkScript = GameObject.FindGameObjectWithTag("TextBlinkScript").GetComponent<TextBlinkScript>();
@@ -219,15 +219,16 @@ public class L5_PlayerController : MonoBehaviour
 
         //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
-        float move2 = Input.GetAxis("Vertical");
+        float rotateSpeed = 0.1f;
+        float move2 = Input.GetAxis("Vertical") * rotateSpeed;
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
-            //  Debug.Log("inside move2"+transform.localEulerAngles+ transform.localRotation.eulerAngles.y);
+
             transform.Rotate(0, 0, move2 * (2f));
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
-            //    Debug.Log("inside move1"+transform.position.x+ transform.position.y );
+
             transform.Rotate(0, 0, move2 * (2f));
         }
         if (Input.GetButtonDown("Fire1"))
@@ -464,10 +465,10 @@ public class L5_PlayerController : MonoBehaviour
 
                                             if (findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                             {
-                                                // if (!isFlashing)
-                                                // {
-                                                //     StartCoroutine(FlashCoroutine());
-                                                // }
+                                                 if (!isFlashing)
+                                                 {
+                                                     StartCoroutine(FlashCoroutine());
+                                                 }
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
 

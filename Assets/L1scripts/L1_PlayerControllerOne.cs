@@ -125,13 +125,13 @@ public class L1_PlayerControllerOne : MonoBehaviour
         }
 
 
-        /*
+        
         //j is the index of the last row of blocks
-        if ( nestedList[j][0]!=null && nestedList[j][0].transform.position.y < 3)
+        if (nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
         }
-        */
+        
 
         //Debug.Log("finalllllllllllllll" + final);
         //goodword.text = final;

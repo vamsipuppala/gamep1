@@ -128,6 +128,7 @@ public class L7_PlayerController : MonoBehaviour
         st = Time.time;
         jump_time = Time.time;
         Physics2D.queriesStartInColliders = false;
+        originalColor = Camera.main.backgroundColor;
         rb = GetComponent<Rigidbody2D>();
         bs = GameObject.FindGameObjectWithTag("BlockSpawnerScript").GetComponent<BlockSpawnerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
@@ -428,10 +429,15 @@ public class L7_PlayerController : MonoBehaviour
                         }
                         else if (j == GetIndexOfGameObject(gameObject, nestedList))
                         {
-
+                            Debug.Log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-----------------------      " + gameObject.GetComponent<SpriteRenderer>().color);
                             if (gameObject.GetComponent<SpriteRenderer>().color == grayColor || gameObject.GetComponent<SpriteRenderer>().color == redColor || gameObject.GetComponent<SpriteRenderer>().color == greenColor
                                 || gameObject.GetComponent<SpriteRenderer>().color == yellowColor)
                             {
+                                Debug.Log("red colorrrrr" + gameObject.GetComponent<SpriteRenderer>().color);
+                                if(gameObject.GetComponent<SpriteRenderer>().color == redColor)
+                                {
+                                    Debug.Log("red block was hit");
+                                }
                                 localHits--;
                                 // numberOfTimeDeselectionsOccurred++;
                                 int n = wordCreated.Length;
@@ -495,7 +501,7 @@ public class L7_PlayerController : MonoBehaviour
 
                                         if (givenDangerWord[z1].Contains(text.text.ToString()))
                                         {
-                                            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                                            gameObject.GetComponent<SpriteRenderer>().color = redColor;
                                             //mmodification
                                             bool isTargetCompleted = (wordCreated.Length+1 == bs.words[j][0].Length) && findMatch(wordCreated+text.text, bs.words[j][0]);
                                             if (!isTargetCompleted)
@@ -643,10 +649,10 @@ public class L7_PlayerController : MonoBehaviour
 
                                                 //messageManagerScript.ChangeDangerMessageText("You hit : " + wordCreated + "!!");
                                                 //messageManagerScript.DisplayDangerMessage(1f);
-                                                // if (!isFlashing)
-                                                // {
-                                                //     StartCoroutine(FlashCoroutine());
-                                                // }
+                                                 if (!isFlashing)
+                                                 {
+                                                     StartCoroutine(FlashCoroutine());
+                                                 }
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
 

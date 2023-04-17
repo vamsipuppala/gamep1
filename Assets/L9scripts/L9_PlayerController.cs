@@ -18,7 +18,6 @@ public class L9_PlayerController : MonoBehaviour
     
     int j = 0;
     public BlockSpawnerScript bs;
-    public Color flashColor = Color.red; // The color to set the background to
     public float flashDuration = 1f; // The duration for which to set the background color
 
     public Color originalColor; // The original background color
@@ -105,12 +104,23 @@ public class L9_PlayerController : MonoBehaviour
         1f
     );
 
+
+    static string flashRedHexCode = "#CF7272";
+    public Color flashColor = new Color(
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(1, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(3, 2), 16) / 255f,
+        (float)System.Convert.ToInt32(flashRedHexCode.Substring(5, 2), 16) / 255f,
+        130f
+    );
+
+
     int ind = 0;
     void Start()
     {
         //int ind=0;
         st = Time.time;
         jump_time = Time.time;
+        originalColor = Camera.main.backgroundColor;
         Physics2D.queriesStartInColliders = false;
         Physics2D.IgnoreCollision(canvas.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         rb = GetComponent<Rigidbody2D>();
@@ -224,12 +234,10 @@ public class L9_PlayerController : MonoBehaviour
         float move2 = Input.GetAxis("Vertical") * rotateSpeed;
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
-
             transform.Rotate(0, 0, move2 * (2f));
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
-
             transform.Rotate(0, 0, move2 * (2f));
         }
         if (Input.GetButtonDown("Fire1"))
@@ -629,10 +637,10 @@ public class L9_PlayerController : MonoBehaviour
                                                // messageManagerScript.DisplayDangerMessage(1f);
                                                 ScoreScript.PlayerScore -= 1;
                                                 Debug.Log(ScoreScript.PlayerScore);
-                                                // if (!isFlashing)
-                                                // {
-                                                //     StartCoroutine(FlashCoroutine());
-                                                // }
+                                                 if (!isFlashing)
+                                                 {
+                                                     StartCoroutine(FlashCoroutine());
+                                                 }
 
                                             }
                                         }
