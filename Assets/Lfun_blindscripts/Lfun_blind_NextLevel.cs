@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Lfun_NextLevel : MonoBehaviour
+public class Lfun_blind_NextLevel : MonoBehaviour
 {
     public GameObject NextLevel;
     public string levelName;
@@ -14,7 +14,7 @@ public class Lfun_NextLevel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI targetScore;
     public int thresholdScoree = 10;
     public SendToGoogle sc;
-    public Lfun_PlayerController pc;
+    public Lfun_blind_PlayerController pc;
 
 
 
@@ -23,7 +23,7 @@ public class Lfun_NextLevel : MonoBehaviour
         targetScore.text = thresholdScoree.ToString();
         sc = GameObject.FindGameObjectWithTag("Logic").GetComponent<SendToGoogle>();
         ScoreScript.PlayerScore = 0;
-        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<Lfun_PlayerController>();
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<Lfun_blind_PlayerController>();
         //nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
@@ -41,7 +41,7 @@ public class Lfun_NextLevel : MonoBehaviour
         //Debug.Log("the danger word score is " + PlayerController.timesDangerWordWasHit);
         // SendToGoogle sc = new SendToGoogle();
         //Debug.Log("threshold score is " + thresholdScoree);
-        if (ScoreScript.PlayerScore >= thresholdScoree && Lfun_Timer.TimeValue > 0)
+        if (ScoreScript.PlayerScore >= thresholdScoree && Lfun_blind_Timer.TimeValue > 0)
         {
             //Debug.Log("It should now change the scene" +ScoreScript.PlayerScore);
             //sc.EndOfGame(L4_PlayerController.timeTargetWordWasHit.ToString(), "2", L2_PlayerController.numberOfTimeDeselectionsOccurred.ToString(), "1",
@@ -49,10 +49,10 @@ public class Lfun_NextLevel : MonoBehaviour
             //sc.endGameWithZHitCount("2", L2_PlayerController.zHit.ToString());
             loadScene = true;
             resetValues();
-            SceneManager.LoadScene("LevelScenes/CompleteLevelfun");
+            SceneManager.LoadScene("LevelScenes/CompleteLevelfun_blind");
         }
 
-        if (ScoreScript.PlayerScore < thresholdScoree && Lfun_Timer.TimeValue <= 0)
+        if (ScoreScript.PlayerScore < thresholdScoree && Lfun_blind_Timer.TimeValue <= 0)
         {
             // sc.EndOfGame(L2_PlayerController.timeTargetWordWasHit.ToString(), "2", L2_PlayerController.numberOfTimeDeselectionsOccurred.ToString(), "0",
             //L2_PlayerController.numberOfTimesWordHitInOrder.ToString(), L2_PlayerController.numberOfTimesWordHitInReverse.ToString());
@@ -65,7 +65,7 @@ public class Lfun_NextLevel : MonoBehaviour
     public void resetValues()
     {
         ScoreScript.PlayerScore = 0;
-        Lfun_Timer.TimeValue = 240;
+        Lfun_blind_Timer.TimeValue = 240;
         //L2_Timer.TimeValue = 300; // time used for testing collision.
         //L2_Timer.TimeValue = 10; // time used for testing timeout.
     }

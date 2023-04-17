@@ -621,6 +621,13 @@ public class BlockSpawnerScript : MonoBehaviour
             dangerWordss = dangerWordsLfun;
             facts = facts_Lfun;
         }
+        if (scene.name == "Lfun_blind")
+        {
+            blocks_row_count = wordsLfun.Length;
+            words = wordsLfun;
+            dangerWordss = dangerWordsLfun;
+            facts = facts_Lfun;
+        }
 
         for (int j = 0; j < blocks_row_count; j++) // this is for the total number of rows
         {
@@ -691,6 +698,10 @@ public class BlockSpawnerScript : MonoBehaviour
             {
                 shuffledString = block_of_wordsLfun[j][0];
             }
+            else if (scene.name == "Lfun_blind")
+            {
+                shuffledString = block_of_wordsLfun[j][0];
+            }
             else
             {
                 HashSet<Char> hs = new HashSet<Char>();
@@ -725,7 +736,17 @@ public class BlockSpawnerScript : MonoBehaviour
                 block.GetComponentInChildren<TextMesh>().fontSize = 18; 
                 block.GetComponentInChildren<TextMesh>().characterSize = 0.5F;
                 block.GetComponentInChildren<TextMesh>().alignment = TextAlignment.Right;
-                block.GetComponentInChildren<TextMesh>().text = Char.ToString(shuffledString[i]);               
+                
+                
+                block.GetComponentInChildren<TextMesh>().text = Char.ToString(shuffledString[i]);  
+                if(scene.name == "Lfun_blind")
+                {
+                     block.GetComponentInChildren<TextMesh>().text = " "; 
+                    //    block.GetComponentInChildren<TextMesh>().gameObject.SetActive(false);
+                    //    block.GetComponentInChildren<TextMesh>().gameObject.SetActive(true);
+                    //    block.GetComponentInChildren<TextMesh>().enabled = false;
+                }   
+                       
                 blocks[i] = block;
 
             }

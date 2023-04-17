@@ -1170,7 +1170,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &350585228
+--- !u!114 &350585222
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1179,7 +1179,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 350585215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378639ec48a30d84b9278d9eee5a7248, type: 3}
+  m_Script: {fileID: 11500000, guid: 33d648e53fabea34aafee6f7fcec9a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LineOfSight: {fileID: 350585216}
@@ -1212,6 +1212,7 @@ MonoBehaviour:
   ct: 0
   jump_time: 0
   c: {fileID: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 1
   groundLayer:
     serializedVersion: 2
@@ -1221,7 +1222,6 @@ MonoBehaviour:
   mvmtScript: {fileID: 0}
   mvmtScript1: {fileID: 0}
   mySlider: {fileID: 0}
-  flashColor: {r: 0.8117647, g: 0.44705883, b: 0.44705883, a: 1}
   textBlinkScript: {fileID: 0}
 --- !u!1 &366434536
 GameObject:
@@ -1658,8 +1658,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 159, y: -46.221}
-  m_SizeDelta: {x: 88.07, y: 73.351}
+  m_AnchoredPosition: {x: 159, y: -51.095}
+  m_SizeDelta: {x: 88.07, y: 83.099}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &560306882
 MonoBehaviour:
@@ -4293,7 +4293,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1687272641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14f5f175058b6b54e87e4a78d383f391, type: 3}
+  m_Script: {fileID: 11500000, guid: dbaee8ab5df6e69419808d8113c0a425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TimerText: {fileID: 1687272646}
@@ -4887,7 +4887,7 @@ GameObject:
   - component: {fileID: 1873891699}
   - component: {fileID: 1873891698}
   m_Layer: 7
-  m_Name: LevelSixteenTitle
+  m_Name: LevelTenTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4933,7 +4933,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LEVEL 16
+  m_text: LEVEL 17
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5019,8 +5019,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1900279652}
-  - component: {fileID: 1900279654}
-  - component: {fileID: 1900279655}
+  - component: {fileID: 1900279653}
   m_Layer: 0
   m_Name: NextLevelManager
   m_TagString: NextLevelManager
@@ -5043,25 +5042,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1900279654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1900279650}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe6b0ed49504e04199017a0968ee9a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NextLevel: {fileID: 0}
-  levelName: 
-  targetScore: {fileID: 1366554265}
-  thresholdScoree: 10
-  sc: {fileID: 0}
-  pc: {fileID: 0}
---- !u!114 &1900279655
+--- !u!114 &1900279653
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5070,7 +5051,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1900279650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e4704b39ada86e4d9f2bc99f9e4ae04, type: 3}
+  m_Script: {fileID: 11500000, guid: feeaece836feda347be50fab456d74e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   NextLevel: {fileID: 0}
