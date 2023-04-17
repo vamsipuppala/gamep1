@@ -255,12 +255,12 @@ public class L13_PlayerController : MonoBehaviour
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
 
-            transform.Rotate(0, 0, move2 * (5f));
+            transform.Rotate(0, 0, move2 * (2f));
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
 
-            transform.Rotate(0, 0, move2 * (5f));
+            transform.Rotate(0, 0, move2 * (2f));
         }
         if (Input.GetButtonDown("Fire1"))
         {
