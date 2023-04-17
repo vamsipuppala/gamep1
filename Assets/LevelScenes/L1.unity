@@ -608,6 +608,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 652ab34f81e604934bc91487a953c55b, type: 2}
+    - target: {fileID: 852752353690173484, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 852752353690173484, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.054454803
+      objectReference: {fileID: 0}
     - target: {fileID: 852752353690173485, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -2403,7 +2411,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 988.63, y: -49.72699}
+  m_AnchoredPosition: {x: 988.63, y: -49.72693}
   m_SizeDelta: {x: 219.05, y: 73.455}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1438980866
@@ -3179,7 +3187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1778985769
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3546,8 +3554,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.00623703
-        value: 0.17826462
+        time: 0
+        value: 0.053231448
         inSlope: 0
         outSlope: 0
         tangentMode: 0

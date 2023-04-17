@@ -69,14 +69,15 @@ public class L1_PlayerControllerOne : MonoBehaviour
         //final = "Aim: " + bs.words[ind];
         nextLevelScript = GameObject.FindGameObjectWithTag("NextLevelManager").GetComponent<L1_NextLevel>();
         nextLevelScript.resetValues();
-        Debug.Log("L1!!");
-    }
+        // LineOfSight2.startWidth = 0.0544548;
+        Debug.Log("width: "+LineOfSight2.startWidth);
+
+    }//0.0544548
 
     // Update is called once per frame
    
     void Update()
     {
-      
         textComponent = GetComponent<Text>();
         
         LineOfSight2.positionCount = 1;
@@ -150,7 +151,8 @@ public class L1_PlayerControllerOne : MonoBehaviour
 
         //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
-        float move2 = Input.GetAxis("Vertical");
+        float rotateSpeed = 0.1f;
+        float move2 = Input.GetAxis("Vertical") * rotateSpeed;
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
             //  Debug.Log("inside move2"+transform.localEulerAngles+ transform.localRotation.eulerAngles.y);
