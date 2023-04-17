@@ -130,6 +130,21 @@ public class L11_PlayerController : MonoBehaviour
     public TextBlinkScript textBlinkScript;
     void Start()
     {
+        string folderName = "Videos";
+        string fileName = "L11";
+
+        string fileFormat = ".mp4";
+
+        UnityEngine.Video.VideoPlayer videoPlayer;
+
+        // Find the VideoPlayer component in the Canvas hierarchy
+        videoPlayer = canvas.GetComponentInChildren<UnityEngine.Video.VideoPlayer>();
+        videoPlayer.source = UnityEngine.Video.VideoSource.Url;
+        //string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, fileName + fileFormat);
+        string filePath = Application.streamingAssetsPath + "/" + fileName + fileFormat;
+        Debug.Log("Filepath: " + filePath);
+        videoPlayer.url = filePath;
+
         //int ind=0;
         st = Time.time;
         hinderence_stop_time = st-8;
