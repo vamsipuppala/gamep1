@@ -296,6 +296,9 @@ public class L15_PlayerController : MonoBehaviour
             {
                 
                 rb.velocity = new Vector2(rb.velocity.x, 20f);
+                boxCollider1.enabled = false;
+                                        // boxCollider2.enabled = false;
+                                        StartCoroutine(EnableBox(2F));
                 hinderence_stop_time -=8;
             }
             else{
@@ -336,12 +339,12 @@ public class L15_PlayerController : MonoBehaviour
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
 
-             transform.Rotate(0, 0, move2 * Time.deltaTime);
+             transform.Rotate(0, 0, move2 * Time.deltaTime*5);
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
 
-           transform.Rotate(0, 0, move2 * Time.deltaTime);
+           transform.Rotate(0, 0, move2 * Time.deltaTime*5);
         }
         if (Input.GetButtonDown("Fire1"))
         {
@@ -683,11 +686,11 @@ public class L15_PlayerController : MonoBehaviour
                                             }
                                         }
                                         dest = true;
-                                        obstacle1.GetComponent<SpriteRenderer>().color = obstacleDisableColor;
+                                        obstacle1.GetComponent<SpriteRenderer>().color = greenColor;
                                         // obstacle2.GetComponent<SpriteRenderer>().color = obstacleDisableColor;
                                         boxCollider1.enabled = false;
-                                        boxCollider2.enabled = false;
-                                        StartCoroutine(EnableBox(15.0F));
+                                        // boxCollider2.enabled = false;
+                                        StartCoroutine(EnableBox(17.0F));
 
                                     }
 
@@ -1076,7 +1079,7 @@ public class L15_PlayerController : MonoBehaviour
         obstacle1.GetComponent<SpriteRenderer>().color = obstacleOriginalColor;
         // obstacle2.GetComponent<SpriteRenderer>().color = obstacleOriginalColor;
         boxCollider1.enabled = true;
-        boxCollider2.enabled = true;
+        // boxCollider2.enabled = true;
     }
 
     IEnumerator FlashCoroutine()

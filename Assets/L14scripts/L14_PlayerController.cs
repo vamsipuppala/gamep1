@@ -274,6 +274,9 @@ public class L14_PlayerController : MonoBehaviour
             {
                 
                 rb.velocity = new Vector2(rb.velocity.x, 20f);
+                boxCollider1.enabled = false;
+                                        // boxCollider2.enabled = false;
+                                        StartCoroutine(EnableBox(2F));
             }
             else{
             rb.velocity = new Vector2(rb.velocity.x, 8f);
@@ -305,12 +308,12 @@ public class L14_PlayerController : MonoBehaviour
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
 
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * (20f));
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
 
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * (20f));
         }
         if (Input.GetButtonDown("Fire1"))
         {
@@ -644,7 +647,7 @@ public class L14_PlayerController : MonoBehaviour
                                                     //prev_seq_hit=1;
                                                 }
                                                 else{
-                                                      mySlider.value += 0.3f;
+                                                      mySlider.value += 0.45f;
                                                     prev_seq_hit=1;
                                                 }
 
@@ -652,11 +655,11 @@ public class L14_PlayerController : MonoBehaviour
                                             }
                                         }
                                         dest = true;
-                                        obstacle1.GetComponent<SpriteRenderer>().color = obstacleDisableColor;
-                                        obstacle2.GetComponent<SpriteRenderer>().color = obstacleDisableColor;
+                                        obstacle1.GetComponent<SpriteRenderer>().color = greenColor;
+                                        // obstacle2.GetComponent<SpriteRenderer>().color = obstacleDisableColor;
                                         boxCollider1.enabled = false;
                                         // boxCollider2.enabled = false;
-                                        StartCoroutine(EnableBox(15.0F));
+                                        StartCoroutine(EnableBox(17F));
 
                                     }
 
@@ -670,7 +673,7 @@ public class L14_PlayerController : MonoBehaviour
                                         {
                                             Destroy(gs[k]);
                                         }
-                                        mySlider.value += 1.0f;
+                                        mySlider.value += 0.3f;
                                         prev_seq_hit=0;
                                         dest = true;
                                         wordCreated = "";
@@ -786,6 +789,7 @@ public class L14_PlayerController : MonoBehaviour
         if(gameObject!=null &&  mySlider.value>=1.0f)
         {
             TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
+            
             if(text!=null ){
             GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 2;
@@ -1038,7 +1042,7 @@ public class L14_PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         obstacle1.GetComponent<SpriteRenderer>().color = obstacleOriginalColor;
-        obstacle2.GetComponent<SpriteRenderer>().color = obstacleOriginalColor;
+        // obstacle2.GetComponent<SpriteRenderer>().color = obstacleOriginalColor;
         boxCollider1.enabled = true;
         // boxCollider2.enabled = true;
     }
