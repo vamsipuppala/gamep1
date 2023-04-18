@@ -196,6 +196,7 @@ public class L4_PlayerController : MonoBehaviour
         if (nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
+            return;
         }
 
         //Debug.Log("finalllllllllllllll" + final);

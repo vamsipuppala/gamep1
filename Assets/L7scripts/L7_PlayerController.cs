@@ -209,6 +209,7 @@ public class L7_PlayerController : MonoBehaviour
         if (nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
+            return;
         }
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
