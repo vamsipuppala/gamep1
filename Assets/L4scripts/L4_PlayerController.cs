@@ -184,6 +184,13 @@ public class L4_PlayerController : MonoBehaviour
                 }
             }
         }
+        
+
+         if((j>=bs.words.Length || ind>=bs.words.Length) )
+        {  
+                nextLevelScript.GameOver("Lack of blocks");   
+                return;
+        }
 
         //j is the index of the last row of blocks
         if (nestedList[j][0].transform.position.y < 3)

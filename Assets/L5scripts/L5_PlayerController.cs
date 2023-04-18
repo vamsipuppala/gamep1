@@ -204,6 +204,11 @@ public class L5_PlayerController : MonoBehaviour
         }
 
         //j is the index of the last row of blocks
+        if((j>=bs.words.Length || ind>=bs.words.Length) )
+        {  
+         nextLevelScript.GameOver("Lack of blocks");   
+         return;
+        }
         if (nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");

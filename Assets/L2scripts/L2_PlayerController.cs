@@ -188,7 +188,7 @@ public class L2_PlayerController : MonoBehaviour
         }
 
         //j is the index of the last row of blocks
-        if (nestedList[j][0].transform.position.y < 3)
+        if (j>=bs.words.Length || nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
         }
@@ -196,7 +196,7 @@ public class L2_PlayerController : MonoBehaviour
         //Debug.Log("finalllllllllllllll" + final);
       
         // goodword.text = "Target:  \n"+UpdateTargetWordColor(string.Join("", bs.words[ind]));
-        goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]));
+        goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]),0);
 
         
         Vector2 mousePosition = Input.mousePosition;
@@ -631,28 +631,38 @@ public class L2_PlayerController : MonoBehaviour
         }
         return res;
     }
-    public string changecolor(string word)
+     public string changecolor(string word, int c)
     {
         int n = word.Length;
+        string temp = wordCreated;
         string res = "";
         int n1 = wordCreated.Length, i, j;
         for (i = 0; i < n; i++)
         {
-            for (j = 0; j < n1; j++)
+            for (j = 0; j < temp.Length; j++)
             {
-                if (word[i] == wordCreated[j])
+                if (word[i] == temp[j])
                 {
                     break;
                 }
             }
-            if (j == n1)
+
+            if (j >= temp.Length)
             {
                 res += word[i];
             }
             else
             {
-                res += "<color=#56a500>" + word[i] + "</color>";
+                if (c == 0)
+                    res += "<color=#56a500>" + word[i] + "</color>";
+                else
+                {
+                    res += "<color=#b90200>" + word[i] + "</color>";
+                }
+                int index = temp.IndexOf(word[i]);
+                temp = temp.Remove(index, 1);
             }
+
 
         }
         return res;

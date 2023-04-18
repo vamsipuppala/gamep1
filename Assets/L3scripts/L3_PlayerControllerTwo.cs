@@ -202,9 +202,21 @@ public class L3_PlayerControllerTwo : MonoBehaviour
         }
 
         //j is the index of the last row of blocks
-        if (nestedList[j][0].transform.position.y < 3)
+       
+        // if(j==10 )
+        // {
+        //          Debug.Log("total"+bs.words.Length);
+        // Debug.Log("j value"+j);
+        // }
+        if((j>=bs.words.Length || ind>=bs.words.Length) )
+        {  
+         nextLevelScript.GameOver("Lack of blocks");   
+         return;
+        }
+        if ( nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
+            return;
         }
 
         //Debug.Log("finalllllllllllllll" + final);
@@ -449,6 +461,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                             timeTargetWordWasHit += 1;
                                                                                       
                                             j++;
+                                    if(j<bs.words.Length)
                                     addCollider(j, bs.nestedList[j]);
                                     ind++;
                                             localHits = 1;

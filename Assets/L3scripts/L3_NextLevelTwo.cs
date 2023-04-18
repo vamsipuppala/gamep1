@@ -71,9 +71,17 @@ public class L3_NextLevelTwo : MonoBehaviour
     public void GameOver(string gameOverReason)
     {
         // sc.EndOfGameDueToGameOver("2", gameOverReason);
+        Debug.Log("Inside Game over");
+        
+        
         if (gameOverReason.Equals("noTimeLeft"))
         {
             PlayerPrefs.SetString("GameOverReason", "Game terminated due to timeout!");
+
+        }
+        else if (gameOverReason.Equals("Lack of blocks"))
+        {
+            PlayerPrefs.SetString("GameOverReason", "Game terminated due to lack of blocks!");
 
         }
         else
