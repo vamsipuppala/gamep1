@@ -16,7 +16,7 @@ public class L14_PlayerController : MonoBehaviour
     public int prev_seq_hit = 0;
     public float jump_time;
     int j = 0;
-    
+    float rotateSpeed = 50f;
     public GameObject mySliderObject; 
     public Slider mySlider;
     public BlockSpawnerScript bs;
@@ -302,18 +302,18 @@ public class L14_PlayerController : MonoBehaviour
 
         //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
-        float rotateSpeed = 0.1f;
+        
         float move2 = Input.GetAxis("Vertical") * rotateSpeed;
 
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
 
-            transform.Rotate(0, 0, move2 * (20f));
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
 
-            transform.Rotate(0, 0, move2 * (20f));
+           transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         if (Input.GetButtonDown("Fire1"))
         {

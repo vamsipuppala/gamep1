@@ -317,7 +317,9 @@ public class L11_PlayerController : MonoBehaviour
         float move2 = Input.GetAxis("Vertical")*rotateSpeed;
         if (move2 < 0 && !(transform.localEulerAngles.z > 300) &&  IsGrounded())
         {
-
+                // Debug.Log("Move2"+move2);
+                // Debug.Log("delta"+Time.deltaTime);
+                // Debug.Log("Total"+move2 * Time.deltaTime);
             transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270) && IsGrounded())

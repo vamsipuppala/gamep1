@@ -214,14 +214,14 @@ public class L15_PlayerController : MonoBehaviour
         }
          jump_speed = 5f;
          moveSpeed = 3f;
-         rotateSpeed = 1;
+         rotateSpeed = 1f;
 
         }
         else{
              enemy.GetComponent<SpriteRenderer>().color = p_c;
             jump_speed = 8f;
             moveSpeed = 5f;
-            rotateSpeed = 50;
+            rotateSpeed = 50f;
         }
         if(mySlider.value<0.0f)
         {
@@ -339,12 +339,12 @@ public class L15_PlayerController : MonoBehaviour
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
 
-             transform.Rotate(0, 0, move2 * Time.deltaTime*5);
+             transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
 
-           transform.Rotate(0, 0, move2 * Time.deltaTime*5);
+           transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         if (Input.GetButtonDown("Fire1"))
         {

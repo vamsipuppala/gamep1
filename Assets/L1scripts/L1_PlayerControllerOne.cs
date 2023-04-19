@@ -14,6 +14,7 @@ public class L1_PlayerControllerOne : MonoBehaviour
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
     public float blinkTime = 1000.5f;
+    float rotateSpeed = 50f;
     int j = 0;
     public BlockSpawnerScript bs;
     public int reflections;
@@ -165,17 +166,20 @@ public class L1_PlayerControllerOne : MonoBehaviour
 
         //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
-        float rotateSpeed = 0.1f;
+        
         float move2 = Input.GetAxis("Vertical") * rotateSpeed;
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
-        {
+        {   
+            //  Debug.Log("Move2"+move2);
+            //     Debug.Log("delta"+Time.deltaTime);
+            //     Debug.Log("Total"+move2 * Time.deltaTime);
             //  Debug.Log("inside move2"+transform.localEulerAngles+ transform.localRotation.eulerAngles.y);
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
             //    Debug.Log("inside move1"+transform.position.x+ transform.position.y );
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         if (Input.GetButtonDown("Fire1"))
         {

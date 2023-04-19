@@ -18,6 +18,7 @@ public class L10_PlayerController : MonoBehaviour
     private ParticleSystem pars;
      public static int numberOfTimeDeselectionsOccurred = 0;
     int j = 0;
+    float rotateSpeed = 50f;
     public float shakeDuration = 2f; //duration of the shake
     public float shakeAmount = 0.1f; //amount of shake
     public float decreaseFactor = 1.0f; //how fast the shake decreases
@@ -278,17 +279,17 @@ public class L10_PlayerController : MonoBehaviour
 
         //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
-        float rotateSpeed = 0.1f;
+        
         float move2 = Input.GetAxis("Vertical") * rotateSpeed;
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
-            transform.Rotate(0, 0, move2 * (2f));
-            Debug.Log("rotate speed: "+move2);
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
+            // Debug.Log("rotate speed: "+move2);
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
-            transform.Rotate(0, 0, move2 * (2f));
-            Debug.Log("rotate speed: "+move2);
+           transform.Rotate(0, 0, move2 * Time.deltaTime);
+            // Debug.Log("rotate speed: "+move2);
         }
         if (Input.GetButtonDown("Fire1"))
         {
