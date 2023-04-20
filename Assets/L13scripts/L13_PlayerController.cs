@@ -7,12 +7,14 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class L13_PlayerController : MonoBehaviour
 {
 
     // Start is called before the first frame update
     // Line OF Renderer
     public LineRenderer LineOfSight;
+    public Animator animator;
     public LineRenderer LineOfSight2;
     public int prev_seq_hit = 0;
     public float jump_time;

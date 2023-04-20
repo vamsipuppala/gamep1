@@ -12,8 +12,13 @@ public class L4_PlayerController : MonoBehaviour
     // Start is called before the first frame update
     // Line OF Renderer
     public LineRenderer LineOfSight;
+    public GameObject mini_score_red_instance;
+    public GameObject mini_score_green_instance;
+    public Transform canvasTransform; 
     public LineRenderer LineOfSight2;
+    
     float rotateSpeed = 50f;
+    public Animator animator;
 
     int j = 0;
     public BlockSpawnerScript bs;
@@ -435,6 +440,10 @@ public class L4_PlayerController : MonoBehaviour
                                     //Debug.Log(bs);
                                     GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 1;
+                                    GameObject cde = Instantiate(mini_score_green_instance, canvasTransform);
+                                    cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+5, nestedList[j][0].transform.position.y, 0);
+                                    Destroy(cde, 1.0f);
+                                    animator.SetTrigger("change");
                                     for (int k = 0; k < gs.Length; k++)
                                     {
                                         Destroy(gs[k]);
@@ -471,6 +480,10 @@ public class L4_PlayerController : MonoBehaviour
                                                      StartCoroutine(FlashCoroutine());
                                                  }
                                                 ScoreScript.PlayerScore -= 1;
+                                                GameObject cde = Instantiate(mini_score_red_instance, canvasTransform);
+                                                cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+5, nestedList[j][0].transform.position.y, 0);
+                                                Destroy(cde, 1.0f);
+                                                animator.SetTrigger("change2");
                                                 Debug.Log(ScoreScript.PlayerScore);
 
                                             }

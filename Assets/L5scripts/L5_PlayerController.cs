@@ -13,7 +13,7 @@ public class L5_PlayerController : MonoBehaviour
     // Line OF Renderer
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
-
+    public Animator animator;
     int j = 0;
     public BlockSpawnerScript bs;
     public int reflections;
@@ -456,6 +456,7 @@ public class L5_PlayerController : MonoBehaviour
                                     //Debug.Log(bs);
                                     GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 1;
+                                    animator.SetTrigger("change");
                                     for (int k = 0; k < gs.Length; k++)
                                     {
                                         Destroy(gs[k]);
@@ -494,6 +495,8 @@ public class L5_PlayerController : MonoBehaviour
                                                      StartCoroutine(FlashCoroutine());
                                                  }
                                                 ScoreScript.PlayerScore -= 1;
+                                                
+                                                animator.SetTrigger("change2");
                                                 Debug.Log(ScoreScript.PlayerScore);
 
                                             }
@@ -942,6 +945,7 @@ public class L5_PlayerController : MonoBehaviour
                                     //Debug.Log(bs);
                                     GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 1;
+                                    animator.SetTrigger("change");
                                     for (int k = 0; k < gs.Length; k++)
                                     {
                                         Destroy(gs[k]);
@@ -980,6 +984,7 @@ public class L5_PlayerController : MonoBehaviour
                                                 //     StartCoroutine(FlashCoroutine());
                                                 // }
                                                 ScoreScript.PlayerScore -= 1;
+                                                animator.SetTrigger("change2");
                                                 Debug.Log(ScoreScript.PlayerScore);
 
                                             }
