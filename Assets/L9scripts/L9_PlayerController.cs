@@ -15,7 +15,7 @@ public class L9_PlayerController : MonoBehaviour
     public LineRenderer LineOfSight2;
     public float jump_time;
     public GameObject canvas;
-    
+    float rotateSpeed = 50f;
     int j = 0;
     public BlockSpawnerScript bs;
     public float flashDuration = 1f; // The duration for which to set the background color
@@ -210,10 +210,16 @@ public class L9_PlayerController : MonoBehaviour
                 }
             }
         }
+        if((j>=bs.words.Length || ind>=bs.words.Length) )
+        {  
+         nextLevelScript.GameOver("Lack of blocks");   
+         return;
+        }
         //j is the index of the last row of blocks
         if (nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
+            return;
         }
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -247,15 +253,15 @@ public class L9_PlayerController : MonoBehaviour
 
         //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
-        float rotateSpeed = 0.1f;
+        
         float move2 = Input.GetAxis("Vertical") * rotateSpeed;
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         if (Input.GetButtonDown("Fire1"))
         {

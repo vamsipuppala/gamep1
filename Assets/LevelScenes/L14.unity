@@ -843,11 +843,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 852752353263809529, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Radius
-      value: 0.8432281
+      value: 0.7264391
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809529, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Offset.y
-      value: 0.1567719
+      value: 0.039982915
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809530, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Color.b
@@ -1026,7 +1026,7 @@ MonoBehaviour:
   MaxRayDistance: 100
   LayerDetection:
     serializedVersion: 2
-    m_Bits: 471
+    m_Bits: 469
   rb: {fileID: 0}
   logic: {fileID: 0}
   nextLevel: {fileID: 0}
@@ -2342,7 +2342,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614668033}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.3, y: 0.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3799,7 +3799,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1569797010}
   m_HandleRect: {fileID: 0}
@@ -4935,7 +4935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1545723406
 Transform:
   m_ObjectHideFlags: 0

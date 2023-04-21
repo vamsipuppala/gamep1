@@ -24,7 +24,7 @@ public class LoadingBarFour : MonoBehaviour
 
     public void startNextLevel()
     {
-        SceneManager.LoadScene("LevelScenes/MainScreen");
+        SceneManager.LoadScene("LevelScenes/L5");
     }
 
     /*

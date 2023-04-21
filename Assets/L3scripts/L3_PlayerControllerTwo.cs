@@ -13,6 +13,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
     // Line OF Renderer
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
+    float rotateSpeed = 50f;
 
     int j = 0;
     public BlockSpawnerScript bs;
@@ -202,9 +203,21 @@ public class L3_PlayerControllerTwo : MonoBehaviour
         }
 
         //j is the index of the last row of blocks
-        if (nestedList[j][0].transform.position.y < 3)
+       
+        // if(j==10 )
+        // {
+        //          Debug.Log("total"+bs.words.Length);
+        // Debug.Log("j value"+j);
+        // }
+        if((j>=bs.words.Length || ind>=bs.words.Length) )
+        {  
+         nextLevelScript.GameOver("Lack of blocks");   
+         return;
+        }
+        if ( nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
+            return;
         }
 
         //Debug.Log("finalllllllllllllll" + final);
@@ -232,16 +245,16 @@ public class L3_PlayerControllerTwo : MonoBehaviour
 
         //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
-        float move2 = Input.GetAxis("Vertical");
+        float move2 = Input.GetAxis("Vertical")*rotateSpeed;
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
             //  Debug.Log("inside move2"+transform.localEulerAngles+ transform.localRotation.eulerAngles.y);
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
             //    Debug.Log("inside move1"+transform.position.x+ transform.position.y );
-            transform.Rotate(0, 0, move2 * (2f));
+           transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         if (Input.GetButtonDown("Fire1"))
         {
@@ -449,6 +462,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                             timeTargetWordWasHit += 1;
                                                                                       
                                             j++;
+                                    if(j<bs.words.Length)
                                     addCollider(j, bs.nestedList[j]);
                                     ind++;
                                             localHits = 1;

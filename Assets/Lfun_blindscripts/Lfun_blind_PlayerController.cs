@@ -34,6 +34,7 @@ public class Lfun_blind_PlayerController : MonoBehaviour
     public LogicManagerScript logic;
     public NextLevelScript nextLevel;
     public GameObject NextLevelScreen;
+    float rotateSpeed = 50f;
     //mmodification
     //public MessageManagerScript messageManagerScript;
     public string wordCreated;
@@ -208,9 +209,15 @@ public class Lfun_blind_PlayerController : MonoBehaviour
             }
         }
         //j is the index of the last row of blocks
+        if((j>=bs.words.Length || ind>=bs.words.Length) )
+        {  
+         nextLevelScript.GameOver("Lack of blocks");   
+         return;
+        }
         if (nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
+            return;
         }
 
 
@@ -267,17 +274,17 @@ public class Lfun_blind_PlayerController : MonoBehaviour
 
         //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
-        float rotateSpeed = 0.1f;
+        
         float move2 = Input.GetAxis("Vertical") * rotateSpeed;
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
 
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
 
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         if (Input.GetButtonDown("Fire1"))
         {
@@ -459,7 +466,7 @@ public class Lfun_blind_PlayerController : MonoBehaviour
                         {
                                 // nestedList[j][y1].SetActive(true);
                                nestedList[j][y1].GetComponentInChildren<TextMesh>().text = Char.ToString(bs.block_of_wordsLfun[j][0][y1]);
-                               Debug.Log(bs.block_of_wordsLfun[j][0][y1]);
+                            //    Debug.Log(bs.block_of_wordsLfun[j][0][y1]);
                         }
                         // text.enabled = true;
                         // text.gameObject.SetActive(true);
@@ -945,6 +952,12 @@ the value is frequency of letter
                             
                             // Debug.Log("now the numberOfHits is " + numberOfHits);
                              Debug.Log("Collision with: " + collision.gameObject.name);
+        for(int y1=0;y1<bs.nestedList[j].Length;y1++)
+        {
+                // nestedList[j][y1].SetActive(true);
+                nestedList[j][y1].GetComponentInChildren<TextMesh>().text = Char.ToString(bs.block_of_wordsLfun[j][0][y1]);
+            //    Debug.Log(bs.block_of_wordsLfun[j][0][y1]);
+        }
         if(gameObject!=null &&  mySlider.value>=1.0f)
         {
             TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
@@ -1191,6 +1204,14 @@ the value is frequency of letter
                             // Debug.Log(wordCreated);
                         }
             }
+        }
+         for(int y1=0;y1<bs.nestedList[j].Length;y1++)
+        {
+                // nestedList[j][y1].SetActive(true);
+                if (nestedList[j][y1].GetComponent<SpriteRenderer>().color != grayColor && nestedList[j][y1].GetComponent<SpriteRenderer>().color != redColor && nestedList[j][y1].GetComponent<SpriteRenderer>().color != greenColor
+                && nestedList[j][y1].GetComponent<SpriteRenderer>().color != yellowColor)
+                nestedList[j][y1].GetComponentInChildren<TextMesh>().text = " ";
+                Debug.Log(bs.block_of_wordsLfun[j][0][y1]);
         }
 
     

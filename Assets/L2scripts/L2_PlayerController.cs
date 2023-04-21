@@ -13,6 +13,7 @@ public class L2_PlayerController : MonoBehaviour
     // Line OF Renderer
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
+    float rotateSpeed = 50f;
 
     int j = 0;
     public BlockSpawnerScript bs;
@@ -188,7 +189,7 @@ public class L2_PlayerController : MonoBehaviour
         }
 
         //j is the index of the last row of blocks
-        if (nestedList[j][0].transform.position.y < 3)
+        if (j>=bs.words.Length || nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
         }
@@ -196,7 +197,7 @@ public class L2_PlayerController : MonoBehaviour
         //Debug.Log("finalllllllllllllll" + final);
       
         // goodword.text = "Target:  \n"+UpdateTargetWordColor(string.Join("", bs.words[ind]));
-        goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]));
+        goodword.text = "Target:  \n" + changecolor(string.Join("", bs.words[ind]),0);
 
         
         Vector2 mousePosition = Input.mousePosition;
@@ -211,16 +212,16 @@ public class L2_PlayerController : MonoBehaviour
 
         //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
-        float move2 = Input.GetAxis("Vertical");
+        float move2 = Input.GetAxis("Vertical")*rotateSpeed;
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
             //  Debug.Log("inside move2"+transform.localEulerAngles+ transform.localRotation.eulerAngles.y);
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
             //    Debug.Log("inside move1"+transform.position.x+ transform.position.y );
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         if (Input.GetButtonDown("Fire1"))
         {
@@ -631,28 +632,38 @@ public class L2_PlayerController : MonoBehaviour
         }
         return res;
     }
-    public string changecolor(string word)
+     public string changecolor(string word, int c)
     {
         int n = word.Length;
+        string temp = wordCreated;
         string res = "";
         int n1 = wordCreated.Length, i, j;
         for (i = 0; i < n; i++)
         {
-            for (j = 0; j < n1; j++)
+            for (j = 0; j < temp.Length; j++)
             {
-                if (word[i] == wordCreated[j])
+                if (word[i] == temp[j])
                 {
                     break;
                 }
             }
-            if (j == n1)
+
+            if (j >= temp.Length)
             {
                 res += word[i];
             }
             else
             {
-                res += "<color=#56a500>" + word[i] + "</color>";
+                if (c == 0)
+                    res += "<color=#56a500>" + word[i] + "</color>";
+                else
+                {
+                    res += "<color=#b90200>" + word[i] + "</color>";
+                }
+                int index = temp.IndexOf(word[i]);
+                temp = temp.Remove(index, 1);
             }
+
 
         }
         return res;

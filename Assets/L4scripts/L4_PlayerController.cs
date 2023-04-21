@@ -12,7 +12,13 @@ public class L4_PlayerController : MonoBehaviour
     // Start is called before the first frame update
     // Line OF Renderer
     public LineRenderer LineOfSight;
+    public GameObject mini_score_red_instance;
+    public GameObject mini_score_green_instance;
+    public Transform canvasTransform; 
     public LineRenderer LineOfSight2;
+    
+    float rotateSpeed = 50f;
+    public Animator animator;
 
     int j = 0;
     public BlockSpawnerScript bs;
@@ -184,11 +190,19 @@ public class L4_PlayerController : MonoBehaviour
                 }
             }
         }
+        
+
+         if((j>=bs.words.Length || ind>=bs.words.Length) )
+        {  
+                nextLevelScript.GameOver("Lack of blocks");   
+                return;
+        }
 
         //j is the index of the last row of blocks
         if (nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
+            return;
         }
 
         //Debug.Log("finalllllllllllllll" + final);
@@ -214,16 +228,16 @@ public class L4_PlayerController : MonoBehaviour
 
         //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
-        float move2 = Input.GetAxis("Vertical");
+        float move2 = Input.GetAxis("Vertical")*rotateSpeed;
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
             //  Debug.Log("inside move2"+transform.localEulerAngles+ transform.localRotation.eulerAngles.y);
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
             //    Debug.Log("inside move1"+transform.position.x+ transform.position.y );
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         if (Input.GetButtonDown("Fire1"))
         {
@@ -426,6 +440,10 @@ public class L4_PlayerController : MonoBehaviour
                                     //Debug.Log(bs);
                                     GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 1;
+                                    GameObject cde = Instantiate(mini_score_green_instance, canvasTransform);
+                                    cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+5, nestedList[j][0].transform.position.y, 0);
+                                    Destroy(cde, 1.0f);
+                                    animator.SetTrigger("change");
                                     for (int k = 0; k < gs.Length; k++)
                                     {
                                         Destroy(gs[k]);
@@ -462,6 +480,10 @@ public class L4_PlayerController : MonoBehaviour
                                                      StartCoroutine(FlashCoroutine());
                                                  }
                                                 ScoreScript.PlayerScore -= 1;
+                                                GameObject cde = Instantiate(mini_score_red_instance, canvasTransform);
+                                                cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+5, nestedList[j][0].transform.position.y, 0);
+                                                Destroy(cde, 1.0f);
+                                                animator.SetTrigger("change2");
                                                 Debug.Log(ScoreScript.PlayerScore);
 
                                             }

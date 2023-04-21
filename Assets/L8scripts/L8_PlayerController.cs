@@ -52,7 +52,7 @@ public class L8_PlayerController : MonoBehaviour
     public static int numberOfTimesWordHitInOrder = 0;
     public static int numberOfTimesWordHitInReverse = 0;
     public static int zHit = 0;
-    
+    float rotateSpeed = 50f;
     public float flashDuration = 1f; // The duration for which to set the background color
 
     public Color originalColor; // The original background color
@@ -220,9 +220,15 @@ public class L8_PlayerController : MonoBehaviour
 
 
         //j is the index of the last row of blocks
+        if((j>=bs.words.Length || ind>=bs.words.Length) )
+        {  
+         nextLevelScript.GameOver("Lack of blocks");   
+         return;
+        }
         if (nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
+            return;
         }
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -258,18 +264,18 @@ public class L8_PlayerController : MonoBehaviour
 
         //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
-        float rotateSpeed = 0.1f;
+        
         float move2 = Input.GetAxis("Vertical") * rotateSpeed;
 
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
 
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
 
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         if (Input.GetButtonDown("Fire1"))
         {
@@ -1052,21 +1058,23 @@ the value is frequency of letter
        and the frequency of colored blocks which include the same letter.
     */
 
-    public string changecolor(string word, int c)
+     public string changecolor(string word, int c)
     {
         int n = word.Length;
+        string temp = wordCreated;
         string res = "";
         int n1 = wordCreated.Length, i, j;
         for (i = 0; i < n; i++)
         {
-            for (j = 0; j < n1; j++)
+            for (j = 0; j < temp.Length; j++)
             {
-                if (word[i] == wordCreated[j])
+                if (word[i] == temp[j])
                 {
                     break;
                 }
             }
-            if (j == n1)
+
+            if (j >= temp.Length)
             {
                 res += word[i];
             }
@@ -1078,7 +1086,10 @@ the value is frequency of letter
                 {
                     res += "<color=#b90200>" + word[i] + "</color>";
                 }
+                int index = temp.IndexOf(word[i]);
+                temp = temp.Remove(index, 1);
             }
+
 
         }
         return res;

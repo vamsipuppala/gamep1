@@ -16,7 +16,7 @@ public class L14_PlayerController : MonoBehaviour
     public int prev_seq_hit = 0;
     public float jump_time;
     int j = 0;
-    
+    float rotateSpeed = 50f;
     public GameObject mySliderObject; 
     public Slider mySlider;
     public BlockSpawnerScript bs;
@@ -248,9 +248,15 @@ public class L14_PlayerController : MonoBehaviour
 
 
         //j is the index of the last row of blocks
+        if((j>=bs.words.Length || ind>=bs.words.Length) )
+        {  
+         nextLevelScript.GameOver("Lack of blocks");   
+         return;
+        }
         if (nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
+            return;
         }
 
         // if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -268,6 +274,9 @@ public class L14_PlayerController : MonoBehaviour
             {
                 
                 rb.velocity = new Vector2(rb.velocity.x, 20f);
+                boxCollider1.enabled = false;
+                                        // boxCollider2.enabled = false;
+                                        StartCoroutine(EnableBox(2F));
             }
             else{
             rb.velocity = new Vector2(rb.velocity.x, 8f);
@@ -293,18 +302,18 @@ public class L14_PlayerController : MonoBehaviour
 
         //rb.velocity = new Vector2(moveSpeed * move, rb.velocity.y);
         rb.velocity = new Vector2((moveSpeed) * move, rb.velocity.y);
-        float rotateSpeed = 0.1f;
+        
         float move2 = Input.GetAxis("Vertical") * rotateSpeed;
 
         if (move2 < 0 && !(transform.localEulerAngles.z > 300))
         {
 
-            transform.Rotate(0, 0, move2 * (2f));
+            transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         else if (move2 > 0 && !(transform.localEulerAngles.z >= 180 && transform.localEulerAngles.z <= 270))
         {
 
-            transform.Rotate(0, 0, move2 * (2f));
+           transform.Rotate(0, 0, move2 * Time.deltaTime);
         }
         if (Input.GetButtonDown("Fire1"))
         {
@@ -638,7 +647,7 @@ public class L14_PlayerController : MonoBehaviour
                                                     //prev_seq_hit=1;
                                                 }
                                                 else{
-                                                      mySlider.value += 0.3f;
+                                                      mySlider.value += 0.45f;
                                                     prev_seq_hit=1;
                                                 }
 
@@ -646,11 +655,11 @@ public class L14_PlayerController : MonoBehaviour
                                             }
                                         }
                                         dest = true;
-                                        obstacle1.GetComponent<SpriteRenderer>().color = obstacleDisableColor;
-                                        obstacle2.GetComponent<SpriteRenderer>().color = obstacleDisableColor;
+                                        obstacle1.GetComponent<SpriteRenderer>().color = greenColor;
+                                        // obstacle2.GetComponent<SpriteRenderer>().color = obstacleDisableColor;
                                         boxCollider1.enabled = false;
                                         // boxCollider2.enabled = false;
-                                        StartCoroutine(EnableBox(15.0F));
+                                        StartCoroutine(EnableBox(17F));
 
                                     }
 
@@ -664,7 +673,7 @@ public class L14_PlayerController : MonoBehaviour
                                         {
                                             Destroy(gs[k]);
                                         }
-                                        mySlider.value += 1.0f;
+                                        mySlider.value += 0.3f;
                                         prev_seq_hit=0;
                                         dest = true;
                                         wordCreated = "";
@@ -780,6 +789,7 @@ public class L14_PlayerController : MonoBehaviour
         if(gameObject!=null &&  mySlider.value>=1.0f)
         {
             TextMesh text = gameObject.GetComponentInChildren<TextMesh>();
+            
             if(text!=null ){
             GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 2;
@@ -1032,7 +1042,7 @@ public class L14_PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         obstacle1.GetComponent<SpriteRenderer>().color = obstacleOriginalColor;
-        obstacle2.GetComponent<SpriteRenderer>().color = obstacleOriginalColor;
+        // obstacle2.GetComponent<SpriteRenderer>().color = obstacleOriginalColor;
         boxCollider1.enabled = true;
         // boxCollider2.enabled = true;
     }
@@ -1122,21 +1132,23 @@ the value is frequency of letter
        and the frequency of colored blocks which include the same letter.
     */
 
-    public string changecolor(string word, int c)
+     public string changecolor(string word, int c)
     {
         int n = word.Length;
+        string temp = wordCreated;
         string res = "";
         int n1 = wordCreated.Length, i, j;
         for (i = 0; i < n; i++)
         {
-            for (j = 0; j < n1; j++)
+            for (j = 0; j < temp.Length; j++)
             {
-                if (word[i] == wordCreated[j])
+                if (word[i] == temp[j])
                 {
                     break;
                 }
             }
-            if (j == n1)
+
+            if (j >= temp.Length)
             {
                 res += word[i];
             }
@@ -1148,12 +1160,14 @@ the value is frequency of letter
                 {
                     res += "<color=#b90200>" + word[i] + "</color>";
                 }
+                int index = temp.IndexOf(word[i]);
+                temp = temp.Remove(index, 1);
             }
+
 
         }
         return res;
     }
-
     // private void OnCollisionEnter2D(Collision2D collision)
     //{
     //  Debug.Log("oncollision - ");

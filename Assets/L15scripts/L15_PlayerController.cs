@@ -214,14 +214,14 @@ public class L15_PlayerController : MonoBehaviour
         }
          jump_speed = 5f;
          moveSpeed = 3f;
-         rotateSpeed = 1;
+         rotateSpeed = 1f;
 
         }
         else{
              enemy.GetComponent<SpriteRenderer>().color = p_c;
             jump_speed = 8f;
             moveSpeed = 5f;
-            rotateSpeed = 50;
+            rotateSpeed = 50f;
         }
         if(mySlider.value<0.0f)
         {
@@ -278,9 +278,15 @@ public class L15_PlayerController : MonoBehaviour
 
 
         //j is the index of the last row of blocks
+        if((j>=bs.words.Length || ind>=bs.words.Length) )
+        {  
+         nextLevelScript.GameOver("Lack of blocks");   
+         return;
+        }
         if (nestedList[j][0].transform.position.y < 3)
         {
             nextLevelScript.GameOver("blocksTouchedPlayer");
+            return;
         }
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -290,6 +296,9 @@ public class L15_PlayerController : MonoBehaviour
             {
                 
                 rb.velocity = new Vector2(rb.velocity.x, 20f);
+                boxCollider1.enabled = false;
+                                        // boxCollider2.enabled = false;
+                                        StartCoroutine(EnableBox(2F));
                 hinderence_stop_time -=8;
             }
             else{
@@ -677,11 +686,11 @@ public class L15_PlayerController : MonoBehaviour
                                             }
                                         }
                                         dest = true;
-                                        obstacle1.GetComponent<SpriteRenderer>().color = obstacleDisableColor;
+                                        obstacle1.GetComponent<SpriteRenderer>().color = greenColor;
                                         // obstacle2.GetComponent<SpriteRenderer>().color = obstacleDisableColor;
                                         boxCollider1.enabled = false;
-                                        boxCollider2.enabled = false;
-                                        StartCoroutine(EnableBox(15.0F));
+                                        // boxCollider2.enabled = false;
+                                        StartCoroutine(EnableBox(17.0F));
 
                                     }
 
@@ -1070,7 +1079,7 @@ public class L15_PlayerController : MonoBehaviour
         obstacle1.GetComponent<SpriteRenderer>().color = obstacleOriginalColor;
         // obstacle2.GetComponent<SpriteRenderer>().color = obstacleOriginalColor;
         boxCollider1.enabled = true;
-        boxCollider2.enabled = true;
+        // boxCollider2.enabled = true;
     }
 
     IEnumerator FlashCoroutine()
@@ -1158,21 +1167,23 @@ the value is frequency of letter
        and the frequency of colored blocks which include the same letter.
     */
 
-    public string changecolor(string word, int c)
+     public string changecolor(string word, int c)
     {
         int n = word.Length;
+        string temp = wordCreated;
         string res = "";
         int n1 = wordCreated.Length, i, j;
         for (i = 0; i < n; i++)
         {
-            for (j = 0; j < n1; j++)
+            for (j = 0; j < temp.Length; j++)
             {
-                if (word[i] == wordCreated[j])
+                if (word[i] == temp[j])
                 {
                     break;
                 }
             }
-            if (j == n1)
+
+            if (j >= temp.Length)
             {
                 res += word[i];
             }
@@ -1184,7 +1195,10 @@ the value is frequency of letter
                 {
                     res += "<color=#b90200>" + word[i] + "</color>";
                 }
+                int index = temp.IndexOf(word[i]);
+                temp = temp.Remove(index, 1);
             }
+
 
         }
         return res;
