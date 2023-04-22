@@ -2619,6 +2619,7 @@ GameObject:
   - component: {fileID: 1244208843}
   - component: {fileID: 1244208842}
   - component: {fileID: 1244208841}
+  - component: {fileID: 1244208844}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: ScoreText
@@ -2701,6 +2702,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244208839}
   m_CullTransparentMesh: 1
+--- !u!95 &1244208844
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244208839}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9149c0ab3d7d49a4198f112a6199aaf0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1346853570
 GameObject:
   m_ObjectHideFlags: 0
@@ -3704,47 +3725,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   URL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdyYdSvN-HeRb5ttFGYgcLfLDRVM8z6Cj6LPCo2-GFbwSpN_w/formResponse
   _zHitCount: 
---- !u!114 &1689211029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689211015}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e80a44bb108e249e697500ed1b14a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LineOfSight: {fileID: 1951854325}
-  LineOfSight2: {fileID: 1020935551}
-  bs: {fileID: 0}
-  reflections: 5
-  MaxRayDistance: 30
-  LayerDetection:
-    serializedVersion: 2
-    m_Bits: 2147483647
-  rb: {fileID: 0}
-  logic: {fileID: 0}
-  nextLevel: {fileID: 0}
-  messageManagerScript: {fileID: 0}
-  NextLevelScreen: {fileID: 0}
-  wordCreated: 
-  lol1: 
-  goodword: {fileID: 958399787}
-  dangerWord: {fileID: 0}
-  dummy: 
-  text1: {fileID: 0}
-  text2: {fileID: 0}
-  final: 
-  moveSpeed: 16
-  st: 0
-  ct: 0
-  c: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  nextLevelScript: {fileID: 0}
 --- !u!114 &1689211030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3759,6 +3739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LineOfSight: {fileID: 1951854325}
   LineOfSight2: {fileID: 1020935551}
+  animator: {fileID: 1244208844}
   bs: {fileID: 0}
   reflections: 5
   MaxRayDistance: 100

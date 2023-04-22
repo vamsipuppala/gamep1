@@ -3559,6 +3559,7 @@ MonoBehaviour:
   shakeDuration: 2
   shakeAmount: 0.1
   decreaseFactor: 1
+  animator: {fileID: 1755538376}
   st: 0
   ct: 0
   c: {fileID: 0}
@@ -3885,6 +3886,7 @@ GameObject:
   - component: {fileID: 1755538375}
   - component: {fileID: 1755538374}
   - component: {fileID: 1755538373}
+  - component: {fileID: 1755538376}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: ScoreText
@@ -3967,6 +3969,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755538371}
   m_CullTransparentMesh: 1
+--- !u!95 &1755538376
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755538371}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9149c0ab3d7d49a4198f112a6199aaf0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1773210153
 GameObject:
   m_ObjectHideFlags: 0
