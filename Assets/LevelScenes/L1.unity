@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 33451158}
   - component: {fileID: 33451156}
   - component: {fileID: 33451159}
+  - component: {fileID: 33451160}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: ScoreText
@@ -217,6 +218,26 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 00
+--- !u!95 &33451160
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33451154}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9149c0ab3d7d49a4198f112a6199aaf0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &50190205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3002,6 +3023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LineOfSight: {fileID: 1951854325}
   LineOfSight2: {fileID: 1878767243}
+  animator: {fileID: 33451160}
   blinkTime: 0.5
   bs: {fileID: 0}
   reflections: 5

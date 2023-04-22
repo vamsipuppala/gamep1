@@ -13,6 +13,7 @@ public class L1_PlayerControllerOne : MonoBehaviour
     // Line OF Renderer
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
+    public Animator animator;
     public float blinkTime = 1000.5f;
     float rotateSpeed = 50f;
     int j = 0;
@@ -216,6 +217,7 @@ public class L1_PlayerControllerOne : MonoBehaviour
                         GameObject gameObject = hitInfo.collider.gameObject;
                         Destroy(gameObject);
                          ScoreScript.PlayerScore+=1;
+                         animator.SetTrigger("change");
                         
                     //    // Debug.Log("indexxxxxxxxxxxxx   " + GetIndexOfGameObject(gameObject, nestedList));
                     //     numberOfHits = givenWord.Length;
