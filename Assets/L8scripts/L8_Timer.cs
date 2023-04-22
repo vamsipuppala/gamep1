@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class L8_Timer : MonoBehaviour
 {
-    public static float TimeValue = 240;
+    public static float TimeValue = 100;
     //public static float TimeValue = 300; // for collision
     //public static float TimeValue = 10; // for timeout
     private void Start()
     {
-        TimeValue = 240;
+        TimeValue = 100;
     }
     public Text TimerText;
 

@@ -12,7 +12,7 @@ public class L13_NextLevel : MonoBehaviour
     //private int nextSceneToLoad;
     private bool loadScene = false;
     [SerializeField] private TextMeshProUGUI targetScore;
-    public int thresholdScoree = 5;
+    public int thresholdScoree = 10;
     public SendToGoogle sc;
     public L13_PlayerController pc;
 
@@ -65,7 +65,7 @@ public class L13_NextLevel : MonoBehaviour
     public void resetValues()
     {
         ScoreScript.PlayerScore = 0;
-        L7_Timer.TimeValue = 240;
+        L13_Timer.TimeValue = 240;
         //L2_Timer.TimeValue = 300; // time used for testing collision.
         //L2_Timer.TimeValue = 10; // time used for testing timeout.
     }
