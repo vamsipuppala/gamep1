@@ -940,7 +940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LineOfSight: {fileID: 153392232}
-  animator: {fileID: 0}
+  animator: {fileID: 355082700}
   LineOfSight2: {fileID: 422486561}
   prev_seq_hit: 0
   jump_time: 0
@@ -1513,6 +1513,7 @@ GameObject:
   - component: {fileID: 355082699}
   - component: {fileID: 355082698}
   - component: {fileID: 355082697}
+  - component: {fileID: 355082700}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: ScoreText
@@ -1537,7 +1538,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -449, y: -51}
+  m_AnchoredPosition: {x: -422.5, y: -50.3}
   m_SizeDelta: {x: 104.72, y: 83.288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &355082697
@@ -1595,6 +1596,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355082695}
   m_CullTransparentMesh: 1
+--- !u!95 &355082700
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355082695}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9149c0ab3d7d49a4198f112a6199aaf0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &414749369
 GameObject:
   m_ObjectHideFlags: 0

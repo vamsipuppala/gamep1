@@ -13,6 +13,7 @@ public class L15_PlayerController : MonoBehaviour
     // Line OF Renderer
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
+    public Animator animator;
     public GameObject enemy; 
     public float jump_speed=8f;
     public float hinderence_stop_time ;
@@ -659,6 +660,7 @@ public class L15_PlayerController : MonoBehaviour
                                         }
 
                                         ScoreScript.PlayerScore += 2;
+                                        animator.SetTrigger("change");
                                         for (int d = 0; d < 1; d++)
                                         {
                                             if (d < nestedList.Count)
@@ -722,6 +724,7 @@ public class L15_PlayerController : MonoBehaviour
                                         zHit++;
                                         ScoreScript.PlayerScore += 1;
                                     }
+                                    animator.SetTrigger("change");
                                 }
                                 else
                                 {
@@ -735,6 +738,7 @@ public class L15_PlayerController : MonoBehaviour
                                             {
                                                 
                                                 ScoreScript.PlayerScore -= 1;
+                                                animator.SetTrigger("change2");
                                                 mySlider.value = 0.0f;
                                                  prev_seq_hit=0;
                                                 // Debug.Log(ScoreScript.PlayerScore);
@@ -828,6 +832,7 @@ public class L15_PlayerController : MonoBehaviour
             if(text!=null ){
             GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 2;
+                                    animator.SetTrigger("change");
                                     for (int k = 0; k < gs.Length; k++)
                                     {
                                         Destroy(gs[k]);
@@ -1017,6 +1022,7 @@ public class L15_PlayerController : MonoBehaviour
                             //Debug.Log(bs);
                             GameObject[] gs = bs.nestedList[j];
                             ScoreScript.PlayerScore += 1;
+                            animator.SetTrigger("change");
                             for (int k = 0; k < gs.Length; k++)
                             {
                                 Destroy(gs[k]);
@@ -1055,6 +1061,7 @@ public class L15_PlayerController : MonoBehaviour
                                         //     StartCoroutine(FlashCoroutine());
                                         // }
                                         ScoreScript.PlayerScore -= 1;
+                                        animator.SetTrigger("change2");
                                         Debug.Log(ScoreScript.PlayerScore);
 
                                     }

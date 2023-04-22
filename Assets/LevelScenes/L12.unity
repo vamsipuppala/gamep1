@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 186125421}
   - component: {fileID: 186125420}
   - component: {fileID: 186125419}
+  - component: {fileID: 186125422}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: ScoreText
@@ -432,6 +433,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186125417}
   m_CullTransparentMesh: 1
+--- !u!95 &186125422
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186125417}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9149c0ab3d7d49a4198f112a6199aaf0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &188011040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,6 +1207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e479d889639449e7a5eff58eff2d501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 186125422}
   LineOfSight: {fileID: 350585216}
   LineOfSight2: {fileID: 1477995853}
   slider: {fileID: 1605172853}

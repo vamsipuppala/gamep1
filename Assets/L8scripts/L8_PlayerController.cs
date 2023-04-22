@@ -11,6 +11,7 @@ public class L8_PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     // Line OF Renderer
+    public Animator animator;
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
     public float jump_time;
@@ -590,6 +591,7 @@ public class L8_PlayerController : MonoBehaviour
                                         }
 
                                         ScoreScript.PlayerScore += 2;
+
                                         for (int d = 0; d < 1; d++)
                                         {
                                             if (d < nestedList.Count)
@@ -607,6 +609,7 @@ public class L8_PlayerController : MonoBehaviour
                                                 
                                             }
                                         }
+                                        animator.SetTrigger("change");
                                         dest = true;
                                         obstacle1.GetComponent<SpriteRenderer>().color = obstacleDisableColor;
                                         obstacle2.GetComponent<SpriteRenderer>().color = obstacleDisableColor;
@@ -642,6 +645,7 @@ public class L8_PlayerController : MonoBehaviour
                                         zHit++;
                                         ScoreScript.PlayerScore += 1;
                                     }
+                                    animator.SetTrigger("change");
                                 }
                                 else
                                 {
@@ -655,6 +659,7 @@ public class L8_PlayerController : MonoBehaviour
                                             {
                                                 
                                                 ScoreScript.PlayerScore -= 1;
+                                                animator.SetTrigger("change2");
                                                 Debug.Log(ScoreScript.PlayerScore);
                                                  if (!isFlashing)
                                                  {
@@ -918,6 +923,7 @@ public class L8_PlayerController : MonoBehaviour
                             timeTargetWordWasHit += 1;
 
                             j++;
+                            animator.SetTrigger("change");
                             //addCollider(j, bs.nestedList[j]);
                             ind++;
                             localHits = 1;
@@ -946,6 +952,7 @@ public class L8_PlayerController : MonoBehaviour
                                         //     StartCoroutine(FlashCoroutine());
                                         // }
                                         ScoreScript.PlayerScore -= 1;
+                                        animator.SetTrigger("change2");
                                         Debug.Log(ScoreScript.PlayerScore);
 
                                     }

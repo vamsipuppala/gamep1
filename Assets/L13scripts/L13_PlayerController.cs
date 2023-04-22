@@ -13,6 +13,7 @@ public class L13_PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     // Line OF Renderer
+  
     public LineRenderer LineOfSight;
     public Animator animator;
     public LineRenderer LineOfSight2;
@@ -612,6 +613,7 @@ public class L13_PlayerController : MonoBehaviour
                                         }
 
                                         ScoreScript.PlayerScore += 2;
+                                        animator.SetTrigger("change");
                                         for (int d = 0; d < 1; d++)
                                         {
                                             if (d < nestedList.Count)
@@ -679,7 +681,9 @@ public class L13_PlayerController : MonoBehaviour
                                         zHit++;
                                         ScoreScript.PlayerScore += 1;
                                     }
+                                    animator.SetTrigger("change");
                                 }
+
                                 else
                                 {
                                     for (int z1 = 0; z1 < bs.dangerWordss[j].Length; z1++)
@@ -694,6 +698,7 @@ public class L13_PlayerController : MonoBehaviour
                                                // messageManagerScript.ChangeDangerMessageText("You hit : " + wordCreated + "!!");
                                                // messageManagerScript.DisplayDangerMessage(1f);
                                                 ScoreScript.PlayerScore -= 1;
+                                                animator.SetTrigger("change2");
                                                 mySlider.value = 0.0f;
                                                  prev_seq_hit=0;
                                                 // Debug.Log(ScoreScript.PlayerScore);
@@ -782,6 +787,7 @@ public class L13_PlayerController : MonoBehaviour
             if(text!=null ){
             GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 2;
+                                    animator.SetTrigger("change");
                                     for (int k = 0; k < gs.Length; k++)
                                     {
                                         Destroy(gs[k]);
@@ -975,7 +981,7 @@ public class L13_PlayerController : MonoBehaviour
                             {
                                 Destroy(gs[k]);
                             }
-
+                            animator.SetTrigger("change");
                             dest = true;
                             wordCreated = "";
                             timeTargetWordWasHit += 1;
@@ -1009,6 +1015,7 @@ public class L13_PlayerController : MonoBehaviour
                                         //     StartCoroutine(FlashCoroutine());
                                         // }
                                         ScoreScript.PlayerScore -= 1;
+                                        animator.SetTrigger("change2");
                                         Debug.Log(ScoreScript.PlayerScore);
 
                                     }
