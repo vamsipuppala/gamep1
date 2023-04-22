@@ -6,14 +6,14 @@ using UnityEngine.UI;
 
 public class L6_Timer : MonoBehaviour
 {
-    public static float TimeValue = 240;
+    public static float TimeValue = 180;
     //public static float TimeValue = 300; // for collision
     //public static float TimeValue = 10; // for timeout
 
     public Text TimerText;
     private void Start()
     {
-        TimeValue = 240;
+        TimeValue = 180;
     }
 
     // Update is called once per frame
