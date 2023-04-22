@@ -11,6 +11,7 @@ public class L5_PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     // Line OF Renderer
+  
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
     public Animator animator;

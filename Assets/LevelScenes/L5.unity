@@ -520,7 +520,7 @@ Animator:
   m_GameObject: {fileID: 186125417}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c39f70ff5562bd548aa991ffafc1d6bc, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9149c0ab3d7d49a4198f112a6199aaf0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1105,54 +1105,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   URL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSdyYdSvN-HeRb5ttFGYgcLfLDRVM8z6Cj6LPCo2-GFbwSpN_w/formResponse
   _zHitCount: 
---- !u!114 &350585220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 350585215}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3f35876ecaf1c44d96bc8b0c1987d54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LineOfSight: {fileID: 350585216}
-  LineOfSight2: {fileID: 1477995853}
-  bs: {fileID: 0}
-  reflections: 5
-  MaxRayDistance: 100
-  LayerDetection:
-    serializedVersion: 2
-    m_Bits: 2147483647
-  rb: {fileID: 0}
-  logic: {fileID: 0}
-  nextLevel: {fileID: 0}
-  textBlinkScript: {fileID: 0}
-  flashDuration: 1
-  originalColor: {r: 0.79607844, g: 0.6862745, b: 0.59607846, a: 0}
-  NextLevelScreen: {fileID: 0}
-  wordCreated: 
-  lol1: 
-  canvas: {fileID: 0}
-  goodword: {fileID: 0}
-  dangerWord: {fileID: 0}
-  dummy: 
-  text1: {fileID: 0}
-  text2: {fileID: 0}
-  final: 
-  moveSpeed: 16
-  shakeDuration: 2
-  shakeAmount: 0.1
-  decreaseFactor: 1
-  st: 0
-  ct: 0
-  c: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  nextLevelScript: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!50 &350585221
 Rigidbody2D:
   serializedVersion: 4
@@ -4421,7 +4373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215b7d6b2201d6c4986002d1151f12e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimerText: {fileID: 1687272646}
 --- !u!1 &1738383085
 GameObject:
   m_ObjectHideFlags: 0

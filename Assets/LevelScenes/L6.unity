@@ -1191,6 +1191,7 @@ GameObject:
   - component: {fileID: 444277880}
   - component: {fileID: 444277879}
   - component: {fileID: 444277878}
+  - component: {fileID: 444277881}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: ScoreText
@@ -1215,7 +1216,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -449, y: -51}
+  m_AnchoredPosition: {x: -432.9, y: -51.3}
   m_SizeDelta: {x: 104.72, y: 83.288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &444277878
@@ -1273,6 +1274,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444277876}
   m_CullTransparentMesh: 1
+--- !u!95 &444277881
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444277876}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9149c0ab3d7d49a4198f112a6199aaf0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &538428724
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,104 +2392,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 852752353263809531, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
   m_PrefabInstance: {fileID: 945942192}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &945942196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945942193}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9f55502f422a5f4ba73f2947a9b6be9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LineOfSight: {fileID: 945942194}
-  LineOfSight2: {fileID: 1175533850}
-  animator: {fileID: 0}
-  bs: {fileID: 0}
-  reflections: 5
-  MaxRayDistance: 100
-  LayerDetection:
-    serializedVersion: 2
-    m_Bits: 2147483647
-  rb: {fileID: 0}
-  logic: {fileID: 0}
-  nextLevel: {fileID: 0}
-  textBlinkScript: {fileID: 0}
-  flashDuration: 1
-  originalColor: {r: 0, g: 0, b: 0, a: 0}
-  NextLevelScreen: {fileID: 0}
-  wordCreated: 
-  lol1: 
-  goodword: {fileID: 340647809}
-  dangerWord: {fileID: 1693855904}
-  dummy: 
-  text1: {fileID: 0}
-  text2: {fileID: 0}
-  final: 
-  moveSpeed: 16
-  shakeDuration: 2
-  shakeAmount: 0.1
-  decreaseFactor: 1
-  canvas: {fileID: 0}
-  st: 0
-  ct: 0
-  jump_time: 0
-  c: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  nextLevelScript: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
---- !u!114 &945942197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945942193}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3f35876ecaf1c44d96bc8b0c1987d54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LineOfSight: {fileID: 945942194}
-  LineOfSight2: {fileID: 1175533850}
-  bs: {fileID: 0}
-  reflections: 5
-  MaxRayDistance: 100
-  LayerDetection:
-    serializedVersion: 2
-    m_Bits: 2147483647
-  rb: {fileID: 0}
-  logic: {fileID: 0}
-  nextLevel: {fileID: 0}
-  textBlinkScript: {fileID: 0}
-  flashDuration: 1
-  originalColor: {r: 0.91764706, g: 0.8039216, b: 0.65882355, a: 0}
-  NextLevelScreen: {fileID: 0}
-  wordCreated: 
-  lol1: 
-  canvas: {fileID: 0}
-  goodword: {fileID: 0}
-  dangerWord: {fileID: 0}
-  dummy: 
-  text1: {fileID: 0}
-  text2: {fileID: 0}
-  final: 
-  moveSpeed: 16
-  shakeDuration: 2
-  shakeAmount: 0.1
-  decreaseFactor: 1
-  st: 0
-  ct: 0
-  c: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  nextLevelScript: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &945942198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2520,6 +2443,7 @@ MonoBehaviour:
   LineOfSight2: {fileID: 1175533850}
   jump_time: 0
   canvas: {fileID: 553396703}
+  animator: {fileID: 444277881}
   shakeDuration: 2
   shakeAmount: 0.1
   decreaseFactor: 1

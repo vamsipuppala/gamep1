@@ -16,6 +16,7 @@ public class L6_PlayerController : MonoBehaviour
     public float  jump_time;
     public GameObject canvas;
     float rotateSpeed = 50f;
+    public Animator animator;
     
     int j = 0;
     public float shakeDuration = 2f; //duration of the shake
@@ -625,6 +626,7 @@ public class L6_PlayerController : MonoBehaviour
                                    
                                         GameObject[] gs = bs.nestedList[j];
                                         ScoreScript.PlayerScore += 1;
+                                        
                                         for (int k = 0; k < gs.Length; k++)
                                         {
                                             Destroy(gs[k]);
@@ -644,7 +646,10 @@ public class L6_PlayerController : MonoBehaviour
                                     {
                                         zHit++;
                                         ScoreScript.PlayerScore += 1;
+
+
                                     }
+                                    animator.SetTrigger("change");
                                 }
                                 else
                                 {
@@ -663,6 +668,7 @@ public class L6_PlayerController : MonoBehaviour
                                                      StartCoroutine(FlashCoroutine());
                                                  }
                                                 ScoreScript.PlayerScore -= 1;
+                                                animator.SetTrigger("change2");
                                                 Debug.Log(ScoreScript.PlayerScore);
 
                                             }
@@ -1051,6 +1057,7 @@ the value is frequency of letter
                             //addCollider(j, bs.nestedList[j]);
                             ind++;
                             localHits = 1;
+                            animator.SetTrigger("change");
 
                             // targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
                             // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
@@ -1076,6 +1083,7 @@ the value is frequency of letter
                                         //     StartCoroutine(FlashCoroutine());
                                         // }
                                         ScoreScript.PlayerScore -= 1;
+                                        animator.SetTrigger("change2");
                                         Debug.Log(ScoreScript.PlayerScore);
 
                                     }

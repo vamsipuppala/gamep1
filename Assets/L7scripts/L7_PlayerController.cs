@@ -11,6 +11,7 @@ public class L7_PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     // Line OF Renderer
+    public Animator animator;
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
     public float jump_time;
@@ -585,6 +586,7 @@ public class L7_PlayerController : MonoBehaviour
                                         }
 
                                          ScoreScript.PlayerScore += 2;
+                                         
                                         for (int d = 0; d < 1; d++)
                                         {
                                             if (d < nestedList.Count)
@@ -611,6 +613,7 @@ public class L7_PlayerController : MonoBehaviour
                                             }
                                         }
                                         dest = true;
+                                        animator.SetTrigger("change");
 
                                     }
 
@@ -631,6 +634,7 @@ public class L7_PlayerController : MonoBehaviour
                                         j++;
                                         ind++;
                                         localHits = 1;
+                                        
 
 
                                         // targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
@@ -641,6 +645,7 @@ public class L7_PlayerController : MonoBehaviour
                                         zHit++;
                                         ScoreScript.PlayerScore += 1;
                                     }
+                                    animator.SetTrigger("change");
                                 }
                                 else
                                 {
@@ -660,6 +665,7 @@ public class L7_PlayerController : MonoBehaviour
                                                      StartCoroutine(FlashCoroutine());
                                                  }
                                                 ScoreScript.PlayerScore -= 1;
+                                                animator.SetTrigger("change2");
                                                 Debug.Log(ScoreScript.PlayerScore);
 
                                             }
@@ -934,7 +940,7 @@ public class L7_PlayerController : MonoBehaviour
                             //addCollider(j, bs.nestedList[j]);
                             ind++;
                             localHits = 1;
-
+                            animator.SetTrigger("change");
                             // targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
                             // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
                             // }
@@ -959,6 +965,7 @@ public class L7_PlayerController : MonoBehaviour
                                         //     StartCoroutine(FlashCoroutine());
                                         // }
                                         ScoreScript.PlayerScore -= 1;
+                                        animator.SetTrigger("change2");
                                         Debug.Log(ScoreScript.PlayerScore);
 
                                     }
