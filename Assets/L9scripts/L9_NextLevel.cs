@@ -49,7 +49,7 @@ public class L9_NextLevel : MonoBehaviour
             //sc.endGameWithZHitCount("2", L2_PlayerController.zHit.ToString());
             loadScene = true;
             resetValues();
-            SceneManager.LoadScene("LevelScenes/CompleteLevel10");
+            SceneManager.LoadScene("LevelScenes/CompleteLevel9");
         }
 
         if (ScoreScript.PlayerScore < thresholdScoree && L9_Timer.TimeValue <= 0)
