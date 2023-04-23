@@ -25,7 +25,9 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/Users/chandinivelilani/Documents/GitHub/gamep1"
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/chandinivelilani/Documents/GitHub/gamep1",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -36,6 +38,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1679889072806</updated>
+      <workItem from="1682214029107" duration="224000" />
     </task>
     <servers />
   </component>

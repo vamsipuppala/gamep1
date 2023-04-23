@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="connectwebgl">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/connectwebgl.zip!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
