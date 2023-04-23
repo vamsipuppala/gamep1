@@ -775,7 +775,7 @@ public class L9_PlayerController : MonoBehaviour
 
     //}
 
-    private void OnCollisionEnter2D(Collision2D collision)
+ private void OnCollisionEnter2D(Collision2D collision)
     {
 
         GameObject gameObject = collision.gameObject;
@@ -793,7 +793,7 @@ public class L9_PlayerController : MonoBehaviour
 
                 String givenWord = bs.words[j][0];
                 string[] givenDangerWord = bs.dangerWordss[j];
-                Debug.Log(text.text.ToString());
+                // Debug.Log(text.text.ToString());
 
                 nestedList = bs.nestedList;
 
@@ -855,7 +855,8 @@ public class L9_PlayerController : MonoBehaviour
                     else
                     {
 
-                        if (localHits > numberOfHits)
+                       if (localHits > numberOfHits && !(z_is == true && localHits - 1 <= numberOfHits) && text.text[0] != 'Z')
+                             
                         {
                             // Debug.Log("no shooting");
                         }
@@ -906,7 +907,21 @@ public class L9_PlayerController : MonoBehaviour
 
                         }
 
-                        bool dest = false;
+                       
+                          bool dest = false;
+                                if (wordCreated.Contains('Z'))
+                                {
+                                    z_is = true;
+
+                                    wordCreated = wordCreated.Replace("Z", "");
+                                    Debug.Log("Z deleted" + wordCreated);
+                                }
+                                else
+                                {
+                                    z_is = false;
+                                }
+                                
+                                int xcv =0;
 
                         if ((wordCreated.Length == bs.words[j][0].Length) && findMatch(wordCreated, bs.words[j][0]))
                         {
@@ -954,13 +969,50 @@ public class L9_PlayerController : MonoBehaviour
                             // else 
                             // {
                             //Debug.Log(bs);
+                            int tru =0;
+                             if (bs.words[j][0].Equals(wordCreated) || Reverse(bs.words[j][0]).Equals(wordCreated))
+                                    {  tru++;
+                                       
+                                        
+
+                                         ScoreScript.PlayerScore += 1;
+                                         
+                                         
+                                                  }
+                            
+                            
                             GameObject[] gs = bs.nestedList[j];
                             ScoreScript.PlayerScore += 1;
+                            if (tru ==1 && z_is){
+                                GameObject cde = Instantiate(mini_score_green3_instance, canvasTransform);
+                                       cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
+
+                            }
+                            else if(tru==1 && !z_is){
+
+                                GameObject cde = Instantiate(mini_score_green2_instance, canvasTransform);
+                                       cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
+                            }
+                            else{
+                                GameObject cde = Instantiate(mini_score_green_instance, canvasTransform);
+                                       cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
+
+                            }
+                            if(z_is){
+                                 ScoreScript.PlayerScore += 1;
+                                 z_is=false;
+                            }
+                            
                             for (int k = 0; k < gs.Length; k++)
                             {
                                 Destroy(gs[k]);
                             }
-                            animator.SetTrigger("change");
 
                             dest = true;
                             wordCreated = "";
@@ -970,15 +1022,12 @@ public class L9_PlayerController : MonoBehaviour
                             //addCollider(j, bs.nestedList[j]);
                             ind++;
                             localHits = 1;
-
+                            animator.SetTrigger("change");
                             // targetLetterFrequency = InitiateLetterFrequency(bs.words[j][0]);
                             // targetColoredLetterFrequency = InitiateLetterFrequencyToZero(bs.words[j][0]);
                             // }
-                            // if(z_is == true)
-                            //     {
-                            // zHit++;
-                            //         ScoreScript.PlayerScore += 1;
-                            //     }
+                            
+
                         }
                         else
                         {
@@ -995,13 +1044,21 @@ public class L9_PlayerController : MonoBehaviour
                                              StartCoroutine(FlashCoroutine());
                                          }
                                         ScoreScript.PlayerScore -= 1;
+                                        GameObject cde = Instantiate(mini_score_red_instance, canvasTransform);
+                                       cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
                                         animator.SetTrigger("change2");
-                                        Debug.Log(ScoreScript.PlayerScore);
+                                        // Debug.Log(ScoreScript.PlayerScore);
 
                                     }
                                 }
                             }
                         }
+                        if(z_is == true && !dest) 
+                                {
+                                        wordCreated+="Z";
+                                }
 
 
 
@@ -1013,7 +1070,6 @@ public class L9_PlayerController : MonoBehaviour
 
 
     }
-
     IEnumerator FlashCoroutine()
     {
         isFlashing = true;
