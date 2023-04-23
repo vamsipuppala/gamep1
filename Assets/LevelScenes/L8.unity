@@ -843,11 +843,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 852752353263809529, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Radius
-      value: 0.8432281
+      value: 0.7988908
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809529, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Offset.y
-      value: 0.1567719
+      value: 0.112434626
       objectReference: {fileID: 0}
     - target: {fileID: 852752353263809530, guid: 6d9f17d39f26f8e498d871cc36c63166, type: 3}
       propertyPath: m_Color.b
@@ -1014,6 +1014,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5044c575fa3ce904c8b36aae7e39c29c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasTransform: {fileID: 1007590136}
+  mini_score_red_instance: {fileID: 2124117844742835262, guid: 105e72ca549d4e7419ca46a197a5b0b2, type: 3}
+  mini_score_green_instance: {fileID: 1627795568908734327, guid: c520e55be177a784bbe3d8fb3cc6b293, type: 3}
+  mini_score_green2_instance: {fileID: 4363697785354907581, guid: 43c86dc6f7f145447b4198754d847d9e, type: 3}
+  mini_score_green3_instance: {fileID: 4363697785354907581, guid: c093173bf3910c24faa60c8c70dbb8c4, type: 3}
   animator: {fileID: 1091245290}
   LineOfSight: {fileID: 227852192}
   LineOfSight2: {fileID: 754708136}

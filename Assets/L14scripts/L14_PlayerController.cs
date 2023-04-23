@@ -15,6 +15,7 @@ public class L14_PlayerController : MonoBehaviour
     public GameObject mini_score_red_instance;
     public GameObject mini_score_green_instance;
     public GameObject mini_score_green2_instance;
+    public GameObject mini_score_green3_instance;
     public LineRenderer LineOfSight;
     public Animator animator;
     public LineRenderer LineOfSight2;
@@ -617,6 +618,7 @@ public class L14_PlayerController : MonoBehaviour
                                 {
                                     z_is = false;
                                 }
+                                int xcv=0;
                                 if (wordCreated.Length == bs.words[j][0].Length && findMatch(wordCreated, bs.words[j][0]))
                                 {
 
@@ -633,6 +635,7 @@ public class L14_PlayerController : MonoBehaviour
                                         }
 
                                         ScoreScript.PlayerScore += 2;
+                                        xcv+=2;
                                         animator.SetTrigger("change");
                                         for (int d = 0; d < 1; d++)
                                         {
@@ -675,6 +678,7 @@ public class L14_PlayerController : MonoBehaviour
 
                                         GameObject[] gs = bs.nestedList[j];
                                         ScoreScript.PlayerScore += 1;
+                                        xcv+=1;
                                         
                                         for (int k = 0; k < gs.Length; k++)
                                         {
@@ -697,6 +701,32 @@ public class L14_PlayerController : MonoBehaviour
                                     {
                                         zHit++;
                                         ScoreScript.PlayerScore += 1;
+                                        xcv+=1;
+                                    }
+                                     if(xcv==1)
+                                    {
+                                         GameObject cde = Instantiate(mini_score_green_instance, canvasTransform);
+                                     cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
+                                    }
+                                    else if(xcv==2)
+                                    {
+                                         GameObject cde = Instantiate(mini_score_green2_instance, canvasTransform);
+                                       cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
+                                    }
+                                    else if(xcv==3)
+                                    {
+                                         GameObject cde = Instantiate(mini_score_green3_instance, canvasTransform);
+                                         
+                                         
+                                        //  cde.GetComponentInChildren<TextMesh>().text = "+3"; 
+                                         
+                                    cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
                                     }
                                     animator.SetTrigger("change");
                                 }
@@ -712,6 +742,9 @@ public class L14_PlayerController : MonoBehaviour
                                             {
                                                 
                                                 ScoreScript.PlayerScore -= 1;
+                                                GameObject cde = Instantiate(mini_score_red_instance, canvasTransform);
+                                                cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);                       
+                                                Destroy(cde, 1.0f);
                                                 animator.SetTrigger("change2");
                                                 mySlider.value = 0.0f;
                                                  prev_seq_hit=0;
