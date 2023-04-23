@@ -105,7 +105,7 @@ public class L2_PlayerController : MonoBehaviour
     {
 
         string folderName = "Videos";
-        string fileName = "L2-Guide";
+        string fileName = "L2-Final";
 
         string fileFormat = ".mp4";
 
