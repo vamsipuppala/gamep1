@@ -14,6 +14,7 @@ public class L2_PlayerController : MonoBehaviour
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
     float rotateSpeed = 50f;
+    public Animator animator;
 
     int j = 0;
     public BlockSpawnerScript bs;
@@ -400,6 +401,7 @@ public class L2_PlayerController : MonoBehaviour
                                         // Debug.Log("!!!!!!!!!");
                                         GameObject[] gs = bs.nestedList[j];
                                         ScoreScript.PlayerScore += 1;
+                                        animator.SetTrigger("change");
                                         for (int k = 0; k < gs.Length; k++)
                                         {
                                             Destroy(gs[k]);

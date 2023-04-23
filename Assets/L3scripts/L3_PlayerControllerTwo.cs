@@ -52,7 +52,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
     public float shakeDuration = 2f; //duration of the shake
     public float shakeAmount = 0.1f; //amount of shake
     public float decreaseFactor = 1.0f; //how fast the shake decreases
-
+    public Animator animator;
     private Vector3 originalPos; //original position of the camera
     private float shakeTimer = 0.3f; //timer for the shake
     public float st, ct;
@@ -452,6 +452,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                             //Debug.Log(bs);
                                             GameObject[] gs = bs.nestedList[j];
                                             ScoreScript.PlayerScore += 1;
+                                            animator.SetTrigger("change");
                                             for (int k = 0; k < gs.Length; k++)
                                             {
                                                 Destroy(gs[k]);
@@ -490,6 +491,7 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                                      StartCoroutine(FlashCoroutine());
                                                  }
                                                 ScoreScript.PlayerScore -= 1;
+                                                    animator.SetTrigger("change2");
                                                         Debug.Log(ScoreScript.PlayerScore);
 
                                                     }

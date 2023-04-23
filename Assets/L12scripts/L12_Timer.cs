@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class L12_Timer : MonoBehaviour
 {
-    public static float TimeValue = 240;
+    public static float TimeValue = 300;
     //public static float TimeValue = 300; // for collision
     //public static float TimeValue = 10; // for timeout
 
@@ -14,7 +14,7 @@ public class L12_Timer : MonoBehaviour
 
     private void Start()
     {
-        TimeValue = 240;
+        TimeValue = 300;
     }
 
     // Update is called once per frame

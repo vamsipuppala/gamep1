@@ -11,6 +11,7 @@ public class L10_PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     // Line OF Renderer
+    public Animator animator;
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
     public Slider slider;
@@ -613,6 +614,7 @@ public class L10_PlayerController : MonoBehaviour
                                         }
 
                                          ScoreScript.PlayerScore += 2;
+                                         animator.SetTrigger("change");
                                         for (int d = 0; d < 1; d++)
                                         {
                                             if (d < nestedList.Count)
@@ -680,6 +682,7 @@ public class L10_PlayerController : MonoBehaviour
                                         zHit++;
                                         ScoreScript.PlayerScore += 1;
                                     }
+                                    animator.SetTrigger("change");
                                 }
                                 else
                                 {
@@ -699,6 +702,7 @@ public class L10_PlayerController : MonoBehaviour
                                                     StartCoroutine(FlashCoroutine());
                                                 }
                                                 ScoreScript.PlayerScore -= 1;
+                                                animator.SetTrigger("change2");
                                                 // Debug.Log(ScoreScript.PlayerScore);
                                                  mySlider.value = 0.0f;
                                                  prev_seq_hit=0;
@@ -946,6 +950,7 @@ the value is frequency of letter
             if(text!=null ){
             GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 2;
+                                    animator.SetTrigger("change");
                                     for (int k = 0; k < gs.Length; k++)
                                     {
                                         Destroy(gs[k]);
@@ -1135,6 +1140,7 @@ the value is frequency of letter
                                     //Debug.Log(bs);
                                     GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 1;
+                                    animator.SetTrigger("change");
                                     for (int k = 0; k < gs.Length; k++)
                                     {
                                         Destroy(gs[k]);
@@ -1173,7 +1179,8 @@ the value is frequency of letter
                                                  //   StartCoroutine(FlashCoroutine());
                                                 //}
                                                 ScoreScript.PlayerScore -= 1;
-                                                Debug.Log(ScoreScript.PlayerScore);
+                                                animator.SetTrigger("change2");
+                                                
 
                                             }
                                         }

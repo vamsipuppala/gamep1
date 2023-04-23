@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 186125421}
   - component: {fileID: 186125420}
   - component: {fileID: 186125419}
+  - component: {fileID: 186125422}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: ScoreText
@@ -374,7 +375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -449, y: -51}
+  m_AnchoredPosition: {x: -424.2, y: -48.9}
   m_SizeDelta: {x: 104.72, y: 83.288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &186125419
@@ -432,6 +433,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186125417}
   m_CullTransparentMesh: 1
+--- !u!95 &186125422
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186125417}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9149c0ab3d7d49a4198f112a6199aaf0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &188011040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,6 +1203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d648e53fabea34aafee6f7fcec9a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 186125422}
   LineOfSight: {fileID: 350585216}
   LineOfSight2: {fileID: 1477995853}
   slider: {fileID: 1605172853}
@@ -2015,8 +2037,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -40.11, y: -28}
-  m_SizeDelta: {x: 1024.69, y: 800}
+  m_AnchoredPosition: {x: -36.72, y: -28.65}
+  m_SizeDelta: {x: 1171.25, y: 923.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &679255063
 MonoBehaviour:
@@ -2324,8 +2346,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -41.67, y: -31}
-  m_SizeDelta: {x: 915.35, y: 700}
+  m_AnchoredPosition: {x: -32.8, y: -24.97}
+  m_SizeDelta: {x: 1003.75, y: 827.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &953420959
 MonoBehaviour:
@@ -2533,7 +2555,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 431.01, y: 345}
+  m_AnchoredPosition: {x: 498, y: 387}
   m_SizeDelta: {x: 30, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1112619495
@@ -3348,7 +3370,7 @@ Canvas:
   m_GameObject: {fileID: 1329507012}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1823825878}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -3609,8 +3631,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -41, y: -31}
-  m_SizeDelta: {x: 800, y: 700}
+  m_AnchoredPosition: {x: -32.798, y: -24.97}
+  m_SizeDelta: {x: 1003.7, y: 827.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!328 &1440327430
 VideoPlayer:

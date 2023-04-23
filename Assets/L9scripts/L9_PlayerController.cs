@@ -16,6 +16,7 @@ public class L9_PlayerController : MonoBehaviour
     public float jump_time;
     public GameObject canvas;
     float rotateSpeed = 50f;
+    public Animator animator;
     int j = 0;
     public BlockSpawnerScript bs;
     public float flashDuration = 1f; // The duration for which to set the background color
@@ -122,6 +123,9 @@ public class L9_PlayerController : MonoBehaviour
         string fileName = "L9-Guide";
 
         string fileFormat = ".mp4";
+        Debug.Log((float)System.Convert.ToInt32(redHexCode.Substring(1, 2), 16) / 255f);
+        Debug.Log((float)System.Convert.ToInt32(redHexCode.Substring(3, 2), 16) / 255f);
+        Debug.Log((float)System.Convert.ToInt32(redHexCode.Substring(5, 2), 16) / 255f);
 
         UnityEngine.Video.VideoPlayer videoPlayer;
 
@@ -588,6 +592,7 @@ public class L9_PlayerController : MonoBehaviour
                                         }
 
                                         ScoreScript.PlayerScore += 2;
+                                        animator.SetTrigger("change");
                                         for (int d = 0; d < 1; d++)
                                         {
                                             if (d < nestedList.Count)
@@ -644,6 +649,7 @@ public class L9_PlayerController : MonoBehaviour
                                         zHit++;
                                         ScoreScript.PlayerScore += 1;
                                     }
+                                    animator.SetTrigger("change");
                                 }
                                 else
                                 {
@@ -659,6 +665,7 @@ public class L9_PlayerController : MonoBehaviour
                                                // messageManagerScript.ChangeDangerMessageText("You hit : " + wordCreated + "!!");
                                                // messageManagerScript.DisplayDangerMessage(1f);
                                                 ScoreScript.PlayerScore -= 1;
+                                                animator.SetTrigger("change2");
                                                 Debug.Log(ScoreScript.PlayerScore);
                                                  if (!isFlashing)
                                                  {
@@ -916,6 +923,7 @@ public class L9_PlayerController : MonoBehaviour
                             {
                                 Destroy(gs[k]);
                             }
+                            animator.SetTrigger("change");
 
                             dest = true;
                             wordCreated = "";
@@ -950,6 +958,7 @@ public class L9_PlayerController : MonoBehaviour
                                         //     StartCoroutine(FlashCoroutine());
                                         // }
                                         ScoreScript.PlayerScore -= 1;
+                                        animator.SetTrigger("change2");
                                         Debug.Log(ScoreScript.PlayerScore);
 
                                     }

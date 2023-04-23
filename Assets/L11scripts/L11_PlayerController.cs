@@ -11,6 +11,7 @@ public class L11_PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     // Line OF Renderer
+    public Animator animator;
     public LineRenderer LineOfSight;
     public GameObject enemy; 
     public float rotateSpeed = 50f;
@@ -649,6 +650,7 @@ public class L11_PlayerController : MonoBehaviour
                                         }
 
                                          ScoreScript.PlayerScore += 2;
+                                         animator.SetTrigger("change");
                                         for (int d = 0; d < 1; d++)
                                         {
                                             if (d < nestedList.Count)
@@ -716,6 +718,7 @@ public class L11_PlayerController : MonoBehaviour
                                         zHit++;
                                         ScoreScript.PlayerScore += 1;
                                     }
+                                    animator.SetTrigger("change");
                                 }
                                 else
                                 {
@@ -735,6 +738,7 @@ public class L11_PlayerController : MonoBehaviour
                                                     StartCoroutine(FlashCoroutine());
                                                 }
                                                 ScoreScript.PlayerScore -= 1;
+                                                animator.SetTrigger("change2");
                                                 // Debug.Log(ScoreScript.PlayerScore);
                                                  mySlider.value = 0.0f;
                                                  prev_seq_hit=0;
@@ -992,7 +996,7 @@ the value is frequency of letter
                                         Destroy(gs[k]);
                                     }
 
-                                    
+                                    animator.SetTrigger("change");
                                     wordCreated = "";
                                     timeTargetWordWasHit += 1;
 
@@ -1180,6 +1184,7 @@ the value is frequency of letter
                                     {
                                         Destroy(gs[k]);
                                     }
+                                    animator.SetTrigger("change");
 
                                     dest = true;
                                     wordCreated = "";
@@ -1214,7 +1219,8 @@ the value is frequency of letter
                                                  //   StartCoroutine(FlashCoroutine());
                                                 //}
                                                 ScoreScript.PlayerScore -= 1;
-                                                Debug.Log(ScoreScript.PlayerScore);
+                                                animator.SetTrigger("change2");
+                                               
 
                                             }
                                         }
