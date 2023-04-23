@@ -716,10 +716,10 @@ public class Lfun_blind_PlayerController : MonoBehaviour
                                                 //mmodification
                                                 //messageManagerScript.ChangeDangerMessageText("You hit : " + wordCreated + "!!");
                                                 //messageManagerScript.DisplayDangerMessage(1f);
-                                                //if (!isFlashing)
-                                                //{
-                                                //    StartCoroutine(FlashCoroutine());
-                                                //}
+                                                if (!isFlashing)
+                                                {
+                                                    StartCoroutine(FlashCoroutine());
+                                                }
                                                 ScoreScript.PlayerScore -= 1;
                                                 animator.SetTrigger("change2");
                                                 // Debug.Log(ScoreScript.PlayerScore);
@@ -1207,10 +1207,10 @@ the value is frequency of letter
 
                                             if (findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                             {
-                                                //if (!isFlashing)
-                                                //{
-                                                 //   StartCoroutine(FlashCoroutine());
-                                                //}
+                                                if (!isFlashing)
+                                                {
+                                                   StartCoroutine(FlashCoroutine());
+                                                }
                                                 ScoreScript.PlayerScore -= 1;
                                                 animator.SetTrigger("change2");
                                                 
