@@ -960,10 +960,10 @@ public class L7_PlayerController : MonoBehaviour
 
                                     if (findMatch(wordCreated, bs.dangerWordss[j][z1]))
                                     {
-                                        // if (!isFlashing)
-                                        // {
-                                        //     StartCoroutine(FlashCoroutine());
-                                        // }
+                                         if (!isFlashing)
+                                         {
+                                             StartCoroutine(FlashCoroutine());
+                                         }
                                         ScoreScript.PlayerScore -= 1;
                                         animator.SetTrigger("change2");
                                         Debug.Log(ScoreScript.PlayerScore);
