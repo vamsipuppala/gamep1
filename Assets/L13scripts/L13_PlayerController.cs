@@ -13,6 +13,10 @@ public class L13_PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     // Line OF Renderer
+    public Transform canvasTransform; 
+    public GameObject mini_score_red_instance;
+    public GameObject mini_score_green_instance;
+    public GameObject mini_score_green2_instance;
   
     public LineRenderer LineOfSight;
     public Animator animator;

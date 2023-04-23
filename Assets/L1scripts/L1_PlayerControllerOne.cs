@@ -11,6 +11,10 @@ public class L1_PlayerControllerOne : MonoBehaviour
 {
     // Start is called before the first frame update
     // Line OF Renderer
+    public Transform canvasTransform; 
+    public GameObject mini_score_red_instance;
+    public GameObject mini_score_green_instance;
+    public GameObject mini_score_green2_instance;
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
     public Animator animator;
@@ -217,7 +221,27 @@ public class L1_PlayerControllerOne : MonoBehaviour
                         GameObject gameObject = hitInfo.collider.gameObject;
                         Destroy(gameObject);
                          ScoreScript.PlayerScore+=1;
+
                          animator.SetTrigger("change");
+                         int uyi=0;
+                         for(int c12=0; c12<2;c12++)
+                         {
+                            for(int c22=0; c22<nestedList[c12].Length;c22++)
+                            {
+                               if (nestedList[c12][c22] != null && !nestedList[c12][c22].Equals(null)) {
+                                        // Object is not destroyed
+                                        GameObject cde = Instantiate(mini_score_green_instance, canvasTransform);
+                                     cde.transform.position = new Vector3(nestedList[c12][c22].transform.position.x+570, (float)((float)(nestedList[c12][c22].transform.position.y*300)/(float)13.3), 0);
+
+                                    Destroy(cde, 1.0f);
+                                    uyi++;
+                                    break;
+                                    } 
+                            }
+                            if(uyi>0)
+                            break;
+                         }
+                           
                         
                     //    // Debug.Log("indexxxxxxxxxxxxx   " + GetIndexOfGameObject(gameObject, nestedList));
                     //     numberOfHits = givenWord.Length;

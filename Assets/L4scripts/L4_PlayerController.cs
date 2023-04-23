@@ -11,6 +11,7 @@ public class L4_PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     // Line OF Renderer
+  
     public LineRenderer LineOfSight;
     public GameObject mini_score_red_instance;
     public GameObject mini_score_green_instance;
@@ -125,6 +126,7 @@ public class L4_PlayerController : MonoBehaviour
         //int ind=0;
         st = Time.time;
         originalColor = Camera.main.backgroundColor;
+        
         originalPos = transform.localPosition;
         Physics2D.queriesStartInColliders = false;
         rb = GetComponent<Rigidbody2D>();
@@ -441,7 +443,7 @@ public class L4_PlayerController : MonoBehaviour
                                     GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 1;
                                     GameObject cde = Instantiate(mini_score_green_instance, canvasTransform);
-                                    cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+5, nestedList[j][0].transform.position.y, 0);
+                                     cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
                                     Destroy(cde, 1.0f);
                                     animator.SetTrigger("change");
                                     for (int k = 0; k < gs.Length; k++)
@@ -481,7 +483,9 @@ public class L4_PlayerController : MonoBehaviour
                                                  }
                                                 ScoreScript.PlayerScore -= 1;
                                                 GameObject cde = Instantiate(mini_score_red_instance, canvasTransform);
-                                                cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+5, nestedList[j][0].transform.position.y, 0);
+                                               
+                                                cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                                
                                                 Destroy(cde, 1.0f);
                                                 animator.SetTrigger("change2");
                                                 Debug.Log(ScoreScript.PlayerScore);

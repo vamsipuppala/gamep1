@@ -3021,6 +3021,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4507821af78c8474d8ae7bad22da7dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasTransform: {fileID: 818967100}
+  mini_score_red_instance: {fileID: 2124117844742835262, guid: 105e72ca549d4e7419ca46a197a5b0b2, type: 3}
+  mini_score_green_instance: {fileID: 1627795568908734327, guid: c520e55be177a784bbe3d8fb3cc6b293, type: 3}
+  mini_score_green2_instance: {fileID: 4363697785354907581, guid: 43c86dc6f7f145447b4198754d847d9e, type: 3}
   LineOfSight: {fileID: 1951854325}
   LineOfSight2: {fileID: 1878767243}
   animator: {fileID: 33451160}

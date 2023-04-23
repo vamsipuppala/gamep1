@@ -11,7 +11,7 @@ public class L5_PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     // Line OF Renderer
-  
+    public Transform canvasTransform; 
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
     public Animator animator;
@@ -22,6 +22,10 @@ public class L5_PlayerController : MonoBehaviour
     public LayerMask LayerDetection;
     //public float moveSpeed = 16f;
     [SerializeField] private Rigidbody2D rb;
+    public GameObject mini_score_red_instance;
+    public GameObject mini_score_green_instance;
+   
+    public GameObject mini_score_green2_instance;
     public LogicManagerScript logic;
     public NextLevelScript nextLevel;
         //mmodification
@@ -458,6 +462,9 @@ public class L5_PlayerController : MonoBehaviour
                                     GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 1;
                                     animator.SetTrigger("change");
+                                      GameObject cde = Instantiate(mini_score_green_instance, canvasTransform);
+                                     cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                    Destroy(cde, 1.0f);
                                     for (int k = 0; k < gs.Length; k++)
                                     {
                                         Destroy(gs[k]);
@@ -498,8 +505,10 @@ public class L5_PlayerController : MonoBehaviour
                                                 ScoreScript.PlayerScore -= 1;
                                                 
                                                 animator.SetTrigger("change2");
-                                                Debug.Log(ScoreScript.PlayerScore);
-
+                                                  GameObject cde = Instantiate(mini_score_red_instance, canvasTransform);
+                                     cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                    Destroy(cde, 1.0f);
+                                              
                                             }
                                         }
                                     }
@@ -946,7 +955,11 @@ public class L5_PlayerController : MonoBehaviour
                                     //Debug.Log(bs);
                                     GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 1;
+
                                     animator.SetTrigger("change");
+                                      GameObject cde = Instantiate(mini_score_green_instance, canvasTransform);
+                                     cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                    Destroy(cde, 1.0f);
                                     for (int k = 0; k < gs.Length; k++)
                                     {
                                         Destroy(gs[k]);
@@ -986,6 +999,9 @@ public class L5_PlayerController : MonoBehaviour
                                                 // }
                                                 ScoreScript.PlayerScore -= 1;
                                                 animator.SetTrigger("change2");
+                                                  GameObject cde = Instantiate(mini_score_red_instance, canvasTransform);
+                                     cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                    Destroy(cde, 1.0f);
                                                 Debug.Log(ScoreScript.PlayerScore);
 
                                             }

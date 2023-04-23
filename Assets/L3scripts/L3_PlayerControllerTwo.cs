@@ -11,6 +11,10 @@ public class L3_PlayerControllerTwo : MonoBehaviour
 {
     // Start is called before the first frame update
     // Line OF Renderer
+    public Transform canvasTransform; 
+    public GameObject mini_score_red_instance;
+    public GameObject mini_score_green_instance;
+    public GameObject mini_score_green2_instance;
     public LineRenderer LineOfSight;
     public LineRenderer LineOfSight2;
     float rotateSpeed = 50f;
@@ -453,6 +457,9 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                             GameObject[] gs = bs.nestedList[j];
                                             ScoreScript.PlayerScore += 1;
                                             animator.SetTrigger("change");
+                                              GameObject cde = Instantiate(mini_score_green_instance, canvasTransform);
+                                     cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                    Destroy(cde, 1.0f);
                                             for (int k = 0; k < gs.Length; k++)
                                             {
                                                 Destroy(gs[k]);
@@ -492,7 +499,10 @@ public class L3_PlayerControllerTwo : MonoBehaviour
                                                  }
                                                 ScoreScript.PlayerScore -= 1;
                                                     animator.SetTrigger("change2");
-                                                        Debug.Log(ScoreScript.PlayerScore);
+                                                      GameObject cde = Instantiate(mini_score_red_instance, canvasTransform);
+                                     cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                    Destroy(cde, 1.0f);
+                                                        
 
                                                     }
                                                 }
