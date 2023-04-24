@@ -692,6 +692,31 @@ public class L12_PlayerController : MonoBehaviour
                                         ScoreScript.PlayerScore += 1;
                                         xcv+=1;
                                     }
+                                       if(xcv==1)
+                                    {
+                                         GameObject cde = Instantiate(mini_score_green_instance, canvasTransform);
+                                     cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
+                                    }
+                                    else if(xcv==2)
+                                    {
+                                         GameObject cde = Instantiate(mini_score_green2_instance, canvasTransform);
+                                       cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
+                                    }
+                                    else if(xcv==3)
+                                    {
+                                         GameObject cde = Instantiate(mini_score_green3_instance, canvasTransform);
+                                         
+                                         
+                                        //  cde.GetComponentInChildren<TextMesh>().text = "+3"; 
+                                         
+                                    cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
+                                    }
                                     animator.SetTrigger("change");
                                 }
                                 else
@@ -949,7 +974,7 @@ the value is frequency of letter
         }
         return res;
     }
-     private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         
         GameObject gameObject = collision.gameObject;
@@ -964,6 +989,10 @@ the value is frequency of letter
             GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 2;
                                     animator.SetTrigger("change");
+                                      GameObject cde = Instantiate(mini_score_green2_instance, canvasTransform);
+                                       cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
                                     for (int k = 0; k < gs.Length; k++)
                                     {
                                         Destroy(gs[k]);
@@ -1052,7 +1081,8 @@ the value is frequency of letter
                             else
                             {
 
-                                if (localHits > numberOfHits)
+                               if (localHits > numberOfHits && !(z_is == true && localHits - 1 <= numberOfHits) && text.text[0] != 'Z')
+                                    
                                 {
                                     // Debug.Log("no shooting");
                                 }
@@ -1104,6 +1134,19 @@ the value is frequency of letter
                                 }
 
                                 bool dest = false;
+                                if (wordCreated.Contains('Z'))
+                                {
+                                    z_is = true;
+
+                                    wordCreated = wordCreated.Replace("Z", "");
+                                    Debug.Log("Z deleted" + wordCreated);
+                                }
+                                else
+                                {
+                                    z_is = false;
+                                }
+                                
+                                int xcv =0;
 
                                 if ((wordCreated.Length == bs.words[j][0].Length) && findMatch(wordCreated, bs.words[j][0]))
                                 {
@@ -1151,8 +1194,44 @@ the value is frequency of letter
                                     // else 
                                     // {
                                     //Debug.Log(bs);
+                                    int tru =0;
+                             if (bs.words[j][0].Equals(wordCreated) || Reverse(bs.words[j][0]).Equals(wordCreated))
+                                    {  tru++;
+                                       
+                                        
+
+                                         ScoreScript.PlayerScore += 1;
+                                         
+                                         
+                                                  }
+                            
                                     GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 1;
+                                    if (tru ==1 && z_is){
+                                GameObject cde = Instantiate(mini_score_green3_instance, canvasTransform);
+                                       cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
+
+                            }
+                            else if(tru==1 && !z_is){
+
+                                GameObject cde = Instantiate(mini_score_green2_instance, canvasTransform);
+                                       cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
+                            }
+                            else{
+                                GameObject cde = Instantiate(mini_score_green_instance, canvasTransform);
+                                       cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
+
+                            }
+                            if(z_is){
+                                 ScoreScript.PlayerScore += 1;
+                                 z_is=false;
+                            }
                                     animator.SetTrigger("change");
                                     for (int k = 0; k < gs.Length; k++)
                                     {
@@ -1192,12 +1271,20 @@ the value is frequency of letter
                                                    StartCoroutine(FlashCoroutine());
                                                 }
                                                 ScoreScript.PlayerScore -= 1;
+                                                 GameObject cde = Instantiate(mini_score_red_instance, canvasTransform);
+                                       cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
                                                 animator.SetTrigger("change2");
-                                                Debug.Log(ScoreScript.PlayerScore);
+                                                
 
                                             }
                                         }
                                     }
+                                }
+                                if(z_is == true && !dest) 
+                                {
+                                        wordCreated+="Z";
                                 }
 
 
