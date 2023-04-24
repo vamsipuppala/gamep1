@@ -1014,6 +1014,10 @@ the value is frequency of letter
                                     {
                                         Destroy(gs[k]);
                                     }
+                                    GameObject cde = Instantiate(mini_score_green2_instance, canvasTransform);
+                                    cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
 
                                     
                                     wordCreated = "";
@@ -1098,7 +1102,8 @@ the value is frequency of letter
                             else
                             {
 
-                                if (localHits > numberOfHits)
+                                if (localHits > numberOfHits && !(z_is == true && localHits - 1 <= numberOfHits) && text.text[0] != 'Z')
+                                    
                                 {
                                     // Debug.Log("no shooting");
                                 }
@@ -1150,6 +1155,19 @@ the value is frequency of letter
                                 }
 
                                 bool dest = false;
+                                 if (wordCreated.Contains('Z'))
+                                {
+                                    z_is = true;
+
+                                    wordCreated = wordCreated.Replace("Z", "");
+                                    Debug.Log("Z deleted" + wordCreated);
+                                }
+                                else
+                                {
+                                    z_is = false;
+                                }
+                                
+                                int xcv =0;
 
                                 if ((wordCreated.Length == bs.words[j][0].Length) && findMatch(wordCreated, bs.words[j][0]))
                                 {
@@ -1197,8 +1215,46 @@ the value is frequency of letter
                                     // else 
                                     // {
                                     //Debug.Log(bs);
+                                     int tru =0;
+                             if (bs.words[j][0].Equals(wordCreated) || Reverse(bs.words[j][0]).Equals(wordCreated))
+                                    {  tru++;
+                                       
+                                        
+
+                                         ScoreScript.PlayerScore += 1;
+                                          mySlider.value += 1.0f;
+                                         
+                                         
+                                                  }
+
+                                      if (tru ==1 && z_is){
+                                GameObject cde = Instantiate(mini_score_green3_instance, canvasTransform);
+                                       cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
+
+                            }
+                            else if(tru==1 && !z_is){
+
+                                GameObject cde = Instantiate(mini_score_green2_instance, canvasTransform);
+                                       cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
+                            }
+                            else{
+                                GameObject cde = Instantiate(mini_score_green_instance, canvasTransform);
+                                       cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
+
+                            }
+                            if(z_is){
+                                 ScoreScript.PlayerScore += 1;
+                                 z_is=false;
+                            }
                                     GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 1;
+                                     mySlider.value += 1.0f;
                                     animator.SetTrigger("change");
                                     for (int k = 0; k < gs.Length; k++)
                                     {
@@ -1238,12 +1294,21 @@ the value is frequency of letter
                                                    StartCoroutine(FlashCoroutine());
                                                 }
                                                 ScoreScript.PlayerScore -= 1;
+                                                 mySlider.value = 0.0f;
+                                                 GameObject cde = Instantiate(mini_score_red_instance, canvasTransform);
+                                       cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
+                                     
+                                    Destroy(cde, 1.0f);
                                                 animator.SetTrigger("change2");
                                                 Debug.Log(ScoreScript.PlayerScore);
 
                                             }
                                         }
                                     }
+                                }
+                                if(z_is == true && !dest) 
+                                {
+                                        wordCreated+="Z";
                                 }
 
 
