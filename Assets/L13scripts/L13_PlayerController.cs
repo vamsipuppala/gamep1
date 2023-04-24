@@ -1037,12 +1037,14 @@ public class L13_PlayerController : MonoBehaviour
                                         
 
                                          ScoreScript.PlayerScore += 1;
+                                          mySlider.value += 1.0f;
                                          
                                          
                                                   }
                             
                                     GameObject[] gs = bs.nestedList[j];
                                     ScoreScript.PlayerScore += 1;
+                                     mySlider.value += 1.0f;
                                     if (tru ==1 && z_is){
                                 GameObject cde = Instantiate(mini_score_green3_instance, canvasTransform);
                                        cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
@@ -1107,6 +1109,7 @@ public class L13_PlayerController : MonoBehaviour
                                                    StartCoroutine(FlashCoroutine());
                                                 }
                                                 ScoreScript.PlayerScore -= 1;
+                                                 mySlider.value = 0.0f;
                                                  GameObject cde = Instantiate(mini_score_red_instance, canvasTransform);
                                        cde.transform.position = new Vector3(nestedList[j][0].transform.position.x+570, (float)((float)(nestedList[j][0].transform.position.y*300)/(float)13.3), 0);
                                      
